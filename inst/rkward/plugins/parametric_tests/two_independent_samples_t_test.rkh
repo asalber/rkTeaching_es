@@ -1,0 +1,27 @@
+<!DOCTYPE rkhelp>
+<document>
+	<summary>
+	t-Test for two independent samples.
+	</summary>
+
+	<usage>
+	Chose a numeric variable and a factor with two groups .
+	</usage>
+
+	<settings>
+		<caption id="tab_variables"/>
+		<setting id="variable">A numeric variable or vector</setting>
+		<setting id="factor">A factor with two levels to compare.</setting>
+		<setting id="varequal">Whether to assume equal variances for the two samples (for independent samples t-test, only). This option is implied for a paired test.</setting>
+		<setting id="hypothesis">Alternative hypothesis (H1) of the test.</setting>
+		<caption id="tab_options"/>
+		<setting id="confint">Whether to print the confidence interval of the estimated mean.</setting>
+		<setting id="conflevel">Confidence level to print.</setting>
+	</settings>
+	<related>
+		<ul>
+			<li><link href="rkward://component/F_test"/></li>
+			<li><link href="rkward://rhelp/t.test"/></li>
+		</ul>
+	</related>
+</document>

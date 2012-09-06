@@ -1,0 +1,162 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="descriptive_statistics.js"/>
+	<help file="descriptive_statistics.rkh"/>
+	
+	<logic>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="grouping.enabled" governor="grouped_mode"/>
+	
+		<connect client="constMad.enabled" governor="mad.state" />
+		<connect client="pourcent.enabled" governor="trim.state" />
+		<connect client="winsor.enabled" governor="huber.state" />
+
+		<connect client="customMu.enabled" governor="huber.state" />
+		<convert id="mubox" mode="and" sources="customMu.state;customMu.enabled" />
+		<connect client="mu.enabled" governor="mubox" />
+
+		<connect client="customS.enabled" governor="huber.state" />
+		<convert id="sbox" mode="and" sources="customS.state;customS.enabled" />
+		<connect client="s.enabled" governor="sbox" />
+
+		<connect client="tol.enabled" governor="huber.state" />
+		<connect client="initmu.enabled" governor="huber.state" />
+	</logic>
+	
+	<dialog label="Estadística Descriptiva" >
+		<tabbook>
+			<tab label="Seleccionar variables" >
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables"/>
+					<column>
+						<varslot id="data" label="Variable(s)" source="selector" multi="true" classes="numeric integer" required="true" />
+						<checkbox id="grouped" label="Estadísticas por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variables de agrupación:" source="selector" multi="true" required="true"/>
+						<checkbox id="narm" label="Omitir valores desconocidos" value_unchecked="0" value="1" checked="true"/>
+					</column>
+				</row>
+			</tab>
+			<tab label="Estadísticos básicos" >
+				<column id="col_statistics">
+					<frame label="General" >
+						<row>
+							<checkbox id="min" label="Mínimo" checked="false" value="'min'," />
+							<checkbox id="max" label="Máximo" checked="false" value="'max'," />
+						</row>
+					</frame>
+					<frame label="Tendencia central" >
+						<row>
+							<checkbox id="mean" label="Media" checked="false" value="'mean',"/>
+							<checkbox id="median" label="Mediana" checked="false" value="'median',"/>
+							<checkbox id="mode" label="Moda" checked="false" value="'mode',"/>
+						</row>
+					</frame>
+					<frame label="Dispersión" >
+						<row>
+							<checkbox id="variance" label="Varianza" checked="false" value="'variance',"/>
+							<checkbox id="unvariance" label="Cuasivarianza" checked="false" value="'unvariance',"/>
+						</row>
+						<row>
+							<checkbox id="stdev" label="Desviación típica" checked="false" value="'stdev',"/>
+							<checkbox id="sd" label="Cuasidesviación típica" checked="false" value="'sd',"/>
+						</row>
+						<row>
+							<checkbox id="cv" label="Coeficiente de variación" checked="false" value="'cv',"/>
+						</row>
+						<row>
+							<checkbox id="range" label="Rango" checked="false" value="'ran',"/>
+							<checkbox id="iqrange" label="Rango intercuartílico" checked="false" value="'iqrange',"/>
+						</row>
+					</frame>
+					<frame label="Forma" >
+						<row>
+							<checkbox id="skewness" label="Coeficiente de Asimetría" checked="false" value="'skewness'," />
+							<checkbox id="kurtosis" label="Coeficiente de Curtosis" checked="false" value="'kurtosis'," />
+						</row>
+					</frame>
+					<frame label="Cuantiles" >
+						<row>
+							<checkbox id="quartile" label="Cuartiles" value_unchecked="0" checked="false" value="1" />
+							<stretch/>
+							<input id="quantiles" label="Percentiles (introducir frecuencias, ej.: 0.5 para la mediana)" />
+						</row>
+					</frame>
+				</column>
+			</tab>
+			<!-- 
+			<tab label="Estadísticos robustos" >
+				<column id="col_robust">
+					<frame label="Dispersión" >
+						<row>
+							<checkbox id="mad" label="Desviación absoluta a la mediana" checked="false" value="1" />
+							<spinbox id="constMad" label="Constante" type="real" initial="1.4628" />
+						</row>
+					</frame>
+					<frame label="Media robusta" >
+						<row>
+							<checkbox id="trim" label="Media recortada" checked="false" value="1" />
+							<spinbox id="pourcent" label="Porcentaje de valores recortados" min="0" initial="0.05" max="0.5" />
+						</row>
+					</frame>
+					<frame label="Estimador M" >
+						<row>
+							<checkbox id="huber" label="Estimador M de Huber (Requiere la librería MASS)" checked="false" value="1" />
+							<spinbox id="winsor" label="Winsorizar a 'k' desviaciones" min="0" initial="1.5" max="10" />
+						</row>
+						<row>
+							<column>
+								<checkbox id="customMu" label="Mu definido por el usuario" checked="false" value="1" />
+								<input size="small" id="mu" label="Introducir el valor de Mu" />
+							</column>
+							<column>
+								<checkbox id="customS" label="Valor s definido por el usuario" checked="false" value="1" />
+								<input id="s" label="S value" size="small" />
+							</column>
+						</row>
+						<row>
+							<column>
+								<spinbox id="tol" label="Tolerancia" type="real" intial="1e-6" max_precision="6" min="0" max="1" />
+							</column>
+							<column>
+								<radio id="initmu" label="Valor inicial" >
+									<option value="median" label="Mediana" />
+									<option value="mean" label="Media" />
+								</radio>
+							</column>
+						</row>
+					</frame>
+				</column>
+			</tab>
+			 -->
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Estadística descriptiva">
+		<page id="pag_vars">
+			<text>
+				Seleccionar la variable numérica a describir.
+				Si desea calcular los estadísticos agrupados de acuerdo a los niveles de alguna variable,
+				marque la opción correspondiente y seleccione las variables de agrupación.
+				Si no desea omitir los valores desconocidos, desmarque la opción correspondiente. 
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<page>
+			<text>
+				Seleccionar los estadísticos a calcular.
+			</text>
+			<copy id="col_statistics" />
+		</page>
+		<!-- 
+		<page>
+			<text>
+				Select the robust statistics to calculate.
+			</text>
+			<copy id="col_robust" />
+		</page>
+		 -->
+	</wizard>
+</document>

@@ -1,0 +1,36 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="regression_comparison.js"/>
+	<help file="regression_comparison.rkh"/>
+	
+	<dialog label="Regression Models Comparison">
+		<row id="row_vars">
+			<varselector id="vars"/>
+			<column>
+				<varslot type="numeric" id="y" source="vars" required="true" label="Dependent variable"/>
+				<varslot type="numeric" id="x" source="vars" required="true" label="Independent variable"/>
+				<frame id="model" label="Model" >
+					<checkbox id="linear" label="Linear" value="'linear',"/>
+					<checkbox id="cuadratic" label="Cuadratic" value="'cuadratic',"/>
+					<checkbox id="cubic" label="Cubic" value="'cubic',"/>
+					<checkbox id="potential" label="Potential" value="'potential',"/>
+					<checkbox id="exponential" label="Exponential" value="'exponential',"/>
+					<checkbox id="logarithmic" label="Logartihmic" value="'logarithmic',"/>
+					<checkbox id="inverse" label="Inverse" value="'inverse',"/>
+					<checkbox id="sigmoid" label="Sigmoid" value="'sigmoid',"/>
+				</frame>
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Regression Models Comparison">
+		<page id="pag_vars">
+			<text id="txt_var">
+				Select the numeric dependent and independent variables.
+				Then select the types of models to compare.
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+	
+</document>

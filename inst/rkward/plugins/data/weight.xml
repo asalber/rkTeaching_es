@@ -1,0 +1,30 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="weight.js"/>
+	<help file="weight.rkh"/>
+		
+	<dialog label="Ponderar conjunto de datos" >
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar variable"/>
+			<column>
+				<varslot id="data" label="Conjunto de datos a ponderar" source="selector" classes="data.frame" required="true" />
+				<varslot id="freq" label="Frecuencias de ponderación" source="selector" classes="numeric" required="true" />
+				<saveobject id="save" label="Guardar conjunto de datos" initial="datos.nuevo" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Ponderar conjunto de datos">
+		<page id="pag_vars">
+			<text>
+				Seleccionar el conjunto de datos a ponderar, las frecuencias de ponderación e indicar
+				un nombre para el nuevo conjunto de datos. 
+				Debe haber tantas frecuencias como filas tenga el conjunto de datos a ponderar. 
+				-
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+</document>

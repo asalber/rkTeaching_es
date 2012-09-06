@@ -1,0 +1,50 @@
+Encoding: UTF-8
+Package: rkTeachingExtras
+Type: Package
+Title: Basic utilities for teaching statistics
+Version: 1.0
+Date: 2012-07-13
+Author: Alfredo Sánchez Alberca <asalber@ceu.es>
+Maintainer: Alfredo Sánchez Alberca <asalber@ceu.es>
+Depends: rkward (>= 0.5.6)
+Suggests: TeachingExtras
+Enhances: rkward
+Description: Basic utilities for teaching statistics. 
+	It contains procedures for:
+	- Frequency tabulation
+	- Plots:
+  		- Bar Graph
+  		- Histogram
+  		- Scatterplot
+	- Descriptive statistics
+	- Regression:
+  		- Linear Regression
+  		- Non linear regression
+  		- Regression model comparison
+  		- Regression prediction
+	- Parametric tests:
+  		- T test for one sample
+  		- T test for two independent samples
+  		- T test for two paired samples
+  		- Test for one proportion
+  		- Test for two proportions
+  		- Sample size calculation for mean estimation
+  		- Sample size calculation for proportion estimation
+	- Non parametric tests:
+  		- Normality tests: Shapiro-Wilk, Kolmogorov
+  		- U Mann-Whitney test
+  		- Wilcoxon test
+  		- Friedman test
+  		- Kruskal-Wallis test
+  		- Chi-square test
+	- Concordance
+  		- Intraclass correlation coefficient
+  		- Cohen's kappa
+	- Simulations:
+  		- Coins tosses
+  		- Dice roll
+  		- Sample generation
+  		- Small numbers law
+  		- Central limit theorem
+License: GPL (>= 3)
+LazyLoad: yes

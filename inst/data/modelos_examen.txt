@@ -1,0 +1,6 @@
+Modelo1	Modelo2	Modelo3	Modelo4
+6	8	5	8
+5	4	7	9
+5	4	5	6
+7	4	6	7
+6	3	7	8

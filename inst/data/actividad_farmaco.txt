@@ -1,0 +1,6 @@
+tiempo actividad
+1 96
+2 84
+3 70
+4 58
+5 52

@@ -1,0 +1,72 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="two_independent_samples_t_test.js"/>
+	<help file="two_independent_samples_t_test.rkh"/>
+
+	<dialog label="Two independent samples t-Test">
+		<tabbook>
+			<tab id="tab_variables" label="Select variables">
+				<row id="row_vars">
+					<varselector id="vars"/>
+					<column>
+						<varslot id="variable" label="Compare" source="vars" types="number" required="true" />
+						<varslot id="factor" label="By" source="vars" types="factor" required="true" />
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_settings" label="Settings">
+				<row>
+					<column id="hypotesis_col">
+						<radio id="hypothesis" label="Hypothesis test">
+							<option value="two.sided" label="Two-sided"/>
+							<option value="greater" label="First is greater"/>
+							<option value="less" label="Second is greater"/>
+						</radio>
+						<checkbox id="varequal" label="assume equal variances" value="1" value_unchecked="0"/>
+					</column>
+					<column>
+						<frame id="confint_frame" label="Show Confidence Interval"  checkable="true" checked="true">
+							<spinbox id="conflevel" label="confidence level" type="real" min="0" max="1" initial="0.95"/>
+						</frame>
+					</column>
+				</row>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Two independent samples t-Test">
+		<page>
+			<text>
+			Select the numeric variable to test. 
+			After, select the factor and their two levels to compare. 
+			</text>
+			<copy id="row_vars"/>
+		</page>
+		<page>
+			<text>
+				Select the type of alternative hypothesis and specify which mean you theorize to be greater. Select two-sided, if your theory does not tell you, which variable is greater.
+				If your hypothesis is directed, selecting a directional test hypothesis may increase test power.
+			</text>
+			<copy id="hypothesis"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+			Check the box if you have some evidence of the equality of variances (eg. via a F-test). An appropriate correction will be applied then that may increase test power. 
+			However, it's generally safe not to assume the variables have equal variances, if you don't have evidence.
+			</text>
+			<copy id="varequal"/>
+		</page>
+		<page>
+			<text>
+			Sometimes it's helpful to get an estimate of the confidence interval of the difference in means. 
+			Below you can specify whether one should be shown, and which confidence-level should be applied (95% corresponds to a 5% level of significance).
+			</text>
+			<copy id="confint_frame"/>
+			<stretch/>
+		</page>
+	</wizard>
+	
+</document>

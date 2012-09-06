@@ -1,0 +1,100 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="scatterplot.js"/>
+	<help file="scatterplot.rkh"/>
+	
+	<logic>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="grouping.enabled" governor="grouped_mode"/>
+		
+		<convert id="smooth_check" mode="equals" sources="smooth.state" standard="TRUE"/>
+		<connect client="spread.enabled" governor="smooth_check"/>
+		
+		<set id="plotoptions.allow_type" to="false" />
+	</logic>
+	
+	<dialog label="Scatterplot" >
+		<tabbook>
+			<tab id="variables_tab" label="Variables">
+				<row id="row_vars">
+					<varselector id="vars" />
+					<column>
+						<varslot id="y" label="Variable Y" source="vars" types="number unknown" required="true" />
+						<varslot id="x" label="Variable X" source="vars" types="number unknown" required="true" />
+						<checkbox id="grouped" label="Plot by groups" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Group variable(s):" source="vars" required="true"/>
+						<stretch/>
+						<preview id="preview"/>
+					</column>
+				</row>
+			</tab>
+			<tab id="regression_tab" label="Regression line">
+				<frame id="regression_frame">
+					<row>
+						<checkbox id="regression" label="Plot regression line" checked="false" value_unchecked="FALSE" value="lm"/>
+					</row>
+					<row>
+						<checkbox id="smooth" label="Plot smooth line" checked="false" value_unchecked="FALSE" value="TRUE"/>
+						<checkbox id="spread" label="Show spread lines" checked="false" value_unchecked="FALSE" value="TRUE"/>
+					</row>
+					<stretch/>
+				</frame>
+			</tab>
+		
+			<tab id="options_tab" label="Graphics options" >
+				<!--
+				<frame label="Point symbols">
+					<row>
+						<radio id="isPch" label="Symbol" >
+							<option value="all" label="Same for all variables" />
+							<option value="each" label="Different for each variable" />
+						</radio>
+						<column>
+							<text>
+								Either an integer specifying a symbol or a single character to be used as the default in plotting points.
+							</text>
+							<input id="pch" label="Enter value - for diff.symbol. enter a vector -" size="small" initial="1" />
+						</column>
+					</row>
+				</frame>
+
+				<frame label="Point Colors">
+					<row>
+						<radio id="color" label="Color" >
+							<option value="all" label="Same color for all variables" />
+							<option value="each" label="Different for each variable" />
+						</radio>
+						<column>
+							<text>
+						Enter value - for diff.col. enter a vector -<br/>
+						eg:  c(1,2) or c('red','green')
+							</text>
+							<input id="col" label=" " size="small" initial="'black'" />
+						</column>
+					</row>
+				</frame>
+				-->
+				<embed id="plotoptions" component="rkward::plot_options" label="General plot options"/>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Scatterplot">
+		<page id="pag_vars">
+			<text>
+				Select the numeric variables for the X and Y axes.
+				If you want to plot by groups according to the levels of some variable, check the box an select the grouping variable.
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<page id="pag_regression">
+			<text>
+				Check de boxes if you want to plot a linear regression line or a smooth non parametric regression line. 
+			</text>
+			<copy id="regression_frame" />
+		</page>
+		
+		<copy id="options_tab" copy_element_tag_name="page" />
+	</wizard>
+</document>

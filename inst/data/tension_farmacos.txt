@@ -1,0 +1,16 @@
+variacion_presion	farmaco
+12	A
+15	A
+16	A
+6	A
+8	A
+-3	B
+5	B
+-8	B
+-2	B
+4	B
+1	C
+5	C
+19	C
+45	C
+3	C

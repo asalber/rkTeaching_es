@@ -1,0 +1,89 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="barplot.js" />
+	<help file="barplot.rkh" />
+	
+	<logic>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="grouping.enabled" governor="grouped_mode"/>
+		
+		<convert id="non_grouped_mode" mode="notequals" sources="grouped.state" standard="1"/>
+		<connect client="cum.enabled" governor="non_grouped_mode"/>
+		<connect client="poly.enabled" governor="non_grouped_mode"/>
+
+		<convert id="custom_names" mode="equals" sources="names_mode.string" standard="custom"/>
+		<convert id="rexp_names" mode="equals" sources="names_mode.string" standard="rexp"/>
+		<connect client="names_custom.visible" governor="rexp_names.not"/>
+		<connect client="names_custom.enabled" governor="custom_names"/>
+		<connect client="names_exp.visible" governor="rexp_names"/>
+		
+		<convert id="juxtaposed" mode="equals" sources="grouping.string" standard="juxtaposed" />
+		<connect client="labels.enabled" governor="juxtaposed" />
+		<convert id="labelsvalue" mode="and" sources="labels.state;labels.enabled" />
+		<connect client="place.enabled" governor="labelsvalue" />
+	</logic>
+	
+	<dialog label="Diagrama de barras">
+		<tabbook>
+			<tab label="Seleccionar variable" id="tab_variables">
+				<row>
+					<varselector id="selector" label="Seleccionar variable"/>
+					<column>
+						<varslot id="var1" label="Variable" source="selector" required="true"/>
+						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" source="vars" multi="true" required="true"/>
+						<stretch/>
+						<preview id="preview"/>
+					</column>
+				</row>
+			</tab>
+			<tab label="Opciones de las barras" id="tab_bars_options">
+				<row>
+					<column>
+						<frame id="frame_freq" label="Frecuencias">
+							<checkbox id="rel" label="Frecuencia relativa" checked="false" value_unchecked="0" />
+							<checkbox id="cum" label="Frecuencia acumulada" checked="false" value_unchecked="0" />
+						</frame>
+						<checkbox id="poly" label="Polígono" checked="false" value_unchecked="0" />
+						<radio id="names_mode" label="Etiquetas de las barras" >
+							<option value="default" label="Predefinidas" checked="true"/>
+							<option value="custom" label="Definidas por el usuario"/>
+							<option value="rexp" label="Definidas por expresión"/>
+						</radio>
+						<input id="names_exp" label="Expresión para las etiquetas" initial="names (x)" required="true"/>
+						<input id="names_custom" label="Etiquetas (separadas por ';')" initial="Primera etiqueta; Segunda etiqueta"/>
+					</column>
+					<column>
+						<radio id="grouping" label="Agrupamiento" >
+							<option value="juxtaposed" label="Yuxtapuestas" checked="true"/>
+							<option value="stacked" label="Apiladas"/>
+						</radio>
+						<frame id="Value labels" label="Mostrar frecuencias">
+							<checkbox id="labels" label="Mostrar valores" value="1" value_unchecked="0"/>
+							<radio id="place" label="Ubicación">
+								<option value="3" label="Sobre las barras" checked="true"/>
+								<option value="2" label="Al lado de las barras"/>
+								<option value="1" label="Dentro de las barras"/>
+							</radio>
+						</frame>
+						<stretch/>
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_graphics_options" label="Opciones gráficas" >
+				<checkbox id="legend" label="Dibujar leyenda" value="1" value_unchecked="0" checked="false"/>
+				<radio id="colors" label="Colores" >
+					<option value="rainbow" label="Arco iris" checked="true"/>
+					<option value="grayscale" label="Grises" />
+					
+				</radio>
+				<stretch/>
+				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones generales de gráficos"/>
+				<stretch/>
+			</tab>
+		</tabbook>
+	</dialog>
+</document>

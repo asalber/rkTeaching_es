@@ -1,0 +1,37 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="non_linear_regression.js"/>
+	<help file="non_linear_regression.rkh"/>
+	
+	<dialog label="Fitting Non Linear Model">
+		<row id="row_vars">
+			<varselector id="vars"/>
+			<column>
+				<varslot type="numeric" id="y" source="vars" required="true" label="Dependent variable"/>
+				<varslot type="numeric" id="x" source="vars" required="true" label="Independent variable"/>
+				<radio id="model" label="Model" >
+					<option value="cuadratic" label="Cuadratic" />
+					<option value="cubic" label="Cubic" />
+					<option value="potential" label="Potential" />
+					<option value="exponential" label="Exponential" />
+					<option value="logarithmic" label="Logartihmic" />
+					<option value="inverse" label="Inverse" />
+					<option value="sigmoid" label="Sigmoid" />
+				</radio>
+				<saveobject id="save" label="Save model" initial="regression.model" checkable="true"/>
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Fitting Non Linear Model">
+		<page id="pag_vars">
+			<text id="txt_var">
+				Select the numeric dependent and independent variables.
+				Then select the type of model to fit.
+				Finally, if you want to save de regression model, check de box and give the model a name. 
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+	
+</document>

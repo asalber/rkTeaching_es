@@ -1,0 +1,105 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="boxplot.js" />
+	<help file="boxplot.rkh" />
+	
+	<logic>
+		<connect client="plotoptions.xvar" governor="x.available"/>
+		<set id="plotoptions.allow_type" to="true"/>
+		<set id="plotoptions.allow_ylim" to="true"/>
+		<set id="plotoptions.allow_xlim" to="false"/>
+		<set id="plotoptions.allow_log" to="false"/>	
+		<set id="plotoptions.allow_grid" to="true"/>
+
+		<convert id="data_mode_grouped" mode="equals" sources="data_mode.string" standard="grouped_outcome"/>
+		<connect client="outcome.visible" governor="data_mode_grouped"/>
+		<connect client="groups.visible" governor="data_mode_grouped"/>
+		<connect client="dodges.visible" governor="data_mode_grouped"/>
+		<connect client="x.visible" governor="data_mode_grouped.not"/>
+
+		<convert id="custom_names" mode="equals" sources="names_mode.string" standard="custom"/>
+		<convert id="rexp_names" mode="equals" sources="names_mode.string" standard="rexp"/>
+		<connect client="names_custom.visible" governor="rexp_names.not"/>
+		<connect client="names_custom.enabled" governor="custom_names"/>
+		<connect client="names_exp.visible" governor="rexp_names"/>
+
+		<connect client="type_of_mean.enabled" governor="mean.checked"/>
+		<convert id="arith_mean" mode="equals" sources="type_of_mean.string" standard="arithmetic_mean" />
+		<connect client="trim.enabled" governor="arith_mean"/>
+		<convert id="sd_or_mean" mode="or" sources="mean.checked;sd.checked"/>
+		<connect client="size_and_color_frame.enabled" governor="sd_or_mean"/>
+	</logic>
+	
+	<dialog label="Diagrama de caja" >
+	<tabbook>
+		<tab label="Variable(s)" id="tab_variables">
+			<row>
+				<varselector id="vars" />
+				<column>
+					<radio id="data_mode" label="Formato">
+						<option value="separate_vars" label="Variables separadas" checked="true"/>
+						<option value="grouped_outcome" label="Cajas agrupadas"/>
+					</radio>
+					<varslot multi="true" type="numeric" source="vars" id="x" label="Variable(s):" required="true"/>
+					<varslot type="numeric" source="vars" id="outcome" label="Variable:" required="true"/>
+					<varslot multi="true" source="vars" id="groups" label="Variable de agrupación" required="true"/>
+					<spinbox type="integer" id="dodges" label="Separación de grupos" min="0" initial="0"/>
+				</column>
+				<column>
+					<frame label="Labels">
+						<radio id="names_mode" label="Etiquetas" >
+							<option value="default" label="Predefinidas" checked="true"/>
+							<option value="custom" label="Definidas por el usuario"/>
+							<option value="rexp" label="Definidas por una expresión "/>
+						</radio>
+						<input id="names_exp" label="Expresión de definición de etiquetas" initial="names (x)" required="true"/>
+						<input id="names_custom" label="Etiquetas (separadas por ';')" initial="Primera etiqueta; Segunda etiqueta" required="true"/>
+					</frame>
+					<spinbox type="real" id="boxwex" label="Anchura de la caja" min="0" initial="0.8"/>
+					<stretch/>
+					<preview id="preview"/>
+				</column>
+			</row>
+		</tab>
+		<tab label="Opciones" id="tab_options">
+			<row>
+				<column>
+					<radio id="orientation" label="orientación" >
+						<option value="TRUE" label="horizontal" />
+						<option checked="true" value="FALSE" label="vertical" />
+					</radio>
+					<checkbox id="notch" label="Dibujar muescas" checked="false" value="TRUE" value_unchecked="FALSE" />
+					<checkbox id="outline" label="Dibujar datos atípicos" checked="true" value="TRUE" value_unchecked="FALSE" />
+					<stretch/>
+					<frame id="size_and_color_frame" label="Tamaño y color de las marcas">
+						<spinbox type="real" id="cex_sd_mean" label="tamaño" initial="1"/>
+						<embed id="sd_mean_color" component="rkward::color_chooser" label="Color"/>
+					</frame>
+				</column>
+				<column>
+					<frame id="mean" label="Mostrar media" checkable="true" checked="false">
+						<spinbox type="integer" id="pch_mean" label="Símbolo de la media" initial="15"/>
+						<row>
+							<radio id="type_of_mean" label="Tipo de media" >
+								<option value="arithmetic_mean" label="Media aritmética" checked="true" />
+								<option value="geometric_mean" label="Media geométrica" />
+								<option value="harmonic_mean" label="Media armónica" />
+								<option value="interquartile_mean" label="Media intercuartílica" />
+							</radio>
+							<spinbox id="trim" label="Recorte de la media" type="real" min="0" max="0.5" initial="0.0" />
+						</row>
+					</frame>
+					<frame id="sd" label="Mostrar desviación típica" checked="false" checkable="true">
+						<spinbox type="integer" id="pch_sd_high" label="Símbolo para la desviación típica (superior)" initial="3"/>
+						<spinbox type="integer" id="pch_sd_low" label="Símbolo para la desviación típica (inferior)" initial="3"/>
+					</frame>
+					<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />
+					<stretch/>
+				</column>
+			</row>
+		</tab>
+	</tabbook>
+</dialog>
+</document>

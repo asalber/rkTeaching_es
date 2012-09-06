@@ -1,0 +1,36 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="regression_predictions.js"/>
+	<help file="regression_predictions.rkh"/>
+	
+	<logic>
+		<convert id="isuse_dataframe" sources="use_dataframe.state" mode="equals" standard="1" />
+		<connect client="dataframe.visible" governor="isuse_dataframe"/>
+	</logic>
+	
+	<dialog label="Regression Model Predictions">
+		<row id="row_vars">
+			<varselector id="vars"/>
+			<column>
+				<varslot id="model" label="Regression model" source="vars" classes="lm" required="true" />
+				<input id="values" label="Predictions for" size="small"/>
+				<checkbox id="use_dataframe" label="Use a data frame" value="1"/>
+				<varslot id="dataframe" classes="data.frame"  source="vars" required="true" label="Predictions for data frame"/>
+				<checkbox id="intervals" label="Confidence intervals for predictions" value="1"/>
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Regression Model Predictions">
+		<page id="pag_vars">
+			<text id="txt_var">
+				Select the regression model that you want to use for predictions.
+				Then enter the values of the independent variables in the model or select a data frame with those values (in that case, the variables names in the data frame must coincide with the independent variables names in the model).  
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+	
+</document>

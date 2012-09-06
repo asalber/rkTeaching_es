@@ -1,0 +1,29 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="variable_calculation.js"/>
+	<help file="variable_calculation.rkh"/>
+		
+	<dialog label="Cálculo de variable" >
+		<row id="row_vars">
+			<varselector id="selector" label="Espacio de trabajo"/>
+			<column>
+				<input id="expresion" label="Expresión de cálculo" />
+				<saveobject id="save" label="Guardar nueva variable" initial="variable.nueva" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Cálculo de variable">
+		<page id="pag_vars">
+			<text>
+				Indicar el nombre de la nueva variable y la expresión para calcular la nueva variable.
+				En la expresión puede usarse cualquier variable del espacio de trabajo.
+				Por ejemplo: estatura*100
+				-
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+</document>

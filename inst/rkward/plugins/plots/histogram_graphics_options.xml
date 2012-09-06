@@ -1,0 +1,87 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="histogram_options.js"/>
+	<help file="histogram_options.rkh"/>
+	<logic>
+		<external id="var1" default=""/>
+		<external id="allow_rel" default="true"/>
+		<external id="allow_barlabels" default="true"/>
+		<external id="allow_addtoplot" default="true"/>
+
+		<connect client="rel.visible" governor="allow_rel"/>
+		<connect client="barlabels.visible" governor="allow_barlabels"/>
+		<connect client="addtoplot.visible" governor="allow_addtoplot"/>
+
+		<set id="histbordercol.argument" to=", border="/>
+
+		<convert id="isbreaks_cells" sources="histbreaksFunction.string" mode="equals" standard="cells"/>
+		<connect client="histbreaks_ncells.enabled" governor="isbreaks_cells"/>
+
+		<convert id="isbreaks_vec" sources="histbreaksFunction.string" mode="equals" standard="vec"/>
+		<connect client="histbreaks_veclength.enabled" governor="isbreaks_vec"/>
+
+		<convert id="isbreaks_int" sources="histbreaksFunction.string" mode="equals" standard="int"/>
+		<convert id="isbreaks_intORvec" mode="or" sources="isbreaks_int;isbreaks_vec"/>
+		<connect client="include_lowest.enabled" governor="isbreaks_intORvec"/>
+
+		<convert id="isdensityGT0" mode="range" sources="density.int" min="1" />
+		<convert id="ishistlty_notblank" sources="histlinetype.string" mode="notequals" standard="blank" />
+		<convert id="ishistlty_blank" sources="histlinetype.string" mode="equals" standard="blank" />
+
+		<connect client="density.enabled" governor="ishistlty_notblank"/>
+
+		<convert id="isdensityGT0ishistlty_notblank" mode="and" sources="isdensityGT0;ishistlty_notblank" />
+		<connect client="angle.enabled" governor="isdensityGT0ishistlty_notblank"/>-->
+
+		<connect client="frame_histborderoptions.enabled" governor="ishistlty_notblank"/>
+		<connect client="histbordercol.color.enabled" governor="doborder.state" />
+
+		<convert id="isdensity_non0" sources="density.int" mode="notequals" standard="0" />
+
+		<connect client="frame_histfilloptions.enabled" governor="isdensity_non0"/>
+		<connect client="histfillcol.color.enabled" governor="usefillcol.state" />
+
+		<connect client="usefillcol.enabled" governor="ishistlty_notblank"/>
+		<connect client="usefillcol.state" governor="ishistlty_blank"/>
+	</logic>
+	
+	<dialog label="Opciones del histograma">
+		<row>
+			<column>
+				<frame id="frame_freq" label="Frecuencias">
+					<checkbox id="rel" label="Frecuencia relativa" checked="false" value_unchecked="0" />
+					<checkbox id="cum" label="Frecuencia acumulada" checked="false" value_unchecked="0" />
+				</frame>
+				<checkbox id="poly" label="Polígono" checked="false" value_unchecked="0" />
+				<checkbox id="addtoplot" label="Añadir barras" checked="false"/>
+				<checkbox id="barlabels" label="Etiquetas de las barras" checked="false"/>
+				<stretch/>
+			</column>
+			<column>
+				<frame id="frame_histlineoptions" label="Opciones de línea">
+					<dropdown id="histlinetype" label="Tipo de línea" >
+						<option value="blank" label="Sin lineas" />
+						<option value="solid" label="Sólida" checked="true"/>
+						<option value="dashed" label="Rayas corta" />
+						<option value="dotted" label="Puntos" />
+						<option value="dotdash" label="Rayas-puntos" />
+						<option value="longdash" label="Raya larga" />
+						<option value="twodash" label="Dos rayas" />
+					</dropdown>
+					<spinbox id="density" label="Densidad de líneas de relleno" type="integer" min="-1" initial="-1" default_precision="1"/>
+					<spinbox id="angle" label="Ángulo de las líneas de relleno" min="0" max = "360" initial="45" default_precision="0"/>
+				</frame>
+				<frame id="frame_histborderoptions" label="Opciones de borde">
+					<checkbox id="doborder" label="Dibujar borde" checked="true"/>
+					<embed id="histbordercol" component="rkward::color_chooser" label="Color"/>
+				</frame>
+				<frame id="frame_histfilloptions" label="Opciones de relleno">
+					<checkbox id="usefillcol" label="Usar color de relleno" checked="false"/>
+					<embed id="histfillcol" component="rkward::color_chooser" label="Color"/>
+				</frame>
+			</column>
+		</row>
+	</dialog>
+</document>

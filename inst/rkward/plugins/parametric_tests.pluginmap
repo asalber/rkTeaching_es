@@ -1,0 +1,39 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="parametric_tests/" namespace="rkTeachingExtras">
+	<components>
+		<component type="standard" id="one_sample_t_test" file="one_sample_t_test.xml" label="Test T para una muestra" />
+		<component type="standard" id="two_independent_samples_t_test" file="two_independent_samples_t_test.xml" label="Test T para dos muestras independientes" />
+		<component type="standard" id="two_paired_samples_t_test" file="two_paired_samples_t_test.xml" label="Test T para dos muestras pareadas" />
+		<component type="standard" id="anova" file="anova.xml" label="ANOVA" />
+		<component type="standard" id="one_proportion_test" file="one_proportion_test.xml" label="Test para una proporción" />
+		<component type="standard" id="two_proportions_test" file="two_proportions_test.xml" label="Test para dos proporciones" />
+		<component type="standard" id="f_test" file="f_test.xml" label="Test F de Fisher" />
+		<component type="standard" id="levene_test" file="levene_test.xml" label="Test de Levene" />		
+		<component type="standard" id="mean_sample_size" file="mean_sample_size.xml" label="Cálculo del tamaño muestral para la media" />
+		<component type="standard" id="proportion_sample_size" file="proportion_sample_size.xml" label="Cálculo del tamaño muestral para una proporción" />
+	</components>
+	
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="parametric_tests" label="Tests paramétricos">
+				<menu id="means" label="Medias">
+					<entry component="one_sample_t_test"/>
+					<entry component="two_independent_samples_t_test"/>
+					<entry component="two_paired_samples_t_test"/>
+					<entry component="anova" />
+					<entry component="mean_sample_size"/>
+				</menu>
+				<menu id="variances" label="Varianzas">
+					<entry component="f_test"/>
+					<entry component="levene_test"/>
+				</menu>
+				<menu id="proportions" label="Proporciones">
+					<entry component="one_proportion_test"/>
+					<entry component="two_proportions_test"/>
+					<entry component="proportion_sample_size"/>
+				</menu>
+			</menu>
+		</menu>
+	</hierarchy>
+</document>

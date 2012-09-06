@@ -1,0 +1,20 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="regression/" namespace="rkTeachingExtras">
+	<components>
+		<component type="standard" id="linear_regression" file="linear_regression.xml" label="Regresión lineal" />
+		<component type="standard" id="non_linear_regression" file="non_linear_regression.xml" label="Regresión no lineal" />
+		<component type="standard" id="regression_comparison" file="regression_comparison.xml" label="Comparación de modelos" />
+		<component type="standard" id="regression_predictions" file="regression_predictions.xml" label="Predicciones" />
+	</components>
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="regression" label="Regresión">
+					<entry component="linear_regression"/>
+					<entry component="non_linear_regression"/>
+					<entry component="regression_comparison"/>
+					<entry component="regression_predictions"/>
+			</menu>
+		</menu>
+	</hierarchy>
+</document>

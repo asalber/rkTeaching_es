@@ -1,0 +1,70 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="two_paired_samples_t_test.js"/>
+	<help file="two_paired_samples_t_test.rkh"/>
+	
+	<logic>
+		<convert id="confint_checked" sources="confint.state" mode="equals" standard="1" />
+		<connect governor="conflevel.enabled" client="confint_checked" />
+	</logic>
+	
+
+	<dialog label="Two paired samples t-Test">
+		<tabbook>
+			<tab id="tab_variables" label="Select variables">
+				<row id="row_vars">
+					<varselector id="vars"/>
+					<column>
+						<varslot id="x" label="Compare" source="vars" types="number" required="true" />
+						<varslot id="y" label="Against" source="vars" types="number" required="true" />
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_settings" label="Settings">
+				<row>
+					<column id="hypotesis_col">
+						<radio id="hypothesis" label="Hypothesis test">
+							<option value="two.sided" label="Two-sided"/>
+							<option value="greater" label="First is greater"/>
+							<option value="less" label="Second is greater"/>
+						</radio>
+					</column>
+					<column>
+						<frame id="confint_frame" label="Confidence Interval">
+							<checkbox id="confint" label="Show Confidence Interval" checked="true" value="1"/>
+							<spinbox id="conflevel" label="confidence level" type="real" min="0" max="1" initial="0.95"/>
+						</frame>
+					</column>
+				</row>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Two Variable t-Test">
+		<page>
+			<text>
+			Select the numerics variables to compare. 
+			</text>
+			<copy id="row_vars"/>
+		</page>
+		<page>
+			<text>
+				Select the type of alternative hypothesis and specify which mean you theorize to be greater. Select two-sided, if your theory does not tell you, which variable is greater.
+				If your hypothesis is directed, selecting a directional test hypothesis may increase test power.
+			</text>
+			<copy id="hypothesis"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+			Sometimes it's helpful to get an estimate of the confidence interval of the difference in means. 
+			Below you can specify whether one should be shown, and which confidence-level should be applied (95% corresponds to a 5% level of significance).
+			</text>
+			<copy id="confint_frame"/>
+			<stretch/>
+		</page>
+	</wizard>
+	
+</document>

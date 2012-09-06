@@ -1,0 +1,19 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="barplot_embed.js" />
+	<help file="barplot_embed.rkh" />
+	
+	<logic>
+		<set id="plotoptions.allow_ylim" to="false"/>
+		<set id="plotoptions.allow_xlim" to="false"/>
+	</logic>
+	
+	<dialog label="Barplot Options">
+		<checkbox id="legend" label="Draw Legend" value="1" value_unchecked="0" checked="false"/>
+		<radio id="colors" label="Colors" >
+			<option value="default" label="Default (grayscale)" checked="true" />
+			<option value="rainbow" label="Rainbow colors" />
+		</radio>
+		<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Plot Options"/>
+	</dialog>	
+</document>

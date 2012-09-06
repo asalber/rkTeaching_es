@@ -1,0 +1,66 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="pieplot.js" />
+	<help file="pieplot.rkh" />
+	
+	<logic>
+		<convert id="custom_names" mode="equals" sources="names_mode.string" standard="custom"/>
+		<convert id="rexp_names" mode="equals" sources="names_mode.string" standard="rexp"/>
+		<connect client="names_custom.visible" governor="rexp_names.not"/>
+		<connect client="names_custom.enabled" governor="custom_names"/>
+		<connect client="names_exp.visible" governor="rexp_names"/>
+	</logic>
+	
+	<dialog label="Diagrama de sectores">
+		<tabbook>
+			<tab label="Seleccionar variable" id="tab_variables">
+				<row>
+					<varselector id="selector" label="Seleccionar variable(s)"/>
+					<column>
+						<varslot id="vars" label="Variable(s)" source="selector" multi="true" min_vars="1" required="true" />
+						<stretch/>
+						<preview id="preview"/>
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_pie_options" label="Opciones de los sectores">
+				<column>
+					<frame id="frame_freq" label="Frecuencias">
+						<checkbox id="rel" label="Frecuencia relativa" checked="false" value_unchecked="0" />
+						<checkbox id="show_freq" label="Mostrar frecuencias" value="1" value_unchecked="0"/>
+					</frame>
+					<radio id="names_mode" label="Etiquetas de los sectores" >
+						<option value="default" label="Predefinidas" checked="true"/>
+						<option value="custom" label="Definidas por el usuario"/>
+						<option value="rexp" label="Definidas por expresión"/>
+					</radio>
+					<input id="names_exp" label="Expresión para las etiquetas" initial="names (x)" required="true"/>
+					<input id="names_custom" label="Etiquetas (separadas por ';')" initial="Primera etiqueta; Segunda etiqueta"/>
+				</column>
+			</tab>
+			<tab id="tab_graphics_options" label="Opciones gráficas" >
+				<radio id="colors" label="Colores" >
+					<option value="default" label="Pastel" checked="true" />
+					<option value="grayscale" label="Grises" />
+					<option value="rainbow" label="Arco iris" />
+				</radio>
+				<checkbox id="clockwise" label="Dibujar sectores en sentido horario" value="1" value_unchecked="0" checked="false" />
+				<frame label="Relleno">
+					<row>
+						<spinbox id="density" label="densidad de líneas" type="real" min="-1" max="10000" initial="-1" default_precision="0"/>
+						<spinbox id="density_inc" label="incremento de densidad" type="real" min="-10000" initial="0" max="10000" default_precision="0"/>
+					</row>
+					<row>
+						<spinbox id="angle" label="ángulo" type="real" min="0" initial="45" max="360" default_precision="0"/>
+						<spinbox id="angle_inc" label="incremento de ángulo" type="real" min="-360" initial="0" max="360" default_precision="0"/>
+					</row>
+				</frame>
+				<spinbox id="radius" label="Radio del círculo" type="real" min="0.1" max="1" initial="0.8"/>
+				<stretch/>
+				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones generales de gráficos"/>
+			</tab>
+		</tabbook>
+	</dialog>
+</document>

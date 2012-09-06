@@ -1,0 +1,83 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="histogram_options.js"/>
+	<help file="histogram_options.rkh"/>
+	
+	<logic>
+		<convert id="dodensity" mode="notequals" sources="density.state" standard="0"/>
+		<connect client="rel.enabled" governor="dodensity.not"/>
+		<connect client="cum.enabled" governor="dodensity.not"/>
+		<connect client="poly.enabled" governor="dodensity.not"/>
+		<connect client="frame_freqlabels.enabled" governor="dodensity.not"/>
+		
+		
+		<connect client="frame_densityoptions.enabled" governor="dodensity" />
+		<convert id="doplotdensity" mode="and" sources="dodensity;plotdensity.state"/>
+		<connect client="col_density.enabled" governor="doplotdensity"/>
+		<connect client="bw.enabled" governor="doplotdensity"/>
+		<connect client="adjust.enabled" governor="doplotdensity"/>
+		<connect client="narm.enabled" governor="doplotdensity"/>
+		<connect client="resolution.enabled" governor="doplotdensity"/>	
+		
+		<convert id="custom_names" mode="equals" sources="names_mode.string" standard="custom"/>
+		<convert id="rexp_names" mode="equals" sources="names_mode.string" standard="rexp"/>
+		<connect client="names_custom.visible" governor="rexp_names.not"/>
+		<connect client="names_custom.enabled" governor="custom_names"/>
+		<connect client="names_exp.visible" governor="rexp_names"/>
+		
+		<convert id="labelsvalue" mode="and" sources="labels.state;labels.enabled" />
+		<connect client="place.enabled" governor="labelsvalue" />
+	</logic>
+	
+	<dialog label="Opciones del histograma">
+		<row id="histogram_options_row">
+			<column>
+				<frame id="frame_freq" label="Frecuencias">
+					<checkbox id="rel" label="Frecuencia relativa" checked="false" value_unchecked="0" />
+					<checkbox id="cum" label="Frecuencia acumulada" checked="false" value_unchecked="0" />
+					<checkbox id="density" label="Densidad" value="1" value_unchecked="0" checked="false"/>
+				</frame>
+				<checkbox id="poly" label="Polígono" checked="false" value_unchecked="0" />
+				<frame id="frame_freqlabels" label="Mostrar frecuencias">
+					<checkbox id="freqlabels" label="Mostrar frecuencias en las barras" checked="false"/>
+				</frame>
+				<stretch/>
+			</column>
+			<column>
+				<frame id="frame_densityoptions" label="Densidad">
+					<checkbox id="plotdensity" label="Dibujar curva de densidad" value="1" value_unchecked="0" checked="false"/>
+					<frame label="General options">
+						<checkbox id="narm" label="Eliminar valores desconocidos" value="TRUE" value_unchecked="FALSE" checked="true" />
+						<embed id="col_density" component="rkward::color_chooser" label="Color" />
+						<spinbox id="resolution" initial="512" label="resolución" />
+					</frame>
+					<frame label="Opciones de las bandas">		
+						<dropdown id="bw" label="Anchura de la banda">
+							<option value="nrd0" label="nrd0"/>
+							<option value="nrd" label="nrd"/>
+							<option value="ucv" label="ucv"/>
+							<option value="bcv" label="bcv"/>
+							<option value="SJ-ste" label="SJ-ste"/>
+							<option value="SJ-dpi" label="SJ-dpi"/>
+						</dropdown>
+						<spinbox type="real" id="adjust" label="Ajustar anchura de la banda" initial="1"/>
+					</frame>
+					<stretch/>
+				</frame>
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Opciones del histograma">
+		<page id="pag_frequencies">
+			<text>
+				Seleccionar el tipo de frecuencias a dibujar en las barras.
+				Si se desea, seleccionar la opción correspondiente a dibujar el polígono.
+				Si las barras representan densidades, seleccionar la opción correspondiente a dibujar la curva de densidad.
+			</text>
+			<copy id="histogram_options_row" />
+		</page>
+	</wizard>
+</document>

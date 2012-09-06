@@ -1,0 +1,14 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Introducci\IeC {\'o}n}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{La ense\IeC {\~n}anza de Estad\IeC {\'\i }stica en la USP CEU}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Software para el tratamiento de datos}{4}{0}{1}
+\beamer@sectionintoc {2}{Introducci\IeC {\'o}n de R}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{R: La apuesta por el Software libre}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Interfaz gr\IeC {\'a}fica de usuario de R}{6}{0}{2}
+\beamer@subsectionintoc {2}{3}{Migraci\IeC {\'o}n a RKWard}{7}{0}{2}
+\beamer@sectionintoc {3}{Desarrollo de rkTeaching}{8}{0}{3}
+\beamer@sectionintoc {4}{Comparativa docente de rkTeaching vs SPSS}{9}{0}{4}
+\beamer@subsectionintoc {4}{1}{Comparativa de tiempo de aprendizaje}{10}{0}{4}
+\beamer@subsectionintoc {4}{2}{Comparativa de facilidad de uso}{11}{0}{4}
+\beamer@sectionintoc {5}{Conclusiones}{12}{0}{5}

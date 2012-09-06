@@ -1,0 +1,52 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="cells.js" />
+	<help file="cells.rkh" />
+	
+	<logic>
+		<external id="var1"/>
+		<convert id="isbreaks_num" sources="breaksFunction.string" mode="equals" standard="num"/>
+		<connect client="breaks_num.enabled" governor="isbreaks_num"/>
+		<convert id="isbreaks_vec" sources="breaksFunction.string" mode="equals" standard="vec"/>
+		<connect client="breaks_vec.enabled" governor="isbreaks_vec"/>
+		<convert id="isbreaks_int" sources="breaksFunction.string" mode="equals" standard="int"/>
+		<convert id="isbreaks_intORvec" mode="or" sources="isbreaks_int;isbreaks_vec"/>
+		<connect client="include_lowest.enabled" governor="isbreaks_intORvec"/>
+	</logic>
+
+	<dialog label="Cells" >
+		<column id="col1">
+			<radio id="breaksFunction" label="Método" >
+				<option value="Sturges" label="Sturges"  checked="true" />
+				<option value="Scott" label="Scott" />
+				<option value="FD" label="Friedman-Diaconis" />
+				<option value="num" label="Número de intervalos" />
+				<option value="int" label="Números enteros" />
+				<option value="vec" label="Definir los límites de los intervalos" />
+			</radio>
+			<row>
+				<spinbox id="breaks_num" label="Intervalos sugeridos" type="integer" initial="10" min="0" max="50" />
+				<text>    </text>
+				<input id="breaks_vec" label="Insertar los puntos de corte separados por comas" size="small" required="true" />
+			</row>
+			<row>
+				<checkbox id="rightclosed" label="Intervalos cerrados a la derecha"/>
+				<text>  </text>
+				<checkbox id="include_lowest" label="Incluir valor del límite inferior de la primera clase" checked="true"/>
+			</row>
+			<stretch/>
+		</column>
+	</dialog>
+
+	<wizard label="cells">
+		<page id="pag_cells">
+			<text id="txt_cells">
+				Now select how to group the data in cells. 
+				First choose the method for setting the breakpoints.
+				After select if you want right closed intervals (left closed by default). 
+			</text>
+			<copy id="col1" />
+		</page>
+	</wizard>
+</document>

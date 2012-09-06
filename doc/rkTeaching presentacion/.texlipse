@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Sat Jul 14 18:49:49 CEST 2012
+markTmpDer=true
+builderNum=6
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=rkTeachingExtrasPresentacion.tex
+outputFile=rkTeachinExtrasPresentacion.pdf
+langSpell=es
+markDer=true
+srcDir=

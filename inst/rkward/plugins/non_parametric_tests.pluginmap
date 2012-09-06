@@ -1,0 +1,24 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="non_parametric_tests/" namespace="rkTeachingExtras">
+	<components>
+		<component type="standard" id="u_mann_whitney" file="u_mann_whitney.xml" label="Test U de Mann-Whitney " />
+		<component type="standard" id="wilcoxon" file="wilcoxon.xml" label="Test de Wilcoxon" />
+		<component type="standard" id="friedman" file="friedman.xml" label="Test de Friedman" />
+		<component type="standard" id="kruskal_wallis" file="kruskal_wallis.xml" label="Test de Kruskal-Wallis" />
+		<component type="standard" id="normality" file="normality.xml" label="Test de normalidad" />
+		<component type="standard" id="chi_square" file="chi_square.xml" label="Test Chi-Cuadrado" />
+	</components>
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="non_parametric_tests" label="Tests no paramétricos">
+				<entry component="normality"/>
+				<entry component="u_mann_whitney"/>
+				<entry component="wilcoxon"/>
+				<entry component="friedman"/>
+				<entry component="kruskal_wallis"/>
+				<entry component="chi_square"/>				
+			</menu>
+		</menu>
+	</hierarchy>
+</document>

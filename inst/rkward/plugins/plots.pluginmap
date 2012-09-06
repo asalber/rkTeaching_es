@@ -1,0 +1,24 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="plots/" namespace="rkTeachingExtras">
+	<components>
+		<component type="standard" id="barplot" file="barplot.xml" label="Diagrama de barras" />
+		<component type="standard" id="histogram" file="histogram.xml" label="Histograma" />
+		<component type="standard" id="histogram_options" file="histogram_options.xml" label="Opciones de histograma" />
+		<component type="standard" id="pieplot" file="pieplot.xml" label="Diagrama de sectores" />
+		<component type="standard" id="boxplot" file="boxplot.xml" label="Diagrama de caja" />
+		<component type="standard" id="scatterplot" file="scatterplot.xml" label="Diagrama de dispersión" />
+	</components>
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="plots" label="Gráficos">
+				<entry component="barplot"/>
+				<entry component="histogram"/>
+				<entry component="pieplot"/>
+				<entry component="boxplot"/>
+				<entry component="scatterplot"/>
+			</menu>
+		</menu>
+	</hierarchy>
+	<require file="../embed.pluginmap"/>
+</document>

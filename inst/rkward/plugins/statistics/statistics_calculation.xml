@@ -1,0 +1,61 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="statistics_calculation.js"/>
+	<help file="statistics_calculation.rkh"/>
+	
+	<logic>
+	</logic>
+	
+	<dialog label="Estadística Descriptiva (cálculo detallado)" >
+		<tabbook>
+			<tab label="Seleccionar variables" >
+				<row id="row_vars">
+					<varselector id="selector" />
+					<column>
+						<varslot id="x" label="Variable" source="selector" classes="numeric integer" required="true" />
+						<checkbox value_unchecked="0" checked="true" value="1" id="narm" label="Omit missing values" />
+					</column>
+				</row>
+			</tab>
+			<tab label="Estadísticos básicos" >
+				<column id="col_statistics">
+					<frame label="Tendencia central" >
+						<row>
+							<checkbox id="mean" label="Media" value_unchecked="0" checked="false" value="1"/>
+						</row>
+					</frame>
+					<frame label="Dispersión" >
+						<row>
+							<checkbox id="variance" label="Varianza y desviación típica" value_unchecked="0" checked="false" value="1"/>
+							<checkbox id="cv" label="Coeficiente de variación" value_unchecked="0" checked="false" value="1"/>
+						</row>
+					</frame>
+					<frame label="Forma" >
+						<row>
+							<checkbox id="skewness" label="Coeficiente de asimetría" value_unchecked="0" checked="false" value="1" />
+							<checkbox id="kurtosis" label="Coeficiente de curtosis" value_unchecked="0" checked="false" value="1" />
+						</row>
+					</frame>
+				</column>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Estadística descriptiva">
+		<page id="pag_vars">
+			<text>
+				Seleccionar la variable numérica a describir.
+				Si no desea omitir los valores desconocidos, desmarque la opción correspondiente. 
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<page>
+			<text>
+				Seleccionar los estadísticos a calcular.
+			</text>
+			<copy id="col_statistics" />
+		</page>
+	</wizard>
+</document>

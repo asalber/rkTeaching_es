@@ -1,0 +1,35 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="recode.js"/>
+	<help file="recode.rkh"/>
+		
+	<dialog label="Recodificar variable" >
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar variable"/>
+			<column>
+				<varslot id="var" label="Variable a recodificar" source="selector" required="true" />
+				<input id="rules" label="Reglas de recodificación" size="large" />
+				<saveobject id="save" label="Guardar nueva variable" initial="variable.nueva" />
+				<checkbox id="asfactor" label="Convertir en factor" value_unchecked="0" checked="true"/>
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Recodificar variable">
+		<page id="pag_vars">
+			<text>
+				Seleccionar la variable a recodificar, las reglas de recodificación e indicar
+				un nombre para la nueva variable. 
+				Las reglas de recodificación deben indicarse una en cada línea con el formato
+				valor antiguo = valor nuevo
+				En valor antiguo pueden ponerse intervalos en formato límite inferior:límite superior, 
+				por ejemplo: 0:5 = "Suspenso"
+				Marcar la opción de convertir en factor si se desea que la nueva variable sea un factor.
+				-
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+</document>

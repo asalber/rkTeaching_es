@@ -1,0 +1,34 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="FrequencyTabulationGroupedData.js" />
+	<help file="FrequencyTabulationGroupedData.rkh" />
+
+	<logic>
+		<connect client="cells.var1" governor="var1.available" />
+	</logic>
+
+	<dialog label="Distribución de frecuencias">
+		<tabbook>
+			<tab label="Variables" id="tab_vars">
+				<row id="row_vars">
+					<varselector id="vars" label="Seleccionar variable"/>
+					<varslot id="var1" label="Variable a tabular" source="vars" types="number" required="true" />
+				</row>
+			</tab>
+			<tab label="Clases" id="tab_cells">
+				<embed id="cells" component="rkTeachingExtras::cells"/>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Distribución de frecuencias">
+		<page id="pag_vars">
+			<text id="txt_var">
+				Selecionar la variable a tabular.
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<embed id="cells" component="rkTeachingExtras::cells"/>
+	</wizard>
+</document>

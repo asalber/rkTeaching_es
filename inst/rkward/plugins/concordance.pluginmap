@@ -1,0 +1,16 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="concordance/" namespace="rkTeachingExtras">
+	<components>
+		<component type="standard" id="intraclass_correlation_coefficient" file="intraclass_correlation_coefficient.xml" label="Coeficiente de correlación intraclase" />
+		<component type="standard" id="kappa_cohen" file="kappa_cohen.xml" label="Kappa de Cohen" />
+	</components>
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="concordance" label="Concordancia">
+				<entry component="intraclass_correlation_coefficient"/>
+				<entry component="kappa_cohen"/>
+			</menu>
+		</menu>
+	</hierarchy>
+</document>

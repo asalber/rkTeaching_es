@@ -1,0 +1,8 @@
+tiempo concentracion
+2 25
+3 36
+4 48
+5 64
+6 86
+7 114
+8 168

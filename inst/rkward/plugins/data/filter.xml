@@ -1,0 +1,29 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="filter.js"/>
+	<help file="filter.rkh"/>
+		
+	<dialog label="Filtrado de Datos" >
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar conjunto de datos"/>
+			<column>
+				<varslot id="data" label="Conjunto de datos" source="selector" classes="data.frame" required="true" />
+				<input id="condition" label="Condición de selección" />
+				<saveobject id="save" label="Guardar nuevo conjunto de datos" initial="datos.nuevos" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Filtrado de Datos">
+		<page id="pag_vars">
+			<text>
+				Selecionar el conjunto de datos a filtrar e introducir la condición de selección.
+				Por ejemplo: sexo == "mujer" o edad > 20 
+				-
+			</text>
+			<copy id="row_vars" />
+		</page>
+	</wizard>
+</document>
