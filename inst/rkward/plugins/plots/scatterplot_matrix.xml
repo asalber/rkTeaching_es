@@ -1,0 +1,75 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="scatterplot_matrix.js"/>
+	<help file="scatterplot_matrix.rkh"/>
+	
+	<logic>		
+		<convert id="smooth_check" mode="equals" sources="smooth.state" standard="TRUE"/>
+		<connect client="spread.enabled" governor="smooth_check"/>
+	</logic>
+
+
+	<dialog label="Matriz de dispersión">
+		<tabbook>
+			<tab id="tab_variables" label="Seleccionar variables">
+				<row id="row_vars">
+					<varselector id="selector"/>
+					<column>
+						<varslot id="vars" label="Variable(s):" type="numeric" min_vars="2" multi="true" source="selector" required="true" num_dimensions="1"/>
+						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+							<input id="filter" label="Condición de selección" />
+						</frame>
+						<stretch/>
+						<preview id="preview"/>
+					</column>	
+				</row>
+			</tab>
+			<tab id="regression_tab" label="Línea de ajuste">
+				<column id="col_regression">
+					<checkbox id="regression" label="Dibujar recta de regresión" checked="false" value_unchecked="NULL" value="lm"/>
+					<row>
+						<checkbox id="smooth" label="Dibujar línea suavizada" checked="false" value_unchecked="FALSE" value="TRUE"/>
+						<checkbox id="spread" label="Dibujar líneas de dispersión" checked="false" value_unchecked="FALSE" value="TRUE"/>
+					</row>
+				</column>
+				<stretch/>
+			</tab>
+			<tab id="tab_diagonal" label="Diagonal">
+				<radio id="diagonal" label="Gráfico de la diagonal" >
+					<option value="histogram" label="Histograma" />
+					<option value="density" label="Densidad" />
+					<option value="boxplot" label="Diagrama de caja y bigotes" />
+					<option value="oned" label="Gráfica de dispersión unidimensional" />
+					<option value="qqplot" label="Gráfica QQ normal" />
+					<option value="none" label="Ninguno" />
+				</radio>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Matriz de dispersión">
+		<page id="pag_vars">
+			<text>
+				Seleccionar la variables numéricas de las que se desean los diagramas de dispersión.
+				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<page id="pag_regression">
+			<text>
+				Seleccionar el tipo de linea de ajuste a dibujar. 
+			</text>
+			<copy id="col_regression" />
+			<stretch/>
+		</page>
+		<page id="pag_diagonal">
+			<text>
+				Seleccionar el tipo de gráfico a dibujar en la diagonal. 
+			</text>
+			<copy id="diagonal" />
+			<stretch/>
+		</page>
+		
+	</wizard>
+	
+</document>

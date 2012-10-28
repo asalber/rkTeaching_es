@@ -1,0 +1,71 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="test_t_sample_size.js"/>
+	<help file="test_t_sample_size.rkh"/>
+	
+	<dialog label="Cálculo del tamaño muestral el test t">
+		<row>
+			<column id="col_type">
+				<radio id="type" label="Tipo de test">
+					<option value="one.sample" label="Una muestra" />
+					<option value="two.sample" label="Dos muestras independientes" />
+					<option value="paired" label="Dos muestras pareadas" />
+				</radio>
+				<radio id="h1" label="Hipótesis alternativa">
+					<option value="two.sided" label="Bilateral" />
+					<option value="one.sided" label="Unilateral" />
+				</radio>
+			</column>
+			<column>
+				<input id="delta" label="Diferencia entre las medias" required="true" />
+				<input id="sd" label="Desviación típica" value="1" required="true" />
+				<spinbox id="siglevel" label="Nivel de significación" type="real" min="0.01" max="1" initial="0.05" />
+				<spinbox id="power" label="Potencia" type="real" min="0.00" max="0.99" initial="0.8" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Cálculo del tamaño muestral para el test t">
+		<page>
+			<text>
+				Introducir el tipo de contraste.
+			</text>
+			<copy id="type"/>
+		</page>
+		<page>
+			<text>
+				Introducir el tipo de hipótesis alternativa.
+			</text>
+			<copy id="h1"/>
+		</page>
+		<page>
+			<text>
+				Introducir la diferencia entre las medias a detectar. 
+				En el caso de una muestra introducir el valor de la media según la hipótesis nula.
+			</text>
+			<copy id="difference"/>
+		</page>
+	
+		<page>
+			<text>
+				Introducir la desviación típica de la población o una estimación suya.
+			</text>
+			<copy id="sd"/>
+		</page>
+		<page>
+			<text>
+				Introducir el nivel de significación para el contraste.
+				A medida que se aumente el nivel de significación del contraste aumentará la potencia.
+			</text>
+			<copy id="siglevel"/>
+		</page>
+		<page>
+			<text>
+				Introducir la potencia deseada para el contraste. 
+			</text>
+			<copy id="power"/>
+		</page>		
+	</wizard>
+</document>

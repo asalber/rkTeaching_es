@@ -15,6 +15,6 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Filtrado de datos", parameters=list("Conjunto de datos" = "' + data + '", "Condici&oacute;n" = "' + condition + '"))\n');
+	echo ("rk.header ('Filtrado de datos', parameters=list('Conjunto de datos' = '" + data + "', 'Condici&oacute;n' = '" + condition + "'))\n");
 }
 

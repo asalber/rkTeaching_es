@@ -37,19 +37,19 @@
 		<tabbook>
 			<tab id="tab_variables" label="Variable" >
 				<row id="row_vars">
-					<varselector id="vars" label="Seleccionar variable"/>
+					<varselector id="selector" label="Seleccionar variable"/>
 					<column>
-						<varslot id="var1" label="Variable" multi="false" type="numeric" source="vars" required="true" />
+						<varslot id="var1" label="Variable" multi="false" type="numeric" source="selector" required="true" />
 						<stretch/>
 						<preview id="preview"/>
 					</column>
 				</row>
 			</tab>
 			<tab id="tab_histoptions" label="Opciones del histograma">
-				<embed id="histogram_opt" component="rkTeachingExtras::histogram_options" as_button="false" label="Opciones del histograma"/>
+				<embed id="histogram_opt" component="rkTeaching::histogram_options" as_button="false" label="Opciones del histograma"/>
 			</tab>
 			<tab id="tab_cells" label="Clases" >
-				<embed id="cells" component="rkTeachingExtras::cells"/>
+				<embed id="cells" component="rkTeaching::cells"/>
 			</tab>
 			<tab id="tab_graphics_options" label="Opciones gráficas">
 				<row id="graphics_options_row">
@@ -92,8 +92,8 @@
 			</text>
 			<copy id="row_vars" />
 		</page>
-		<embed id="histogram_opt" component="rkTeachingExtras::histogram_options"/>
-		<embed id="cells" component="rkTeachingExtras::cells"/>
+		<embed id="histogram_opt" component="rkTeaching::histogram_options"/>
+		<embed id="cells" component="rkTeaching::cells"/>
 		<page id="pag_graphics_options">
 			<text>
 				Seleccionar, si se desea, el color de relleno y de los bordes de las barras.

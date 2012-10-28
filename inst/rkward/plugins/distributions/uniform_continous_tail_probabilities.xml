@@ -1,0 +1,16 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="uniform_continous_tail_probabilities.js" />
+	<snippets>
+		<snippet id="dist_options">
+			<spinbox id="min" label="Límite inferior" default_precision="2" type="real" initial="0" />
+			<spinbox id="max" label="Límite superior" default_precision="2" type="real" initial="1" />
+		</snippet>
+		<include file="dist_snippets.xml"/>
+	</snippets>
+	<dialog label="Probabilidad acumulada Uniforme continua" >
+		<insert snippet="probabilities_layout"/>
+	</dialog>
+</document>

@@ -1,0 +1,59 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="distributions/" namespace="rkTeaching">
+	<components>
+		<component type="standard" id="binomial_tail_probabilities" file="binomial_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="binomial_quantiles" file="binomial_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="poisson_tail_probabilities" file="poisson_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="poisson_quantiles" file="poisson_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="chi_tail_probabilities" file="chi_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="chi_quantiles" file="chi_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="f_tail_probabilities" file="f_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="f_quantiles" file="f_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="normal_tail_probabilities" file="normal_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="normal_quantiles" file="normal_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="t_tail_probabilities" file="t_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="t_quantiles" file="t_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="uniform_continous_tail_probabilities" file="uniform_continous_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="uniform_continous_quantiles" file="uniform_continous_quantiles.xml" label="Cuantiles" />
+	</components>
+	
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="distributions" label="Distribuciones">
+				<menu id="discrete" label="Discretas">
+					<menu id="binomial" label="Binomial">
+						<entry component="binomial_tail_probabilities"/>
+						<entry component="binomial_quantiles"/>
+					</menu>
+					<menu id="pisson" label="Poisson">
+						<entry component="poisson_tail_probabilities"/>
+						<entry component="poisson_quantiles"/>
+					</menu>
+				</menu>
+				<menu id="continous" label="Continuas">
+					<menu id="chisq" label="Chi-cuadrado">
+						<entry component="chi_tail_probabilities"/>
+						<entry component="chi_quantiles"/>
+					</menu>
+					<menu id="f" label="F de Fisher">
+						<entry component="f_tail_probabilities"/>
+						<entry component="f_quantiles"/>
+					</menu>
+					<menu id="normal" label="Normal">
+						<entry component="normal_tail_probabilities"/>
+						<entry component="normal_quantiles"/>
+					</menu>
+					<menu id="t" label="T de student">
+						<entry component="t_tail_probabilities"/>
+						<entry component="t_quantiles"/>
+					</menu>
+					<menu id="uniform_continous" label="Uniforme">
+						<entry component="uniform_continous_tail_probabilities"/>
+						<entry component="uniform_continous_quantiles"/>
+					</menu>		
+				</menu>
+			</menu>
+		</menu>
+	</hierarchy>
+</document>

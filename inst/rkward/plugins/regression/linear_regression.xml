@@ -3,23 +3,27 @@
 	<code file="linear_regression.js"/>
 	<help file="linear_regression.rkh"/>
 	
-	<dialog label="Fitting Linear Model">
+	<dialog label="Ajuste de Modelo Lineal">
 		<row id="row_vars">
-			<varselector id="vars"/>
+			<varselector id="selector" label="Seleccionar variables"/>
 			<column>
-				<varslot type="numeric" id="y" source="vars" required="true" label="Dependent variable"/>
-				<varslot type="numeric" id="x" source="vars" required="true" multi="true" label="Independent variables"/>
-				<checkbox id="intercept" label="Include intercept" checked="true"/>
-				<saveobject id="save" label="Save model" initial="regression.model" checkable="true"/>
+				<varslot id="y" label="Variable dependiente" source="selector" type="numeric" required="true" />
+				<varslot id="x" label="Variable(s) independiente(s)" type="numeric" source="selector" required="true" multi="true" />
+				<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+					<input id="filter" label="Condición de selección" />
+				</frame>
+				<checkbox id="intercept" label="Incluir término constante" checked="true"/>
+				<saveobject id="save" label="Guardar modelo" initial="regression.model" checkable="true"/>
 			</column>
 		</row>
 	</dialog>
 	
-	<wizard label="Fitting Linear Model">
+	<wizard label="Ajuste de Modelo Lineal">
 		<page id="pag_vars">
 			<text id="txt_var">
-				Select the numeric dependent variable and one o more numeric independent variables.
-				Finally, if you want to save de regression model, check de box and give the model a name. 
+				Seleccionar la variable numérica dependiente y una o más variables numéricas independientes.
+				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
+				Si se desea guardar el modelo, marcar la opción correspondiente y darle un nombre al modelo.  
 			</text>
 			<copy id="row_vars" />
 		</page>

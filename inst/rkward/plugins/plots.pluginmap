@@ -1,6 +1,6 @@
 <!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkpluginmap>
-<document base_prefix="plots/" namespace="rkTeachingExtras">
+<document base_prefix="plots/" namespace="rkTeaching">
 	<components>
 		<component type="standard" id="barplot" file="barplot.xml" label="Diagrama de barras" />
 		<component type="standard" id="histogram" file="histogram.xml" label="Histograma" />
@@ -8,6 +8,7 @@
 		<component type="standard" id="pieplot" file="pieplot.xml" label="Diagrama de sectores" />
 		<component type="standard" id="boxplot" file="boxplot.xml" label="Diagrama de caja" />
 		<component type="standard" id="scatterplot" file="scatterplot.xml" label="Diagrama de dispersión" />
+		<component type="standard" id="scatterplot_matrix" file="scatterplot_matrix.xml" label="Matriz de dispersión" />
 	</components>
 	<hierarchy>
 		<menu id="teaching">
@@ -17,6 +18,7 @@
 				<entry component="pieplot"/>
 				<entry component="boxplot"/>
 				<entry component="scatterplot"/>
+				<entry component="scatterplot_matrix"/>
 			</menu>
 		</menu>
 	</hierarchy>

@@ -1,0 +1,36 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="proportion_sample_size.js"/>
+	<help file="proportion_sample_size.rkh"/>
+	
+	<dialog label="Cálculo del tamaño muestral para estimar una proporción">	
+			<input id="p" label="Proporción poblacional" initial="0.5" required="true" />
+			<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+			<input id="error" label="Error" initial="0.1" required="true"/>
+	</dialog>
+	
+	<wizard label="Cálculo del tamaño muestral para estimar una proporción">
+		<page>
+			<text>
+				Introducir la estimación del valor de la proporción poblacional.
+				Si no se dispone de una estimación, es mejor introducir 0.5. 
+			</text>
+			<copy id="p"/>
+		</page>
+		<page>
+			<text>
+				Introducir el nivel de confianza para la estimación.
+				A medida que se aumente el nivel de confianza del intervalo para la estimación aumentará el error en la estimación.
+			</text>
+			<copy id="conflevel"/>
+		</page>
+		<page>
+			<text>
+				Introducir el error máximo para la estimación. 
+			</text>
+			<copy id="error"/>
+		</page>
+	</wizard>
+</document>

@@ -56,7 +56,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Estadística Descriptiva (cálculo detallado)", parameters=list("Variable",  rk.get.description(' + getValue("x") + ')))\n');
+	echo ('rk.header ("Estad&iacute;stica Descriptiva (c&aacute;lculo detallado)", parameters=list("Variable",  rk.get.description(' + getValue("x") + ')))\n');
 	if (getValue("mean")){
 		echo ('.table <- varianceTable(.x)\n');
 		echo ('colnames(.table)<-c("\\\\(x_i\\\\)","\\\\(n_i\\\\)","\\\\(x_in_i\\\\)","\\\\(x_i^2n_i\\\\)")\n');

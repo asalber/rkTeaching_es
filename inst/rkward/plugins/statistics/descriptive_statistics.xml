@@ -34,7 +34,7 @@
 					<column>
 						<varslot id="data" label="Variable(s)" source="selector" multi="true" classes="numeric integer" required="true" />
 						<checkbox id="grouped" label="Estadísticas por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variables de agrupación:" source="selector" multi="true" required="true"/>
+						<varslot id="groups" label="Variable de agrupación:" source="selector" required="true"/>
 						<checkbox id="narm" label="Omitir valores desconocidos" value_unchecked="0" value="1" checked="true"/>
 					</column>
 				</row>
@@ -51,7 +51,7 @@
 						<row>
 							<checkbox id="mean" label="Media" checked="false" value="'mean',"/>
 							<checkbox id="median" label="Mediana" checked="false" value="'median',"/>
-							<checkbox id="mode" label="Moda" checked="false" value="'mode',"/>
+							<checkbox id="mode" label="Moda" checked="false" value="'Mode',"/>
 						</row>
 					</frame>
 					<frame label="Dispersión" >

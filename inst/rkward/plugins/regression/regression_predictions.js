@@ -26,7 +26,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Regression Predictions", parameters=list("Model name", "' + model + '", "Model equation", toString(' + model + '$call)))\n');
-	echo ('rk.print(results)\n');
+	echo ('rk.header ("Predicciones de regresi&oacute;n", parameters=list("Nombre del modelo" = "' + model + '", "Ecuaci&oacute;n del modelo" = toString(' + model + '$call)))\n');
+	echo ('rk.results(list(toString(colnames(results)[1]) = results[1], toString(colnames(results)[2]) = results[2]))\n');
 }
 

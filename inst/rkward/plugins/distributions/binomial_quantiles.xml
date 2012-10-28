@@ -1,0 +1,16 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="binomial_quantiles.js" />
+	<snippets>
+		<snippet id="dist_options">
+			<spinbox id="size" label="Nº de repeticiones" default_precision="2" type="integer" initial="1" min="1" />
+			<spinbox id="prob" label="Probabilidad de éxito" default_precision="2" type="real" initial="0.5"  min="0" max="1" />
+		</snippet>
+		<include file="dist_snippets.xml"/>
+	</snippets>
+	<dialog label="Cuantiles Binomial" >
+		<insert snippet="quantiles_layout"/>
+	</dialog>
+</document>

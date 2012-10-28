@@ -27,7 +27,10 @@
 	<require file="plugins/statistics.pluginmap"/>
 	<require file="plugins/regression.pluginmap"/>
 	<require file="plugins/parametric_tests.pluginmap"/>
+	<!--
 	<require file="plugins/non_parametric_tests.pluginmap"/>
 	<require file="plugins/concordance.pluginmap"/>
+	-->
+	<require file="plugins/distributions.pluginmap"/>
 	<require file="plugins/simulations.pluginmap"/>
 </document>

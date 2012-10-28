@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, y, confint, conflevel;
+var x, y, confint, conflevel, alternative;
 
 function preprocess () {
 
@@ -10,34 +10,38 @@ function preprocess () {
 function calculate () {
 	x = getValue ("x");
 	y = getValue ("y");
-	confint = getValue ("confint");
+	confint = getValue ("confint_frame.checked");
 	conflevel = getValue ("conflevel");
 	var hypothesis = getValue ("hypothesis");
 	var options = ', alternative="' + hypothesis + '", paired=TRUE';
 	if (confint) {
 		options += ", conf.level=" + conflevel;
 	}
+	if (hypothesis=="two.sided") alternative = "Bilateral";
+	else if (hypothesis=="greater") alternative = "Unilateral mayor";
+	else alternative = "Unilateral menor";
+	
 	echo('result <- t.test (' + x + ', ' + y + options + ')\n');
 }
 
 function printout () {
-	echo ('rk.header (result$method, ');
-	echo ('parameters=list ("Comparing" = rk.get.description(' + x + '), "Against" = rk.get.description(' + y + '), "H1" = rk.describe.alternative (result)');
+	echo ('rk.header ("Test T de comparaci&oacute;n de medias para dos muestras pareadas", ');
+	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "con" = rk.get.description(' + y + '), "Hip&oacute;tesis alternativa" = "' + alternative + '"');
 	if (confint) {
-		echo (', "Confidence interval", "' + conflevel + 'conf.level"');
+		echo (', "Nivel de confianza del intervalo" = "' + conflevel + '"');
 	}
 	echo('))\n');
 	
-	echo ('rk.print(result)\n');
+	//echo ('rk.print(result)\n');
 	echo ('rk.results (list(');
-	echo ('"Variable Name"= rk.get.description(' + x + ',' + y + '), ');
-	echo ('"Estimated mean"=result$estimate, ');
-	echo ('"Degrees of freedom"=result$parameter, ');
-	echo ('t=result$statistic, ');
-	echo ('p=result$p.value');
+	echo ('"Variables" = rk.get.description(' + x + ',' + y + '), ');
+	echo ('"Diferencia media estimada" = result$estimate, ');
+	echo ('"Grados de libertad" = result$parameter, ');
+	echo ('"Estad&iacute;stico t" = result$statistic, ');
+	echo ('"p-valor" = result$p.value');
 	if (confint) {
-		echo (', "Confidence level %"=(100 * attr(result$conf.int, "conf.level"))');
-		echo (', "confidence interval of difference"=result$conf.int');
+		echo (', "Nivel de confianza %" = (100 * attr(result$conf.int, "conf.level"))');
+		echo (', "Intervalo de confianza para la media de la diferencia" = result$conf.int');
 	}
 	echo ('))\n');
 }

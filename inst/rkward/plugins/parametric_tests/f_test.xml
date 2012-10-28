@@ -4,69 +4,65 @@
 <document>
 	<code file="f_test.js"/>
 	<help file="f_test.rkh"/>
-
-	<dialog label="Two independent samples t-Test">
+	
+	<dialog label="Test F para la comparación de varianzas de dos muestras independientes">
 		<tabbook>
-			<tab id="tab_variables" label="Select variables">
+			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
-					<varselector id="vars"/>
+					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="variable" label="Compare" source="vars" types="number" required="true" />
-						<varslot id="factor" label="By" source="vars" types="factor" required="true" />
+						<varslot id="variable" label="Comparar" source="selector" types="number" required="true" />
+						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
 					</column>
 				</row>
 			</tab>
-			<tab id="tab_settings" label="Settings">
+			<tab id="tab_settings" label="Opciones de contraste">
 				<row>
 					<column id="hypotesis_col">
-						<radio id="hypothesis" label="Hypothesis test">
-							<option value="two.sided" label="Two-sided"/>
-							<option value="greater" label="First is greater"/>
-							<option value="less" label="Second is greater"/>
+						<radio id="hypothesis" label="Hipotesis alternativa">
+							<option value="two.sided" label="Bilateral" />
+							<option value="greater" label="Unilateral mayor" />
+							<option value="less" label="Unilateral menor" />
 						</radio>
-						<checkbox id="varequal" label="assume equal variances" value="1" value_unchecked="0"/>
 					</column>
 					<column>
-						<frame id="confint_frame" label="Show Confidence Interval"  checkable="true" checked="true">
-							<spinbox id="conflevel" label="confidence level" type="real" min="0" max="1" initial="0.95"/>
+						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
+							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
 						</frame>
 					</column>
 				</row>
 			</tab>
 		</tabbook>
 	</dialog>
-	
-	<wizard label="Two independent samples t-Test">
+	<wizard label="Test F para la comparación de varianzas de dos muestras independientes">
 		<page>
 			<text>
-			Select the numeric variable to test. 
-			After, select the factor and their two levels to compare. 
+			Seleccionar la variable numérica a comparar.
+			Después, seleccionar el factor con los niveles a comparar. 
+			El factor debe tener exactamente dos niveles. 
 			</text>
 			<copy id="row_vars"/>
 		</page>
 		<page>
 			<text>
-				Select the type of alternative hypothesis and specify which mean you theorize to be greater. Select two-sided, if your theory does not tell you, which variable is greater.
-				If your hypothesis is directed, selecting a directional test hypothesis may increase test power.
+				Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué media se presume que es mayor:
+				- Seleccionar bilateral, si la teoría no presupone qué varianza es mayor. 
+				- Seleccionar unilateral mayor si se presupone que la varianza de la primera categoría es mayor que la varianza de la segunda.
+				- Seleccionar unilateral menor si se presupone que la varianza de la primera categoría es menor que la varianza de la segunda.
+				El orden de las categorías es el establecido en la definición de las variables.
+				La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste. 
 			</text>
 			<copy id="hypothesis"/>
 			<stretch/>
 		</page>
 		<page>
 			<text>
-			Check the box if you have some evidence of the equality of variances (eg. via a F-test). An appropriate correction will be applied then that may increase test power. 
-			However, it's generally safe not to assume the variables have equal variances, if you don't have evidence.
-			</text>
-			<copy id="varequal"/>
-		</page>
-		<page>
-			<text>
-			Sometimes it's helpful to get an estimate of the confidence interval of the difference in means. 
-			Below you can specify whether one should be shown, and which confidence-level should be applied (95% corresponds to a 5% level of significance).
+			Si se desea obtener un intervalo de confianza para estimar el cociente de varianzas entre las dos poblaciones, 
+			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).
+			A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.   
 			</text>
 			<copy id="confint_frame"/>
 			<stretch/>
 		</page>
 	</wizard>
-	
 </document>

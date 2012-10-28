@@ -4,37 +4,30 @@
 <document>
 	<code file="two_paired_samples_t_test.js"/>
 	<help file="two_paired_samples_t_test.rkh"/>
-	
-	<logic>
-		<convert id="confint_checked" sources="confint.state" mode="equals" standard="1" />
-		<connect governor="conflevel.enabled" client="confint_checked" />
-	</logic>
-	
 
-	<dialog label="Two paired samples t-Test">
+	<dialog label="Test T para dos muestras pareadas">
 		<tabbook>
-			<tab id="tab_variables" label="Select variables">
+			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
-					<varselector id="vars"/>
+					<varselector id="selector" label="Seleccionar variables"/>
 					<column>
-						<varslot id="x" label="Compare" source="vars" types="number" required="true" />
-						<varslot id="y" label="Against" source="vars" types="number" required="true" />
+						<varslot id="x" label="Comparar" source="selector" types="number" required="true" />
+						<varslot id="y" label="con" source="selector" types="number" required="true" />
 					</column>
 				</row>
 			</tab>
-			<tab id="tab_settings" label="Settings">
+			<tab id="tab_settings" label="Opciones de contraste">
 				<row>
 					<column id="hypotesis_col">
-						<radio id="hypothesis" label="Hypothesis test">
-							<option value="two.sided" label="Two-sided"/>
-							<option value="greater" label="First is greater"/>
-							<option value="less" label="Second is greater"/>
+						<radio id="hypothesis" label="Hipótesis alternativa">
+							<option value="two.sided" label="Bilateral" />
+							<option value="greater" label="Unilateral mayor" />
+							<option value="less" label="Unilateral menor" />
 						</radio>
 					</column>
 					<column>
-						<frame id="confint_frame" label="Confidence Interval">
-							<checkbox id="confint" label="Show Confidence Interval" checked="true" value="1"/>
-							<spinbox id="conflevel" label="confidence level" type="real" min="0" max="1" initial="0.95"/>
+						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1" >
+							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
 						</frame>
 					</column>
 				</row>
@@ -42,29 +35,34 @@
 		</tabbook>
 	</dialog>
 	
-	<wizard label="Two Variable t-Test">
+	<wizard label="Test T para dos muestras pareadas">
 		<page>
 			<text>
-			Select the numerics variables to compare. 
+			Seleccionar las dos variables a comparar. 
 			</text>
 			<copy id="row_vars"/>
 		</page>
 		<page>
 			<text>
-				Select the type of alternative hypothesis and specify which mean you theorize to be greater. Select two-sided, if your theory does not tell you, which variable is greater.
-				If your hypothesis is directed, selecting a directional test hypothesis may increase test power.
+				Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué media se presume que es mayor:
+				- Seleccionar bilateral, si la teoría no presupone qué media es mayor. 
+				- Seleccionar unilateral mayor si se presupone que la media de la primera categoría es mayor que la media de la segunda.
+				- Seleccionar unilateral menor si se presupone que la media de la primera categoría es menor que la media de la segunda.
+				El orden de las categorías es el establecido en la definición de las variables.
+				La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste. 
 			</text>
 			<copy id="hypothesis"/>
 			<stretch/>
 		</page>
 		<page>
 			<text>
-			Sometimes it's helpful to get an estimate of the confidence interval of the difference in means. 
-			Below you can specify whether one should be shown, and which confidence-level should be applied (95% corresponds to a 5% level of significance).
+			Si se desea obtener un intervalo de confianza para estimar la diferencia de medias entre las dos poblaciones, 
+			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).
+			A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.   
 			</text>
 			<copy id="confint_frame"/>
 			<stretch/>
 		</page>
-	</wizard>
-	
+	</wizard>	
 </document>
+

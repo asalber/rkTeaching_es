@@ -1,0 +1,35 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<document>
+	<snippet id="probabilities_layout">
+		<row>
+			<column>
+				<input id="q" label="Valores de la variable" required="true" />
+				<insert snippet="dist_options"/>
+			</column>
+			<column>
+				<radio id="tail" label="Cola de acumulación" >
+					<option value="lower.tail=TRUE" label="Izquierda" />
+					<option value="lower.tail=FALSE" label="Derecha" />
+				</radio>
+				<stretch/>
+			</column>
+		</row>
+	</snippet>
+	<snippet id="quantiles_layout">
+		<row>
+			<column>
+				<input id="p" label="Probabilidades acumuladas" required="true" initial="0.95" />
+				<insert snippet="dist_options"/>
+			</column>
+			<column>
+				<radio id="tail" label="Cola de acumulación" >
+					<option value="lower.tail=TRUE" label="Izquierda" />
+					<option value="lower.tail=FALSE" label="Derecha" />
+				</radio>
+				<stretch/>
+			</column>
+		</row>
+	</snippet>
+</document>
+

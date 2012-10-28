@@ -1,49 +1,37 @@
 // globals
-var variable, factor, varequal, confint;
+var variable, factor, center;
 
 function preprocess () {
-
+	echo('require(car)\n');
 }
 
 function calculate () {
 	variable = getValue ("variable");
 	factor = getValue ("factor");
-	varequal = getValue ("varequal");
-	confint = getValue ("confint_frame");
-	var conflevel = getValue ("conflevel");
-	var hypothesis = getValue ("hypothesis");
-
-	var options = ", alternative=\"" + hypothesis + "\"";
-	if (varequal) options += ", var.equal=TRUE";
-	if (confint) options += ", conf.level=" + conflevel;
-
-	echo('result <- t.test (' + variable + ' ~ ' + factor + options + ')\n');
+	center = getValue("center");
+	var options = ', center=' + center;
+	echo('result <- leveneTest(' + variable + ', ' + factor + options + ')\n');
 }
 
 function printout () {
-	echo ('rk.header (result$method, ');
-	echo ('parameters=list ("Comparing", rk.get.description(' + variable + '), "By", rk.get.description(' + factor + '), "H1", rk.describe.alternative (result), ');
-	echo ('"Equal variances", "');
-	if (!varequal) echo ('Not');
-	echo (' assumed"');
-	if (confint) {
-		echo (', "Confidence interval", "' + conflevel + 'conf.level"');
+	echo ('rk.header ("Test de Levene para la comparaci&oacute;n de varianzas", ');
+	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + variable + '), "Seg&uacute;n" = rk.get.description(' + factor + ')');
+	if (center=="median") {
+		echo (', "Variabilidad con respecto a la" = "Mediana"');
+	}
+	else {
+		echo (', "Variabilidad con respecto a la" = "Media"');
 	}
 	echo('))\n');
 	
-	echo ('rk.print(result)\n');
-/*	echo ('rk.results (list(');
-	echo ('"Variable Name"= rk.get.description(' + variable + '), ');
-	echo ('"Estimated mean"=result$estimate, ');
-	echo ('"Degrees of freedom"=result$parameter, ');
-	echo ('t=result$statistic, ');
-	echo ('p=result$p.value');
-	if (confint) {
-		echo ('"Confidence interval percent"=(100 * attr(result$conf.int, "conf.level")), ');
-		echo ('"confidence interval of difference"=result$conf.int');
-	}
+	//echo ('rk.print(result)\n');
+	echo ('rk.results (list(');
+	echo ('"Variable"= rk.get.description(' + variable + '), ');
+	echo ('"Niveles del factor" = levels(' + factor + '), ');
+	echo ('"Grados de libertad"=result[["Df"]], ');
+	echo ('"Estad&iacute;stico F"=result[["F value"]][1], ');
+	echo ('"p-valor"=result[["Pr(>F)"]][1]');
 	echo ('))\n');
-*/
 }
 
 

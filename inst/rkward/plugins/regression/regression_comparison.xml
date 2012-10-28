@@ -3,34 +3,50 @@
 	<code file="regression_comparison.js"/>
 	<help file="regression_comparison.rkh"/>
 	
-	<dialog label="Regression Models Comparison">
-		<row id="row_vars">
-			<varselector id="vars"/>
-			<column>
-				<varslot type="numeric" id="y" source="vars" required="true" label="Dependent variable"/>
-				<varslot type="numeric" id="x" source="vars" required="true" label="Independent variable"/>
-				<frame id="model" label="Model" >
-					<checkbox id="linear" label="Linear" value="'linear',"/>
-					<checkbox id="cuadratic" label="Cuadratic" value="'cuadratic',"/>
-					<checkbox id="cubic" label="Cubic" value="'cubic',"/>
-					<checkbox id="potential" label="Potential" value="'potential',"/>
-					<checkbox id="exponential" label="Exponential" value="'exponential',"/>
-					<checkbox id="logarithmic" label="Logartihmic" value="'logarithmic',"/>
-					<checkbox id="inverse" label="Inverse" value="'inverse',"/>
-					<checkbox id="sigmoid" label="Sigmoid" value="'sigmoid',"/>
+	<dialog label="Comparación de Modelos de Regresión">
+		<tabbook>
+			<tab id="variables_tab" label="Variables">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables"/>
+					<column>
+						<varslot id="y" label="Variable dependiente" type="numeric" source="selector" required="true" />
+						<varslot id="x" label="Variable independiente" type="numeric" source="selector" required="true" />
+						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+							<input id="filter" label="Condición de selección" />
+						</frame>
+					</column>
+				</row>
+			</tab>
+			<tab id="model_tab" label="Modelos de regresión">		
+				<frame id="model" label="Modelo" >
+					<checkbox id="linear" label="Lineal" value="'linear',"/>
+					<checkbox id="cuadratic" label="Cuadrático" value="'cuadratic',"/>
+					<checkbox id="cubic" label="Cúbico" value="'cubic',"/>
+					<checkbox id="potential" label="Potencial" value="'potential',"/>
+					<checkbox id="exponential" label="Exponencial" value="'exponential',"/>
+					<checkbox id="logarithmic" label="Logarítmico" value="'logarithmic',"/>
+					<checkbox id="inverse" label="Inverso" value="'inverse',"/>
+					<checkbox id="sigmoid" label="Sigmoidal" value="'sigmoid',"/>
 				</frame>
-			</column>
-		</row>
+			</tab>
+		</tabbook>
 	</dialog>
 	
-	<wizard label="Regression Models Comparison">
+	<wizard label="Comparación de Modelos de Regresión">
 		<page id="pag_vars">
 			<text id="txt_var">
-				Select the numeric dependent and independent variables.
-				Then select the types of models to compare.
+				Seleccionar las variables numéricas dependiente e independiente.
+				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
 			</text>
 			<copy id="row_vars" />
 		</page>
+		<page id="pag_vars">
+			<text id="txt_var">
+				Seleccionar los tipos de modelos de regresión a comparar.
+			</text>
+			<copy id="model" />
+		</page>
+		
 	</wizard>
 	
 </document>

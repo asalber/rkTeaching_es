@@ -1,0 +1,104 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="two_proportions_test.js"/>
+	<help file="two_proportions_test.rkh"/>
+
+	<logic>
+		<convert id="manual_checked" sources="manual.checked" mode="equals" standard="1" />
+		<connect client="variable.enabled" governor="manual_checked.not" />
+		<connect client="factor.enabled" governor="manual_checked.not" />
+		<connect client="selector.enabled" governor="manual_checked.not" />
+		<connect client="category.enabled" governor="manual_checked.not" />
+		<connect client="freq.enabled" governor="manual_checked" />
+		<connect client="n.enabled" governor="manual_checked" />
+	</logic>
+	
+	<dialog label="Test para la comparación de dos proporciones">
+		<tabbook>
+			<tab id="tab_variables" label="Seleccionar variable">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variable" />
+					<column>
+						<varslot id="variable" label="Comparar" source="selector" types="factor" required="true" />
+						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
+						<input id="category" label="Categoría" size="small" required="true"/>
+						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unckecked="0">
+							<row>	
+								<column>
+									<input id="freq1" label="Frecuencia muestral 1" size="small" required="true" />
+									<input id="n1" label="Tamaño muestral 1" size="small" required="true"/>
+								</column>
+								<column>
+									<input id="freq2" label="Frecuencia muestral 2" size="small" required="true" />
+									<input id="n2" label="Tamaño muestral 2" size="small" required="true"/>
+								</column>
+							</row>	
+						</frame>	
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_settings" label="Opciones de contraste">
+				<row>
+					<column id="hypotesis_col">
+						<radio id="hypothesis" label="Hipotesis alternativa">
+							<option value="two.sided" label="Bilateral" />
+							<option value="greater" label="Unilateral mayor" />
+							<option value="less" label="Unilateral menor" />
+						</radio>
+						<radio id="type" label="Tipo de prueba">
+							<option value="normal_correction" label="Aproximación normal con correción por continuidad" />
+							<option value="normal" label="Aproximación normal sin corrección por continuidad" />
+						</radio>
+					</column>
+					<column>
+						<frame id="confint" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
+							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+						</frame>
+					</column>
+				</row>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Test para la comparación de dos proporciones">
+		<page>
+			<text>
+				Introducir la frecuencia muestral de la categoría a contrastar y el tamaño muestral para cada muestra, 
+				o bien, seleccionar una variable y la categoría o valor cuya proporción se desea contrastar, 
+				y el factor con los dos niveles correspondientes a las poblaciones a contrastar.   
+			</text>
+			<copy id="row_vars"/>
+		</page>
+		<page>
+			<text>
+				Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué proporción se presume que es mayor:
+				- Seleccionar bilateral, si la teoría no presupone qué proporción es mayor. 
+				- Seleccionar unilateral mayor si se presupone que la proporción poblacional es mayor que la especificada en la hipótesis nula.
+				- Seleccionar unilateral menor si se presupone que la proporción poblacional es menor que la especificada en la hipótesis nula.
+				La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste. 
+			</text>
+			<copy id="hypothesis"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+				Seleccionar el tipo de prueba a realizar:
+				- Aproximación normal con corrección por continuidad
+				- Aproximación normal sin corrección por continuidad
+			</text>
+			<copy id="type"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+			Si se desea obtener un intervalo de confianza para estimar la proporción poblacional, 
+			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).
+			A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.   
+			</text>
+			<copy id="confint_frame"/>
+			<stretch/>
+		</page>
+	</wizard>
+</document>

@@ -1,6 +1,6 @@
 <!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkpluginmap>
-<document base_prefix="tabulation/" namespace="rkTeachingExtras">
+<document base_prefix="tabulation/" namespace="rkTeaching">
 	<components>
 		<component id="FrequencyTabulation" label="Tabla de frecuencias" file="FrequencyTabulation.xml" type="standard"/>
 		<component id="FrequencyTabulationGroupedData" label="Tabla de frecuencias (datos agrupados)" file="FrequencyTabulationGroupedData.xml" type="standard"/>

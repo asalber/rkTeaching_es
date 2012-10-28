@@ -1,0 +1,42 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="mean_sample_size.js"/>
+	<help file="mean_sample_size.rkh"/>
+	
+	<dialog label="Cálculo del tamaño muestral para estimar una media">
+		
+			<input id="sd" label="Desviación típica" value="1" required="true" />
+			<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+			<column id="col_error">
+				<input id="error" label="Error" value="1" required="true"/>
+				<radio id="error_type" label="Tipo de error">
+					<option value="absolute" label="Absoluto" />
+					<option value="relative" label="Relativo" />
+				</radio>
+			</column>
+	</dialog>
+	
+	<wizard label="Cálculo del tamaño muestral para estimar una media">
+		<page>
+			<text>
+				Introducir la desviación típica de la población o una estimación suya.
+			</text>
+			<copy id="sd"/>
+		</page>
+		<page>
+			<text>
+				Introducir el nivel de confianza para la estimación.
+				A medida que se aumente el nivel de confianza del intervalo para la estimación aumentará el error en la estimación.
+			</text>
+			<copy id="conflevel"/>
+		</page>
+		<page>
+			<text>
+				Introducir el error máximo para la estimación y si se trata de un error absoluto o relativo. 
+			</text>
+			<copy id="col_error"/>
+		</page>
+	</wizard>
+</document>

@@ -15,6 +15,7 @@ function calculate () {
 	rules = rules.replace(/\n/gi,'; ');
 	echo ('.GlobalEnv$' + newvar + ' <- recode(' + variable + ", '" + rules + "'");
 	if (getValue("asfactor")) echo (', as.factor.result=TRUE');
+	else echo (', as.factor.result=FALSE');
 	echo (')\n');	
 }
 

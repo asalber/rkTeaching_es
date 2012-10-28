@@ -1,6 +1,6 @@
 <!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkpluginmap>
-<document base_prefix="parametric_tests/" namespace="rkTeachingExtras">
+<document base_prefix="parametric_tests/" namespace="rkTeaching">
 	<components>
 		<component type="standard" id="one_sample_t_test" file="one_sample_t_test.xml" label="Test T para una muestra" />
 		<component type="standard" id="two_independent_samples_t_test" file="two_independent_samples_t_test.xml" label="Test T para dos muestras independientes" />
@@ -11,6 +11,7 @@
 		<component type="standard" id="f_test" file="f_test.xml" label="Test F de Fisher" />
 		<component type="standard" id="levene_test" file="levene_test.xml" label="Test de Levene" />		
 		<component type="standard" id="mean_sample_size" file="mean_sample_size.xml" label="Cálculo del tamaño muestral para la media" />
+		<component type="standard" id="test_t_sample_size" file="test_t_sample_size.xml" label="Cálculo del tamaño muestral para el test t" />
 		<component type="standard" id="proportion_sample_size" file="proportion_sample_size.xml" label="Cálculo del tamaño muestral para una proporción" />
 	</components>
 	
@@ -23,6 +24,7 @@
 					<entry component="two_paired_samples_t_test"/>
 					<entry component="anova" />
 					<entry component="mean_sample_size"/>
+					<entry component="test_t_sample_size"/>
 				</menu>
 				<menu id="variances" label="Varianzas">
 					<entry component="f_test"/>

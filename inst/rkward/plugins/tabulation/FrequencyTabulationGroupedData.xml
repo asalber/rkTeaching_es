@@ -5,19 +5,19 @@
 	<help file="FrequencyTabulationGroupedData.rkh" />
 
 	<logic>
-		<connect client="cells.var1" governor="var1.available" />
+		<connect client="cells.var1" governor="variable.available" />
 	</logic>
 
 	<dialog label="Distribución de frecuencias">
 		<tabbook>
 			<tab label="Variables" id="tab_vars">
 				<row id="row_vars">
-					<varselector id="vars" label="Seleccionar variable"/>
-					<varslot id="var1" label="Variable a tabular" source="vars" types="number" required="true" />
+					<varselector id="selector" label="Seleccionar variable"/>
+					<varslot id="variable" label="Variable a tabular" source="selector" types="number" required="true" />
 				</row>
 			</tab>
 			<tab label="Clases" id="tab_cells">
-				<embed id="cells" component="rkTeachingExtras::cells"/>
+				<embed id="cells" component="rkTeaching::cells"/>
 			</tab>
 		</tabbook>
 	</dialog>
@@ -29,6 +29,6 @@
 			</text>
 			<copy id="row_vars" />
 		</page>
-		<embed id="cells" component="rkTeachingExtras::cells"/>
+		<embed id="cells" component="rkTeaching::cells"/>
 	</wizard>
 </document>

@@ -1,0 +1,16 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="normal_tail_probabilities.js" />
+	<snippets>
+		<snippet id="dist_options">
+			<spinbox id="mean" label="Media" default_precision="2" type="real" initial="0" />
+			<spinbox id="sd" label="Desviación típica" default_precision="2" type="real" min="0" initial="1" />
+		</snippet>
+		<include file="dist_snippets.xml"/>
+	</snippets>
+	<dialog label="Probabilidad acumulada Normal" >
+		<insert snippet="probabilities_layout"/>
+	</dialog>
+</document>

@@ -10,24 +10,26 @@
 		<connect client="dataframe.visible" governor="isuse_dataframe"/>
 	</logic>
 	
-	<dialog label="Regression Model Predictions">
+	<dialog label="Predicciones de un Modelo de Regresión">
 		<row id="row_vars">
-			<varselector id="vars"/>
+			<varselector id="selector" label="Seleccionar modelo"/>
 			<column>
-				<varslot id="model" label="Regression model" source="vars" classes="lm" required="true" />
-				<input id="values" label="Predictions for" size="small"/>
-				<checkbox id="use_dataframe" label="Use a data frame" value="1"/>
-				<varslot id="dataframe" classes="data.frame"  source="vars" required="true" label="Predictions for data frame"/>
-				<checkbox id="intervals" label="Confidence intervals for predictions" value="1"/>
+				<varslot id="model" label="Modelo de regresión" source="selector" classes="lm" required="true" />
+				<input id="values" label="Predicciones para" size="small"/>
+				<checkbox id="use_dataframe" label="Usar conjunto de datos" value="1"/>
+				<varslot id="dataframe" label="Predicciones para el conjunto de datos" classes="data.frame"  source="selector" required="true" />
+				<checkbox id="intervals" label="Intervalos de confianza para las predicciones" value="1"/>
 			</column>
 		</row>
 	</dialog>
 	
-	<wizard label="Regression Model Predictions">
+	<wizard label="Predicciones de un Modelo de Regresión">
 		<page id="pag_vars">
 			<text id="txt_var">
-				Select the regression model that you want to use for predictions.
-				Then enter the values of the independent variables in the model or select a data frame with those values (in that case, the variables names in the data frame must coincide with the independent variables names in the model).  
+				Seleccionar el modelo de regresión con el que se desean hacer las predicciones.
+				Después, introducir los valores de las variables independientes en el modelo separadas por comas
+				o bien seleccionar un conjunto de datos con esos valores (en tal caso, los nombres de las variables
+				en el conjunto de datos deben coincidir con los nombres de las variables independientes en el modelo)
 			</text>
 			<copy id="row_vars" />
 		</page>

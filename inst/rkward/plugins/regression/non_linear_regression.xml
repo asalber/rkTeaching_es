@@ -3,34 +3,50 @@
 	<code file="non_linear_regression.js"/>
 	<help file="non_linear_regression.rkh"/>
 	
-	<dialog label="Fitting Non Linear Model">
-		<row id="row_vars">
-			<varselector id="vars"/>
-			<column>
-				<varslot type="numeric" id="y" source="vars" required="true" label="Dependent variable"/>
-				<varslot type="numeric" id="x" source="vars" required="true" label="Independent variable"/>
-				<radio id="model" label="Model" >
-					<option value="cuadratic" label="Cuadratic" />
-					<option value="cubic" label="Cubic" />
-					<option value="potential" label="Potential" />
-					<option value="exponential" label="Exponential" />
-					<option value="logarithmic" label="Logartihmic" />
-					<option value="inverse" label="Inverse" />
-					<option value="sigmoid" label="Sigmoid" />
+	<dialog label="Ajuste de Modelo No Lineal">
+		<tabbook>
+			<tab id="tab_variables" label="Seleccionar variables">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables"/>
+					<column>
+						<varslot id="y" label="Variable dependiente" type="numeric" source="selector" required="true" />
+						<varslot id="x" label="Variable independiente" type="numeric" source="selector" required="true" />
+						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+							<input id="filter" label="Condición de selección" />
+						</frame>
+						<saveobject id="save" label="Guardar modelo" initial="regression.model" checkable="true"/>
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_model" label="Modelo de regresión" >
+				<radio id="model" label="Modelo" >
+					<option value="linear" label="Lineal" />
+					<option value="cuadratic" label="Cuadrático" />
+					<option value="cubic" label="Cúbico" />
+					<option value="potential" label="Potencial" />
+					<option value="exponential" label="Exponencial" />
+					<option value="logarithmic" label="Logarítmico" />
+					<option value="inverse" label="Inverso" />
+					<option value="sigmoid" label="Sigmoidal" />
 				</radio>
-				<saveobject id="save" label="Save model" initial="regression.model" checkable="true"/>
-			</column>
-		</row>
+			</tab>
+		</tabbook>
 	</dialog>
 	
-	<wizard label="Fitting Non Linear Model">
+	<wizard label="Ajuste de Modelo No Lineal">
 		<page id="pag_vars">
 			<text id="txt_var">
-				Select the numeric dependent and independent variables.
-				Then select the type of model to fit.
-				Finally, if you want to save de regression model, check de box and give the model a name. 
+				Seleccionar la variable numérica dependiente y la variable numérica independiente.
+				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
+				Si se desea guardar el modelo, marcar la opción correspondiente	y darle un nombre al modelo.
 			</text>
 			<copy id="row_vars" />
+		</page>
+		<page id="pag_model">
+			<text>
+				Seleccionar el tipo de modelo de regresión a construir. 
+			</text>
+			<copy id="model" />
 		</page>
 	</wizard>
 	

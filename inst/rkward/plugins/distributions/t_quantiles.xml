@@ -1,0 +1,15 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="t_quantiles.js" />
+	<snippets>
+		<snippet id="dist_options">
+			<spinbox id="df" label="Grados de libertad" default_precision="2" type="real" min="0" initial="1" />
+		</snippet>
+		<include file="dist_snippets.xml"/>
+	</snippets>
+	<dialog label="Cuantiles T de student" >
+		<insert snippet="quantiles_layout"/>
+	</dialog>
+</document>

@@ -1,7 +1,7 @@
 Encoding: UTF-8
-Package: rkTeachingExtras
+Package: rk.Teaching
 Type: Package
-Title: Basic utilities for teaching statistics
+Title: A RKWard plugin with basic utilities for teaching statistics
 Version: 1.0
 Date: 2012-07-13
 Author: Alfredo Sánchez Alberca <asalber@ceu.es>
@@ -11,25 +11,42 @@ Suggests: TeachingExtras
 Enhances: rkward
 Description: Basic utilities for teaching statistics. 
 	It contains procedures for:
-	- Frequency tabulation
+	- Data manipulation:
+		- Fiter data
+		- Calculate variable
+		- Recoding variable
+		- Weight data
+	- Frequency tabulation:
+		- Frequency tabulation (non grouped data)
+		- Frequency tabulation (grouped data)
 	- Plots:
-  		- Bar Graph
+  		- Bar graph
   		- Histogram
+  		- Pie graph
+  		- Box graph
   		- Scatterplot
 	- Descriptive statistics
+		- Statistics
+		- Detailed calculation
 	- Regression:
   		- Linear Regression
   		- Non linear regression
   		- Regression model comparison
   		- Regression prediction
 	- Parametric tests:
-  		- T test for one sample
-  		- T test for two independent samples
-  		- T test for two paired samples
-  		- Test for one proportion
-  		- Test for two proportions
-  		- Sample size calculation for mean estimation
-  		- Sample size calculation for proportion estimation
+		- Means:
+			- T test for one sample
+			- T test for two independent samples
+			- T test for two paired samples
+			- ANOVA
+			- Sample size calculation for mean estimation
+  		- Variances:
+			- Fisher test for two samples
+			- Levene test for multiple samples
+		- Proportions:
+			- Test for one proportion
+			- Test for two proportions
+			- Sample size calculation for proportion estimation
 	- Non parametric tests:
   		- Normality tests: Shapiro-Wilk, Kolmogorov
   		- U Mann-Whitney test
@@ -47,4 +64,6 @@ Description: Basic utilities for teaching statistics.
   		- Small numbers law
   		- Central limit theorem
 License: GPL (>= 3)
+
 LazyLoad: yes
+LazyData: yes
