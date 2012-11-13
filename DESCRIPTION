@@ -64,6 +64,5 @@ Description: Basic utilities for teaching statistics.
   		- Small numbers law
   		- Central limit theorem
 License: GPL (>= 3)
-
 LazyLoad: yes
 LazyData: yes

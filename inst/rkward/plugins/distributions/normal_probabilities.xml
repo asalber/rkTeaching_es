@@ -2,7 +2,7 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="normal_tail_probabilities.js" />
+	<code file="normal_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
 			<spinbox id="mean" label="Media" default_precision="2" type="real" initial="0" />

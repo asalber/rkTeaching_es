@@ -19,7 +19,7 @@ function doPrintout (full) {
 	var p = getValue("prob")
 	
 	if (full) {
-		echo ('rk.header ("Small Numbers Law", parameters=list ("Binomial Trials" = ' + n + ', "Binomial Success probability" = ' + p + '"Poisson mean" = ' + n*p + '))\n');
+		echo ('rk.header ("Ley de los casos raros", parameters=list ("N&uacute;mero de repeticiones de la Binomial" = ' + n + ', "Probabilidad de &eacute;xito de la Binomial" = ' + p + ', "Media de la Poisson" = ' + n*p + '))\n');
 		echo ('\n');
 		echo ('rk.graph.on ()\n');
 	}
@@ -35,7 +35,7 @@ function doPrintout (full) {
 	echo ('abline(h=0)\n');
 	echo ('points( seq(0,n), dbinom( seq(0,n), n, p), pch=18, col="red" )\n');
 	echo ('title( paste("Mean =",round(mu,3),"Std. Dev. =",round(sd,3)))\n');
-	echo ('legend("topright", c("Binomial", "Poisson"), col = c("red","blue"), pch = c(18,16), merge = TRUE)\n');
+	echo ('legend("topright", c("Binomial", "Poisson"), col = c("red","blue"), pch = c(18,16))\n');
 
 	echo ('})\n');
 	if (full) {

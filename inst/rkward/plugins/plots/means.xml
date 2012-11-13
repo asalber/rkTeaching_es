@@ -1,0 +1,37 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="means.js" />
+	<help file="means.rkh" />
+	<logic>
+		<connect client="plotoptions.xvar" governor="x.available"/>
+		<set id="plotoptions.allow_log" to="true"/>
+		<set id="plotoptions.allow_type" to="false"/>
+		<set id="plotoptions.allow_asp" to="true"/>
+		
+		<set id="plotoptions.allow_grid" to="true"/>
+	</logic>
+	
+	<dialog label="Diagrama de medias" >
+		<tabbook>
+			<tab label="Variable(s)" >
+				<row>
+					<varselector id="selector" label="Seleccionar variable" />
+					<column>
+						<varslot id="x" label="Variable" multi="false" type="numeric" source="selector" required="true" />
+						<varslot id="groups" label="Grupos" multi="true" type="numeric" source="selector" required="true" />
+						<stretch/>
+						<preview id="preview"/>
+					</column>
+				</row>
+			</tab>
+			<tab label="Opciones">
+				<frame id="confint_frame" label="Dibujar intervalos de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
+					<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+				</frame>
+				
+				<stretch/>
+				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />
+			</tab>
+		</tabbook>
+	</dialog>
+</document>

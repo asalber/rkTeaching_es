@@ -1,6 +1,32 @@
 <!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 
 <document>
+	<snippet id="discrete_logic">
+		<convert id="dodist" mode="equals" sources="function.string" standard="p" />
+		<connect client="tail.enabled" governor="dodist" />
+	</snippet>
+	
+	<snippet id="discrete_layout">
+		<row>
+			<column>
+				<input id="q" label="Valores de la variable" required="true" />
+				<insert snippet="dist_options"/>
+				<stretch/>
+			</column>
+			<column>
+				<radio id="function" label="Calcular" >
+					<option value="d" label="Probabilidades" />
+					<option value="p" label="Probabilidades acumuladas" />
+				</radio>	
+				<radio id="tail" label="Cola de acumulación" >
+					<option value="lower.tail=TRUE" label="Izquierda" />
+					<option value="lower.tail=FALSE" label="Derecha" />
+				</radio>
+				<stretch/>
+			</column>
+		</row>
+	</snippet>
+	
 	<snippet id="probabilities_layout">
 		<row>
 			<column>
@@ -16,6 +42,7 @@
 			</column>
 		</row>
 	</snippet>
+	
 	<snippet id="quantiles_layout">
 		<row>
 			<column>

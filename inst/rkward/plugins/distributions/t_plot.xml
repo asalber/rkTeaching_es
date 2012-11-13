@@ -1,0 +1,29 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="t_plot.js" />
+	<help file="t_plot.rkh" />
+	<logic>
+		<insert snippet="common_logic"/>
+	</logic>
+	
+	<snippets>
+		<snippet id="range_options">
+			<frame label="Rango" >
+				<spinbox default_precision="2" type="real" id="min" initial="-3.29" label="Mínimo" />
+				<spinbox default_precision="2" type="real" id="max" initial="3.29" label="Máximo" />
+			</frame>
+		</snippet>
+		<snippet id="dist_options">
+			<frame label="Parámetros">
+				<spinbox default_precision="2" type="integer" id="df" initial="1" label="Grados de libertad" />
+			</frame>
+		</snippet>
+		<include file="plot_dist_common_snippets.xml"/>
+	</snippets>
+	
+	<dialog label="Gráfico de probabilidad T de student" >
+		<insert snippet="dialog_layout"/>
+	</dialog>
+</document>

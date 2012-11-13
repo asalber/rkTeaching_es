@@ -1,0 +1,27 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="binomial_plot.js" />
+	<help file="binomial_plot.rkh" />
+	<logic>
+		<insert snippet="common_logic"/>
+		<set id="plotoptions.default_pointtype" to="p"/>
+	</logic>
+	
+	<snippets>
+		<snippet id="range_options">
+		</snippet>
+		<snippet id="dist_options">
+			<frame label="Parámetros">
+				<spinbox default_precision="2" type="integer" id="size" min="1" initial="1" label="Número de repeticiones" />
+				<spinbox default_precision="2" type="real" id="prob" min="0" initial="0.5" label="Probabilidad de éxito"/>
+			</frame>
+		</snippet>
+		<include file="plot_dist_common_snippets.xml"/>
+	</snippets>
+	
+	<dialog label="Gráfico de probabilidad Binomial" >
+		<insert snippet="dialog_layout"/>
+	</dialog>
+</document>

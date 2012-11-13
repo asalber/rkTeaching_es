@@ -2,14 +2,14 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="poisson_tail_probabilities.js" />
+	<code file="chi_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="lambda" label="Media" default_precision="2" type="real" min="0" initial="1" />
+			<spinbox id="df" min="0" label="Grados de libertad" default_precision="2" type="real" initial="1" />
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
-	<dialog label="Probabilidad acumulada Poisson" >
+	<dialog label="Probabilidad acumulada Chi-cuadrado" >
 		<insert snippet="probabilities_layout"/>
 	</dialog>
 </document>

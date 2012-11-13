@@ -2,7 +2,7 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="uniform_continous_tail_probabilities.js" />
+	<code file="uniform_continous_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
 			<spinbox id="min" label="Límite inferior" default_precision="2" type="real" initial="0" />

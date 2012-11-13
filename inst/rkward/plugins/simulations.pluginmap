@@ -13,9 +13,9 @@
 			<menu id="simulation" label="Simulaciones">
 				<entry component="coins"/>
 				<entry component="dice"/>
-				<entry component="samples"/>
+				<!-- <entry component="samples"/> -->
 				<entry component="small_numbers_law"/>
-				<entry component="central_limit_theorem"/>				
+				<!-- <entry component="central_limit_theorem"/> -->				
 			</menu>
 		</menu>
 	</hierarchy>

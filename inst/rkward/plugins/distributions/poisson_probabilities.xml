@@ -1,0 +1,22 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="poisson_probabilities.js" />
+	<help file="poisson_probabilities.rkh" />
+	
+	<logic>
+		<insert snippet="discrete_logic"/>
+	</logic>
+	
+	<snippets>
+		<snippet id="dist_options">
+			<spinbox id="lambda" label="Media" default_precision="2" type="real" min="0" initial="1" />
+		</snippet>
+		<include file="dist_snippets.xml"/>
+	</snippets>
+	
+	<dialog label="Probabilidad Poisson" >
+		<insert snippet="discrete_layout"/>
+	</dialog>
+</document>

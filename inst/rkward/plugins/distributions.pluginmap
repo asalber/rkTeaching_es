@@ -2,20 +2,27 @@
 <!DOCTYPE rkpluginmap>
 <document base_prefix="distributions/" namespace="rkTeaching">
 	<components>
-		<component type="standard" id="binomial_tail_probabilities" file="binomial_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="binomial_probabilities" file="binomial_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="binomial_quantiles" file="binomial_quantiles.xml" label="Cuantiles" />
-		<component type="standard" id="poisson_tail_probabilities" file="poisson_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="binomial_plot" file="binomial_plot.xml" label="Gráfico de probabilidad" />
+		<component type="standard" id="poisson_probabilities" file="poisson_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="poisson_quantiles" file="poisson_quantiles.xml" label="Cuantiles" />
-		<component type="standard" id="chi_tail_probabilities" file="chi_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="poisson_plot" file="poisson_plot.xml" label="Gráfico de probabilidad" />
+		<component type="standard" id="chi_probabilities" file="chi_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="chi_quantiles" file="chi_quantiles.xml" label="Cuantiles" />
-		<component type="standard" id="f_tail_probabilities" file="f_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="chi_plot" file="chi_plot.xml" label="Gráfico de probabilidad" />
+		<component type="standard" id="f_probabilities" file="f_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="f_quantiles" file="f_quantiles.xml" label="Cuantiles" />
-		<component type="standard" id="normal_tail_probabilities" file="normal_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="f_plot" file="f_plot.xml" label="Gráfico de probabilidad" />
+		<component type="standard" id="normal_probabilities" file="normal_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="normal_quantiles" file="normal_quantiles.xml" label="Cuantiles" />
-		<component type="standard" id="t_tail_probabilities" file="t_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="normal_plot" file="normal_plot.xml" label="Gráfico de probabilidad" />
+		<component type="standard" id="t_probabilities" file="t_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="t_quantiles" file="t_quantiles.xml" label="Cuantiles" />
-		<component type="standard" id="uniform_continous_tail_probabilities" file="uniform_continous_tail_probabilities.xml" label="Probabilidades acumuladas" />
+		<component type="standard" id="t_plot" file="t_plot.xml" label="Gráfico de probabilidad" />
+		<component type="standard" id="uniform_continous_probabilities" file="uniform_continous_probabilities.xml" label="Probabilidades" />
 		<component type="standard" id="uniform_continous_quantiles" file="uniform_continous_quantiles.xml" label="Cuantiles" />
+		<component type="standard" id="uniform_continous_plot" file="uniform_continous_plot.xml" label="Gráfico de probabilidad" />
 	</components>
 	
 	<hierarchy>
@@ -23,34 +30,41 @@
 			<menu id="distributions" label="Distribuciones">
 				<menu id="discrete" label="Discretas">
 					<menu id="binomial" label="Binomial">
-						<entry component="binomial_tail_probabilities"/>
+						<entry component="binomial_probabilities"/>
 						<entry component="binomial_quantiles"/>
+						<entry component="binomial_plot"/>
 					</menu>
 					<menu id="pisson" label="Poisson">
-						<entry component="poisson_tail_probabilities"/>
+						<entry component="poisson_probabilities"/>
 						<entry component="poisson_quantiles"/>
+						<entry component="poisson_plot"/>
 					</menu>
 				</menu>
 				<menu id="continous" label="Continuas">
 					<menu id="chisq" label="Chi-cuadrado">
-						<entry component="chi_tail_probabilities"/>
+						<entry component="chi_probabilities"/>
 						<entry component="chi_quantiles"/>
+						<entry component="chi_plot"/>
 					</menu>
 					<menu id="f" label="F de Fisher">
-						<entry component="f_tail_probabilities"/>
+						<entry component="f_probabilities"/>
 						<entry component="f_quantiles"/>
+						<entry component="f_plot"/>
 					</menu>
 					<menu id="normal" label="Normal">
-						<entry component="normal_tail_probabilities"/>
+						<entry component="normal_probabilities"/>
 						<entry component="normal_quantiles"/>
+						<entry component="normal_plot"/>
 					</menu>
 					<menu id="t" label="T de student">
-						<entry component="t_tail_probabilities"/>
+						<entry component="t_probabilities"/>
 						<entry component="t_quantiles"/>
+						<entry component="t_plot"/>
 					</menu>
 					<menu id="uniform_continous" label="Uniforme">
-						<entry component="uniform_continous_tail_probabilities"/>
+						<entry component="uniform_continous_probabilities"/>
 						<entry component="uniform_continous_quantiles"/>
+						<entry component="uniform_continous_plot"/>
 					</menu>		
 				</menu>
 			</menu>

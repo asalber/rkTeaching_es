@@ -1,0 +1,30 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="normal_plot.js" />
+	<help file="normal_plot.rkh" />
+	<logic>
+		<insert snippet="common_logic"/>
+	</logic>
+	
+	<snippets>
+		<snippet id="range_options">
+			<frame label="Rango" >
+				<spinbox default_precision="2" type="real" id="min" initial="-3.29" label="Mínimo" />
+				<spinbox default_precision="2" type="real" id="max" initial="3.29" label="Máximo" />
+			</frame>
+		</snippet>
+		<snippet id="dist_options">
+			<frame label="Parámetros">
+				<spinbox default_precision="2" type="real" id="mean" initial="0" label="Media" />
+				<spinbox default_precision="2" type="real" id="sd" min="0.01" initial="1" label="Desviación típica"/>
+			</frame>
+		</snippet>
+		<include file="plot_dist_common_snippets.xml"/>
+	</snippets>
+	
+	<dialog label="Gráfico de probabilidad Normal" >
+		<insert snippet="dialog_layout"/>
+	</dialog>
+</document>

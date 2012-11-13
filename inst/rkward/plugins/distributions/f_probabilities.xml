@@ -2,7 +2,7 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="f_tail_probabilities.js" />
+	<code file="f_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
 			<spinbox id="df1" min="0" label="Grados de libertad del numerador" default_precision="2" type="real" initial="1" />

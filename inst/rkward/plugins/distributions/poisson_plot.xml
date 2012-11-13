@@ -1,0 +1,26 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="poisson_plot.js" />
+	<help file="poisson_plot.rkh" />
+	<logic>
+		<insert snippet="common_logic"/>
+		<set id="plotoptions.default_pointtype" to="p"/>
+	</logic>
+	
+	<snippets>
+		<snippet id="range_options">
+		</snippet>
+		<snippet id="dist_options">
+			<frame label="Parámetros">
+				<spinbox default_precision="2" type="real" id="lambda" min="0" initial="1" label="Media" />
+			</frame>
+		</snippet>
+		<include file="plot_dist_common_snippets.xml"/>
+	</snippets>
+	
+	<dialog label="Gráfico de probabilidad Poisson" >
+		<insert snippet="dialog_layout"/>
+	</dialog>
+</document>

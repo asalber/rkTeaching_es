@@ -2,71 +2,112 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="anova.js"/>
-	<help file="anova.rkh"/>
-
-	<dialog label="Two independent samples t-Test">
+	<code file="anova.js" />
+	<help file="anova.rkh" />
+	<logic>
+		<connect governor="current_object" client="dataframe.available" />
+		<connect governor="dataframe.available" client="selector.root" />
+		<convert id="dataframe_sel" sources="dataframe.available" mode="notequals" />
+		<convert id="between_sel" sources="design.string" mode="equals" standard="between" />
+		<convert id="within_sel" sources="design.string" mode="equals" standard="within" />
+		<convert id="mixed_sel" sources="design.string" mode="equals" standard="mixed" />
+		<convert id="between_or_mixed" sources="between_sel;mixed_sel" mode="or" />
+		<convert id="within_or_mixed" sources="within_sel;mixed_sel" mode="or" />
+		<connect governor="dataframe_sel" client="dep.enabled" />
+		<connect governor="dataframe_sel" client="between.enabled" />
+		<connect governor="dataframe_sel" client="within.enabled" />
+		<connect governor="dataframe_sel" client="caseid.enabled" />
+		<connect governor="within_or_mixed" client="caseid.visible" />
+		<connect governor="within_or_mixed" client="caseid.required" />
+		<connect governor="between_or_mixed" client="between.visible" />
+		<connect governor="within_or_mixed" client="within.visible" />
+		<connect governor="between_or_mixed" client="between.required" />
+		<connect governor="within_or_mixed" client="within.required" />
+		<connect governor="dataframe_sel" client="row_observed.enabled" />
+		<connect governor="dataframe.available" client="selector2.root" />
+	</logic>
+	<dialog label="ANOVA">
 		<tabbook>
-			<tab id="tab_variables" label="Select variables">
-				<row id="row_vars">
-					<varselector id="vars"/>
+			<tab id="tab_variable" label="Variables" >
+				<row>
+					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="variable" label="Compare" source="vars" types="number" required="true" />
-						<varslot id="factor" label="By" source="vars" types="factor" required="true" />
+						<varslot id="dataframe" label="Conjunto de datos" source="selector" classes="data.frame" required="true" />
+							<radio id="design" label="Diseño">
+								<option label="Entre individuos" value="between" checked="true" />
+								<option label="Dentro de individuos (medidas repetidas)" value="within"/>
+								<option label="Mixto" value="mixed" />
+							</radio>
+						<frame>
+							<varslot id="dep" label="Variable dependiente" source="selector" required="true" />
+							<!-- <varslot id="caseid" label="Case/subject identifier" source="selector" />  -->
+						</frame>
+						<frame>
+							<varslot id="within" label="Factores dentro de los individuos" source="selector" multi="true" />
+							<varslot id="between" label="Factores entre individuos" source="selector" multi="true" />
+							<varslot id="caseid" label="Identificador de los individuos" source="selector" multi="false" />							
+						</frame>
+						<saveobject id="save" label="Guardar resultados en el espacio de trabajo" checkable="true" initial="anova.results" />
 					</column>
 				</row>
 			</tab>
-			<tab id="tab_settings" label="Settings">
-				<row>
-					<column id="hypotesis_col">
-						<radio id="hypothesis" label="Hypothesis test">
-							<option value="two.sided" label="Two-sided"/>
-							<option value="greater" label="First is greater"/>
-							<option value="less" label="Second is greater"/>
-						</radio>
-						<checkbox id="varequal" label="assume equal variances" value="1" value_unchecked="0"/>
-					</column>
-					<column>
-						<frame id="confint_frame" label="Show Confidence Interval"  checkable="true" checked="true">
-							<spinbox id="conflevel" label="confidence level" type="real" min="0" max="1" initial="0.95"/>
+			<!-- 
+			<tab label="Observed" id="tab_Observed">
+				<row id="row_observed">
+					<varselector id="selector2" label="Select observed variables" />
+					<column id="clm_fOTOOTOOOS">
+						<frame id="frm_txtdtxtOTO">
+							<text id="txt_ObsrvdvT">
+								Observed variables are independent variables you have 								<b>
+									already defined
+								</b>
+								as either between or within variables, but that were measured and 								<b>
+									not manipulated
+								</b>
+							</text>
+						</frame>
+						<frame id="frm_vrsltdvOOS">
+							<varslot id="vrsl_Obsrvdvr" label="Observed variables (not manipulated)" source="selector2" multi="true" />
 						</frame>
 					</column>
 				</row>
 			</tab>
+			 -->
+			 
+			<tab id="tab_options" label="Opciones" >
+				<row>
+					<column>
+						<frame>
+							<dropdown id="sumsqtype" label="Suma de cuadrados para diseños no balanceados">
+								<option label="Tipo 1" value="1" />
+								<option label="Tipo 2" value="2" checked="true" />
+								<option label="Tipo 3" value="3" />
+							</dropdown>
+						</frame>
+						<frame>
+							<dropdown id="heterocedasticity" label="Correción de heterocedasticidad">
+								<option label="Ninguna" value="false" checked="true" />
+								<option label="hc3 (Long &amp; Ervin; default)" value="hc3" />
+								<option label="hc0 (White)" value="hc0" />
+								<option label="hc1 (Long &amp; Ervin)" value="hc1" />
+								<option label="hc2 (Long &amp; Ervin)" value="hc2" />
+								<option label="hc4 (Cribari-Neto)" value="hc4" />
+							</dropdown>
+						</frame>
+						<frame>
+							<column>
+								<checkbox id="levene" label="Contrastar homogeneidad de varianzas" value_unckecked="0" value="1" />
+							</column>
+						</frame>
+						<stretch />
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_pairwise" label="Comparación por pares" >
+				<checkbox id="pairwise" label="Comparación de medias por pares" value_unchecked="0" value="1" />
+				<checkbox id="pairwise_plot" label="Dibujar intervalos de confianza para la diferencia de medias" value_unchecked="0" value="1" />
+				<stretch/>
+			</tab>
 		</tabbook>
 	</dialog>
-	
-	<wizard label="Two independent samples t-Test">
-		<page>
-			<text>
-			Select the numeric variable to test. 
-			After, select the factor and their two levels to compare. 
-			</text>
-			<copy id="row_vars"/>
-		</page>
-		<page>
-			<text>
-				Select the type of alternative hypothesis and specify which mean you theorize to be greater. Select two-sided, if your theory does not tell you, which variable is greater.
-				If your hypothesis is directed, selecting a directional test hypothesis may increase test power.
-			</text>
-			<copy id="hypothesis"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-			Check the box if you have some evidence of the equality of variances (eg. via a F-test). An appropriate correction will be applied then that may increase test power. 
-			However, it's generally safe not to assume the variables have equal variances, if you don't have evidence.
-			</text>
-			<copy id="varequal"/>
-		</page>
-		<page>
-			<text>
-			Sometimes it's helpful to get an estimate of the confidence interval of the difference in means. 
-			Below you can specify whether one should be shown, and which confidence-level should be applied (95% corresponds to a 5% level of significance).
-			</text>
-			<copy id="confint_frame"/>
-			<stretch/>
-		</page>
-	</wizard>
-	
 </document>

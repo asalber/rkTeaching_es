@@ -1,0 +1,26 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="uniform_continous_plot.js" />
+	<help file="uniform_continous_plot.rkh" />
+	<logic>
+		<insert snippet="common_logic"/>
+	</logic>
+	
+	<snippets>
+		<snippet id="range_options">
+		</snippet>
+		<snippet id="dist_options">
+			<frame label="Parámetros">
+				<spinbox default_precision="2" type="real" id="min" initial="0" label="Mínimo" />
+				<spinbox default_precision="2" type="real" id="max" initial="1" label="Máximo"/>
+			</frame>
+		</snippet>
+		<include file="plot_dist_common_snippets.xml"/>
+	</snippets>
+	
+	<dialog label="Gráfico de probabilidad Uniforme" >
+		<insert snippet="dialog_layout"/>
+	</dialog>
+</document>

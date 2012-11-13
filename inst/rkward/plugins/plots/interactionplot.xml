@@ -1,0 +1,40 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="interactionplot.js" />
+	<help file="interactionplot.rkh" />
+	<logic>
+		<connect client="plotoptions.xvar" governor="x.available"/>
+		<set id="plotoptions.allow_log" to="true"/>
+		<set id="plotoptions.allow_type" to="false"/>
+		<set id="plotoptions.allow_asp" to="true"/>
+		<set id="plotoptions.allow_grid" to="true"/>
+	</logic>
+	
+	<dialog label="Diagrama de interacción" >
+		<tabbook>
+			<tab label="Variable(s)" >
+				<row>
+					<varselector id="selector" label="Seleccionar variables" />
+					<column>
+						<varslot id="response" label="Variable respuesta" multi="false" type="numeric" source="selector" required="true" />
+						<varslot id="x" label="Grupos eje X" multi="false" type="factor" source="selector" required="true" />
+						<varslot id="trace" label="Grupos de trazado" multi="false" type="factor" source="selector" required="true" />
+						<stretch/>
+						<preview id="preview"/>
+					</column>
+				</row>
+			</tab>
+			<tab label="Opciones">
+				<radio id="type" label="Tipo">
+					<option label="Puntos y líneas" value="b" checked="true" />
+					<option label="Puntos" value="p"/>
+					<option label="Líneas" value="l" />
+				</radio>
+				
+				
+				<stretch/>
+				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />
+			</tab>
+		</tabbook>
+	</dialog>
+</document>

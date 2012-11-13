@@ -5,15 +5,17 @@
 	<code file="small_numbers_law.js" />
 	<help file="small_numbers_law.xml" />
 		
-	<dialog label="Small Numbers Law" >
+	<dialog label="Ley de los casos raros" >
 		<text>
-			The small numbers law states that a binomial distribution B(n,p) <br/>
-			tends to a Poisson distribution P(np) when n increases and p decreases.
-			Increase the binomial trials or decrease the probability of success <br/>
-			to see how the Binomial distribucion converge to the Poisson distribution.
+			La ley de los casos raros dice que una distribución binomian B(n,p)
+			tiende a una distribución de Poisson P(np) cuando n crece y p decrece.<br/>
+			Aumentar el número de repeticiones o disminuir la probabilidad de éxito
+			de la distribución Binomial para ver cómo converge hacia la distribución 
+			de Poisson. <br/>  
 		</text>
-			<spinbox id="size" label="Binomial trials" default_precision="2" type="integer" initial="1" min="1" />
-			<spinbox id="prob" label="Probability of success" default_precision="2" type="real" initial="0.5" min="0" max="1" />
-			<preview id="preview"/>
+		<stretch/>
+		<spinbox id="size" label="Número de repeticiones" default_precision="2" type="integer" initial="1" min="1" />
+		<spinbox id="prob" label="Probabilidad de éxito" default_precision="2" type="real" initial="0.5" min="0" max="1" />
+		<preview id="preview"/>
 	</dialog>
 </document>

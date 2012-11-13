@@ -1,0 +1,16 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="coins.js" />
+	<help file="coins.rkh" />
+		
+	<dialog label="Lanzamiento de monedas" >
+		<stretch/>
+		<spinbox id="nsamples" label="Número de monedas" default_precision="2" type="integer" initial="1" min="1" />
+		<spinbox id="size" label="Número de lanzamientos" default_precision="2" type="integer" initial="1" min="1" />
+		<checkbox id="sum" label="Incluir suma" value="TRUE" unchecked_value="FALSE"/>
+		<checkbox id="mean" label="Incluir media" value="TRUE" unchecked_value="FALSE"/>
+		<saveobject id="save" label="Guardar conjunto de datos" initial="monedas" />
+	</dialog>
+</document>
