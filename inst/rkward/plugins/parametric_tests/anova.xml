@@ -4,6 +4,7 @@
 <document>
 	<code file="anova.js" />
 	<help file="anova.rkh" />
+	
 	<logic>
 		<connect governor="current_object" client="dataframe.available" />
 		<connect governor="dataframe.available" client="selector.root" />
@@ -26,6 +27,7 @@
 		<connect governor="dataframe_sel" client="row_observed.enabled" />
 		<connect governor="dataframe.available" client="selector2.root" />
 	</logic>
+	
 	<dialog label="ANOVA">
 		<tabbook>
 			<tab id="tab_variable" label="Variables" >
@@ -83,6 +85,7 @@
 								<option label="Tipo 2" value="2" checked="true" />
 								<option label="Tipo 3" value="3" />
 							</dropdown>
+							<checkbox id="sumsq" label="Mostrar suma de cuadrados" value_unckecked="0" value="1" />
 						</frame>
 						<frame>
 							<dropdown id="heterocedasticity" label="Correción de heterocedasticidad">
@@ -93,11 +96,6 @@
 								<option label="hc2 (Long &amp; Ervin)" value="hc2" />
 								<option label="hc4 (Cribari-Neto)" value="hc4" />
 							</dropdown>
-						</frame>
-						<frame>
-							<column>
-								<checkbox id="levene" label="Contrastar homogeneidad de varianzas" value_unckecked="0" value="1" />
-							</column>
 						</frame>
 						<stretch />
 					</column>

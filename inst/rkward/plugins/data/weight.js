@@ -5,13 +5,13 @@ var data, newdata, freq;
 
 function preprocess(){
 	// add requirements etc. here
-	echo("require(TeachingExtras)\n");
+	echo("require(rk.Teaching)\n");
 }
 
 function calculate () {
-	data = getValue("data");
-	newdata = getValue("save")
-	freq = getValue("freq").split('"')[1];
+	data = getString("dataframe");
+	newdata = getString("save");
+	freq = getString("freq.shortname");
 	echo ('.GlobalEnv$' + newdata + ' <- weightDataFrame(' + data + ', "' + freq + '")\n');	
 }
 

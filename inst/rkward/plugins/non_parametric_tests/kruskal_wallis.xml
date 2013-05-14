@@ -1,0 +1,42 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="kruskal_wallis.js"/>
+	<help file="kruskal_wallis.rkh"/>
+	
+	<dialog label="Test de Kruskal-Wallis para la comparación de muestras independientes">
+		<tabbook>
+			<tab id="tab_variables" label="Seleccionar variables">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables" />
+					<column>
+						<varslot id="variable" label="Comparar" source="selector" required="true" />
+						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_pairwise" label="Comparación por pares" >
+				<checkbox id="pairwise" label="Comparación por pares" value_unchecked="0" value="1" />
+				<stretch/>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Test de Kruskal-Wallis para la comparación muestras independientes">
+		<page>
+			<text>
+			Seleccionar la variable a comparar. Debe ser una variable númerica o al menos ordinal.
+			Después, seleccionar el factor con los niveles a comparar. 
+			</text>
+			<copy id="row_vars"/>
+		</page>
+		<page>
+			<text>
+			Si se desean realizar contrastes de comparación por pares, activar la opción correspondiente.  
+			</text>
+			<copy id="pairwise"/>
+			<stretch/>
+		</page>
+	</wizard>
+</document>

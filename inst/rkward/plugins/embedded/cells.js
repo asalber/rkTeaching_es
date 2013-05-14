@@ -6,14 +6,14 @@ var headeroptions;
 
 function makeCodes () {
 	calcoptions = ", breaks=";
-	headeroptions = ', "Puntos de corte de los intervalos ", "';
-	var var1 = getValue("var1");
+	headeroptions = ', "M&eacute;todo de determinaci&oacute;n de los intervalos " = "';
+	var variable = getString("variable");
 	var breaks = getValue("breaksFunction");
 	if (breaks == "num") {
 		calcoptions += getValue ("breaks_num");
 		headeroptions += 'Aproximadamente ' + getValue ("breaks_num") + ' intervalos"';
 	} else if (breaks == "int") {
-		calcoptions += "seq (floor (min (" + var1 + ", na.rm=TRUE))-0.5, ceiling (max (" + var1 + ", na.rm=TRUE))+0.5)";
+		calcoptions += "seq (floor (min (" + variable + ", na.rm=TRUE))-0.5, ceiling (max (" + variable + ", na.rm=TRUE))+0.5)";
 		headeroptions += 'Enteros"';
 	} else if (breaks == "vec") {
 		calcoptions += 'c(' +  getValue("breaks_vec") + ')';
@@ -24,18 +24,18 @@ function makeCodes () {
 	}
 	var right = getValue ("rightclosed");
 	if (right) {
-		headeroptions += ', "Intervalos cerrados a la derecha", "TRUE"';
+		headeroptions += ', "Intervalos cerrados a la derecha" = "Si"';
 		calcoptions += ", right=TRUE";
 	} else {
-		headeroptions += ', "Intervalos cerrados a la derecha", "FALSE"';
+		headeroptions += ', "Intervalos cerrados a la derecha" = "No"';
 		calcoptions += ", right=FALSE";
 	}
 	var inclowest = getValue ("include_lowest");
 	if (!inclowest) {
-		headeroptions += ', "Incluir el l&iacute;mite inferior del primer intervalo", "FALSE"';
+		headeroptions += ', "Incluir el l&iacute;mite inferior del primer intervalo" = "Si"';
 		calcoptions += ", include.lowest=FALSE";
 	} else {
-		headeroptions += ', "Incluir el l&iacute;mite inferior del primer intervalo", "TRUE"';
+		headeroptions += ', "Incluir el l&iacute;mite inferior del primer intervalo" = "No"';
 	}
 }
 

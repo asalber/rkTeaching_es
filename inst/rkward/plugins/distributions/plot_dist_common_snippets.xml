@@ -8,15 +8,36 @@
 		<set id="plotoptions.allow_log" to="false"/>
 		<set id="plotoptions.allow_grid" to="true"/>
 	</snippet>
+	
 
-	<snippet id="common_options">
+	<snippet id="discrete_options">
+		<radio id="function" label="Tipo de función" >
+			<option value="d" label="Función de probabilidad" />
+			<option value="p" label="Función de distribución" />
+		</radio>
+	</snippet>
+	
+	<snippet id="continous_options">
 		<radio id="function" label="Tipo de función" >
 			<option value="d" label="Función de densidad" />
 			<option value="p" label="Función de distribución" />
 		</radio>
-		<stretch/>
-		<preview id="preview" label="Previsualizar"/>
-		<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />
+	</snippet>
+	
+	
+	<snippet id="discrete_layout">
+		<row>
+			<column>
+				<insert snippet="dist_options"/>
+				<insert snippet="range_options"/>
+			</column>
+			<column>
+				<insert snippet="discrete_options"/>
+				<stretch/>
+				<preview id="preview" label="Previsualizar"/>
+				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />	
+			</column>
+		</row>
 	</snippet>
 	
 	<snippet id="dialog_layout">
@@ -26,7 +47,10 @@
 				<insert snippet="range_options"/>
 			</column>
 			<column>
-				<insert snippet="common_options"/>
+				<insert snippet="continous_options"/>
+				<stretch/>
+				<preview id="preview" label="Previsualizar"/>
+				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />	
 			</column>
 		</row>
 	</snippet>

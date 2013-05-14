@@ -4,12 +4,17 @@
 <document>
 	<code file="weight.js"/>
 	<help file="weight.rkh"/>
+
+	<logic>
+		<connect governor="current_object" client="dataframe.available" />
+		<connect governor="dataframe.available" client="selector.root" />
+	</logic>	
 		
 	<dialog label="Ponderar conjunto de datos" >
 		<row id="row_vars">
-			<varselector id="selector" label="Seleccionar variable"/>
+			<varselector id="selector" label="Seleccionar conjunto de datos"/>
 			<column>
-				<varslot id="data" label="Conjunto de datos a ponderar" source="selector" classes="data.frame" required="true" />
+				<varslot id="dataframe" label="Conjunto de datos a ponderar" source="selector" classes="data.frame" required="true" />
 				<varslot id="freq" label="Frecuencias de ponderación" source="selector" classes="numeric" required="true" />
 				<saveobject id="save" label="Guardar conjunto de datos" initial="datos.nuevo" />
 			</column>
@@ -17,14 +22,29 @@
 	</dialog>
 	
 	<wizard label="Ponderar conjunto de datos">
-		<page id="pag_vars">
+		<page id="page_data">
 			<text>
-				Seleccionar el conjunto de datos a ponderar, las frecuencias de ponderación e indicar
-				un nombre para el nuevo conjunto de datos. 
-				Debe haber tantas frecuencias como filas tenga el conjunto de datos a ponderar. 
-				-
+				Seleccionar el conjunto de datos a ponderar.
+
 			</text>
-			<copy id="row_vars" />
+			<varselector id="selector2" label="Seleccionar conjunto de datos"/>
+			<varslot id="dataframe" label="Conjunto de datos" source="selector2" classes="data.frame" required="true" />
+		</page>
+		<page id="page_frequency">
+			<text>
+				Seleccionar la variable que contiene las frecuencias de ponderación. 
+				Debe haber tantas frecuencias como filas tenga el conjunto de datos a ponderar. 
+
+			</text>
+			<copy id="selector" />
+		</page>
+		<page id="page_new_data">
+			<text>
+				Introducir un nombre para el nuevo conjunto de datos.
+				Por defecto el nuevo conjunto de datos se guarda en el espacio de trabajo global .GlobalEnv.
+
+			</text>
+			<copy id="save" />
 		</page>
 	</wizard>
 </document>

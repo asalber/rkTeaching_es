@@ -21,6 +21,6 @@
 	</snippets>
 	
 	<dialog label="Gráfico de probabilidad Poisson" >
-		<insert snippet="dialog_layout"/>
+		<insert snippet="discrete_layout"/>
 	</dialog>
 </document>

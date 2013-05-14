@@ -14,8 +14,10 @@ function getParameters () {
 
 	if (options['is_density']) {
 		options['fun'] = "dpois";
+		options['label'] = 'probabilidad';
 	} else {
 		options['fun'] = "ppois";
+		options['label'] = 'distribuci&oacute;n';
 	}
 }
 

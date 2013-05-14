@@ -22,7 +22,7 @@
 					<column>
 						<varslot id="variable" label="Variable" source="selector" required="true" />	
 						<input id="category" label="Categoría" size="small" required="true"/>
-						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unckecked="0">		
+						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unchecked="0">		
 							<input id="freq" label="Frecuencia muestral" size="small" required="true" />
 							<input id="n" label="Tamaño muestral" size="small" required="true"/>
 						</frame>	

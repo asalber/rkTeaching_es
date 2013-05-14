@@ -1,0 +1,26 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="chi_square_fit.js"/>
+	<help file="chi_square_fit.rkh"/>
+	
+	<dialog label="Test de bondad de ajuste Chi-cuadrado">
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar variables" />
+			<column>
+				<varslot id="observed" label="Frecuencias observadas" source="selector" type="numeric" required="true" />
+				<varslot id="theoric" label="Probabilidades teóricas" source="selector" type="numeric" required="true" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Test de bondad de ajuste Chi-cuadrado">
+		<page>
+			<text>
+				Seleccionar las variables que contienen las frecuencias observadas y las probabilidades teóricas. 
+			</text>
+			<copy id="row_vars"/>
+		</page>
+	</wizard>
+</document>

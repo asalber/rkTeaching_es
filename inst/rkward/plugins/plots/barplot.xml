@@ -34,7 +34,7 @@
 					<column>
 						<varslot id="var1" label="Variable" source="selector" required="true"/>
 						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" source="vars" multi="true" required="true"/>
+						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
 						<stretch/>
 						<preview id="preview"/>
 					</column>

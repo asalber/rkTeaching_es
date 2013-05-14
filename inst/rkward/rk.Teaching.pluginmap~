@@ -1,0 +1,35 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document namespace="rkTeaching">
+	<about 
+		name="rk.Teaching"
+		shortinfo="RKWard GUI that introduce some utilities for teaching statistic."
+		longinfo="RKWard GUI that introduce some utilities for teaching statistic. This plugin is specially designed for using in introductory courses of statistic."
+		version="0.01"
+		releasedate="2012-06-01"
+		url="http://rkward.sf.net"
+		license="GPL (&gt;= 3)"
+	>
+		<author 
+			given="Alfredo"
+			family="Sánchez Alberca"
+			email="asalber@ceu.es"
+			role="aut, cre"
+		 />
+		<dependencies rkward_min_version="0.5.6">
+			<package name="TeachingExtras" />
+		</dependencies>
+	</about>
+
+	<require file="plugins/data.pluginmap"/>
+	<require file="plugins/frequencytabulation.pluginmap"/>
+	<require file="plugins/plots.pluginmap"/>
+	<require file="plugins/statistics.pluginmap"/>
+	<require file="plugins/regression.pluginmap"/>
+	<require file="plugins/parametric_tests.pluginmap"/>
+	<!--
+	<require file="plugins/non_parametric_tests.pluginmap"/>
+	<require file="plugins/concordance.pluginmap"/>
+	-->
+	<require file="plugins/simulations.pluginmap"/>
+</document>

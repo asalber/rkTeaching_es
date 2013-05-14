@@ -8,9 +8,9 @@ function preprocess(){
 }
 
 function calculate () {
-	variable = getValue("save");
-	data = variable.split('[[')[0];
-	expresion = getValue("expresion");
+	variable = getString("save");
+	data = getString("dataframe");
+	expresion = getString("expression");
 	echo ('.GlobalEnv$' + variable + ' <- with(' + data + ', ' + expresion + ')\n');	
 }
 

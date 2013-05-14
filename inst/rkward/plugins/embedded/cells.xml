@@ -5,7 +5,7 @@
 	<help file="cells.rkh" />
 	
 	<logic>
-		<external id="var1"/>
+		<external id="variable"/>
 		<convert id="isbreaks_num" sources="breaksFunction.string" mode="equals" standard="num"/>
 		<connect client="breaks_num.enabled" governor="isbreaks_num"/>
 		<convert id="isbreaks_vec" sources="breaksFunction.string" mode="equals" standard="vec"/>
@@ -42,9 +42,9 @@
 	<wizard label="cells">
 		<page id="pag_cells">
 			<text id="txt_cells">
-				Now select how to group the data in cells. 
-				First choose the method for setting the breakpoints.
-				After select if you want right closed intervals (left closed by default). 
+				Seleccionar el método de agrupación en clases o intervalos.
+
+				Después seleccionar si se desean intervalos cerrados por la derecha (por defecto son cerrados por la izquierda).
 			</text>
 			<copy id="col1" />
 		</page>

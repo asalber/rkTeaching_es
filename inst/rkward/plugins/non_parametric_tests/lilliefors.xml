@@ -1,0 +1,27 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="lilliefors.js"/>
+	<help file="lilliefors.rkh"/>
+	
+	<logic>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="grouping.enabled" governor="grouped_mode"/>
+	</logic>
+	
+	
+	<dialog label="Test de normalidad de Lilliefors (Kolmogorov-Smirnov)">
+		<row>
+			<column>
+				<varselector id="selector" label="Seleccionar variables"/>
+			</column>
+			<column>
+				<varslot id="x" label="Variable(s):" type="numeric" source="selector" required="true"/>
+				<checkbox id="grouped" label="Contraste por grupos" value_unchecked="0" checked="false" />
+				<varslot id="groups" label="según" source="selector" required="true"/>
+			</column>
+		</row>
+	</dialog>
+</document>

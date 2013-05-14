@@ -1,20 +1,15 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var options;
-var baroptions;
-var plotoptions;
-var headeroptions;
+var options, baroptions, plotoptions, headeroptions;
 
 function preprocess () {
-	echo('require(TeachingExtras)\n');
 }
 
 function set_options() {
 	var var1 = getValue ("var1");
 	// first fetch all relevant options
 	options = new Array();
-
 	options['rel'] = getValue("rel");
 	options['cum'] = getValue("cum");
 	options['poly'] = getValue("poly");
@@ -32,28 +27,32 @@ function set_options() {
 	}
 	options['legend'] = getValue ("legend");
 
-	baroptions = "";
-	plotoptions = "";
-	headeroptions = "";
+	baroptions = '';
+	plotoptions = '';
+	headeroptions = '';
 	headeroptions += '"Variable", rk.get.description (' + var1 + ')';
 	if (options['grouped']) headeroptions += ', "Grouping", "' + options['grouping'] + '"';
 	if (options['rel']){
-		headeroptions += ', "Relative frequency", "Yes"';
+		headeroptions += ', "Frecuencia relativa", "Si"';
 		baroptions += ', rel=TRUE';
+		plotoptions += ', ylab="Frecuencia relativa';
 	} else {
-		headeroptions += ', "Relative frequency", "No"';
+		headeroptions += ', "Frecuencia relativa", "No"';
+		plotoptions += ', ylab="Frecuencia absoluta';
 	}
 	if (options['cum']){
-		headeroptions += ', "Cumulative frequency", "Yes"';
+		headeroptions += ', "Frecuencia acumulada", "Si"';
 		baroptions += ', cum=TRUE';
+		plotoptions += ' acumulada"';
 	} else {
-		headeroptions += ', "Cumulative frequency", "No"';
+		headeroptions += ', "Frecuencia acumulada", "No"';
+		plotoptions += '"';
 	}
 	if (options['poly']){
-		headeroptions += ', "Polygon", "Yes"';
+		headeroptions += ', "Pol&iacute;gono", "Si"';
 		baroptions += ', poly=TRUE';
 	} else {
-		headeroptions += ', "Polygon", "No"';
+		headeroptions += ', "Pol&iacute;gono", "No"';
 	}
 	if (options['juxtaposed']) baroptions += ', beside=TRUE';
 	if (options['legend']) baroptions += ', legend.text=TRUE';
@@ -61,11 +60,9 @@ function set_options() {
 	//Colors
 	options['colors'] = getValue ("colors");
 	if (options['colors'] == 'rainbow') {
-		plotoptions = ', col=rainbow (if(is.matrix(counts)) dim(counts) else length(counts))';
+		plotoptions += ', col=rainbow (if(is.matrix(counts)) dim(counts) else length(counts))';
 	}
 }
-
-
 
 
 function printout () {

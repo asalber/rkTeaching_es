@@ -8,11 +8,11 @@ function preprocess () {
 }
 
 function calculate () {
-	x = getValue("variable");
-	mean = getValue("mean");
-	confint = getValue ("confint_frame.checked");
-	conflevel = getValue ("conflevel");
-	var hypothesis = getValue ("hypothesis");
+	x = getString("variable");
+	mean = getString("mean");
+	confint = getBoolean ("confint_frame.checked");
+	conflevel = getString ("conflevel");
+	var hypothesis = getString ("hypothesis");
 	var options = ', alternative="' + hypothesis + '", mu=' + mean ;
 	if (confint) {
 		options += ", conf.level=" + conflevel;

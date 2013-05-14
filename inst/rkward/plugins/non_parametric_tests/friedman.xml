@@ -1,0 +1,25 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="friedman.js"/>
+	<help file="friedman.rkh"/>
+	
+	<dialog label="Test de Friedman para la comparación de medidas repetidas">
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar variables" />
+			<column>
+				<varslot id="vars" label="Variables a comparar (medidas repetidas)" multi="true" source="selector" required="true" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Test de Friedman para la comparación de medidas repetidas">
+		<page>
+			<text>
+			Seleccionar la variables con las medidas repetidas a comparar.
+			</text>
+			<copy id="row_vars"/>
+		</page>
+	</wizard>
+</document>

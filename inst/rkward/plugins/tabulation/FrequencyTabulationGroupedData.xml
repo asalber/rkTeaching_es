@@ -5,7 +5,7 @@
 	<help file="FrequencyTabulationGroupedData.rkh" />
 
 	<logic>
-		<connect client="cells.var1" governor="variable.available" />
+		<connect client="cells.variable" governor="variable.available" />
 	</logic>
 
 	<dialog label="Distribución de frecuencias">

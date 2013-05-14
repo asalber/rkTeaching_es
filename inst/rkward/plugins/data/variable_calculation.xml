@@ -4,26 +4,52 @@
 <document>
 	<code file="variable_calculation.js"/>
 	<help file="variable_calculation.rkh"/>
-		
+	
+	<logic>
+		<connect governor="current_object" client="dataframe.available" />
+		<connect governor="dataframe.available" client="selector.root" />
+	</logic>	
+	
 	<dialog label="Cálculo de variable" >
 		<row id="row_vars">
 			<varselector id="selector" label="Espacio de trabajo"/>
 			<column>
-				<input id="expresion" label="Expresión de cálculo" />
+				<varslot id="dataframe" label="Conjunto de datos" source="selector" classes="data.frame" required="true" />
+				<input id="expression" label="Expresión de cálculo" />
 				<saveobject id="save" label="Guardar nueva variable" initial="variable.nueva" />
 			</column>
 		</row>
 	</dialog>
 	
 	<wizard label="Cálculo de variable">
-		<page id="pag_vars">
+		<page id="page_expression">
 			<text>
-				Indicar el nombre de la nueva variable y la expresión para calcular la nueva variable.
-				En la expresión puede usarse cualquier variable del espacio de trabajo.
-				Por ejemplo: estatura*100
-				-
+				Seleccionar el espacio de trabajo en el que calcular la nueva variable.
+
 			</text>
-			<copy id="row_vars" />
+			<copy id="selector" />
+			<copy id="dataframe" />
 		</page>
+	
+		<page id="page_expression">
+			<text>
+				Introducir la expresión para calcular la nueva variable.
+
+				En la expresión puede usarse cualquier variable del espacio de trabajo y cualquier operador de R.
+
+				Ejemplos: estatura*100, peso/estatura^2.
+
+			</text>
+			<copy id="expression" />
+		</page>
+		<page id="page_variable">
+			<text>
+				Introducir un nombre para la nueva variable y hacer click en el botón cambiar para seleccionar el conjunto de datos en el que guardarla.
+				Por defecto la variable se guarda en el espacio de trabajo global .GlobalEnv.
+
+			</text>
+			<copy id="save" />
+		</page>
+		
 	</wizard>
 </document>

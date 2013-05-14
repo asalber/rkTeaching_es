@@ -1,0 +1,15 @@
+frequencyTableCategorical<-
+function(x){
+t<-as.data.frame(table(x))
+ni<-t$Freq
+n<-sum(ni)
+fi<-ni/n
+nc<-length(ni)
+z<-rep(0,2*nc)
+dim(z)<-c(nc,2)
+z[,1]<-ni
+z[,2]<-fi
+colnames(z)<-c("Abs.Freq.","Rel.Freq")
+rownames(z)<-t$x
+return(z)
+}

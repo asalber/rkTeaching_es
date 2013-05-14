@@ -1,0 +1,26 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="intraclass_correlation_coefficient.js"/>
+	<help file="intraclass_correlation_coefficient.rkh"/>
+	
+	<dialog label="Test de correlación intraclase">
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar variables" />
+			<column>
+				<varslot id="x" label="Primera medida" source="selector" type="factor" required="true" />
+				<varslot id="y" label="Segunda medida" source="selector" type="factor" required="true" />
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Test de correlación intraclase">
+		<page>
+			<text>
+				Seleccionar las variables con las medidas. 
+			</text>
+			<copy id="row_vars"/>
+		</page>
+	</wizard>
+</document>

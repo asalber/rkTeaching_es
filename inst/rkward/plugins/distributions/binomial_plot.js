@@ -14,9 +14,11 @@ function getParameters () {
 
 
 	if (options['is_density']) {
-		options['fun'] = "dbinom";
+		options['fun'] = 'dbinom';
+		options['label'] = 'probabilidad'; 
 	} else {
-		options['fun'] = "pbinom";
+		options['fun'] = 'pbinom';
+		options['label'] = 'distribuci&oacute;n';
 	}
 }
 

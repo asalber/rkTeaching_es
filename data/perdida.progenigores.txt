@@ -1,0 +1,382 @@
+ID	Grupo	Sexo	Tiempo.Universidad	Tipo.Estudios	Expediente	Sexo.Fallecido	Edad.Fallecimiento	Somatizacion	Obsesion	Sensibilidad	Depresion	Ansiedad	Hostilidad	Fobia	Paranoias	Psicotico	Global	Vulnerabilidad	Vulnerabilidad.muerte	Apoyo
+2	Juntos	Hombre	1	Negocios	Regular	NA	NA	42	53	59	57	49	57	47	51	46	51	112	24	66
+7	Fallecido alguno	Mujer	1	Salud	NA	Hombre	18	65	80	64	71	72	73	63	67	67	72	100	23	73
+8	Juntos	Mujer	1	Artes y Ciencias	Muy Bueno	NA	NA	52	67	60	62	65	78	60	65	58	65	118	28	64
+9	Fallecido alguno	Mujer	NA	NA	Regular	Mujer	15	59	53	74	65	65	64	61	63	68	65	76	19	80
+11	Juntos	Mujer	NA	NA	Bueno	NA	NA	41	58	63	60	52	51	45	43	46	52	82	17	74
+12	Juntos	Mujer	NA	NA	Bueno	NA	NA	41	50	41	49	45	51	45	43	58	44	56	15	72
+14	Juntos	Hombre	1	Negocios	NA	NA	NA	59	69	63	76	74	57	61	51	68	69	56	16	69
+17	Juntos	Mujer	1	Negocios	Bueno	NA	NA	52	61	49	42	58	51	45	43	64	53	64	12	81
+18	Fallecido alguno	Mujer	1	Artes y Ciencias	Regular	Hombre	15	49	56	41	65	45	62	45	63	64	59	113	32	59
+19	Juntos	Mujer	NA	NA	Bueno	NA	NA	56	65	70	65	62	70	67	74	64	69	107	24	63
+20	Juntos	Mujer	NA	NA	Regular	NA	NA	62	61	68	70	70	62	67	61	75	68	123	26	80
+22	Separados	Hombre	1	Negocios	Bueno	NA	NA	73	64	60	68	76	80	68	77	70	80	109	23	52
+23	Juntos	Hombre	1	Ingeniería	Bueno	NA	NA	55	80	80	73	72	51	70	63	74	73	107	24	61
+24	Juntos	Mujer	1	Agricultura	Bueno	NA	NA	49	58	64	61	52	59	56	55	64	58	69	14	80
+25	Juntos	Mujer	4	Negocios	Bueno	NA	NA	56	58	71	60	63	67	63	65	71	65	88	22	59
+26	Juntos	Mujer	NA	NA	Bueno	NA	NA	49	63	60	60	63	55	56	55	58	59	54	9	82
+28	Juntos	Mujer	NA	NA	Bueno	NA	NA	52	69	49	54	52	59	56	55	64	59	84	20	74
+29	Juntos	Mujer	2	Negocios	Bueno	NA	NA	70	72	80	75	70	74	80	74	80	80	108	32	73
+33	Juntos	Hombre	2	Negocios	Muy Bueno	NA	NA	42	53	59	44	59	51	47	51	62	53	110	22	81
+34	Juntos	Hombre	2	Negocios	Bueno	NA	NA	59	61	54	44	55	40	47	42	46	53	73	22	52
+35	Juntos	Mujer	2	Negocios	Bueno	NA	NA	67	65	71	70	66	70	68	74	74	71	96	25	72
+36	Juntos	Hombre	2	Negocios	Bueno	NA	NA	51	72	63	65	68	60	61	59	70	66	86	19	56
+37	Separados	Hombre	1	Artes y Ciencias	Regular	NA	NA	42	47	54	71	49	40	61	64	62	59	66	13	73
+38	Fallecido alguno	Hombre	1	Artes y Ciencias	Regular	Hombre	18	65	60	44	54	55	40	47	42	59	58	83	17	51
+39	Separados	Mujer	2	Artes y Ciencias	Bueno	NA	NA	52	56	49	49	63	51	45	55	64	59	66	15	65
+40	Juntos	Hombre	4	Artes y Ciencias	Bueno	NA	NA	59	69	68	71	59	57	70	56	66	67	88	18	67
+41	Juntos	Mujer	3	Artes y Ciencias	Bueno	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	37	9	84
+42	Juntos	Mujer	3	Ingeniería	Bueno	NA	NA	62	74	63	68	65	62	45	61	62	66	85	18	64
+43	Fallecido alguno	Mujer	2	Artes y Ciencias	Regular	Mujer	6	56	66	41	60	69	39	60	43	46	61	63	15	79
+44	Juntos	Mujer	1	Ingeniería	Bueno	NA	NA	41	58	63	61	55	55	45	43	58	56	71	18	61
+46	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	1	52	68	64	68	71	78	63	70	75	71	106	23	62
+47	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	12	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	68	26	74
+48	Fallecido alguno	Mujer	2	Agricultura	Muy Bueno	Mujer	10	41	48	41	51	52	65	45	43	46	45	75	17	61
+49	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Hombre	10	56	78	76	70	63	55	67	65	75	71	118	34	54
+50	Separados	Mujer	2	Artes y Ciencias	Regular	NA	NA	56	65	41	61	58	62	56	52	59	60	90	16	54
+52	Juntos	Hombre	2	Artes y Ciencias	Bueno	NA	NA	73	68	80	80	76	71	73	80	78	80	138	30	69
+54	Separados	Mujer	2	Artes y Ciencias	Bueno	NA	NA	41	53	60	62	65	51	45	43	64	58	57	13	59
+55	Juntos	Mujer	2	Negocios	Bueno	NA	NA	49	76	68	54	62	51	64	52	64	64	62	15	62
+56	Separados	Mujer	4	Artes y Ciencias	Bueno	NA	NA	52	53	55	54	60	59	45	52	58	56	79	14	76
+57	Juntos	Mujer	NA	NA	Bueno	NA	NA	60	53	60	57	60	59	60	63	65	61	48	11	66
+58	Juntos	Mujer	1	Salud	Bueno	NA	NA	66	74	71	71	69	67	63	71	78	71	100	26	56
+60	Separados	Mujer	1	Negocios	Muy Bueno	NA	NA	68	56	64	62	66	67	63	61	65	66	96	24	73
+62	Juntos	Mujer	1	Salud	Bueno	NA	NA	58	66	80	71	69	62	65	63	67	71	76	18	47
+63	Juntos	Mujer	NA	NA	Bueno	NA	NA	62	66	69	71	71	71	45	64	78	71	58	14	67
+65	Juntos	Mujer	NA	NA	NA	NA	NA	52	65	60	54	65	59	45	64	65	61	76	12	72
+67	Juntos	Mujer	NA	NA	Bueno	NA	NA	52	53	41	54	52	55	56	52	58	52	94	20	79
+71	Fallecido alguno	Hombre	1	Artes y Ciencias	Bueno	Mujer	15	51	70	59	70	62	57	47	56	46	64	110	19	75
+72	Juntos	Hombre	1	Ingeniería	Regular	NA	NA	59	61	63	63	55	57	64	51	62	61	80	18	59
+73	Fallecido alguno	Hombre	1	Artes y Ciencias	Regular	Mujer	1	51	55	71	80	68	64	64	77	77	72	89	29	65
+77	Fallecido alguno	Hombre	NA	NA	Bueno	Hombre	9	42	64	54	60	49	71	47	56	70	62	79	15	58
+78	Separados	Mujer	2	Artes y Ciencias	Bueno	NA	NA	41	38	41	42	38	56	45	43	46	34	72	10	73
+79	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Mujer	16	78	70	66	80	68	57	47	67	68	72	118	34	71
+80	Juntos	Mujer	NA	NA	Regular	NA	NA	52	56	41	57	58	62	45	52	58	55	117	24	76
+82	Fallecido alguno	Hombre	3	Ingeniería	Regular	Mujer	11	76	80	80	71	76	73	73	67	66	80	102	24	75
+85	Juntos	Hombre	1	Artes y Ciencias	Bueno	NA	NA	64	71	66	73	72	51	68	74	80	74	129	20	74
+89	Separados	Mujer	2	Salud	Regular	NA	NA	41	38	41	42	38	56	45	43	46	34	73	16	79
+90	Juntos	Hombre	1	Ingeniería	NA	NA	NA	76	71	71	76	76	71	71	69	78	80	121	21	64
+93	Fallecido alguno	Hombre	1	Artes y Ciencias	Regular	Mujer	14	42	53	44	44	41	40	47	51	46	45	61	15	56
+94	Juntos	Mujer	1	Artes y Ciencias	Bueno	NA	NA	70	80	68	70	70	67	64	73	80	76	121	30	61
+95	Fallecido alguno	Mujer	3	Agricultura	Bueno	Mujer	17	49	53	41	57	58	51	45	43	58	51	47	15	80
+96	Juntos	Hombre	1	Negocios	Bueno	NA	NA	64	72	66	80	74	71	64	53	77	80	51	10	70
+97	Juntos	Hombre	1	Negocios	Bueno	NA	NA	69	72	66	60	59	64	61	75	62	72	75	16	64
+101	Fallecido alguno	Hombre	3	Artes y Ciencias	Regular	Hombre	17	73	80	80	76	78	64	80	77	78	80	91	17	46
+102	Juntos	Mujer	1	Artes y Ciencias	Bueno	NA	NA	52	61	68	57	52	51	45	70	62	61	77	19	68
+103	Juntos	Hombre	NA	NA	Bueno	NA	NA	67	70	66	63	62	66	61	64	66	69	77	17	57
+104	Juntos	Mujer	2	Agricultura	Bueno	NA	NA	41	53	49	60	62	71	45	64	64	59	104	37	79
+105	Fallecido alguno	Hombre	2	Negocios	Regular	Hombre	11	59	74	80	70	65	60	61	63	70	72	81	16	59
+106	Juntos	Mujer	1	Negocios	Regular	NA	NA	41	53	60	60	62	51	64	70	65	61	115	22	76
+108	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	13	49	58	63	60	52	51	45	55	58	57	64	15	81
+110	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	14	52	63	68	57	62	55	64	61	65	63	87	21	54
+111	Juntos	Hombre	NA	NA	NA	NA	NA	67	71	59	60	78	73	47	63	46	71	86	15	62
+114	Fallecido alguno	Hombre	1	Agricultura	Regular	Mujer	9	73	77	71	71	72	76	73	75	77	80	83	23	70
+115	Fallecido alguno	Hombre	1	Artes y Ciencias	Bueno	Mujer	13	42	68	59	57	76	60	47	59	58	64	117	23	78
+116	Fallecido alguno	Hombre	NA	NA	Regular	Hombre	12	42	55	54	60	41	57	47	51	58	51	61	15	61
+117	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	13	63	66	63	62	60	68	56	63	74	66	137	37	84
+118	Fallecido alguno	Mujer	1	Artes y Ciencias	Bueno	Mujer	17	41	45	60	49	45	51	45	52	58	48	91	25	75
+119	Separados	Mujer	1	Artes y Ciencias	Bueno	NA	NA	49	65	63	70	60	65	45	61	75	64	67	21	60
+120	Fallecido alguno	Mujer	1	Negocios	Bueno	Mujer	1	49	76	49	54	55	39	56	64	65	61	85	20	78
+121	Juntos	Mujer	1	Artes y Ciencias	Bueno	NA	NA	41	56	60	62	58	55	56	65	65	61	93	25	71
+123	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	66	63	70	70	60	68	64	63	64	68	81	17	68
+131	Fallecido alguno	Hombre	NA	NA	Bueno	Mujer	17	59	61	63	63	59	57	61	67	66	64	131	31	60
+134	Juntos	Hombre	3	Artes y Ciencias	Muy Bueno	NA	NA	59	77	74	80	62	51	64	63	80	78	82	23	67
+135	Fallecido alguno	Mujer	1	Artes y Ciencias	Bueno	Mujer	13	66	70	80	69	70	80	71	71	75	77	91	19	67
+136	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	16	62	69	76	70	70	62	67	70	77	71	80	25	76
+137	Separados	Mujer	1	Agricultura	Regular	NA	NA	56	58	55	54	45	51	56	64	46	55	82	17	73
+138	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	8	52	63	68	68	68	78	64	43	74	67	104	30	77
+139	Separados	Mujer	NA	NA	Regular	NA	NA	74	67	71	69	73	70	73	71	74	73	127	28	77
+144	Juntos	Hombre	1	Artes y Ciencias	Bueno	NA	NA	51	58	66	57	49	51	61	56	68	59	62	11	60
+145	Juntos	Hombre	1	Artes y Ciencias	Bueno	NA	NA	59	61	59	60	59	51	61	63	70	63	78	20	53
+146	Juntos	Hombre	2	Ingeniería	Regular	NA	NA	55	61	44	44	41	64	47	42	46	52	63	12	60
+147	Separados	Mujer	NA	NA	Regular	NA	NA	41	55	57	56	52	39	45	53	64	54	60	16	75
+148	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Mujer	16	62	70	64	70	71	51	60	73	67	71	147	30	70
+150	Fallecido alguno	Mujer	1	Artes y Ciencias	Muy Bueno	Mujer	15	52	66	66	70	52	71	60	74	71	67	92	29	74
+151	Juntos	Hombre	1	Negocios	Regular	NA	NA	61	64	80	80	80	80	61	75	78	80	94	23	33
+152	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Mujer	13	55	64	68	63	55	60	68	51	62	62	60	13	66
+153	Juntos	Mujer	2	Artes y Ciencias	Bueno	NA	NA	52	68	66	64	63	51	65	67	67	66	108	26	65
+154	Separados	Mujer	1	Artes y Ciencias	Bueno	NA	NA	52	66	49	60	55	59	60	64	46	59	126	30	84
+155	Fallecido alguno	Mujer	1	Artes y Ciencias	Bueno	Mujer	8	41	65	64	65	60	39	61	63	67	63	107	27	54
+156	Juntos	Hombre	1	Artes y Ciencias	Muy Bueno	NA	NA	76	68	66	80	55	40	64	51	80	72	72	18	66
+157	Juntos	Hombre	2	Artes y Ciencias	Bueno	NA	NA	76	80	71	65	80	70	70	74	46	80	96	20	83
+158	Separados	Hombre	2	Artes y Ciencias	Bueno	NA	NA	67	68	71	68	65	62	71	74	80	74	64	12	57
+159	Fallecido alguno	Mujer	1	Artes y Ciencias	Muy Bueno	Mujer	9	60	66	70	61	68	72	56	65	67	69	117	29	69
+166	Fallecido alguno	Hombre	1	Artes y Ciencias	Muy Bueno	Mujer	18	42	53	66	63	49	40	47	64	70	62	47	12	74
+169	Separados	Hombre	1	Artes y Ciencias	Bueno	NA	NA	61	69	68	63	72	57	68	73	74	72	88	10	33
+170	Fallecido alguno	Hombre	NA	NA	Regular	Hombre	15	51	64	66	63	74	62	61	59	66	65	76	25	61
+171	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	12	63	68	66	61	69	51	45	70	64	66	148	37	75
+172	Fallecido alguno	Mujer	2	Artes y Ciencias	Muy Bueno	Hombre	8	49	53	60	54	60	55	45	70	74	62	92	30	53
+173	Juntos	Mujer	NA	NA	Bueno	NA	NA	52	50	63	57	55	59	56	52	58	56	92	21	83
+176	Juntos	Mujer	2	Salud	Bueno	NA	NA	58	53	63	64	65	51	60	52	62	61	108	26	69
+179	Juntos	Hombre	2	Ingeniería	Regular	NA	NA	55	64	68	76	55	80	47	63	80	72	97	27	64
+180	Separados	Hombre	2	Artes y Ciencias	Bueno	NA	NA	55	64	63	44	65	64	47	42	62	60	80	11	80
+181	Separados	Hombre	2	Negocios	Regular	NA	NA	42	58	54	44	49	51	47	56	46	52	49	7	80
+184	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	12	41	53	55	54	52	51	60	55	62	53	77	24	74
+185	Juntos	Hombre	1	Artes y Ciencias	Regular	NA	NA	55	61	71	63	62	62	64	63	62	65	69	13	63
+186	Juntos	Hombre	2	Ingeniería	Malo	NA	NA	78	80	80	80	80	80	80	80	80	80	112	27	56
+189	Separados	Mujer	3	Salud	Bueno	NA	NA	68	65	60	42	60	65	56	43	46	61	109	20	60
+190	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	15	41	38	41	42	45	39	45	43	46	36	64	16	73
+192	Juntos	Hombre	2	Artes y Ciencias	Regular	NA	NA	42	53	68	71	59	57	47	69	78	65	81	18	63
+193	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Mujer	7	58	50	41	49	58	51	45	43	46	53	79	15	69
+196	Juntos	Mujer	2	Artes y Ciencias	Muy Bueno	NA	NA	65	67	73	62	65	65	64	65	64	67	80	24	67
+197	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	52	63	60	49	55	39	45	52	46	54	90	16	66
+198	Separados	Mujer	3	Negocios	Bueno	NA	NA	41	66	76	70	52	67	63	67	67	66	104	30	41
+199	Juntos	Mujer	NA	NA	Bueno	NA	NA	41	63	66	65	55	51	60	61	67	61	81	19	56
+200	Juntos	Hombre	2	Ingeniería	Bueno	NA	NA	42	61	44	52	55	57	61	51	46	53	71	12	58
+201	Juntos	Hombre	2	Artes y Ciencias	Bueno	NA	NA	42	69	74	78	76	64	47	63	80	77	80	21	44
+202	Juntos	Mujer	3	Salud	Bueno	NA	NA	41	45	49	42	55	51	45	43	46	44	54	8	80
+203	Juntos	Mujer	2	Artes y Ciencias	Regular	NA	NA	41	45	64	49	52	67	45	64	62	55	47	10	74
+206	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	10	41	56	73	64	52	59	63	63	74	63	95	27	46
+207	Fallecido alguno	Mujer	1	Artes y Ciencias	Regular	Hombre	16	65	78	64	69	66	65	63	64	65	70	106	31	61
+208	Juntos	Mujer	2	Salud	Bueno	NA	NA	62	65	55	67	70	65	60	64	64	66	107	16	75
+209	Fallecido alguno	Hombre	1	Artes y Ciencias	Bueno	Hombre	19	51	69	74	70	49	57	68	59	80	68	92	32	80
+210	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Hombre	17	59	68	71	68	65	62	68	63	68	72	76	20	59
+213	Separados	Mujer	2	Artes y Ciencias	Bueno	NA	NA	49	65	60	57	62	51	45	55	62	59	89	26	69
+214	Separados	Mujer	1	Ingeniería	NA	NA	NA	49	65	73	69	68	65	56	65	71	67	62	11	81
+215	Separados	Mujer	NA	NA	Muy Bueno	NA	NA	58	38	41	42	52	55	45	43	46	46	63	13	69
+216	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	13	52	53	41	57	38	55	45	43	62	52	99	23	83
+219	Separados	Mujer	2	Artes y Ciencias	Bueno	NA	NA	41	53	55	49	52	51	45	64	58	50	67	16	77
+221	Juntos	Mujer	2	Negocios	Bueno	NA	NA	58	58	49	54	58	39	45	55	62	56	75	12	72
+222	Fallecido alguno	Hombre	3	Artes y Ciencias	Bueno	Mujer	16	55	53	54	44	68	40	47	42	66	53	91	30	76
+223	Fallecido alguno	Mujer	2	Negocios	Malo	Mujer	16	49	66	60	49	60	55	60	64	71	61	106	38	82
+224	Fallecido alguno	Mujer	2	Artes y Ciencias	Bueno	Mujer	15	41	63	55	60	52	55	45	55	62	57	97	26	78
+225	Fallecido alguno	Mujer	NA	NA	Regular	Mujer	15	49	58	41	54	45	51	45	55	46	49	94	27	76
+227	Separados	Hombre	2	Artes y Ciencias	Muy Bueno	NA	NA	65	80	68	65	68	80	61	74	46	73	99	18	71
+230	Fallecido alguno	Hombre	2	Negocios	Bueno	Hombre	12	59	80	63	60	62	64	47	59	58	65	120	26	62
+233	Juntos	Mujer	2	Agricultura	Regular	NA	NA	49	61	63	60	52	51	56	55	64	57	94	17	60
+234	Juntos	Mujer	2	Artes y Ciencias	Bueno	NA	NA	62	72	73	71	69	71	64	71	77	72	141	33	67
+236	Juntos	Hombre	NA	NA	Bueno	NA	NA	42	61	44	60	49	51	47	51	58	53	57	16	68
+237	Fallecido alguno	Hombre	NA	NA	Regular	Mujer	11	59	61	59	71	49	51	47	59	74	64	71	20	60
+246	Separados	Hombre	NA	NA	Regular	NA	NA	42	55	80	80	72	66	71	80	78	80	91	22	47
+247	Fallecido alguno	Hombre	1	Negocios	Bueno	Mujer	18	51	58	80	68	55	80	68	63	70	72	144	27	59
+250	Juntos	Mujer	2	Negocios	Bueno	NA	NA	52	50	63	61	45	62	56	61	58	59	52	10	80
+251	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	41	56	63	61	52	51	56	52	64	56	96	15	69
+252	Fallecido alguno	Mujer	1	Ingeniería	Bueno	Hombre	15	41	63	63	60	52	55	45	61	62	59	67	18	63
+255	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Mujer	15	51	53	44	57	49	51	47	42	46	49	60	16	68
+256	Separados	Hombre	NA	NA	Regular	NA	NA	61	77	59	65	78	57	68	59	68	71	79	19	53
+257	Fallecido alguno	Hombre	1	Artes y Ciencias	Muy Bueno	Hombre	16	51	80	63	80	72	76	47	64	74	78	93	25	58
+259	Juntos	Mujer	2	Artes y Ciencias	Bueno	NA	NA	49	53	64	60	62	59	60	63	58	60	87	23	63
+260	Juntos	Mujer	2	Artes y Ciencias	Regular	NA	NA	58	66	69	68	66	62	63	65	67	66	73	15	81
+263	Fallecido alguno	Hombre	NA	NA	Bueno	Mujer	6	42	61	54	65	55	62	47	67	66	61	55	15	74
+264	Juntos	Mujer	NA	NA	Bueno	NA	NA	52	45	41	60	45	65	45	55	46	52	83	16	54
+265	Juntos	Mujer	NA	NA	Bueno	NA	NA	41	53	55	42	52	39	45	61	46	50	80	14	81
+268	Juntos	Mujer	NA	NA	Bueno	NA	NA	67	68	76	70	69	73	64	63	75	71	106	22	57
+269	Juntos	Hombre	1	Artes y Ciencias	Bueno	NA	NA	78	70	80	80	80	80	68	80	80	80	97	20	40
+271	Separados	Hombre	NA	NA	Regular	NA	NA	80	80	80	80	80	80	70	74	80	80	107	19	79
+272	Juntos	Hombre	1	Artes y Ciencias	Bueno	NA	NA	67	72	80	80	76	73	68	73	68	80	136	26	61
+273	Juntos	Mujer	NA	NA	Bueno	NA	NA	49	63	63	62	58	59	60	55	64	61	64	11	62
+274	Fallecido alguno	Hombre	1	Artes y Ciencias	Bueno	Mujer	5	51	69	54	60	65	62	61	63	66	64	91	21	71
+276	Juntos	Mujer	2	Negocios	Bueno	NA	NA	49	56	60	49	60	55	45	55	58	54	104	16	84
+277	Juntos	Mujer	2	Negocios	Bueno	NA	NA	58	67	76	69	62	72	56	80	75	71	120	29	77
+279	Juntos	Hombre	2	Artes y Ciencias	Bueno	NA	NA	73	74	71	78	80	71	80	77	80	80	60	19	73
+280	Juntos	Hombre	2	Negocios	Regular	NA	NA	64	58	63	60	59	57	61	56	68	63	75	14	66
+284	Separados	Mujer	2	Artes y Ciencias	Regular	NA	NA	66	70	71	71	63	65	60	70	75	71	119	20	56
+286	Juntos	Mujer	NA	NA	Regular	NA	NA	41	50	63	65	60	55	60	64	65	59	69	19	83
+287	Juntos	Mujer	NA	NA	Bueno	NA	NA	52	53	63	54	60	55	56	70	65	60	101	20	60
+294	Fallecido alguno	Hombre	NA	NA	Bueno	Hombre	4	51	68	63	68	59	64	61	74	66	68	101	23	57
+295	Fallecido alguno	Hombre	1	Agricultura	Regular	Mujer	10	59	58	59	52	59	40	61	51	62	58	74	17	68
+296	Fallecido alguno	Mujer	2	Agricultura	Bueno	Hombre	13	62	68	55	67	62	62	56	64	65	64	111	26	45
+298	Juntos	Hombre	2	Artes y Ciencias	Regular	NA	NA	51	58	44	63	55	60	47	51	58	56	62	15	63
+299	Fallecido alguno	Hombre	1	Ingeniería	Bueno	Mujer	14	42	80	59	63	62	66	47	42	66	64	80	16	82
+300	Fallecido alguno	Hombre	2	Agricultura	Bueno	Mujer	13	42	47	44	57	62	57	47	42	58	50	54	13	82
+328	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Mujer	20	69	69	76	49	71	51	64	55	64	68	114	27	73
+329	Juntos	Mujer	3	Artes y Ciencias	Regular	NA	NA	54	61	57	56	38	69	57	53	59	58	49	11	71
+331	Juntos	Mujer	3	Artes y Ciencias	Bueno	NA	NA	41	50	49	54	55	51	45	43	67	54	82	21	70
+337	Juntos	Mujer	4	Artes y Ciencias	Muy Bueno	NA	NA	57	66	63	66	62	65	45	59	59	64	104	20	80
+338	Juntos	Mujer	4	Ingeniería	Bueno	NA	NA	41	50	63	49	55	51	45	65	62	55	112	26	58
+341	Fallecido alguno	Mujer	NA	NA	Regular	Hombre	14	52	66	71	71	71	80	67	71	75	71	90	26	63
+342	Separados	Hombre	3	Artes y Ciencias	Bueno	NA	NA	51	58	59	60	62	51	61	63	66	61	89	12	74
+343	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	2	66	76	60	71	68	78	63	71	78	72	128	34	49
+347	Separados	Hombre	4	Artes y Ciencias	Bueno	NA	NA	64	58	71	60	65	66	47	74	62	67	54	17	59
+348	Juntos	Hombre	3	Artes y Ciencias	Bueno	NA	NA	42	69	54	60	65	57	47	67	58	62	92	24	50
+349	Separados	Hombre	3	Artes y Ciencias	Bueno	NA	NA	42	58	54	63	65	57	47	56	68	60	79	13	76
+350	Juntos	Mujer	4	Agricultura	Bueno	NA	NA	65	56	55	42	38	67	45	43	46	55	77	15	76
+352	Fallecido alguno	Mujer	4	Negocios	Bueno	Mujer	16	58	69	49	42	62	55	45	43	46	57	93	21	84
+353	Juntos	Hombre	4	Ingeniería	Regular	NA	NA	51	58	59	68	55	64	47	51	58	60	61	10	59
+354	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	49	53	60	49	52	62	45	55	46	52	80	14	70
+355	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	14	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	76	15	73
+360	Juntos	Mujer	4	Artes y Ciencias	Muy Bueno	NA	NA	58	56	63	60	58	65	65	64	64	63	80	18	68
+362	Juntos	Mujer	3	Artes y Ciencias	Bueno	NA	NA	56	61	60	57	70	51	60	61	64	62	89	21	66
+363	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	11	49	53	55	42	52	51	64	55	64	56	73	13	63
+365	Fallecido alguno	Hombre	4	Negocios	Bueno	Mujer	3	51	53	59	57	55	51	47	51	58	53	69	15	61
+366	Fallecido alguno	Mujer	3	Artes y Ciencias	Regular	Hombre	15	50	58	54	62	38	69	45	71	64	63	80	21	55
+367	Separados	Mujer	4	Artes y Ciencias	Bueno	NA	NA	49	58	64	54	52	55	45	64	58	55	63	11	70
+372	Juntos	Mujer	3	Artes y Ciencias	Muy Bueno	NA	NA	63	68	63	54	58	75	60	63	64	66	73	17	65
+374	Fallecido alguno	Hombre	4	Artes y Ciencias	Bueno	Hombre	15	51	39	44	52	49	40	47	42	46	41	40	11	69
+376	Juntos	Mujer	NA	NA	Bueno	NA	NA	60	78	55	62	69	62	45	73	65	67	117	27	76
+380	Separados	Mujer	3	Artes y Ciencias	Regular	NA	NA	52	74	69	67	68	70	64	65	62	69	102	23	80
+384	Juntos	Hombre	NA	NA	NA	NA	NA	76	71	54	70	62	71	47	63	68	72	111	25	63
+385	Fallecido alguno	Mujer	3	Artes y Ciencias	Regular	Mujer	4	63	68	68	70	62	71	64	71	80	71	100	26	55
+386	Separados	Hombre	4	Artes y Ciencias	Bueno	NA	NA	78	69	80	68	80	60	78	67	78	80	109	19	74
+387	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Mujer	8	41	65	55	57	45	51	45	55	62	56	32	8	49
+389	Separados	Mujer	4	Negocios	Bueno	NA	NA	65	56	49	54	58	55	45	52	58	57	81	14	77
+390	Fallecido alguno	Mujer	4	Negocios	Bueno	Mujer	8	58	53	60	57	60	59	45	61	58	58	81	24	84
+392	Fallecido alguno	Mujer	2	Artes y Ciencias	Bueno	Mujer	4	62	78	80	75	73	62	45	80	78	78	131	26	58
+393	Fallecido alguno	Mujer	3	Agricultura	Regular	Mujer	17	60	78	73	71	69	65	65	65	75	71	101	33	60
+394	Juntos	Mujer	NA	Artes y Ciencias	Bueno	NA	NA	60	53	55	57	58	51	45	43	46	55	46	11	84
+397	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Hombre	14	60	53	64	54	58	67	60	43	46	59	76	16	60
+399	Fallecido alguno	Mujer	4	Ingeniería	Bueno	Mujer	17	80	78	64	75	71	73	71	67	78	80	105	33	81
+402	Fallecido alguno	Mujer	4	Artes y Ciencias	Regular	Mujer	7	65	72	70	69	63	67	56	63	75	71	86	25	61
+403	Juntos	Hombre	4	Negocios	Bueno	NA	NA	51	58	54	63	62	66	47	51	62	61	77	15	68
+404	Juntos	Hombre	4	Negocios	Bueno	NA	NA	42	55	66	60	49	51	47	59	66	58	51	13	52
+405	Juntos	Mujer	3	Artes y Ciencias	Bueno	NA	NA	56	67	64	68	69	65	56	55	67	66	113	27	65
+409	Separados	Mujer	4	Salud	Bueno	NA	NA	49	58	60	68	65	67	45	52	46	62	90	15	62
+410	Juntos	Mujer	NA	NA	Regular	NA	NA	49	53	49	64	52	51	56	55	58	55	94	19	71
+411	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Mujer	5	41	63	66	57	45	51	60	52	58	56	71	16	55
+412	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	41	63	49	57	60	59	45	52	62	56	110	21	67
+413	Juntos	Hombre	4	Negocios	Bueno	NA	NA	42	55	44	44	55	57	47	42	46	47	39	9	83
+415	Juntos	Mujer	3	Artes y Ciencias	Muy Bueno	NA	NA	52	38	64	60	52	62	45	52	58	55	60	10	84
+417	Fallecido alguno	Mujer	3	Artes y Ciencias	Muy Bueno	Mujer	15	41	58	66	61	58	55	45	64	67	59	101	24	52
+418	Fallecido alguno	Mujer	4	Agricultura	Bueno	Hombre	12	49	69	64	49	65	62	45	52	46	61	79	18	66
+419	Juntos	Hombre	2	Artes y Ciencias	Bueno	NA	NA	61	64	71	68	49	60	47	63	62	65	86	16	61
+420	Juntos	Hombre	3	Negocios	Bueno	NA	NA	42	69	66	62	55	64	47	64	70	64	82	21	66
+421	Fallecido alguno	Hombre	2	Ingeniería	Bueno	Hombre	17	42	39	44	44	55	60	47	42	46	45	46	12	66
+423	Fallecido alguno	Hombre	4	Negocios	NA	Mujer	18	42	64	71	60	62	57	61	51	46	60	58	14	62
+424	Separados	Hombre	4	Negocios	Bueno	NA	NA	51	55	44	44	55	57	61	42	46	49	55	13	82
+428	Fallecido alguno	Mujer	3	Agricultura	Regular	Mujer	6	63	67	68	61	68	62	67	61	67	66	81	21	53
+432	Separados	Mujer	3	Artes y Ciencias	Muy Bueno	NA	NA	41	38	41	54	52	39	45	43	46	41	79	18	82
+434	Fallecido alguno	Mujer	3	Negocios	Bueno	Mujer	12	52	69	70	71	71	70	65	74	62	71	137	32	70
+436	Juntos	Mujer	3	Negocios	Muy Bueno	NA	NA	41	50	49	49	52	59	45	52	62	49	74	16	81
+437	Juntos	Mujer	4	Agricultura	Bueno	NA	NA	52	45	63	61	55	39	45	52	62	56	88	22	84
+438	Juntos	Hombre	3	Artes y Ciencias	Bueno	NA	NA	55	53	80	65	59	57	47	64	58	64	74	16	82
+441	Juntos	Hombre	4	Artes y Ciencias	Muy Bueno	NA	NA	61	53	44	70	62	66	47	63	74	66	68	17	42
+442	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Hombre	14	41	45	68	62	58	55	60	65	62	61	95	24	54
+443	Juntos	Hombre	3	Negocios	Bueno	NA	NA	64	61	59	70	62	40	47	57	78	65	65	12	68
+444	Fallecido alguno	Mujer	4	Salud	Bueno	Mujer	13	52	69	66	65	65	59	65	67	71	69	129	29	67
+447	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	56	56	68	61	60	68	63	67	65	63	100	25	68
+450	Fallecido alguno	Mujer	3	Salud	Bueno	Mujer	13	52	65	63	57	52	39	45	55	62	57	94	21	74
+454	Juntos	Mujer	4	Negocios	NA	NA	NA	79	72	76	70	80	59	67	67	77	75	93	22	73
+455	Separados	Mujer	3	Artes y Ciencias	Bueno	NA	NA	58	76	64	71	70	74	65	65	71	71	112	19	77
+456	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Mujer	1	42	53	44	57	41	60	47	42	58	49	79	21	58
+457	Juntos	Mujer	3	Artes y Ciencias	Muy Bueno	NA	NA	60	53	49	54	60	55	45	63	58	59	82	15	59
+460	Separados	Hombre	4	Ingeniería	Regular	NA	NA	51	70	54	52	41	51	47	64	66	60	100	19	62
+461	Separados	Mujer	4	Negocios	Bueno	NA	NA	52	68	70	70	70	68	56	74	78	71	66	19	56
+463	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	56	63	63	57	58	65	56	61	62	61	89	19	72
+467	Juntos	Mujer	3	Artes y Ciencias	Bueno	NA	NA	60	45	49	42	52	51	45	43	46	48	73	13	79
+473	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	49	38	66	54	38	39	56	64	62	54	91	19	56
+476	Separados	Mujer	4	Artes y Ciencias	Regular	NA	NA	56	65	70	68	62	55	67	61	71	66	84	20	71
+478	Juntos	Hombre	4	Negocios	Bueno	NA	NA	42	58	63	52	41	62	64	56	58	57	56	11	75
+480	Separados	Mujer	3	Salud	Muy Bueno	NA	NA	56	63	68	71	63	51	45	55	65	66	125	25	57
+481	Separados	Hombre	3	Ingeniería	Muy Bueno	NA	NA	61	64	54	65	68	70	47	67	78	68	66	14	45
+482	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	60	63	49	57	60	39	45	64	62	59	66	16	83
+483	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	56	58	66	64	60	59	63	61	64	63	62	16	79
+484	Fallecido alguno	Hombre	4	Artes y Ciencias	Bueno	Mujer	8	55	69	54	63	72	57	64	56	62	63	73	16	55
+485	Juntos	Hombre	3	Artes y Ciencias	Bueno	NA	NA	42	47	54	44	49	40	47	42	58	46	53	12	67
+487	Juntos	Hombre	3	Agricultura	Bueno	NA	NA	64	74	80	80	80	80	70	77	80	80	122	23	64
+488	Fallecido alguno	Hombre	4	Artes y Ciencias	Muy Bueno	Mujer	15	55	61	54	65	65	51	61	63	62	62	53	15	52
+489	Separados	Hombre	3	Negocios	Muy Bueno	NA	NA	51	39	44	52	49	57	47	42	46	45	41	10	75
+490	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Mujer	8	68	65	55	57	69	70	45	61	62	66	106	15	12
+491	Fallecido alguno	Hombre	4	Artes y Ciencias	Bueno	Mujer	14	51	68	74	70	72	60	68	69	70	71	90	26	54
+494	Juntos	Mujer	4	Negocios	Regular	NA	NA	68	68	55	68	69	55	67	43	64	67	66	17	73
+496	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Hombre	16	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	78	24	39
+497	Juntos	Mujer	3	Negocios	Regular	NA	NA	60	53	60	60	55	51	45	71	64	60	96	23	84
+499	Separados	Hombre	NA	NA	Regular	NA	NA	42	53	44	44	49	51	47	42	46	43	36	6	75
+500	Fallecido alguno	Hombre	4	Artes y Ciencias	Bueno	Mujer	11	42	58	63	57	55	40	47	63	78	60	68	15	57
+501	Juntos	Mujer	4	Salud	Regular	NA	NA	49	66	63	54	58	59	45	52	46	58	67	16	79
+505	Juntos	Hombre	4	Artes y Ciencias	Bueno	NA	NA	51	47	44	44	49	60	47	67	46	52	61	15	74
+507	Juntos	Hombre	4	Artes y Ciencias	Bueno	NA	NA	53	50	57	54	55	64	47	60	70	59	43	12	68
+510	Juntos	Mujer	3	Agricultura	Bueno	NA	NA	58	56	41	42	52	59	45	43	46	51	49	8	80
+511	Separados	Hombre	3	Ingeniería	Bueno	NA	NA	42	58	66	52	49	62	47	56	58	57	75	14	69
+513	Fallecido alguno	Mujer	2	Artes y Ciencias	Bueno	Hombre	13	68	65	41	42	58	55	45	43	46	58	81	16	73
+515	Juntos	Hombre	4	Artes y Ciencias	Bueno	NA	NA	61	53	54	63	59	60	47	42	58	59	68	16	65
+516	Fallecido alguno	Hombre	4	Negocios	Bueno	Mujer	11	55	71	66	70	74	66	71	67	70	72	112	24	57
+518	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	49	63	49	57	55	62	45	43	58	55	105	21	72
+519	Separados	Mujer	4	Negocios	Bueno	NA	NA	41	45	60	57	52	55	45	61	64	54	82	16	74
+521	Fallecido alguno	Mujer	4	Negocios	Regular	Hombre	8	58	56	49	49	58	51	45	52	46	54	66	13	75
+522	Juntos	Mujer	NA	NA	Bueno	NA	NA	52	50	49	49	38	51	45	43	58	46	92	14	82
+523	Juntos	Mujer	4	Negocios	Bueno	NA	NA	52	58	63	69	55	67	45	55	71	63	87	16	69
+525	Juntos	Mujer	NA	NA	Muy Bueno	NA	NA	41	67	80	70	65	72	56	73	75	71	77	23	67
+527	Juntos	Mujer	NA	NA	Bueno	NA	NA	68	45	60	57	60	51	60	64	62	59	77	16	82
+528	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Mujer	8	68	70	64	62	66	71	64	61	62	69	89	22	57
+530	Fallecido alguno	Mujer	3	Salud	Bueno	Hombre	12	52	56	49	49	65	55	45	55	46	57	103	24	82
+531	Juntos	Hombre	4	Artes y Ciencias	Bueno	NA	NA	55	68	59	70	55	62	61	63	77	68	71	21	70
+532	Fallecido alguno	Mujer	3	Negocios	Bueno	Mujer	15	52	61	41	54	60	55	45	55	58	58	71	19	13
+533	Fallecido alguno	Mujer	4	Negocios	Bueno	Mujer	13	41	38	41	42	45	39	45	43	46	36	78	14	84
+534	Fallecido alguno	Hombre	NA	NA	Bueno	Mujer	9	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	110	35	108
+535	Juntos	Hombre	4	Ingeniería	Regular	NA	NA	42	55	74	73	65	60	64	64	74	66	54	13	40
+536	Juntos	Hombre	3	Artes y Ciencias	Bueno	NA	NA	42	39	44	44	55	57	47	42	46	43	57	12	72
+540	Juntos	Mujer	NA	NA	Bueno	NA	NA	56	63	64	64	45	59	60	55	65	61	83	14	68
+541	Juntos	Mujer	4	Artes y Ciencias	Muy Bueno	NA	NA	50	61	63	56	62	56	45	66	46	59	85	21	74
+542	Juntos	Mujer	3	Artes y Ciencias	Regular	NA	NA	56	66	55	60	58	65	45	55	58	61	78	15	79
+543	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	52	69	60	54	55	59	45	61	58	60	81	12	73
+544	Fallecido alguno	Mujer	4	Negocios	Muy Bueno	Hombre	9	41	58	41	49	52	51	45	43	46	49	114	26	73
+546	Fallecido alguno	Hombre	3	Artes y Ciencias	Regular	Mujer	6	67	72	68	80	62	73	74	73	80	80	72	24	31
+548	Juntos	Mujer	4	Negocios	Regular	NA	NA	63	63	66	57	62	65	56	70	65	66	77	19	72
+549	Juntos	Hombre	4	Ingeniería	Bueno	NA	NA	51	55	59	52	49	62	47	51	46	55	85	18	64
+550	Juntos	Mujer	NA	NA	Bueno	NA	NA	63	70	76	72	70	67	67	63	75	71	116	22	34
+551	Juntos	Mujer	4	Agricultura	Bueno	NA	NA	66	56	70	60	70	59	65	75	64	69	87	12	73
+552	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Mujer	6	63	68	71	69	69	71	67	71	65	71	114	28	79
+553	Juntos	Mujer	4	Artes y Ciencias	Regular	NA	NA	49	56	55	60	55	59	45	52	46	54	81	18	72
+554	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	7	63	65	69	65	63	62	63	70	65	68	97	23	65
+556	Juntos	Mujer	1	Artes y Ciencias	Bueno	NA	NA	56	56	41	64	55	55	45	55	64	57	108	18	66
+557	Fallecido alguno	Mujer	3	Negocios	Bueno	Mujer	8	67	58	64	60	65	55	56	67	74	66	95	21	108
+558	Juntos	Hombre	3	Artes y Ciencias	Regular	NA	NA	61	64	44	76	59	70	47	67	68	66	56	8	58
+559	Juntos	Mujer	NA	NA	Bueno	NA	NA	49	68	66	64	69	73	45	65	71	66	76	17	79
+561	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Mujer	14	62	78	60	70	71	62	68	52	46	69	78	19	84
+562	Fallecido alguno	Hombre	3	Negocios	Bueno	Mujer	5	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	82	21	50
+564	Juntos	Mujer	NA	NA	Bueno	NA	NA	56	50	64	60	65	62	56	64	62	63	108	30	81
+567	Juntos	Hombre	4	Negocios	Muy Bueno	NA	NA	78	58	63	44	78	60	47	67	46	68	128	24	84
+569	Fallecido alguno	Mujer	3	Agricultura	Bueno	Mujer	15	79	80	80	79	80	78	67	80	74	80	90	26	66
+570	Fallecido alguno	Mujer	3	Salud	Bueno	Mujer	12	52	50	60	54	52	59	45	43	46	52	67	17	80
+571	Fallecido alguno	Mujer	4	Negocios	Bueno	Mujer	1	62	66	55	54	60	55	56	63	58	62	59	12	80
+572	Separados	Hombre	4	Ingeniería	Regular	NA	NA	59	58	63	52	62	51	47	56	46	58	85	11	66
+573	Juntos	Mujer	3	Artes y Ciencias	NA	NA	NA	58	66	76	70	68	55	63	55	62	67	59	15	79
+574	Fallecido alguno	Mujer	NA	NA	Muy Bueno	Hombre	10	63	66	69	60	66	71	69	61	65	69	100	25	76
+575	Fallecido alguno	Hombre	NA	Artes y Ciencias	Regular	Hombre	9	51	58	66	71	65	57	47	63	68	64	100	24	58
+576	Juntos	Mujer	3	Agricultura	Bueno	NA	NA	49	63	55	54	55	55	60	61	62	59	81	18	66
+578	Juntos	Hombre	3	Artes y Ciencias	Muy Bueno	NA	NA	61	58	54	60	41	51	47	42	46	53	46	10	72
+580	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Hombre	19	41	50	49	54	58	55	45	52	58	51	61	20	64
+583	Juntos	Hombre	3	Negocios	Bueno	NA	NA	61	47	54	52	65	64	47	59	62	60	69	13	65
+584	Juntos	Hombre	NA	NA	NA	NA	NA	42	68	54	57	41	73	64	51	58	60	63	11	51
+585	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Mujer	14	41	50	60	54	45	51	45	55	62	52	69	17	72
+587	Separados	Mujer	2	Artes y Ciencias	Muy Bueno	NA	NA	56	38	41	42	38	51	45	43	46	44	72	13	81
+588	Juntos	Mujer	4	Negocios	Bueno	NA	NA	80	74	73	80	69	78	70	74	80	80	84	23	18
+589	Juntos	Hombre	4	Negocios	Bueno	NA	NA	59	68	63	68	80	64	64	63	58	70	53	15	69
+590	Juntos	Mujer	3	Salud	Muy Bueno	NA	NA	58	65	49	57	62	55	45	52	71	60	88	22	66
+597	Fallecido alguno	Mujer	4	Artes y Ciencias	Regular	Mujer	10	49	61	64	60	60	62	45	63	58	60	82	23	84
+598	Fallecido alguno	Mujer	3	Artes y Ciencias	NA	Mujer	8	49	65	55	57	55	55	63	65	65	60	71	17	60
+600	Fallecido alguno	Hombre	3	Negocios	Bueno	Mujer	10	42	39	44	52	41	40	47	42	46	35	54	18	72
+601	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	20	80	80	80	80	80	74	80	80	80	80	136	42	65
+602	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	16	41	56	49	60	62	51	63	52	62	56	128	28	65
+604	Separados	Mujer	4	Negocios	Bueno	NA	NA	79	53	55	62	71	51	60	52	75	66	91	23	52
+605	Juntos	Mujer	4	Artes y Ciencias	Bueno	NA	NA	41	50	41	57	45	55	45	43	58	48	48	10	70
+607	Separados	Hombre	2	Artes y Ciencias	Bueno	NA	NA	61	53	54	44	49	51	47	63	46	54	54	11	63
+610	Fallecido alguno	Hombre	4	Artes y Ciencias	Regular	Mujer	13	42	70	44	73	74	57	47	64	68	66	51	20	47
+611	Juntos	Hombre	4	Negocios	Regular	NA	NA	59	39	54	60	62	60	47	51	46	56	62	11	68
+612	Juntos	Hombre	4	Artes y Ciencias	Muy Bueno	NA	NA	42	55	54	63	68	60	68	64	68	62	70	19	83
+613	Fallecido alguno	Mujer	4	Salud	Bueno	Mujer	13	56	56	60	57	62	65	45	64	65	60	82	16	62
+615	Fallecido alguno	Hombre	3	Artes y Ciencias	Bueno	Hombre	15	64	69	66	60	72	66	61	63	70	70	96	19	71
+619	Fallecido alguno	Hombre	2	Artes y Ciencias	Bueno	Hombre	17	51	64	54	65	59	66	47	56	74	64	107	26	60
+621	Fallecido alguno	Mujer	NA	NA	Bueno	Hombre	12	56	63	41	60	62	55	45	43	46	57	79	27	58
+622	Juntos	Mujer	4	Negocios	Bueno	NA	NA	79	38	41	42	58	62	45	43	46	59	54	10	12
+623	Juntos	Mujer	NA	NA	Bueno	NA	NA	41	58	68	62	52	55	63	52	58	59	102	19	75
+624	Separados	Mujer	4	Salud	Muy Bueno	NA	NA	56	56	49	60	63	55	60	63	62	60	97	23	65
+625	Juntos	Hombre	3	Artes y Ciencias	Bueno	NA	NA	55	58	66	60	59	51	47	67	46	59	70	16	74
+629	Fallecido alguno	Mujer	3	Artes y Ciencias	Bueno	Mujer	8	80	78	69	67	75	72	60	70	75	74	94	27	70
+630	Separados	Hombre	3	Negocios	Bueno	NA	NA	61	70	66	60	59	70	47	63	58	65	74	17	50
+632	Juntos	Hombre	1	Negocios	Bueno	NA	NA	42	47	54	52	55	40	47	51	58	49	41	10	84
+635	Juntos	Hombre	4	Negocios	Bueno	NA	NA	59	64	80	70	65	76	61	73	74	72	63	11	69
+636	Fallecido alguno	Hombre	1	Artes y Ciencias	Bueno	Hombre	10	42	39	44	52	41	57	47	42	46	41	40	7	63
+641	Juntos	Mujer	3	Negocios	Regular	NA	NA	49	66	68	64	69	55	45	61	71	64	77	13	57
+646	Separados	Mujer	NA	NA	Bueno	NA	NA	41	70	63	60	52	51	45	52	46	59	90	18	77
+647	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	6	41	67	49	49	62	62	63	63	58	60	78	23	73
+648	Juntos	Mujer	3	Artes y Ciencias	Regular	NA	NA	49	45	60	61	45	51	60	52	46	52	46	9	82
+649	Juntos	Hombre	NA	NA	Bueno	NA	NA	59	69	63	63	62	71	64	59	46	65	60	14	60
+651	Fallecido alguno	Mujer	2	Artes y Ciencias	Regular	Mujer	10	60	61	69	69	70	71	63	63	71	69	88	29	56
+653	Fallecido alguno	Mujer	4	Artes y Ciencias	Bueno	Mujer	17	58	70	69	70	63	67	56	63	74	69	122	27	54
+658	Juntos	Mujer	1	Negocios	Bueno	NA	NA	56	63	68	71	70	78	63	70	75	71	56	11	63
+659	Separados	Mujer	NA	NA	Muy Bueno	NA	NA	52	66	64	54	62	51	60	67	64	62	87	13	77
+661	Fallecido alguno	Hombre	1	Ingeniería	Bueno	Mujer	15	59	58	59	60	57	40	47	51	46	56	99	18	69
+663	Juntos	Mujer	NA	NA	Bueno	NA	NA	49	63	64	49	60	62	45	65	58	60	70	12	64
+668	Fallecido alguno	Mujer	NA	NA	Bueno	Mujer	16	58	70	80	75	66	75	64	76	80	75	114	27	59
+673	Separados	Mujer	3	Artes y Ciencias	Bueno	NA	NA	41	53	55	54	45	51	45	52	58	50	72	13	59
+674	Juntos	Mujer	NA	NA	Bueno	NA	NA	49	63	64	62	60	51	56	55	58	61	71	16	66
+679	Juntos	Mujer	NA	NA	Muy Bueno	NA	NA	56	50	60	54	52	62	56	64	65	57	68	17	68
+685	Juntos	Mujer	4	Artes y Ciencias	Muy Bueno	NA	NA	60	58	41	42	55	55	45	43	46	52	64	11	62
+689	Juntos	Mujer	2	Salud	Muy Bueno	NA	NA	41	53	55	57	58	55	45	52	62	55	79	18	79
+690	Fallecido alguno	Mujer	3	Artes y Ciencias	Regular	Mujer	14	52	65	63	61	66	62	60	73	65	64	79	18	37
+691	Separados	Mujer	4	Salud	Bueno	NA	NA	60	63	60	54	69	67	45	55	58	62	102	17	64
+692	Juntos	Hombre	3	Negocios	Bueno	NA	NA	59	55	59	63	62	60	61	59	58	62	87	16	58
+694	Fallecido alguno	Mujer	4	Salud	Bueno	Hombre	17	52	50	64	57	52	59	45	55	65	56	111	22	78
+696	Juntos	Mujer	NA	NA	NA	NA	NA	66	68	80	71	78	72	70	74	80	78	112	27	75
+700	Fallecido alguno	Hombre	4	Artes y Ciencias	Muy Bueno	Mujer	10	51	64	59	76	74	64	47	42	62	65	45	11	64

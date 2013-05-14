@@ -22,6 +22,6 @@
 	</snippets>
 	
 	<dialog label="Gráfico de probabilidad Binomial" >
-		<insert snippet="dialog_layout"/>
+		<insert snippet="discrete_layout"/>
 	</dialog>
 </document>

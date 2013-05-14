@@ -1,0 +1,75 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="chi_square.js"/>
+	<help file="chi_square.rkh"/>
+	<logic>
+		<convert id="mcnemar_checked" sources="mcnemar.state" mode="equals" standard="1" />
+		<connect client="fisher.enabled" governor="mcnemar_checked.not" />
+	</logic>
+	
+	<dialog label="Test de independencia Chi-cuadrado">
+		<tabbook>
+			<tab id="tab_variables" label="Seleccionar variables">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables" />
+					<column>
+						<varslot id="row" label="Variable dependiente" source="selector" required="true" />
+						<varslot id="col" label="Variable independiente" source="selector" required="true" />
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_options" label="Opciones de contraste">
+				<row>
+					<frame id="test" label="Tipo de contraste">
+						<checkbox id="fisher" label="Test exacto de fisher" value_unchecked="0" value="1" />
+						<checkbox id="mcnemar" label="Test de McNemar para datos pareados" value_unchecked="0" value="1" />
+					</frame>	
+					<frame id="frame_freq" label="Frecuencias">
+						<checkbox id="observed" label="Mostrar frecuencias observadas" value_unchecked="0" value="1" />
+						<checkbox id="expected" label="Mostrar frecuencias esperadas" value_unchecked="0" value="1" />
+						<checkbox id="percentages" label="Mostrar porcentajes observados" value_unchecked="0" value="1" />						
+					</frame>
+				</row>
+				<stretch/>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Test de independencia Chi-cuadrado">
+		<page>
+			<text>
+			Seleccionar las variables dependiente e independiente. 
+			</text>
+			<copy id="row_vars"/>
+		</page>
+		<page>
+			<text>
+				Seleccionar si se desean realizar un contraste exacto de Fisher. 
+			</text>
+			<copy id="fisher"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+				Seleccionar si se desea realizar un contraste de McNemar. 
+			</text>
+			<copy id="mcnemar"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+				Seleccionar si se desean los porcentajes de la tabla de frecuencias bidimensional. 
+			</text>
+			<copy id="percentages"/>
+			<stretch/>
+		</page>
+		<page>
+			<text>
+				Seleccionar si se desean las frecuencias esperadas bajo la hipótesis de indepencia. 
+			</text>
+			<copy id="expected"/>
+		</page>
+	</wizard>
+</document>

@@ -5,50 +5,76 @@
 	<code file="wilcoxon.js"/>
 	<help file="wilcoxon.rkh"/>
 	
-	<logic>
-		<convert id="confint_checked" sources="confint.state" mode="equals" standard="1" />
-		<connect governor="conflevel.enabled" client="confint_checked" />
-	</logic>
-	
-
-	<dialog label="Wilcoxon Test">
+	<dialog label="Test de Wilcoxon para la comparación de dos muestras pareadas">
 		<tabbook>
-			<tab id="tab_variables" label="Select variables">
+			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
-					<varselector id="vars"/>
+					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="x" label="Compare" source="vars" types="number" required="true" />
-						<varslot id="y" label="Against" source="vars" types="number" required="true" />
+						<varslot id="x" label="Comparar" source="selector" required="true" />
+						<varslot id="y" label="con" source="selector" required="true" />
 					</column>
 				</row>
 			</tab>
-			<tab id="tab_settings" label="Settings">
-				<column id="hypotesis_col">
-					<radio id="hypothesis" label="Hypothesis test">
-						<option value="two.sided" label="Two-sided"/>
-						<option value="greater" label="First is greater"/>
-						<option value="less" label="Second is greater"/>
-					</radio>
-				</column>
+			<tab id="tab_settings" label="Opciones de contraste">
+				<row>
+					<column id="hypotesis_col">
+						<radio id="hypothesis" label="Hipotesis alternativa">
+							<option value="two.sided" label="Bilateral" />
+							<option value="greater" label="Unilateral mayor" />
+							<option value="less" label="Unilateral menor" />
+						</radio>
+						<radio id="type" label="Tipo de prueba">
+							<option value="correction" label="Aproximación normal con correción por continuidad" />
+							<option value="non_correction" label="Aproximación normal sin corrección por continuidad" />
+							<option value="exact" label="p-valor exacto" />
+						</radio>
+					</column>
+					<column>
+						<frame id="confint" label="Intervalo de confianza" checkable="true" checked="true" value="1">
+							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+						</frame>
+					</column>
+				</row>
 			</tab>
 		</tabbook>
 	</dialog>
 	
-	<wizard label="Wilcoxon">
+	<wizard label="Test U de Mann Whitney">
 		<page>
 			<text>
-			Select the numerics variables to compare. 
+			Seleccionar las variables a comparar. Deben ser variables numéricas o al menos ordinales. 
+			Después, seleccionar el factor con los niveles a comparar. 
+			El factor debe tener exactamente dos niveles. 
 			</text>
 			<copy id="row_vars"/>
 		</page>
 		<page>
 			<text>
-				Select the type of alternative hypothesis and specify which you theorize to be greater. Select two-sided, if your theory does not tell you, which variable is greater.
-				If your hypothesis is directed, selecting a directional test hypothesis may increase test power.
+				Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué media se presume que es mayor:
+				- Seleccionar bilateral, si la teoría no presupone qué media es mayor. 
+				- Seleccionar unilateral mayor si se presupone que la media de la primera categoría es mayor que la media de la segunda.
+				- Seleccionar unilateral menor si se presupone que la media de la primera categoría es menor que la media de la segunda.
+				El orden de las categorías es el establecido en la definición de las variables.
+				La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste. 
 			</text>
 			<copy id="hypothesis"/>
 			<stretch/>
 		</page>
+		<page>
+			<text>
+			Seleccionar la fórma de calcular el p-valor
+			</text>
+			<copy id="type"/>
+		</page>
+		<page>
+			<text>
+			Si se desea obtener un intervalo de confianza para estimar la diferencia de medias entre las dos poblaciones, 
+			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).
+			A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.   
+			</text>
+			<copy id="confint_frame"/>
+			<stretch/>
+		</page>
 	</wizard>
-	
 </document>

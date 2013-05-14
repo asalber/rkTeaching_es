@@ -2,22 +2,28 @@
 <!DOCTYPE rkpluginmap>
 <document base_prefix="non_parametric_tests/" namespace="rkTeachingExtras">
 	<components>
-		<component type="standard" id="u_mann_whitney" file="u_mann_whitney.xml" label="Test U de Mann-Whitney " />
-		<component type="standard" id="wilcoxon" file="wilcoxon.xml" label="Test de Wilcoxon" />
-		<component type="standard" id="friedman" file="friedman.xml" label="Test de Friedman" />
-		<component type="standard" id="kruskal_wallis" file="kruskal_wallis.xml" label="Test de Kruskal-Wallis" />
-		<component type="standard" id="normality" file="normality.xml" label="Test de normalidad" />
-		<component type="standard" id="chi_square" file="chi_square.xml" label="Test Chi-Cuadrado" />
+		<component type="standard" id="mann_whitney" file="mann_whitney.xml" label="Test U de Mann-Whitney para dos muestras independientes " />
+		<component type="standard" id="wilcoxon" file="wilcoxon.xml" label="Test de Wilcoxon para dos muestras pareadas" />
+		<component type="standard" id="friedman" file="friedman.xml" label="Test de Friedman para medidas repeditas" />
+		<component type="standard" id="kruskal_wallis" file="kruskal_wallis.xml" label="Test de Kruskal-Wallis para varias muestras independientes" />
+		<component type="standard" id="lilliefors" file="lilliefors.xml" label="Test de Lilliefors (Kolmogorov-Simirnov)" />
+		<component type="standard" id="shapiro" file="shapiro.xml" label="Test de Shapiro-Wilk" />
+		<component type="standard" id="chi_square" file="chi_square.xml" label="Test Chi-Cuadrado de independencia" />
+		<component type="standard" id="chi_square_fit" file="chi_square_fit.xml" label="Test Chi-Cuadrado de bondad de ajuste" />
 	</components>
 	<hierarchy>
 		<menu id="teaching">
 			<menu id="non_parametric_tests" label="Tests no paramétricos">
-				<entry component="normality"/>
-				<entry component="u_mann_whitney"/>
+				<menu id="normality" label="Normalidad">
+					<entry component="lilliefors"/>
+					<entry component="shapiro"/>
+				</menu>
+				<entry component="mann_whitney"/>
 				<entry component="wilcoxon"/>
 				<entry component="friedman"/>
 				<entry component="kruskal_wallis"/>
-				<entry component="chi_square"/>				
+				<entry component="chi_square"/>	
+				<entry component="chi_square_fit"/>				
 			</menu>
 		</menu>
 	</hierarchy>

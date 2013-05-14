@@ -9,12 +9,12 @@ function preprocess(){
 }
 
 function calculate () {
-	variable = getValue("var");
-	newvar = getValue("save")
-	rules = getValue("rules");
+	variable = getString("variable");
+	newvar = getString("save")
+	rules = getString("rules");
 	rules = rules.replace(/\n/gi,'; ');
 	echo ('.GlobalEnv$' + newvar + ' <- recode(' + variable + ", '" + rules + "'");
-	if (getValue("asfactor")) echo (', as.factor.result=TRUE');
+	if (getBoolean("asfactor")) echo (', as.factor.result=TRUE');
 	else echo (', as.factor.result=FALSE');
 	echo (')\n');	
 }

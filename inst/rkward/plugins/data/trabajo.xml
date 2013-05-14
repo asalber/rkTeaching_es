@@ -1,0 +1,21 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="trabajo.js"/>
+	<help file="trabajo.rkh"/>
+	
+	<dialog label="Generación de datos del trabajo de estadística">
+		<input id="dni" label="Introducir DNI sin letra"/>
+	</dialog>
+	
+	<wizard label="Generación de datos del trabajo de estadística">
+		<page id="pag_vars">
+			<text>
+				Introducir el número del DNI sin la letra. 
+				Se generará un nuevo conjunto de datos con los datos del trabajo. 
+			</text>
+			<copy id="dni" />
+		</page>
+	</wizard>
+</document>
