@@ -4,11 +4,11 @@
 var q, fun;
 
 function calculate () {
-	q = "c (" + getValue ("q").replace (/[, ]+/g, ", ") + ")";
-	fun = getValue("function");
-	echo ('result <- ' + fun + 'pois(' + q + ', lambda = ' + getValue ("lambda"));
+	q = "c (" + getString("q").replace (/[, ]+/g, ", ") + ")";
+	fun = getString("function");
+	echo ('result <- ' + fun + 'pois(' + q + ', lambda = ' + getString("lambda"));
 	if (fun == 'p'){
-		echo(', ' + getValue ("tail"));
+		echo(', ' + getString("tail"));
 	}
 	echo(')\n');
 }
@@ -20,11 +20,11 @@ function printout () {
 		title += ' acumuladas';
 		label += ' , "Cola de acumulaci&oacute;n" = ';
 		if (getValue ("tail")=="lower.tail=TRUE" )
-			label += '"Izquierda"';
+			label += '"Izquierda (&le;)"';
 		else
-			label += '"Derecha"';
+			label += '"Derecha (&gh;)"';
 	}
-	echo ('rk.header ("' + title + ' Poisson", list ("Media" = "' + getValue ("lambda") + '"' + label + '))\n');
+	echo ('rk.header ("' + title + ' Poisson", list ("Media" = "' + getString("lambda") + '"' + label + '))\n');
 	echo ('rk.results (list("Valores" = ' + q + ', "' + title + '" = result))\n');
 }
 

@@ -1,7 +1,9 @@
 <!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkhelp>
 <document>
+
 	<summary>
+	Procedimiento para obtener la tabla de distribución de frecuencias de una variable.
 	</summary>
 	<usage>
 	</usage>
@@ -18,5 +20,11 @@
 					</ul>
 				</related> -->
 	<technical>
+	La tabla incluye cuatro tipos de frecuencias:
+	<ul>
+	<li>Frecuencias absolutas: $n_i$</li>
+	<li>Frecuencias relativas: $f_i$</li>
+	<li>Frecuencias absolutas acumuladas: $N_i$</li>
+	<li>Frecuencias relativas acumuladas: $F_i$</li>
 	</technical>
 </document>

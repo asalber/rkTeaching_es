@@ -10,21 +10,30 @@
 	
 	<snippets>
 		<snippet id="range_options">
-			<frame label="Rango" >
+			<frame id="range" label="Rango" >
 				<spinbox default_precision="2" type="real" id="min" initial="-3.29" label="Mínimo" />
 				<spinbox default_precision="2" type="real" id="max" initial="3.29" label="Máximo" />
 			</frame>
 		</snippet>
 		<snippet id="dist_options">
-			<frame label="Parámetros">
+			<frame id="parameters" label="Parámetros">
 				<spinbox default_precision="2" type="real" id="mean" initial="0" label="Media" />
 				<spinbox default_precision="2" type="real" id="sd" min="0.01" initial="1" label="Desviación típica"/>
 			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir la media y la desviación típica de la distribución Normal.	
+			</text>
 		</snippet>
 		<include file="plot_dist_common_snippets.xml"/>
 	</snippets>
 	
 	<dialog label="Gráfico de probabilidad Normal" >
-		<insert snippet="dialog_layout"/>
+		<insert snippet="continous_layout"/>
 	</dialog>
+
+	<wizard label="Gráfico de probabilidad Chi-cuadrado">
+		<insert snippet="continous_wizard"/>
+	</wizard>
 </document>

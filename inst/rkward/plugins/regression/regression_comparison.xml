@@ -33,20 +33,37 @@
 	</dialog>
 	
 	<wizard label="Comparación de Modelos de Regresión">
-		<page id="pag_vars">
-			<text id="txt_var">
-				Seleccionar las variables numéricas dependiente e independiente.
-				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
+		<page id="page_y">
+			<text>
+				Selecionar la variable dependiente.
 			</text>
-			<copy id="row_vars" />
+			<varselector id="selector2" label="Seleccionar variable"/>
+			<varslot id="y" label="Variable dependiente" source="selector2" type="numeric" required="true" />
 		</page>
-		<page id="pag_vars">
-			<text id="txt_var">
-				Seleccionar los tipos de modelos de regresión a comparar.
+		<page id="page_x">
+			<text>
+				Selecionar la variables independiente.
+			</text>
+			<copy id="selector" />
+			<copy id="x" />
+		</page>	
+		<page id="page_filter">
+			<text>
+				Activar la casilla si se desea un filtrado previo de los datos e introducir la condición de selección.
+
+				Puede usarse cualquier operador relacional o lógico de R.
+
+				Ejemplos: sexo=="mujer", edad>20, sexo=="mujer" | edad>0.
+
+			</text>
+			<copy id="filter_frame" />
+		</page>	
+		<page id="page_model">
+			<text>
+				Seleccionar los tipos de modelos a comparar.
 			</text>
 			<copy id="model" />
-		</page>
-		
+		</page>		
 	</wizard>
 	
 </document>

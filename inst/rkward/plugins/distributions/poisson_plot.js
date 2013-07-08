@@ -6,7 +6,7 @@ var options;
 include ('plot_dist_common.js');
 
 function getParameters () {
-	options['lambda'] = getValue ("lambda");
+	options['lambda'] = getString("lambda");
 	options['min'] = 0;
 	options['max'] = 2*options['lambda']+5;
 	options['n'] = options['max'] - options['min'] + 1;

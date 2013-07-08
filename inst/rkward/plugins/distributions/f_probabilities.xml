@@ -5,12 +5,23 @@
 	<code file="f_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="df1" min="0" label="Grados de libertad del numerador" default_precision="2" type="real" initial="1" />
-			<spinbox id="df2" min="0" label="Grados de libertad del denominador" default_precision="2" type="real" initial="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="df1" min="0" label="Grados de libertad del numerador" default_precision="2" type="real" initial="1" />
+				<spinbox id="df2" min="0" label="Grados de libertad del denominador" default_precision="2" type="real" initial="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir los grados de libertad del numerador y del denominador de la distribución F de Fisher.	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	<dialog label="Probabilidad acumulada F de Fisher" >
-		<insert snippet="probabilities_layout"/>
+		<insert snippet="probabilities_continous_layout"/>
 	</dialog>
+
+	<wizard label="Probabilidad acumulada F de Fisher" >
+		<insert snippet="probabilities_continous_wizard"/>
+	</wizard>	
 </document>

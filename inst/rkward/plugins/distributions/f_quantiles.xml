@@ -5,12 +5,23 @@
 	<code file="f_quantiles.js" />
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="df1" label="Grados de libertad del numerador" default_precision="2" type="real" min="0" initial="1" />
-			<spinbox id="df2" label="Grados de libertad del denominador" default_precision="2" type="real" min="0" initial="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="df1" label="Grados de libertad del numerador" default_precision="2" type="real" min="0" initial="1" />
+				<spinbox id="df2" label="Grados de libertad del denominador" default_precision="2" type="real" min="0" initial="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir el número de grados de libertad del numerador y del denominador de la distribución F de Fisher. 	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	<dialog label="Cuantiles F de Fisher" >
 		<insert snippet="quantiles_layout"/>
 	</dialog>
+
+	<wizard label="Cuantiles F de Fisher" >
+		<insert snippet="quantiles_wizard"/>
+	</wizard>	
 </document>

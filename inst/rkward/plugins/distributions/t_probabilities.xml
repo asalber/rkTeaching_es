@@ -5,11 +5,22 @@
 	<code file="t_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="df" min="0" label="Grados de libertad" default_precision="2" type="real" initial="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="df" min="0" label="Grados de libertad" default_precision="2" type="real" initial="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir los grados de libertad de la distribución T de student.	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	<dialog label="Probabilidad acumulada T de student" >
-		<insert snippet="probabilities_layout"/>
+		<insert snippet="probabilities_continous_layout"/>
 	</dialog>
+
+	<wizard label="Probabilidad acumulada T de student" >
+		<insert snippet="probabilities_continous_wizard"/>
+	</wizard>	
 </document>

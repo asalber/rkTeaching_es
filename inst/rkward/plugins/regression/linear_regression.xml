@@ -19,13 +19,42 @@
 	</dialog>
 	
 	<wizard label="Ajuste de Modelo Lineal">
-		<page id="pag_vars">
-			<text id="txt_var">
-				Seleccionar la variable numérica dependiente y una o más variables numéricas independientes.
-				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
-				Si se desea guardar el modelo, marcar la opción correspondiente y darle un nombre al modelo.  
+		<page id="page_y">
+			<text>
+				Selecionar la variable dependiente.
 			</text>
-			<copy id="row_vars" />
+			<varselector id="selector2" label="Seleccionar variable"/>
+			<varslot id="y" label="Variable dependiente" source="selector2" type="numeric" required="true" />
+		</page>
+		<page id="page_x">
+			<text>
+				Selecionar una o más variables independientes.
+			</text>
+			<copy id="selector" />
+			<copy id="x" />
+		</page>	
+		<page id="page_filter">
+			<text>
+				Activar la casilla si se desea un filtrado previo de los datos e introducir la condición de selección.
+
+				Puede usarse cualquier operador relacional o lógico de R.
+
+				Ejemplos: sexo=="mujer", edad>20, sexo=="mujer" | edad>0.
+
+			</text>
+			<copy id="filter_frame" />
+		</page>	
+		<page id="page_intercept">
+			<text>
+				Activar la casilla si se desea que el modelo tenga término independiente.
+			</text>
+			<copy id="intercept" />
+		</page>	
+		<page id="page_save">
+			<text id="txt_var">
+				Si se desea guardar el modelo, activar la casilla e introducir un nombre para el modelo.  
+			</text>
+			<copy id="save" />
 		</page>
 	</wizard>
 	

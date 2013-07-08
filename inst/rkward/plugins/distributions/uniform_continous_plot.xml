@@ -12,15 +12,24 @@
 		<snippet id="range_options">
 		</snippet>
 		<snippet id="dist_options">
-			<frame label="Parámetros">
+			<frame id="parameters" label="Parámetros">
 				<spinbox default_precision="2" type="real" id="min" initial="0" label="Mínimo" />
 				<spinbox default_precision="2" type="real" id="max" initial="1" label="Máximo"/>
 			</frame>
 		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir el mínimo y el máximo de los valores de la distribución Uniforme continua.	
+			</text>
+		</snippet>
 		<include file="plot_dist_common_snippets.xml"/>
 	</snippets>
 	
-	<dialog label="Gráfico de probabilidad Uniforme" >
-		<insert snippet="dialog_layout"/>
+	<dialog label="Gráfico de probabilidad Uniforme continua" >
+		<insert snippet="continous_layout"/>
 	</dialog>
+
+	<wizard label="Gráfico de probabilidad Uniforme continua">
+		<insert snippet="continous_wizard"/>
+	</wizard>
 </document>

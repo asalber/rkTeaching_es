@@ -11,19 +11,22 @@
 	
 
 	<snippet id="discrete_options">
-		<radio id="function" label="Tipo de función" >
-			<option value="d" label="Función de probabilidad" />
-			<option value="p" label="Función de distribución" />
-		</radio>
+		<row id="discrete_function">
+			<radio id="function" label="Tipo de función" >
+				<option value="d" label="Función de probabilidad" />
+				<option value="p" label="Función de distribución" />
+			</radio>
+		</row>
 	</snippet>
 	
 	<snippet id="continous_options">
-		<radio id="function" label="Tipo de función" >
-			<option value="d" label="Función de densidad" />
-			<option value="p" label="Función de distribución" />
-		</radio>
+		<row id="continous_function">
+			<radio id="function" label="Tipo de función" >
+				<option value="d" label="Función de densidad" />
+				<option value="p" label="Función de distribución" />
+			</radio>
+		</row>
 	</snippet>
-	
 	
 	<snippet id="discrete_layout">
 		<row>
@@ -40,7 +43,7 @@
 		</row>
 	</snippet>
 	
-	<snippet id="dialog_layout">
+	<snippet id="continous_layout">
 		<row>
 			<column>
 				<insert snippet="dist_options"/>
@@ -54,6 +57,54 @@
 			</column>
 		</row>
 	</snippet>
+	
+	<!--  for the wizards -->
+	
+	<snippet id="discrete_wizard">
+		<page id="page_parameters">
+			<insert snippet="parameters_wizard"/>
+			<copy id="parameters"/>
+		</page>	
+	
+		<page id="page_function">
+			<text>
+				Seleccionar el tipo de función a dibujar. 
+			</text>
+			<copy id="discrete_function"/>
+		</page>	
+		<page id="opciones_graficas">
+			<text>
+				Seleccionar las opciones gráficas.
+			</text>
+			<copy id="plotoptions"/>
+		</page>	
+	</snippet>
+	
+	<snippet id="continous_wizard">
+		<page id="page_parameters">
+			<insert snippet="parameters_wizard"/>
+			<copy id="parameters"/>
+		</page>		
+		<page id="page_function">
+			<text>
+				Seleccionar el tipo de función a dibujar. 
+			</text>
+			<copy id="continous_function"/>
+		</page>	
+		<page id="page_range">
+			<text>
+				Seleccionar el mínimo y el máximo del rango de valores a representar en el eje x.  
+			</text>
+			<copy id="range"/>
+		</page>	
+		<page id="opciones_graficas">
+			<text>
+				Seleccionar las opciones gráficas.
+			</text>
+			<copy id="plotoptions"/>
+		</page>	
+	</snippet>
+	
 	
 	<!-- for the .rkh pages -->
 	<snippet id="common_options_help">

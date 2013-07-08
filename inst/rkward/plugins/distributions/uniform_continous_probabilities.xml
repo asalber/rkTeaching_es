@@ -5,12 +5,23 @@
 	<code file="uniform_continous_probabilities.js" />
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="min" label="Límite inferior" default_precision="2" type="real" initial="0" />
-			<spinbox id="max" label="Límite superior" default_precision="2" type="real" initial="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="min" label="Límite inferior" default_precision="2" type="real" initial="0" />
+				<spinbox id="max" label="Límite superior" default_precision="2" type="real" initial="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir el mínimo y el máximo de los valores de la distribución Uniforme continua.	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	<dialog label="Probabilidad acumulada Uniforme continua" >
-		<insert snippet="probabilities_layout"/>
+		<insert snippet="probabilities_continous_layout"/>
 	</dialog>
+
+	<wizard label="Probabilidad acumulada Uniforme continua" >
+		<insert snippet="probabilities_continous_wizard"/>
+	</wizard>	
 </document>

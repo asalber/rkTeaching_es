@@ -32,7 +32,7 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables"/>
 					<column>
-						<varslot id="data" label="Variable(s)" source="selector" multi="true" classes="numeric integer" required="true" />
+						<varslot id="variables" label="Variable(s)" source="selector" multi="true" classes="numeric integer" required="true" />
 						<checkbox id="grouped" label="Estadísticas por grupos" value_unchecked="0" checked="false" />
 						<varslot id="groups" label="Variable de agrupación:" source="selector" required="true"/>
 						<checkbox id="narm" label="Omitir valores desconocidos" value_unchecked="0" value="1" checked="true"/>

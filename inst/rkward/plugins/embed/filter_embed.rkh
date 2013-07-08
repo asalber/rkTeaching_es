@@ -1,0 +1,14 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<summary>
+		Dialog for filters.
+	</summary>
+	<usage>
+		
+	</usage>
+	<settings>
+	</settings>
+	<related>
+	</related>
+</document>

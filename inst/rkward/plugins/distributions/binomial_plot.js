@@ -6,10 +6,10 @@ var options;
 include ('plot_dist_common.js');
 
 function getParameters () {
-	options['size'] = getValue ("size");
-	options['prob'] = getValue ("prob");
+	options['size'] = getString ("size");
+	options['prob'] = getString ("prob");
 	options['min'] = 0;
-	options['max'] = getValue ("size");
+	options['max'] = getString ("size");
 	options['n'] = options['max'] - options['min'] + 1;
 
 

@@ -13,9 +13,14 @@
 		<snippet id="range_options">
 		</snippet>
 		<snippet id="dist_options">
-			<frame label="Parámetros">
+			<frame id="parameters" label="Parámetros">
 				<spinbox default_precision="2" type="real" id="lambda" min="0" initial="1" label="Media" />
 			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir la media de la distribución de Poisson.	
+			</text>
 		</snippet>
 		<include file="plot_dist_common_snippets.xml"/>
 	</snippets>
@@ -23,4 +28,8 @@
 	<dialog label="Gráfico de probabilidad Poisson" >
 		<insert snippet="discrete_layout"/>
 	</dialog>
+	
+	<wizard label="Gráfico de probabilidad Poisson">
+		<insert snippet="discrete_wizard"/>
+	</wizard>
 </document>

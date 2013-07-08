@@ -1,11 +1,10 @@
-descriptiveStats <- function (data, groups, statistics = c("min", "max", "mean", "median", "Mode", "variance", "unvariance", "stdev", "sd", "cv", "ran", "iqrange", "skewness", "kurtosis", "quantiles"),
+descriptiveStats <- function (data, variable, groups, statistics = c("min", "max", "mean", "median", "Mode", "variance", "unvariance", "stdev", "sd", "cv", "ran", "iqrange", "skewness", "kurtosis", "quantiles"),
 		quantiles = c(0, 0.25, 0.5, 0.75, 1), na.rm=TRUE) 
 {
 	if (!require(abind)) stop("abind package missing")
 	if (!require(e1071)) stop("e1071 package missing")
-	data <- as.data.frame(data)
+	stopifnot(is.dataframe(data))
 	if (!missing(groups)) groups <- as.factor(groups)
-	variables <- names(data)
 	statistics <- match.arg(statistics, c("min", "max", "mean", "median", "Mode", "variance", "unvariance", "stdev", "sd", "cv", "ran", "iqrange", "skewness", "kurtosis", "quantiles"), several.ok = TRUE)
 	ngroups <- if (missing(groups)) 1 else length(grps <- levels(groups))
 	quantiles <- if ("quantiles" %in% statistics) quantiles else NULL
@@ -14,38 +13,9 @@ descriptiveStats <- function (data, groups, statistics = c("min", "max", "mean",
 	stats <- c(c("min", "max", "mean", "median", "Mode", "variance", "unbiased.variance", "sd", "unbiased.sd", "coef.variation", "range", "iq.range", "skewness", "kurtosis")
 					[c("min", "max", "mean", "median", "Mode", "variance", "unvariance", "stdev", "sd", "cv", "ran", "iqrange", "skewness", "kurtosis") %in% statistics], quants)
 	nstats <- length(stats)
-	nvars <- length(variables)
 	result <- list()
-	if ((ngroups == 1) && (nvars == 1) && (length(statistics) == 1)) {
-		table <- matrix(0, nvars, nstats)
-		if (statistics == "quantiles") {
-			.q <- quantile(data[, variables], probs = quantiles, na.rm = na.rm)
-			table[1,] <- .q
-			colnames(table) <- names(.q)
-		}
-		else {
-			table[1,] <- do.call(statistics, list(data[, variables], na.rm = na.rm))
-			colnames(table) <- statistics
-		}
-		rownames(table) <- ""
-		NAs <- sum(is.na(data[, variables]))
-		n <- nrow(data) - NAs
-		result$type <- 1
-	}
-	else if ((ngroups > 1) && (nvars == 1) && (length(statistics) == 1)) {
-		if (statistics == "quantiles") {
-			table <- matrix(unlist(tapply(data[, variables], groups, quantile, probs = quantiles, na.rm = na.rm)), ngroups, nquants, byrow = TRUE)
-			rownames(table) <- grps
-			colnames(table) <- quants
-		}
-		else table <- tapply(data[, variables], groups, statistics, na.rm = na.rm)
-		NAs <- tapply(data[, variables], groups, function(x) sum(is.na(x)))
-		n <- table(groups) - NAs
-		result$type <- 2
-	}
-	else if ((ngroups == 1)) {
-		table <- matrix(0, nvars, nstats)
-		rownames(table) <- if (length(variables) > 1) variables	else ""
+	if ((ngroups == 1)) {
+		table <- matrix(0, 1, nstats)
 		colnames(table) <- stats
 		if ("min" %in% stats) 
 			table[, "min"] <- min(data[, variables], na.rm = na.rm)
@@ -79,7 +49,6 @@ descriptiveStats <- function (data, groups, statistics = c("min", "max", "mean",
 			table[, quants] <- t(apply(data[, variables, drop = FALSE], 2, quantile, probs = quantiles, na.rm = na.rm))
 		NAs <- colSums(is.na(data[, variables, drop = FALSE]))
 		n <- nrow(data) - NAs
-		result$type <- 3
 	}
 	else {
 		table <- array(0, c(ngroups, nstats, nvars), dimnames = list(Group = grps, Statistic = stats, Variable = variables))
@@ -146,32 +115,7 @@ print.descriptiveStats <- function (x, ...)
 	table <- x$table
 	n <- x$n
 	statistics <- x$statistics
-	switch(x$type, "1" = {
-				if (!is.null(NAs)) {
-					table <- cbind(table, n, NAs)
-					colnames(table)[length(table) - 1:0] <- c("n", "NA")
-				}
-				print(table)
-			}, "2" = {
-				if (statistics == "quantiles") {
-					table <- cbind(table, n)
-					colnames(table)[ncol(table)] <- "n"
-					if (!is.null(NAs)) {
-						table <- cbind(table, NAs)
-						colnames(table)[ncol(table)] <- "NA"
-					}
-				}
-				else {
-					table <- rbind(table, n)
-					rownames(table)[c(1, nrow(table))] <- c(statistics, "n")
-					if (!is.null(NAs)) {
-						table <- rbind(table, NAs)
-						rownames(table)[nrow(table)] <- "NA"
-					}
-					table <- t(table)
-				}
-				print(table)
-			}, "3" = {
+	switch(x$type, "3" = {
 				table <- cbind(table, n)
 				colnames(table)[ncol(table)] <- "n"
 				if (!is.null(NAs)) {

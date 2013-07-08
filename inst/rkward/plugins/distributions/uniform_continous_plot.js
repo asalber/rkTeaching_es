@@ -6,8 +6,8 @@ var options;
 include ('plot_dist_common.js');
 
 function getParameters () {
-	options['min'] = getValue ("min");
-	options['max'] = getValue ("max");
+	options['min'] = getString("min");
+	options['max'] = getString("max");
 	getContRangeParameters ();
 
 	if (options['is_density']) {

@@ -123,16 +123,18 @@ function doPrintout (full) {
 	}
 
 	echo ('try ({\n');
-	if (plotpre.length > 0) printIndented ("\t", plotpre);
-	if (names_mode == "rexp") {
-		echo ("\tnames(x) <- " + getValue ("names_exp") + "\n");
-	} else if (names_mode == "custom") {
-		echo ("\tnames(x) <- c (\"" + str_replace (";", "\", \"", trim (getValue ("names_custom"))) + "\")\n");
-	}
 	
 	
-	echo ('pie(table(interaction(' + vars + '))' + options + ')\n');
-	if (plotpost.length > 0) printIndented ("\t", plotpost);
+//	if (plotpre.length > 0) printIndented ("\t", plotpre);
+//	if (names_mode == "rexp") {
+//		echo ("\tnames(x) <- " + getValue ("names_exp") + "\n");
+//	} else if (names_mode == "custom") {
+//		echo ("\tnames(x) <- c (\"" + str_replace (";", "\", \"", trim (getValue ("names_custom"))) + "\")\n");
+//	}
+//	
+//	
+//	echo ('pie(table(interaction(' + vars + '))' + options + ')\n');
+//	if (plotpost.length > 0) printIndented ("\t", plotpost);
 	echo ('})\n');
 	if (full) {
 		echo ('rk.graph.off ()\n');

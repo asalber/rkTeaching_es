@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var data, variables;
+var vars;
 
 function preprocess(){
 	// add requirements etc. here
@@ -14,39 +14,43 @@ function getName(x){
 
 function calculate () {
 	var narm = "na.rm=FALSE";
-	if (getString ("narm")) narm = "na.rm=TRUE";
-	var v = trim(getString("variables"));
-	data = v.split('[[')[0];
-	variables = getList("variables.shortname").join(', ');
-	var statistics = getString("min") + getString("max") + getString("mean") + getString("median") + getString("mode") + getString("variance") + getString("unvariance") + getString("stdev") + getString("sd") + getString("cv") + getString("range") + getString("iqrange") + getString("skewness") + getString("kurtosis");
-	if (getBoolean("quartile") || getString("quantiles")!=''){
+	if (getValue ("narm")) narm = "na.rm=TRUE";
+	var v = trim (getValue ("data"));
+	var data = v.split('[[')[0] + '[,c(';
+	vars = v.split ("\n");
+	for (i=0; i<vars.length; i++){
+		data += '"' + getName(vars[i]) + '",';
+	}
+	data = data.slice(0, -1) + ')]';
+	var statistics = getValue("min") + getValue("max") + getValue("mean") + getValue("median") + getValue("mode") + getValue("variance") + getValue("unvariance") + getValue("stdev") + getValue("sd") + getValue("cv") + getValue("range") + getValue("iqrange") + getValue("skewness") + getValue("kurtosis");
+	if (getValue("quartile") || getValue("quantiles")!=''){
 		statistics += "'quantiles',";
 	}
 	statistics = 'c(' + statistics.slice(0, -1) + ')';
 	var quantiles = 'c(';
-	if (getBoolean("quartile")){
+	if (getValue("quartile")){
 		quantiles += '0.25, 0.5, 0.75 ';
-		if (getString("quantiles")!= '')
+		if (getValue("quantiles")!= '')
 			quantiles += ', ';
 	}
-	quantiles += getString("quantiles") + ')';
+	quantiles += getValue("quantiles") + ')';
 	var groups = '';
-	if (getBoolean("grouped")){
-		groups = ', groups=' + getString("groups");
+	if (getValue("grouped")){
+		groups = ', groups=' + getValue("groups");
 	}
-	echo ('results <- descriptiveStats(' + data + '[,c(' + variables + ')]' + groups + ', statistics=' + statistics + ', quantiles= ' + quantiles + ')\n');
+	echo ('results <- descriptiveStats(' + data + groups + ', statistics=' + statistics + ', quantiles= ' + quantiles + ')\n');
 	
 }
 
 function printout () {
 	echo ('rk.header ("Estad&iacute;stica Descriptiva"');
 	//echo (', parameters=list("Variables" =' + "'" + vars.join(', ') + "'");
-	echo (', parameters=list("Variables" = rk.get.description(' + getList("variables") + ')');
-	if (getBoolean("grouped")){
-		echo (', "Seg&uacute;n" = rk.get.description(' + getString("groups") +  ')');
+	echo (', parameters=list("Variables" = rk.get.description(' + getValue("data").split("\n") + ', paste.sep=", ")');
+	if (getValue("grouped")){
+		echo (', "Seg&uacute;n" = rk.get.description(' + getValue("groups") +  ')');
 	}
 	echo (', "Eliminar valores desconocidos" = ');
-	if (getString ("narm")) echo ('"Si"');
+	if (getValue ("narm")) echo ('"Si"');
 	else echo ('"No"');
 	echo ('))\n');
 	//echo ('rk.results(list("Variables" = rownames(results$table)))\n');

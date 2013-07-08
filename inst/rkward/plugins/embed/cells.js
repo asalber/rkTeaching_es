@@ -8,16 +8,16 @@ function makeCodes () {
 	calcoptions = ", breaks=";
 	headeroptions = ', "M&eacute;todo de determinaci&oacute;n de los intervalos " = "';
 	var variable = getString("variable");
-	var breaks = getValue("breaksFunction");
+	var breaks = getString("breaksFunction");
 	if (breaks == "num") {
-		calcoptions += getValue ("breaks_num");
-		headeroptions += 'Aproximadamente ' + getValue ("breaks_num") + ' intervalos"';
+		calcoptions += getString ("breaks_num");
+		headeroptions += 'Aproximadamente ' + getString ("breaks_num") + ' intervalos"';
 	} else if (breaks == "int") {
 		calcoptions += "seq (floor (min (" + variable + ", na.rm=TRUE))-0.5, ceiling (max (" + variable + ", na.rm=TRUE))+0.5)";
 		headeroptions += 'Enteros"';
 	} else if (breaks == "vec") {
-		calcoptions += 'c(' +  getValue("breaks_vec") + ')';
-		headeroptions += 'Definidos por el usuario: ' + getValue ("breaks_vec") + '"';
+		calcoptions += 'c(' +  getString("breaks_vec") + ')';
+		headeroptions += 'Definidos por el usuario: ' + getString ("breaks_vec") + '"';
 	} else {
 		calcoptions += "\"" + breaks + "\"";
 		headeroptions += breaks + '"';

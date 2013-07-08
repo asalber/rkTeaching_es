@@ -11,13 +11,24 @@
 	
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="size" label="Nº de repeticiones" default_precision="2" type="integer" initial="1" min="1" />
-			<spinbox id="prob" label="Probabilidad de éxito" default_precision="2" type="real" initial="0.5" min="0" max="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="size" label="Nº de repeticiones" default_precision="2" type="integer" initial="1" min="1" />
+				<spinbox id="prob" label="Probabilidad de éxito" default_precision="2" type="real" initial="0.5" min="0" max="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir el número de repeticiones de la binomial (n) y la probabilidad de éxito en cada repetición (p).	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	
 	<dialog label="Probabilidad Binomial" >
-		<insert snippet="discrete_layout"/>
+		<insert snippet="probabilities_discrete_layout"/>
 	</dialog>
+	
+	<wizard label="Probabilidad Binomial" >
+		<insert snippet="probabilities_discrete_wizard"/>
+	</wizard>	
 </document>

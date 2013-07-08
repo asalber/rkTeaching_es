@@ -10,13 +10,25 @@ function preprocess(){
 
 function calculate(){
 	variable = getString("variable");
-	echo(getString("filter_embed.code.calculate"));
-	echo('result <- frequencyTable (' + variable + ')\n');
+	if (getBoolean("filter_frame.checked")){
+		var data = variable.split('[[')[0];
+		var variableName = getString("variable.shortname");
+		var filter = getString("filter");
+		echo ('data <- subset(' + data + ', subset=' + filter + ')\n');
+		echo ('result <- frequencyTable (data[["' + variableName + '"]])\n');
+	}
+	else {
+		echo('result <- frequencyTable (' + variable + ')\n');
+	}
 }
 
 function printout(){
 	// printout the results
-	echo('rk.header("Tabla de frecuencias", parameters=list("Variable" = rk.get.description (' + variable + ')' + getString("filter_embed.code.printout") + '))\n');
+	echo('rk.header("Tabla de frecuencias", parameters=list("Variable" = rk.get.description (' + variable + ')');
+	if (getBoolean("filter_frame.checked")){
+		echo(", 'Filtro' = '" + getString("filter") + "'");
+	}
+	echo ('))\n');
 	echo('if (is.numeric(' + variable + '))\n');
 	echo('\t rk.results(setNames(list(rownames(result),result[,1],result[,2],result[,3],result[,4]),c(rk.get.description (' + variable + '), "Frec.Abs.","Frec.Rel.","Frec.Abs.Acum.","Frec.Rel.Acum.")))\n');
 	echo('else\n');

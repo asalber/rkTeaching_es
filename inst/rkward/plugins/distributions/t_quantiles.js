@@ -4,16 +4,16 @@
 var p;
 
 function calculate () {
-	p = "c (" + getValue ("p").replace (/[, ]+/g, ", ") + ")";
+	p = "c (" + getString("p").replace (/[, ]+/g, ", ") + ")";
 
-	echo ('result <- (qt(p = ' + p + ', df = ' + getValue ("df") + ', ' + getValue ("tail") + '))\n');
+	echo ('result <- (qt(p = ' + p + ', df = ' + getString("df") + ', ' + getString("tail") + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Cuantiles T de student", list ("Grados de libertad" = "' + getValue ("df") + '", "Cola de acumulaci&oacute;n" = ');
-	if (getValue ("tail")=="lower.tail=TRUE" )
-		echo('"Izquierda"));\n');
+	echo ('rk.header ("Cuantiles T de student", list ("Grados de libertad" = "' + getString("df") + '", "Cola de acumulaci&oacute;n" = ');
+	if (getString("tail")=="lower.tail=TRUE" )
+		echo('"Izquierda (&le;)"));\n');
 	else
-		echo('"Derecha"));\n');
+		echo('"Derecha (&gt;)"));\n');
 	echo ('rk.results (list("Probabilidades acumuladas" = ' + p + ', "Cuantiles" = result))\n');
 }

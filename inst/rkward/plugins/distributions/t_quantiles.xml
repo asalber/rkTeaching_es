@@ -5,11 +5,22 @@
 	<code file="t_quantiles.js" />
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="df" label="Grados de libertad" default_precision="2" type="real" min="0" initial="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="df" label="Grados de libertad" default_precision="2" type="real" min="0" initial="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir el número de grados de libertad de la distribución T de student. 	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	<dialog label="Cuantiles T de student" >
 		<insert snippet="quantiles_layout"/>
 	</dialog>
+
+	<wizard label="Cuantiles T de student" >
+		<insert snippet="quantiles_wizard"/>
+	</wizard>	
 </document>

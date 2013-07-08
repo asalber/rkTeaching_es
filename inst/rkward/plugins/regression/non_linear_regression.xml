@@ -34,19 +34,42 @@
 	</dialog>
 	
 	<wizard label="Ajuste de Modelo No Lineal">
-		<page id="pag_vars">
-			<text id="txt_var">
-				Seleccionar la variable numérica dependiente y la variable numérica independiente.
-				Si se desea hacer un filtrado de datos previo, activar la opción correspondiente e introducir la condición de selección. Por ejemplo sexo=="mujer".
-				Si se desea guardar el modelo, marcar la opción correspondiente	y darle un nombre al modelo.
-			</text>
-			<copy id="row_vars" />
-		</page>
-		<page id="pag_model">
+		<page id="page_y">
 			<text>
-				Seleccionar el tipo de modelo de regresión a construir. 
+				Selecionar la variable dependiente.
+			</text>
+			<varselector id="selector2" label="Seleccionar variable"/>
+			<varslot id="y" label="Variable dependiente" source="selector2" type="numeric" required="true" />
+		</page>
+		<page id="page_x">
+			<text>
+				Selecionar la variable independiente.
+			</text>
+			<copy id="selector" />
+			<copy id="x" />
+		</page>	
+		<page id="page_filter">
+			<text>
+				Activar la casilla si se desea un filtrado previo de los datos e introducir la condición de selección.
+
+				Puede usarse cualquier operador relacional o lógico de R.
+
+				Ejemplos: sexo=="mujer", edad>20, sexo=="mujer" | edad>0.
+
+			</text>
+			<copy id="filter_frame" />
+		</page>	
+		<page id="page_model">
+			<text>
+				Seleccionar el tipo de modelo.
 			</text>
 			<copy id="model" />
+		</page>	
+		<page id="page_save">
+			<text id="txt_var">
+				Si se desea guardar el modelo, activar la casilla e introducir un nombre para el modelo.  
+			</text>
+			<copy id="save" />
 		</page>
 	</wizard>
 	

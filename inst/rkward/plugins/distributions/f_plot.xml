@@ -10,21 +10,30 @@
 	
 	<snippets>
 		<snippet id="range_options">
-			<frame label="Rango" >
+			<frame id="range" label="Rango" >
 				<spinbox default_precision="2" type="real" id="min" initial="0" label="Mínimo" />
 				<spinbox default_precision="2" type="real" id="max" initial="10" label="Máximo" />
 			</frame>
 		</snippet>
 		<snippet id="dist_options">
-			<frame label="Parámetros">
+			<frame id="parameters" label="Parámetros">
 				<spinbox default_precision="2" type="integer" id="df1" initial="1" label="Grados de libertad del numerador" />
 				<spinbox default_precision="2" type="integer" id="df2" min="0.01" initial="1" label="Grados de libertad del denominador"/>
 			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir los grados de libertad del numerador y del denominador de la distribución F de Fisher. 	
+			</text>
 		</snippet>
 		<include file="plot_dist_common_snippets.xml"/>
 	</snippets>
 	
 	<dialog label="Gráfico de probabilidad F de Fisher" >
-		<insert snippet="dialog_layout"/>
+		<insert snippet="continous_layout"/>
 	</dialog>
+
+	<wizard label="Gráfico de probabilidad F de Fisher">
+		<insert snippet="continous_wizard"/>
+	</wizard>
 </document>

@@ -3,23 +3,32 @@
 <document>
 	<code file="FrequencyTabulation.js" />
 	<help file="FrequencyTabulation.rkh" />
+	
+	<logic>
+		<connect client="filter_embed.variable" governor="variable.available" />
+	</logic>
 
 	<dialog label="Distribución de frecuencias">
 		<tabbook id="tabs">
 			<tab label="Variables" id="tab_vars">
 				<row id="row_vars">
 					<varselector id="selector" />
-					<varslot id="variable" label="Variable a tabular" source="selector" required="true" />
+					<column>
+						<varslot id="variable" label="Variable a tabular" source="selector" required="true" />
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+					</column>
 				</row>
 			</tab>
 		</tabbook>
 	</dialog>
 	<wizard label="Distribución de frecuencias">
-		<page id="pag_vars">
+		<page id="page_vars">
 			<text id="txt_var">
 				Seleccionar la variable a tabular. 
 			</text>
-			<copy id="row_vars" />
+			<copy id="selector" />
+			<copy id="variable" />
 		</page>
+		<embed id="filter_embed" component="rkTeaching::filter_embed"/>		
 	</wizard>
 </document>

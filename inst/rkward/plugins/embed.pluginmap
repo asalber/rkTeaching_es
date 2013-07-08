@@ -1,7 +1,8 @@
 <!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkpluginmap>
-<document base_prefix="embedded/" namespace="rkTeaching">
+<document base_prefix="embed/" namespace="rkTeaching">
 	<components>
+		<component type="standard" id="filter_embed" file="filter_embed.xml" label="Filtro" />
 		<component type="standard" id="cells" file="cells.xml" label="Clases" />
 	</components>
 </document>

@@ -16,19 +16,19 @@ function preview () {
 // get the range parameters for the continuous distributions (it's all the same for these)
 function getContRangeParameters () {
 	options['n'] = 100;
-	options['min'] = getValue ("min");
-	options['max'] = getValue ("max");
+	options['min'] = getString("min");
+	options['max'] = getString("max");
 }
 
 // get the range parameters for the discontinuous distributions (it's all the same for these)
 function getDiscontRangeParameters () {
-	options['min'] = getValue ("min");
-	options['max'] = getValue ("max");
+	options['min'] = getString("min");
+	options['max'] = getString("max");
 	options['n'] = options['max'] - options['min'] + 1;
 }
 
 function doPrintout (full) {
-	var fun = getValue ("function");
+	var fun = getString("function");
 	var is_density = "";
 	var label = "";
 	if (fun == "d") {
@@ -52,13 +52,13 @@ function doPrintout (full) {
 	}
 
 	echo ('try ({\n');
-	printIndentedUnlessEmpty ("\t", getValue ("plotoptions.code.preprocess"), '', '\n');
+	printIndentedUnlessEmpty ("\t", getString("plotoptions.code.preprocess"), '', '\n');
 
 	echo ('	curve (');
 	doFunCall ();
-	echo (', from=' + options['min'] + ', to=' + options['max'] + ', n=' + options['n'] + getValue ("plotoptions.code.printout") + ')\n');
+	echo (', from=' + options['min'] + ', to=' + options['max'] + ', n=' + options['n'] + getString("plotoptions.code.printout") + ')\n');
 
-	printIndentedUnlessEmpty ("\t", getValue ("plotoptions.code.calculate"), '\n', '');
+	printIndentedUnlessEmpty ("\t", getString("plotoptions.code.calculate"), '\n', '');
 	echo ('})\n');
 	if (full) {
 		echo ('rk.graph.off ()\n');

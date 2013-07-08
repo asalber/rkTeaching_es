@@ -3,19 +3,12 @@
 	<code file="correlation.js"/>
 	<help file="correlation.rkh"/>
 
-	<logic>
-		<convert id="polyser" sources="method.string" mode="equals" standard="polyserial" />
-		<convert id="polycho" sources="method.string" mode="equals" standard="polychoric" />
-		<convert id="polycor" sources="polyser;polycho" mode="or" />
-		<connect governor="polycor.not" client="to_numeric.enabled" />
-	</logic>
-
 	<dialog label="Matriz de correlación">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
 					<varselector id="selector"/>
-					<varslot id="x" label="Variable(s):" type="numeric" min_vars="2" multi="true" source="selector" required="true" num_dimensions="1"/>
+					<varslot id="variables" label="Variable(s):" type="numeric" min_vars="2" multi="true" source="selector" required="true" num_dimensions="1"/>
 				</row>
 			</tab>
 			<tab id="tab_Options" label="Opciones de correlación" >
@@ -27,26 +20,37 @@
 				<checkbox id="p" label="Calcular p-valores" value="true" checked="true" />
 				<stretch />
 				<radio id="missing" label="Excluir casos con valores omitidos">
-					<option label="Por pares" value="pairwise" checked="true" />
-					<option label="En todas las variables" value="complete" />
+					<option label="Por pares" value="pairwise.complete.obs" checked="true" />
+					<option label="En todas las variables" value="complete.obs" />
 				</radio>
 			</tab>
 		</tabbook>
 	</dialog>
 	
 	<wizard label="Matriz de correlación">
-		<page id="pag_vars">
-			<text id="txt_var">
+		<page id="page_variabless">
+			<text>
 				Seleccionar la variables numéricas de las que se quiere obtener la correlación.
 			</text>
 			<copy id="row_vars" />
 		</page>
-		<page id="pag_options">
-			<text id="txt_options">
+		<page id="page_method">
+			<text>
 				Seleccionar el tipo de correlación a calcular. 
-				Si se desean los p-valores de los estadísticos de correlación, maracar la opción correspondiente.
 			</text>
-			<copy id="row_vars" />
+			<copy id="method" />
+		</page>
+		<page id="page_p">
+			<text>
+				Activar la casilla si se desea el p-valor.
+			</text>
+			<copy id="p" />
+		</page>
+		<page id="page_missing">
+			<text>
+				Seleccionar la opción de tratamiento de los casos con valores perdidos. 
+			</text>
+			<copy id="missing" />
 		</page>
 	</wizard>
 	

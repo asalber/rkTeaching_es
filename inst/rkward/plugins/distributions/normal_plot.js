@@ -6,8 +6,8 @@ var options;
 include ('plot_dist_common.js');
 
 function getParameters () {
-	options['mean'] = getValue ("mean");
-	options['sd'] = getValue ("sd");
+	options['mean'] = getString("mean");
+	options['sd'] = getString("sd");
 	getContRangeParameters ();
 
 	if (options['is_density']) {

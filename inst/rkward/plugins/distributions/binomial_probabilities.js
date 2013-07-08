@@ -4,9 +4,9 @@
 var q, fun;
 
 function calculate () {
-	q = "c (" + getValue ("q").replace (/[, ]+/g, ", ") + ")";
-	fun = getValue("function");
-	echo ('result <- ' + fun + 'binom(' + q + ', size = ' + getValue ("size") + ', prob = ' + getValue ("prob"));
+	q = "c (" + getString ("q").replace (/[, ]+/g, ", ") + ")";
+	fun = getString("function");
+	echo ('result <- ' + fun + 'binom(' + q + ', size = ' + getString("size") + ', prob = ' + getString("prob"));
 	if (fun == 'p'){
 		echo(', ' + getValue ("tail"));
 	}
@@ -19,12 +19,12 @@ function printout () {
 	if (fun == 'p') {
 		title += ' acumuladas';
 		label += ' , "Cola de acumulaci&oacute;n" = ';
-		if (getValue ("tail")=="lower.tail=TRUE" )
-			label += '"Izquierda"';
+		if (getString ("tail")=="lower.tail=TRUE" )
+			label += '"Izquierda (&le;)"';
 		else
-			label += '"Derecha"';
+			label += '"Derecha (&gt;)"';
 	}
-	echo ('rk.header ("' + title + ' Binomial", list("N&uacute;mero de repeticiones" = "' + getValue ("size") + '", "Probabilidad de &eacute;xito" = "' + getValue ("prob") + '"' + label + '))\n');
+	echo ('rk.header ("' + title + ' Binomial", list("N&uacute;mero de repeticiones" = "' + getString ("size") + '", "Probabilidad de &eacute;xito" = "' + getString ("prob") + '"' + label + '))\n');
 	echo ('rk.results (list("Valores" = ' + q + ', "' + title + '" = result))\n');
 }
 

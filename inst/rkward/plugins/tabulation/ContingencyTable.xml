@@ -1,36 +1,28 @@
-<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!-- Author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkplugin>
 <document>
-	<code file="FrequencyTabulationGroupedData.js" />
-	<help file="FrequencyTabulationGroupedData.rkh" />
+	<code file="ContingencyTable.js" />
+	<help file="ContingencyTable.rkh" />
 
-	<logic>
-		<connect client="cells.variable" governor="variable.available" />
-	</logic>
-
-	<dialog label="Distribución de frecuencias">
-		<tabbook>
+	<dialog label="Tabla de contingencia">
+		<tabbook id="tabs">
 			<tab label="Variables" id="tab_vars">
 				<row id="row_vars">
-					<varselector id="selector" label="Seleccionar variable"/>
+					<varselector id="selector" />
 					<column>
-						<varslot id="variable" label="Variable a tabular" source="selector" types="number" required="true" />
+						<varslot id="variables" label="Variables a tabular" source="selector" required="true" />
 						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
 							<input id="filter" label="Condición de selección" />
 						</frame>
 					</column>
 				</row>
 			</tab>
-			<tab label="Clases" id="tab_cells">
-				<embed id="cells" component="rkTeaching::cells"/>
-			</tab>
 		</tabbook>
 	</dialog>
-	
 	<wizard label="Distribución de frecuencias">
 		<page id="page_vars">
 			<text id="txt_var">
-				Seleccionar la variable a tabular. Debe ser una variable numérica. 
+				Seleccionar la variable a tabular. 
 			</text>
 			<copy id="selector" />
 			<copy id="variable" />
@@ -41,6 +33,6 @@
 			</text>
 			<copy id="filter_frame" />
 		</page>
-		<embed id="cells" component="rkTeaching::cells"/>
+		
 	</wizard>
 </document>

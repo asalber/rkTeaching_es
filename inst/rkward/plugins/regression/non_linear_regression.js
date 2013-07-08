@@ -1,76 +1,79 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var equation, modelname, model, typemodel, filter;
-
-function getName(x){
-	return x.split('"')[1];
-}
+var x, y, xname, yname, equation, modelname, model, typemodel, filter;
 
 function calculate () {
-	modelname="regression.model";
-	if (getValue("save","active")){
-		modelname = getValue("save");
-	}
-	var y = getName(getValue("y"));
-	var x = getName(getValue("x")); 
-	var data = getValue("y").split('[[')[0];
+	y = getString("y");
+	yname = getString("y.shortname");
+	x = getString("x"); 
+	xname = getString("x.shortname"); 
+	var data = y.split('[[')[0];
 	equation =  '"';
 	var formula = '';
-	model = getValue("model");
+	model = getString("model");
 	if (model == "linear"){
 		typemodel = "Lineal"
-		formula += y + ' ~ ' + x;
-		equation += y + ' = c0 + c1' + x;
+		formula += yname + ' ~ ' + xname;
+		equation += yname + ' = c0 + c1' + xname;
 	}
 	else if (model == "cuadratic"){
 		typemodel = "Cuadr&aacute;tica"
-		formula += y + ' ~ ' + x + ' + I(' + x + '^2)';
-		equation += y + ' = c0 + c1' + x + ' + c2' + x + '^2';
+		formula += yname + ' ~ ' + xname + ' + I(' + xname + '^2)';
+		equation += yname + ' = c0 + c1' + xname + ' + c2' + xname + '^2';
 	}
 	else if (model == "cubic"){
 		typemodel = "C&uacute;bica"
-		formula += y + ' ~ ' + x +	' + I(' + x + '^2) + I(' + x + '^3)';
-		equation += y + ' = c0 + c1' + x + ' + c2' + x + '^2 + c3' + x + '^3';
+		formula += yname + ' ~ ' + xname +	' + I(' + xname + '^2) + I(' + xname + '^3)';
+		equation += yname + ' = c0 + c1' + xname + ' + c2' + xname + '^2 + c3' + xname + '^3';
 	}
 	else if (model == "potential"){
 		typemodel = "Potencial"
-		formula += 'log(' + y + ') ~ log(' + x + ')';
-		equation += 'log(' + y + ') = c0 + c1log(' + x + ')';
+		formula += 'log(' + yname + ') ~ log(' + xname + ')';
+		equation += 'log(' + yname + ') = c0 + c1log(' + xname + ')';
 	}
 	else if (model == "exponential"){
 		typemodel = "Exponencial"
-		formula += 'log(' + y + ') ~ ' + x;
-		equation += 'log(' + y + ') = c0 + c1' + x;
+		formula += 'log(' + yname + ') ~ ' + xname;
+		equation += 'log(' + yname + ') = c0 + c1' + xname;
 	}
 	else if (model == "logarithmic"){
 		typemodel = "Logar&iacute;tmica"
-		formula += y + ' ~ log(' + x + ')';
-		equation += y + ' = c0 + c1log(' + x + ')';
+		formula += yname + ' ~ log(' + xname + ')';
+		equation += yname + ' = c0 + c1log(' + xname + ')';
 	}
 	else if (model == "inverse"){
 		typemodel = "Inversa"
-		formula += y + ' ~ I(1/' + x + ')';
-		equation += y + ' = c0 + c1/' + x;
+		formula += yname + ' ~ I(1/' + xname + ')';
+		equation += yname + ' = c0 + c1/' + xname;
 	}
 	else if (model == "sigmoid"){
 		typemodel = "Sigmoidal"
-		formula += 'log(' + y + ') ~ I(1/' + x + ')';
-		equation += 'log(' + y + ') = c0 + c1/' + x;
+		formula += 'log(' + yname + ') ~ I(1/' + xname + ')';
+		equation += 'log(' + yname + ') = c0 + c1/' + xname;
 	}
 	model = model.substr(0,1).toUpperCase() + model.substr(1);
 	equation += '"';
 	filter = '';
-	if (getValue("filter_frame.checked")){
+	if (getBoolean("filter_frame.checked")){
 		filter = ', subset=' + getValue("filter");
 	}
-	echo ('assign("' + modelname + '", lm (' + formula + ', data=' + data + filter + '), .GlobalEnv)\n');
-	echo ('results <- summary(' + modelname + ')\n');
+	if (getBoolean("save.active")){
+		modelname = getString("save");
+		echo('assign("' + modelname + '", lm (' + formula + ', data=' + data + filter + '), .GlobalEnv)\n');
+		echo('results <- summary(' + modelname + ')\n');
+	}
+	else{
+		echo('results <- summary(lm (' + formula + ', data=' + data + filter + '))\n');
+	}
 }
 
 function printout () {
-	echo ('rk.header ("Regresi&oacute;n ' + typemodel + '", parameters=list("Variable dependiente" = rk.get.description(' + getValue("y") + "), 'Variable independiente'= rk.get.description(" + getValue("x") + '), "Nombre del modelo" = "' + modelname + '", "Ecuaci&oacute;n del modelo" = ' + equation);
-	if (getValue("filter_frame.checked")){
+	echo ('rk.header ("Regresi&oacute;n ' + typemodel + '", parameters=list("Variable dependiente" = rk.get.description(' + y + "), 'Variable independiente'= rk.get.description(" + x + '), "Ecuaci&oacute;n del modelo" = ' + equation);
+	if (getBoolean("save.active")){
+		echo(', "Nombre del modelo" = "' + modelname + '"');
+	}
+	if (getBoolean("filter_frame.checked")){
 		echo(", 'Filtro' = '" + getValue("filter") + "'");
 	}
 	echo("))\n");

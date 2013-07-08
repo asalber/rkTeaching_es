@@ -1,0 +1,25 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="filter_embed.js" />
+	<help file="filter_embed.rkh" />
+	
+	<logic>
+		<external id="variable"/>
+	</logic>
+	
+	<dialog label="Filtro" >
+		<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+			<input id="filter" label="Condición de selección" />
+		</frame>
+	</dialog>
+
+	<wizard label="Filtro">
+		<page id="page_filter">
+			<text id="txt_var">
+				Activar la casilla siguiente para realizar un filtrado previo de los datos e introducir la condición de selección de los datos. 
+			</text>
+			<copy id="filter_frame" />
+		</page>
+	</wizard>
+</document>

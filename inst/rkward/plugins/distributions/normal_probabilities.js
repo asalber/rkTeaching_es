@@ -4,16 +4,16 @@
 var q;
 
 function calculate () {
-	q = "c (" + getValue ("q").replace (/[, ]+/g, ", ") + ")";
+	q = "c (" + getString("q").replace (/[, ]+/g, ", ") + ")";
 
-	echo ('result <- (pnorm(q = ' + q + ', mean = ' + getValue ("mean") + ', sd = ' + getValue ("sd") + ', ' + getValue ("tail") + '))\n');
+	echo ('result <- (pnorm(q = ' + q + ', mean = ' + getString("mean") + ', sd = ' + getString("sd") + ', ' + getString("tail") + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Probabilidad acumulada Normal", list ("Media" = "' + getValue ("mean") + '", "Desviaci&oacute;n t&iacute;pica" = "' + getValue ("sd") + '", "Cola de acumulaci&oacute;n" = ');
+	echo ('rk.header ("Probabilidad acumulada Normal", list ("Media" = "' + getString("mean") + '", "Desviaci&oacute;n t&iacute;pica" = "' + getString("sd") + '", "Cola de acumulaci&oacute;n" = ');
 	if (getValue ("tail")=="lower.tail=TRUE" )
-		echo('"Izquierda"));\n');
+		echo('"Izquierda (&lt;)"));\n');
 	else
-		echo('"Derecha"));\n');
+		echo('"Derecha (&gt;)"));\n');
 	echo ('rk.results (list("Valores" = ' + q + ', "Probabilidades acumuladas" = result))\n');
 }

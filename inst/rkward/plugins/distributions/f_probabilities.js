@@ -4,16 +4,16 @@
 var q;
 
 function calculate () {
-	q = "c (" + getValue ("q").replace (/[, ]+/g, ", ") + ")";
+	q = "c (" + getString("q").replace (/[, ]+/g, ", ") + ")";
 
-	echo ('result <- (pf(q = ' + q + ', df1 = ' + getValue ("df1") + ', df2 = ' + getValue ("df2") + ', ' + getValue ("tail") + '))\n');
+	echo ('result <- (pf(q = ' + q + ', df1 = ' + getString("df1") + ', df2 = ' + getString("df2") + ', ' + getString("tail") + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Probabilidad acumulada F de Fisher", list ("Grados de libertad del numerador" = "' + getValue ("df1") + '", "Grados de libertad del denominador" = "' + getValue ("df2") + '", "Cola de acumulaci&oacute;n" = ');
+	echo ('rk.header ("Probabilidad acumulada F de Fisher", list ("Grados de libertad del numerador" = "' + getString("df1") + '", "Grados de libertad del denominador" = "' + getString("df2") + '", "Cola de acumulaci&oacute;n" = ');
 	if (getValue ("tail")=="lower.tail=TRUE" )
-		echo('"Izquierda"));\n');
+		echo('"Izquierda (&lt;)"));\n');
 	else
-		echo('"Derecha"));\n');
+		echo('"Derecha (&gt;)"));\n');
 	echo ('rk.results (list("Valores" = ' + q + ', "Probabilidades acumuladas" = result))\n');
 }

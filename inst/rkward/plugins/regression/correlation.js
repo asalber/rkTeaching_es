@@ -1,29 +1,19 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var missing;
-var method;
-var p;
+var variables, variablesnames, method, missing;
 
 function preprocess() {
 }
 
 function calculate () {
-	method = getValue("method");
-	p = getValue ("p");
-	var exclude_whole = "";
-	var vars = trim (getValue ("x"));
-	missing = getValue ("missing");
-	if (missing == "pairwise") {
-		exclude_whole = false;
-			missing = '"pairwise.complete.obs"';
-	} else {
-		exclude_whole = true;
-		missing = '"complete.obs"';
-	}
+	variables = getList("variables");
+	variablesnames = getList("variables.shortname")
+	method = getString("method");
+	missing = getString ("missing");
 
 	echo ('# building data frame\n');
-	echo ('data.list <- rk.list (' + vars.split ("\n").join (", ") + ')\n');
+	echo ('data.list <- rk.list (' + variables.join(",") + ')\n');
 	echo ('# Non-numeric variables will be treated as ordered data and transformed into numeric ranks\n');
 	echo ('transformed.vars <- list()\n');
 	echo ('for (i in names(data.list)) {\n');
@@ -38,13 +28,14 @@ function calculate () {
 	echo ('}\n');
 	echo ('# Finally combine the actual data\n');
 	echo ('data <- as.data.frame (data.list, check.names=FALSE)\n');
+	echo ('colnames(data) <- c("' + variablesnames.join('","') + '")\n');
 	echo ('\n');
 	echo ('# calculate correlation matrix\n');
-	echo ('result <- cor (data, use=' + missing + ', method="' + method + '")\n');
-	if (p) {
+	echo ('result <- cor (data, use="' + missing + '", method="' + method + '")\n');
+	if (getBoolean("p")) {
 		echo ('# calculate matrix of probabilities\n');
 		echo ('result.p <- matrix (nrow = length (data), ncol = length (data), dimnames=list (names (data), names (data)))\n');
-		if (exclude_whole) {
+		if (missing="complete.obs") {
 			echo ('# as we need to do pairwise comparisons for technical reasons,\n');
 			echo ('# we need to exclude incomplete cases first to match the use="complete.obs" parameter in cor()\n');
 			echo ('data <- data[complete.cases (data),]\n');
@@ -62,10 +53,16 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Matriz de Correlaci&oacute;n", parameters=list ("M&eacute;todo" = "' + method + '", "Exclusi&oacute;n de casos con valores omitidos" = ' + missing + '))\n');
+	echo ('rk.header ("Matriz de Correlaci&oacute;n", parameters=list ("Variables" = rk.get.description(' + variables + ', paste.sep=", "), "M&eacute;todo" = "' + method + '"');
+	if (missing="pairwise.complete.obs"){
+		echo(', "Exclusi&oacute;n de casos con valores omitidos" = "Por pares"');
+	} else {
+		echo(', "Exclusi&oacute;n de casos con valores omitidos" = "En todas las variables"');
+	}
+	echo('))\n');
 	echo ('rk.header ("Coeficientes de correlaci&oacute;n", level=3)\n');
-	echo ('rk.results (data.frame (result, check.names=FALSE), titles=c ("Coeficientes", names (data)))\n');
-	if (p) {	
+	echo ('rk.results (data.frame (result, check.names=FALSE), titles=c ("Coeficientes", colnames(data)))\n');
+	if (getBoolean("p")) {	
 		echo ('rk.header ("p-valor y tama&ntilde;o de la muestra", level=3)\n');
 		echo ('rk.results (data.frame (result.p, check.names=FALSE), titles=c ("n \\\\ p", names (data)))\n');
 	}

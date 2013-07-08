@@ -11,12 +11,23 @@
 	
 	<snippets>
 		<snippet id="dist_options">
-			<spinbox id="lambda" label="Media" default_precision="2" type="real" min="0" initial="1" />
+			<frame id="parameters" label="Parámetros">
+				<spinbox id="lambda" label="Media" default_precision="2" type="real" min="0" initial="1" />
+			</frame>
+		</snippet>
+		<snippet id="parameters_wizard">
+			<text>
+				Introducir la media de la distribución de Poisson.	
+			</text>
 		</snippet>
 		<include file="dist_snippets.xml"/>
 	</snippets>
 	
 	<dialog label="Probabilidad Poisson" >
-		<insert snippet="discrete_layout"/>
+		<insert snippet="probabilities_discrete_layout"/>
 	</dialog>
+
+	<wizard label="Probabilidad Poisson" >
+		<insert snippet="probabilities_discrete_wizard"/>
+	</wizard>	
 </document>
