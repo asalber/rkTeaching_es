@@ -31,7 +31,7 @@
 	<dialog label="ANOVA">
 		<tabbook>
 			<tab id="tab_variable" label="Variables" >
-				<row>
+				<row id="variables">
 					<varselector id="selector" label="Seleccionar variables" />
 					<column>
 						<varslot id="dataframe" label="Conjunto de datos" source="selector" classes="data.frame" required="true" />
@@ -42,7 +42,6 @@
 							</radio>
 						<frame>
 							<varslot id="dep" label="Variable dependiente" source="selector" required="true" />
-							<!-- <varslot id="caseid" label="Case/subject identifier" source="selector" />  -->
 						</frame>
 						<frame>
 							<varslot id="within" label="Factores dentro de los individuos" source="selector" multi="true" />
@@ -108,4 +107,43 @@
 			</tab>
 		</tabbook>
 	</dialog>
+	
+	<wizard label="ANOVA">
+		<page id="page_dataframe">
+			<text>
+				Seleccionar el conjunto de datos con el que trabajar.
+
+				Después seleccionar el tipo de diseño, la variable dependiente y los factores independientes o medidas repetidas y la variable de identificación de los individuos.
+			</text>
+			<copy id="variables" />
+		</page>
+		<page id="page_sqtype">
+			<text>
+				Seleccionar el tipo de sumas de cuadrados y activar la casilla correspondiente para mostrar las sumas de cuadrados. 
+			</text>
+			<copy id="sumsqtype" />
+			<copy id="sumsq" />
+			<stretch/>
+		</page>
+		<page id="page_heterocedasticity">
+			<text>
+				Seleccionar el tipo de corrección de la heterocedasticidad (varianzas distintas).
+			</text>
+			<row>
+				<copy id="heterocedasticity" />
+			</row>
+			<stretch/>
+		</page>
+		<page id="page_pairwise">
+			<text>
+				Activar la casilla si para realizar la comparación de medias por pares de Tukey. 
+			</text>
+			<copy id="pairwise" />
+			<text>
+				Activar la casilla para dibujar los intervalos de confianza de la comparación por pares.  
+			</text>
+			<copy id="pairwise_plot" />
+			<stretch/>			
+		</page>
+	</wizard>
 </document>

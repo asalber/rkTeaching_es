@@ -45,7 +45,7 @@
 						</radio>
 					</column>
 					<column>
-						<frame id="confint" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
+						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
 							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
 						</frame>
 					</column>
@@ -57,33 +57,34 @@
 	<wizard label="Test para una proporción">
 		<page>
 			<text>
-				Introducir la frecuencia muestral de la categoría a contrastar y el tamaño muestral, 
-				o bien, seleccionar una variable y la categoría o valor cuya proporción se desea contrastar.   
+				<p>Seleccionar una variable y la categoría o valor cuya proporción se desea contrastar, o bien activar la casilla de introducción manual de frecuencias e introducir la frecuencia absoluta muestral y el tamaño de la muestra.</p>
 			</text>
 			<copy id="row_vars"/>
+			<stretch/>
 		</page>
 		<page>
 			<text>
-				Introducir el valor de la proporción poblacional según la hipótesis nula. 
+				<p>Introducir el valor de la proporción poblacional según la hipótesis nula.</p> 
 			</text>
 			<copy id="proportion"/>
+			<stretch/>
 		</page>
 		<page>
 			<text>
-				Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué proporción se presume que es mayor:
-				- Seleccionar bilateral, si la teoría no presupone qué proporción es mayor. 
-				- Seleccionar unilateral mayor si se presupone que la proporción poblacional es mayor que la especificada en la hipótesis nula.
-				- Seleccionar unilateral menor si se presupone que la proporción poblacional es menor que la especificada en la hipótesis nula.
-				La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste. 
+				<p>Seleccionar el tipo de hipótesis alternativa a contrastar:</p>
+                - Seleccionar bilateral, si se presupone que la proporción poblacional es distinta del valor de contraste pero no se sabe si es mayor o menor.<br/> 
+                - Seleccionar unilateral mayor si se presupone que la proporción poblacional es mayor que el valor de contraste.<br/>
+                - Seleccionar unilateral menor si se presupone que la proporción poblacional es menor que el valor de contraste.
+                <p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
 			</text>
 			<copy id="hypothesis"/>
 			<stretch/>
 		</page>
 		<page>
 			<text>
-				Seleccionar el tipo de prueba a realizar: 
-				- Aproximación normal con corrección por continuidad (es lo más habitual para muestras grandes).
-				- Aproximación normal sin corrección por continuidad.
+				<p>Seleccionar el tipo de prueba a realizar:</p> 
+				- Aproximación normal con corrección por continuidad (es lo más habitual para muestras grandes).<br/>
+				- Aproximación normal sin corrección por continuidad.<br/>
 				- Binomial exacto.
 			</text>
 			<copy id="type"/>
@@ -91,9 +92,9 @@
 		</page>
 		<page>
 			<text>
-			Si se desea obtener un intervalo de confianza para estimar la proporción poblacional, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).
-			A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.   
+			<p>Si se desea obtener un intervalo de confianza para estimar la proporción poblacional, 
+			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
+			<p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
 			</text>
 			<copy id="confint_frame"/>
 			<stretch/>

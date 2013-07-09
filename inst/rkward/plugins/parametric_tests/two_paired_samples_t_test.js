@@ -1,40 +1,43 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, y, confint, conflevel, alternative;
+var x, y, confint, conflevel, hypothesis;
 
 function preprocess () {
 
 }
 
 function calculate () {
-	x = getValue ("x");
-	y = getValue ("y");
-	confint = getValue ("confint_frame.checked");
-	conflevel = getValue ("conflevel");
-	var hypothesis = getValue ("hypothesis");
+	x = getString("x");
+	y = getString("y");
+	confint = getBoolean("confint_frame.checked");
+	conflevel = getString("conflevel");
+	var hypothesis = getString("hypothesis");
 	var options = ', alternative="' + hypothesis + '", paired=TRUE';
 	if (confint) {
 		options += ", conf.level=" + conflevel;
-	}
-	if (hypothesis=="two.sided") alternative = "Bilateral";
-	else if (hypothesis=="greater") alternative = "Unilateral mayor";
-	else alternative = "Unilateral menor";
-	
+	}	
 	echo('result <- t.test (' + x + ', ' + y + options + ')\n');
 }
 
 function printout () {
 	echo ('rk.header ("Test T de comparaci&oacute;n de medias para dos muestras pareadas", ');
-	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "con" = rk.get.description(' + y + '), "Hip&oacute;tesis alternativa" = "' + alternative + '"');
+	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "con" = rk.get.description(' + y + '), "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), " = media ", rk.get.short.name(' + y + '))');
+	if (hypothesis=="two.sided"){
+		echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), " &ne; media ", rk.get.short.name(' + y + '))');
+	}
+	else if (hypothesis=="greater") {
+		echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), " &gt; media ", rk.get.short.name(' + y + '))');
+	}
+    else {
+    	echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), " &lt; media ", rk.get.short.name(' + y + '))');
+    }
 	if (confint) {
 		echo (', "Nivel de confianza del intervalo" = "' + conflevel + '"');
 	}
 	echo('))\n');
-	
-	//echo ('rk.print(result)\n');
 	echo ('rk.results (list(');
-	echo ('"Variables" = rk.get.description(' + x + ',' + y + '), ');
+	echo ('"Variable" = paste(rk.get.short.name(' + x + '), "-", rk.get.short.name(' + y + ')), ');
 	echo ('"Diferencia media estimada" = result$estimate, ');
 	echo ('"Grados de libertad" = result$parameter, ');
 	echo ('"Estad&iacute;stico t" = result$statistic, ');

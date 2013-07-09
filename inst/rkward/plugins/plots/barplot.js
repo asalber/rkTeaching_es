@@ -4,6 +4,7 @@
 var options, baroptions, plotoptions, headeroptions;
 
 function preprocess () {
+	echo('require(rk.Teaching)\n');
 }
 
 function set_options() {

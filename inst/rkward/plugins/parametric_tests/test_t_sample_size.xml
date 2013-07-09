@@ -5,7 +5,7 @@
 	<code file="test_t_sample_size.js"/>
 	<help file="test_t_sample_size.rkh"/>
 	
-	<dialog label="Cálculo del tamaño muestral el test t">
+	<dialog label="Cálculo del tamaño muestral el test T">
 		<row>
 			<column id="col_type">
 				<radio id="type" label="Tipo de test">
@@ -27,7 +27,7 @@
 		</row>
 	</dialog>
 	
-	<wizard label="Cálculo del tamaño muestral para el test t">
+	<wizard label="Cálculo del tamaño muestral para el test T">
 		<page>
 			<text>
 				Introducir el tipo de contraste.
@@ -45,7 +45,7 @@
 				Introducir la diferencia entre las medias a detectar. 
 				En el caso de una muestra introducir el valor de la media según la hipótesis nula.
 			</text>
-			<copy id="difference"/>
+			<copy id="delta"/>
 		</page>
 	
 		<page>

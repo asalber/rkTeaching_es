@@ -11,7 +11,7 @@
 		<component type="standard" id="f_test" file="f_test.xml" label="Test F de Fisher" />
 		<component type="standard" id="levene_test" file="levene_test.xml" label="Test de Levene" />		
 		<component type="standard" id="mean_sample_size" file="mean_sample_size.xml" label="Cálculo del tamaño muestral para la media" />
-		<component type="standard" id="test_t_sample_size" file="test_t_sample_size.xml" label="Cálculo del tamaño muestral para el test t" />
+		<component type="standard" id="test_t_sample_size" file="test_t_sample_size.xml" label="Cálculo del tamaño muestral para el test T" />
 		<component type="standard" id="proportion_sample_size" file="proportion_sample_size.xml" label="Cálculo del tamaño muestral para una proporción" />
 	</components>
 	

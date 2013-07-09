@@ -6,9 +6,9 @@ function preprocess () {
 }
 
 function calculate () {
-	variable = getValue ("variable");
-	factor = getValue ("factor");
-	center = getValue("center");
+	variable = getString("variable");
+	factor = getString("factor");
+	center = getString("center");
 	var options = ', center=' + center;
 	echo('result <- leveneTest(' + variable + ', ' + factor + options + ')\n');
 }
@@ -23,10 +23,8 @@ function printout () {
 		echo (', "Variabilidad con respecto a la" = "Media"');
 	}
 	echo('))\n');
-	
-	//echo ('rk.print(result)\n');
 	echo ('rk.results (list(');
-	echo ('"Variable"= rk.get.description(' + variable + '), ');
+	echo ('"Variable"= rk.get.short.name(' + variable + '), ');
 	echo ('"Niveles del factor" = levels(' + factor + '), ');
 	echo ('"Grados de libertad"=result[["Df"]], ');
 	echo ('"Estad&iacute;stico F"=result[["F value"]][1], ');

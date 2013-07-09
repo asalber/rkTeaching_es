@@ -1,5 +1,5 @@
 // globals
-var design, dep, within, between, caseid, sumsq, dep_name, within_name, between_name, caseid_name;
+var design, dep, within, between, caseid, sumsq, dep_name, within_name, between_name, caseid_name, sumsq_type;
 
 function preprocess () {
 	echo('require(ez)\n');
@@ -8,25 +8,21 @@ function preprocess () {
 }
 
 function calculate () {
-	// read in variables from dialog
-	var data = getValue("dataframe");
-	design = getValue("design");
-	dep = getValue("dep");
-	caseid = getValue("caseid");
-	within = getValue("within");
-	between = getValue("between");
-	//var vrslObsrvdvr = getValue("vrsl_Obsrvdvr");
-	var sumsq_type = getValue("sumsqtype");
-	var heterocedasticity = getValue("heterocedasticity");
-	sumsq = getValue("sumsq");
-
-	// the R code to be evaluated
+	var data = getString("dataframe");
+	design = getString("design");
+	dep = getString("dep");
 	dep_name = getValue("dep.shortname");
+	caseid = getString("caseid");
 	caseid_name = getValue("caseid.shortname");
-	within_name = getValue("within.shortname").split("\n").join(",");
-	n_within = getValue("within.shortname").split("\n").lenght;
-	between_name = getValue("between.shortname").split("\n").join(",");
-	var vrslObsrvdvrShortname = getValue("vrsl_Obsrvdvr.shortname").split("\n").join(", ");
+	within = getList("within");
+	within_name = getList("within.shortname").join(", ");
+	n_within = within.lenght;
+	between = getList("between");
+	between_name = getList("between.shortname").join(", ");
+	sumsq_type = getString("sumsqtype");
+	var heterocedasticity = getString("heterocedasticity");
+	sumsq = getBoolean("sumsq");
+	//var vrslObsrvdvrShortname = getValue("vrsl_Obsrvdvr.shortname").split("\n").join(", ");
 	if(sumsq_type == 3) {
 	echo('# Establecer contrastes para sumas de cuadrados de tipo III\n');
 	echo('options(contrasts=c("contr.sum","contr.poly"))\n');
@@ -57,7 +53,7 @@ function calculate () {
 		echo(', detailed=TRUE');
 	} 
 	echo(', return_aov=TRUE)\n');
-	if (getValue("pairwise")){
+	if (getString("pairwise")){
 		if (design=='between'){
 			echo('pairs <- TukeyHSD(anova.results[["aov"]])\n');
 		}
@@ -67,7 +63,6 @@ function calculate () {
 		if (design=='mixed'){
 			echo('pairs <- glht(lme(' + dep_name + '~' + between_name + '*' + within_name + ', data = ' + data + '[!is.na('  + data + '$' + dep_name + '),], random = ~1|' + caseid_name + '), linfct = mcp(' + between_name + '= "Tukey", ' + within_name + '= "Tukey"))\n');
 		}
-
 	}
 }
 
@@ -76,12 +71,12 @@ function printout () {
 	echo('rk.header("ANOVA", ');
 	echo('parameters=list ("Variable dependiente"= rk.get.description(' + dep + ')');
 	if(between != "" & design !="within"){
-		echo(', "Factores entre individuos" = rk.get.description(' + between.split("\n") + ', paste.sep=", ")');
+		echo(', "Factores entre individuos" = rk.get.description(' + between + ', paste.sep=", ")');
 	}
 	if(within != "" & design !="between"){
-		echo(', "Factores dentro de los individuos" = rk.get.description(' + within.split("\n") + ', paste.sep=", ")');
+		echo(', "Factores dentro de los individuos" = rk.get.description(' + within + ', paste.sep=", ")');
 	}
-	echo('))\n');
+	echo(', "Sumas de cuadrados" = "Tipo ' + sumsq_type + '"))\n');
 	// Resultado ANOVA
 	echo('rk.results(list(');
 	echo('"Fuente de variaci&oacute;n" = anova.results[["ANOVA"]][["Effect"]]');
@@ -124,7 +119,7 @@ function printout () {
 	echo(", \"p-valor\" = anova.results[[\"Levene's Test for Homogeneity of Variance\"]][[\"p\"]]");
 	echo('))\n}\n');
 	// Resultado comparación por pares
-	if (getValue("pairwise")){
+	if (getBoolean("pairwise")){
 		echo('rk.header("Compaparaci&oacute;n por pares",level=3)\n');
 		if (design=='between'){
 			echo('for(i in 1:length(pairs)){\n');
@@ -156,7 +151,7 @@ function printout () {
 			echo('))\n');
 		}
 	}
-	if (getValue("pairwise_plot")){
+	if (getBoolean("pairwise_plot")){
 		echo ('rk.graph.on()\n');
 		echo('par(las=1,mar=c(4,8,6,0))\n');
 		echo('plot(pairs)\n');

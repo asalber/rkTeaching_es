@@ -1,10 +1,9 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var data, variables;
+var vars;
 
 function preprocess(){
-	// add requirements etc. here
 	echo('require(rk.Teaching)\n');
 }
 
@@ -14,10 +13,14 @@ function getName(x){
 
 function calculate () {
 	var narm = "na.rm=FALSE";
-	if (getString ("narm")) narm = "na.rm=TRUE";
-	var v = trim(getString("variables"));
-	data = v.split('[[')[0];
-	variables = getList("variables.shortname").join(', ');
+	if (getBoolean("narm")) narm = "na.rm=TRUE";
+	var v = trim (getString("variables"));
+	var data = v.split('[[')[0] + '[,c(';
+	vars = v.split ("\n");
+	for (i=0; i<vars.length; i++){
+		data += '"' + getName(vars[i]) + '",';
+	}
+	data = data.slice(0, -1) + ')]';
 	var statistics = getString("min") + getString("max") + getString("mean") + getString("median") + getString("mode") + getString("variance") + getString("unvariance") + getString("stdev") + getString("sd") + getString("cv") + getString("range") + getString("iqrange") + getString("skewness") + getString("kurtosis");
 	if (getBoolean("quartile") || getString("quantiles")!=''){
 		statistics += "'quantiles',";
@@ -34,19 +37,19 @@ function calculate () {
 	if (getBoolean("grouped")){
 		groups = ', groups=' + getString("groups");
 	}
-	echo ('results <- descriptiveStats(' + data + '[,c(' + variables + ')]' + groups + ', statistics=' + statistics + ', quantiles= ' + quantiles + ')\n');
+	echo ('results <- descriptiveStats(' + data + groups + ', statistics=' + statistics + ', quantiles= ' + quantiles + ')\n');
 	
 }
 
 function printout () {
 	echo ('rk.header ("Estad&iacute;stica Descriptiva"');
 	//echo (', parameters=list("Variables" =' + "'" + vars.join(', ') + "'");
-	echo (', parameters=list("Variables" = rk.get.description(' + getList("variables") + ')');
+	echo (', parameters=list("Variables" = rk.get.description(' + getList("variables") + ', paste.sep=", ")');
 	if (getBoolean("grouped")){
 		echo (', "Seg&uacute;n" = rk.get.description(' + getString("groups") +  ')');
 	}
 	echo (', "Eliminar valores desconocidos" = ');
-	if (getString ("narm")) echo ('"Si"');
+	if (getBoolean("narm")) echo ('"Si"');
 	else echo ('"No"');
 	echo ('))\n');
 	//echo ('rk.results(list("Variables" = rownames(results$table)))\n');

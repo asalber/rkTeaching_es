@@ -24,17 +24,18 @@
 			</tab>
 		</tabbook>
 	</dialog>
+	
 	<wizard label="Test de Levene para la comparación de varianzas">
 		<page>
 			<text>
-			Seleccionar la variable numérica a comparar.
-			Después, seleccionar el factor con los niveles a comparar. 
+			<p>Seleccionar la variable numérica a comparar.</p>
+			<p>Después, seleccionar el factor con los niveles a comparar.</p> 
 			</text>
 			<copy id="row_vars"/>
 		</page>
 		<page>
 			<text>
-				Seleccionar si la variabilidad se mide con respecto a la mediana o a la media.
+				<p>Seleccionar si la variabilidad se mide con respecto a la mediana o a la media.</p>
 			</text>
 			<copy id="center"/>
 			<stretch/>

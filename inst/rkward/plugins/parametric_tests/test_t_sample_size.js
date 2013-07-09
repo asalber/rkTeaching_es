@@ -8,17 +8,17 @@ function preprocess () {
 
 
 function calculate () {
-	delta = getValue("delta");
-	sd = getValue("sd");
-	siglevel = getValue("siglevel");
-	power = getValue("power");
-	type = getValue ("type");
-	h1 = getValue("h1")
+	delta = getString("delta");
+	sd = getString("sd");
+	siglevel = getString("siglevel");
+	power = getString("power");
+	type = getString("type");
+	h1 = getString("h1")
 	echo('result <- power.t.test(delta=' + delta + ', sd=' + sd + ', sig.level=' + siglevel + ', power=' + power + ', type="' + type + '", alternative="' + h1 + '")\n');
 }
 
 function printout () {
-	echo ('rk.header ("C&aacute;lculo del tama&ntilde;o muestral para el test t", parameter=list(');
+	echo ('rk.header ("C&aacute;lculo del tama&ntilde;o muestral para el test T", parameter=list(');
 	if (type=="one.sample") echo ('"Tipo de prueba" = "Contraste para una muestra"');
 	else if (type=="two.sample") echo ('"Tipo de prueba" = "Contraste para dos muestras independientes"');
 	else echo ('"Tipo de prueba" = "Contraste para dos muestras pareadas"');

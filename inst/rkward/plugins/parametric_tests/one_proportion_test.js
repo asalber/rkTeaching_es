@@ -1,37 +1,35 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, freq, n, category, p, type, test, confint, conflevel, alternative;
+var x, freq, n, category, p, type, test, confint, conflevel, hypothesis;
 
 function preprocess () {
 
 }
 
 function calculate () {
-	if (getValue("manual.checked")){
-		freq = getValue("freq");
-		n = getValue("n");
+	if (getBoolean("manual.checked")){
+		freq = getString("freq");
+		n = getString("n");
 		echo ('freq <- ' + freq + '\n');
 		echo ('n <- ' + n + '\n');
+		category='';
 	}
 	else {
-		x = getValue("variable");
-		category = getValue("category");
+		x = getString("variable");
+		category = getString("category");
 		echo ('freq <- length(' + x + '[' + x + '=="' + category + '"])\n');
 		echo ('n  <- length(' + x + ')\n');
 	}	
-	p = getValue ("proportion");
-	confint = getValue ("confint.checked");
-	conflevel = getValue ("conflevel");
-	var hypothesis = getValue ("hypothesis");
+	p = getString("proportion");
+	confint = getBoolean("confint_frame.checked");
+	conflevel = getString("conflevel");
+	hypothesis = getString("hypothesis");
 	var options = ', alternative="' + hypothesis + '", p=' + p ;
 	if (confint) {
 		options += ", conf.level=" + conflevel;
 	}
-	if (hypothesis=="two.sided") alternative = "Bilateral";
-	else if (hypothesis=="greater") alternative = "Unilateral mayor";
-	else alternative = "Unilateral menor";
-	type = getValue("type");
+	type = getString("type");
 	if (type=="binomial"){
 		echo('result <- binom.test (freq, n'+ options + ')\n');
 		test = "Binomial exacto"
@@ -47,15 +45,28 @@ function calculate () {
 }
 
 function printout () {
-	
 	echo ('rk.header ("Test para una proporci&oacute;n", ');
-	echo ('parameters=list ("Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n, "Hip&oacute;tesis nula" = "proporci&oacute;n poblacional = ' + p + '", "Hip&oacute;tesis alternativa" = "' + alternative + '", "Tipo de prueba" = "' + test + '"');
+	if (getBoolean("manual.checked")){
+		echo ('parameters=list ("Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');
+	}
+	else{
+		echo ('parameters=list ("Variable" = rk.get.description(' + x + '), "Proporci&oacute;n de" = "' + category + '", "Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');		
+	}
+	echo(', "Hip&oacute;tesis nula" = "proporci&oacute;n ' + category + ' = ' + p + '"');
+	if (hypothesis=="two.sided"){
+		echo(', "Hip&oacute;tesis alternativa" = "proporci&oacute;n ' + category + ' &ne; ' + p + '"');
+	}
+	else if (hypothesis=="greater") {
+		echo(', "Hip&oacute;tesis alternativa" = "proporci&oacute;n ' + category + ' &gt; ' + p + '"');
+	}
+    else {
+    	echo(', "Hip&oacute;tesis alternativa" = "proporci&oacute;n ' + category + ' &lt; ' + p + '"');
+    }
+	echo(', "Tipo de prueba" = "' + test + '"');
 	if (confint) {
 		echo (', "Nivel de confianza del intervalo" = "' + conflevel + '"');
 	}
 	echo('))\n');
-	
-	//echo ('rk.print(result)\n');
 	echo ('rk.results (list(');
 	echo ('"Proporci&oacute;n estimada " = freq/n, ');
 	if (type!="binomial"){

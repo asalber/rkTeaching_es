@@ -10,7 +10,7 @@
 			<input id="sd" label="Desviación típica" value="1" required="true" />
 			<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
 			<column id="col_error">
-				<input id="error" label="Error" value="1" required="true"/>
+				<input id="error" label="Error &#177;" value="1" required="true"/>
 				<radio id="error_type" label="Tipo de error">
 					<option value="absolute" label="Absoluto" />
 					<option value="relative" label="Relativo" />

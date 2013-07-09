@@ -5,7 +5,7 @@
 	<code file="two_independent_samples_t_test.js"/>
 	<help file="two_independent_samples_t_test.rkh"/>
 	
-	<dialog label="Test T para dos muestras independientes">
+	<dialog label="Test T para la comparación de medias de dos poblaciones independientes">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
@@ -20,14 +20,14 @@
 				<row>
 					<column id="hypotesis_col">
 						<radio id="hypothesis" label="Hipotesis alternativa">
-							<option value="two.sided" label="Bilateral" />
-							<option value="greater" label="Unilateral mayor" />
-							<option value="less" label="Unilateral menor" />
+							<option value="two.sided" label="Bilateral (&#8800;)" />
+							<option value="greater" label="Unilateral mayor (&gt;)" />
+							<option value="less" label="Unilateral menor (&lt;)" />
 						</radio>
 						<checkbox id="varequal" label="Suponer varianzas iguales" value="1" value_unchecked="0" />
 					</column>
 					<column>
-						<frame id="confint" label="Intervalo de confianza" checkable="true" checked="true" value="1">
+						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
 							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
 						</frame>
 					</column>
@@ -35,41 +35,44 @@
 			</tab>
 		</tabbook>
 	</dialog>
-	<wizard label="Test T para dos muestras independientes">
+	
+	<wizard label="Test T para la comparación de medias de dos poblaciones independientes">
 		<page>
 			<text>
-			Seleccionar la variable numérica a comparar.
-			Después, seleccionar el factor con los niveles a comparar. 
-			El factor debe tener exactamente dos niveles. 
+			<p>Seleccionar la variable numérica a comparar.</p>
+			<p>Después, seleccionar el factor con los niveles a comparar. El factor debe tener exactamente dos niveles. 
+			</p>
 			</text>
 			<copy id="row_vars"/>
+			<stretch/>
 		</page>
 		<page>
 			<text>
-				Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué media se presume que es mayor:
-				- Seleccionar bilateral, si la teoría no presupone qué media es mayor. 
-				- Seleccionar unilateral mayor si se presupone que la media de la primera categoría es mayor que la media de la segunda.
-				- Seleccionar unilateral menor si se presupone que la media de la primera categoría es menor que la media de la segunda.
-				El orden de las categorías es el establecido en la definición de las variables.
-				La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste. 
+				<p>Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué media se presume que es mayor:</p>
+                - Seleccionar bilateral, si se presupone que las medias de ambas poblaciones son distintas pero no se sabe qué media es mayor.<br/>
+                - Seleccionar unilateral mayor si se presupone que la media de la primera población es mayor que la media de la segunda.<br/>
+                - Seleccionar unilateral menor si se presupone que la media de la primera población es menor que la media de la segunda.
+                <p>El orden de las categorías es el establecido en la definición de las variables.</p>
+				<p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
 			</text>
 			<copy id="hypothesis"/>
 			<stretch/>
 		</page>
 		<page>
 			<text>
-			Si no hay evidencia de que las varianzas de las poblaciones sean distintas (por ejemplo mediante un test F de Fisher), 
-			seleccionar la opción de suponer varianzas iguales. 
-			En tal caso se aplicará una corrección que puede aumentar la potencia del contraste. 
-			Si hay cierta evidencia de que las varianzas pueden ser distintas, es más seguro no asumir que las varianzas son iguales.
+			<p>Si no hay evidencia de que las varianzas de las poblaciones sean distintas (por ejemplo mediante un test F de Fisher), 
+			seleccionar la opción de suponer varianzas iguales.</p> 
+            <p>En tal caso se aplicará una corrección que puede aumentar la potencia del contraste.</p> 
+            <p>Si hay cierta evidencia de que las varianzas pueden ser distintas, es más seguro no asumir que las varianzas son iguales.<br/></p>
 			</text>
 			<copy id="varequal"/>
+			<stretch/>
 		</page>
 		<page>
 			<text>
-			Si se desea obtener un intervalo de confianza para estimar la diferencia de medias entre las dos poblaciones, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).
-			A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.   
+			<p>Si se desea obtener un intervalo de confianza para estimar la diferencia de medias entre las dos poblaciones, 
+			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
+            <p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
 			</text>
 			<copy id="confint_frame"/>
 			<stretch/>
