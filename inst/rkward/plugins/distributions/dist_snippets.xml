@@ -39,6 +39,7 @@
 					<option value="lower.tail=FALSE" label="Derecha (&gt;)" />
 				</radio>
 				<stretch/>
+				<checkbox id="plot" label="Mostrar gráfico" value="1" value_unchecked="0" />
 			</column>
 		</row>
 	</snippet>
