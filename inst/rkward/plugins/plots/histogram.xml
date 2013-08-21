@@ -5,9 +5,9 @@
 	<code file="histogram.js" />
 	<help file="histogram.rkh" />
 	<logic>
-		<connect client="histogram_opt.var1" governor="var1.available" />
-		<connect client="cells.var1" governor="var1.available" />
-		<connect client="plotoptions.xvar" governor="var1.available"/>
+		<connect client="histogram_opt.variable" governor="variable.available" />
+		<connect client="cells.variable" governor="variable.available" />
+		<connect client="plotoptions.xvar" governor="variable.available"/>
 		<set id="plotoptions.allow_log" to="false"/>
 		<set id="plotoptions.allow_type" to="false"/>
 				
@@ -39,14 +39,20 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variable"/>
 					<column>
-						<varslot id="var1" label="Variable" multi="false" type="numeric" source="selector" required="true" />
+						<varslot id="variable" label="Variable" multi="false" type="numeric" source="selector" required="true" />
 						<stretch/>
 						<preview id="preview"/>
 					</column>
 				</row>
 			</tab>
 			<tab id="tab_histoptions" label="Opciones del histograma">
-				<embed id="histogram_opt" component="rkTeaching::histogram_options" as_button="false" label="Opciones del histograma"/>
+				<frame id="frame_freq" label="Frecuencias">
+					<checkbox id="rel" label="Frecuencia relativa" checked="false" value_unchecked="0" />
+					<checkbox id="cum" label="Frecuencia acumulada" checked="false" value_unchecked="0" />
+					<checkbox id="density" label="Densidad" value="1" value_unchecked="0" checked="false"/>
+				</frame>
+				<checkbox id="poly" label="Polígono" checked="false" value_unchecked="0" />
+				<stretch/>
 			</tab>
 			<tab id="tab_cells" label="Clases" >
 				<embed id="cells" component="rkTeaching::cells"/>

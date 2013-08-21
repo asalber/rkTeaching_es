@@ -12,7 +12,7 @@ function calculate () {
 	y = getString("y");
 	confint = getBoolean("confint_frame.checked");
 	conflevel = getString("conflevel");
-	var hypothesis = getString("hypothesis");
+	hypothesis = getString("hypothesis");
 	var options = ', alternative="' + hypothesis + '", paired=TRUE';
 	if (confint) {
 		options += ", conf.level=" + conflevel;

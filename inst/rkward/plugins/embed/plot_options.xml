@@ -1,0 +1,141 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="plot_options.js" />
+	<help file="plot_options.rkh" />
+	
+	<logic>
+		<external id="default_main" default="" />
+		<external id="default_xlab" default="" />
+		<external id="default_ylab" default="" />
+
+		<external id="allow_log" default="true" />
+		<external id="allow_xlim" default="true" />
+		<external id="allow_ylim" default="true" />
+
+		<connect client="xminvalue.visible" governor="allow_xlim" />
+		<connect client="xmaxvalue.visible" governor="allow_xlim" />
+		<connect client="yminvalue.visible" governor="allow_ylim" />
+		<connect client="ymaxvalue.visible" governor="allow_ylim" />
+		<convert id="have_scale" mode="or" sources="xminvalue.visible;xmaxvalue.visible;yminvalue.visible;ymaxvalue.visible" />
+		<connect client="scale.visible" governor="have_scale" />
+
+		<!-- If we do not have an xvar specified, it is not possible to specify one xlimit but not the other -->
+		<convert id="xmin_specified" mode="notequals" sources="xminvalue.text" standard="" />
+		<convert id="xmax_specified" mode="notequals" sources="xmaxvalue.text" standard="" />
+		<convert id="xmin_required" mode="and" sources="xmax_specified" />
+		<convert id="xmax_required" mode="and" sources="xmin_specified" />
+		<connect client="xminvalue.required" governor="xmin_required" />
+		<connect client="xmaxvalue.required" governor="xmax_required" />
+		<!-- Same for y -->
+		<convert id="ymin_specified" mode="notequals" sources="yminvalue.text" standard="" />
+		<convert id="ymax_specified" mode="notequals" sources="ymaxvalue.text" standard="" />
+		<convert id="ymin_required" mode="and" sources="ymax_specified" />
+		<convert id="ymax_required" mode="and" sources="ymin_specified" />
+		<connect client="yminvalue.required" governor="ymin_required" />
+		<connect client="ymaxvalue.required" governor="ymax_required" />
+
+		<convert id="xlabfilled" mode="notequals" sources="xlab.text" standard="" />
+		<connect client="xlab_expression.enabled" governor="xlabfilled" />
+		<convert id="ylabfilled" mode="notequals" sources="ylab.text" standard="" />
+		<connect client="ylab_expression.enabled" governor="ylabfilled" />
+		<convert id="mainfilled" mode="notequals" sources="main.text" standard="" />
+		<connect client="main_expression.enabled" governor="mainfilled" />
+
+		<connect client="xlog.visible" governor="allow_log"/>
+		<connect client="ylog.visible" governor="allow_log"/>
+				
+		<external id="allow_legend" default="false"/>
+		<connect client="tab_legend.visible" governor="allow_legend" />
+		
+		<external id="allow_grid" default="true" />
+		<connect client="tab_grid.visible" governor="allow_grid"/>
+ 	</logic>
+	
+	<dialog label="Opciones gráficas" >
+		<tabbook>
+			<tab id="titlepage" label="Título">
+				<column>
+					<input id="main" label="Título" size="large" />
+					<checkbox id="main_expression" label="Expresión de R" checked="false"/>
+ 				<stretch/>
+				</column>
+			</tab>
+			<tab id="axespage" label="Ejes" >
+				<row>
+					<column>
+						<frame id="x_axe" label="Eje X">
+							<checkbox id="xlog" label="Escala logarítmica" checked="false"/>
+							<frame label="Etiqueta">
+								<input id="xlab" label="Título" />
+								<checkbox id="xlab_expression" label="Expresión de R" checked="false" />
+							</frame>
+							<frame id="x_range" label="Rango">
+								<row>
+									<input id="xminvalue" label="Mínimo" />
+									<input id="xmaxvalue" label="Máximo" />
+								</row>
+							</frame>
+							<dropdown id="x_lab_orientation" label="Orientación de las etiquetas" >
+								<option value="" label="defecto" checked="true" />
+								<option value="0" label="Horizontal" />
+								<option value="90" label="Vertical" />
+							</dropdown>
+						</frame>
+						<stretch/>
+					</column>
+					<column>
+						<frame id="y_axe" label="Eje Y">
+							<checkbox id="ylog" label="Escala logarítmica" checked="false"/>
+							<frame label="Etiqueta">
+								<input id="ylab" label="Título" />
+								<checkbox id="ylab_expression" label="Expresión de R" checked="false" />
+							</frame>
+							<frame id="y_range" label="Rango">
+								<row>
+									<input id="yminvalue" label="Mínimo" />
+									<input id="ymaxvalue" label="Máximo" />
+								</row>
+							</frame>
+							<dropdown id="y_lab_orientation" label="Orientación de las etiquetas" >
+								<option value="" label="defecto" checked="true" />
+								<option value="0" label="Horizontal" />
+								<option value="90" label="Vertical" />
+							</dropdown>
+						</frame>
+						<stretch/>
+					</column>
+				</row>
+				<checkbox id="flip_axis" label="Intercambiar ejes" checked="false"/>
+			</tab>
+			<tab id="tab_legend" label="Leyenda">
+				<dropdown id="legend" label="Posición de la leyenda" >
+					<option value="" label="defecto" checked="true" />
+					<option value="none" label="ninguna" />
+					<option value="top" label="arriba" />
+					<option value="bottom" label="abajo" />
+					<option value="left" label="izquierda" />
+					<option value="right" label="derecha" />					
+				</dropdown>
+				<stretch/>
+			</tab>
+			<tab id="tab_grid" label="Cuadrícula" >
+				<row>
+					<frame id="grid_major" label="Cuadrícula mayor">
+						<checkbox id="grid_horizontal_major" label="Horizontales" checked="true"/>
+						<checkbox id="grid_vertical_major" label="Verticales" checked="true"/>
+						<embed id="grid_major_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula mayor"/>
+					</frame>
+					<frame id="grid_minor" label="Cuadrícula menor">
+						<checkbox id="grid_horizontal_minor" label="Horizontales" checked="true"/>
+						<checkbox id="grid_vertical_minor" label="Verticales" checked="true"/>
+						<embed id="grid_minor_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula menor"/>
+					</frame>
+				</row>
+				<frame id="frame_grid_background_color" label="Color de fondo">
+					<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
+				</frame>			
+				<stretch/>
+			</tab>
+		</tabbook>
+	</dialog>
+</document>

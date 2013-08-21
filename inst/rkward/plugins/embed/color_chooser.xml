@@ -1,0 +1,87 @@
+<!DOCTYPE rkplugin>
+<document>
+<!--	<code file="color_chooser.php" /> -->
+<!-- WHAT IS THIS?
+     It's a very dirty hack to make the color chooser fast. This is needed, as the color chooser is often embedded many times into a single plugin. Starting a separate PHP process for each of those would be insane. So we need something different...
+     
+     This will eventually be replaced by a different (and clean!) scripting solution. For now: don't imitate this! -->
+<!-- 	<code printout="$$$argument$$$$$$color.string$$$$$$have_col.numeric$$$!!!!?!%3!=!0!:!!?!!=!!:!%1&quot;%2&quot;"/> -->
+	<code file="color_chooser.js" />
+	<help file="color_chooser.rkh" />
+	<logic>
+	</logic>
+	<dialog label="Elegir color" >
+		<dropdown id="color" label="Color">
+			<option value="" label="defecto" checked="true" />
+			<option value="yellow" label="Amarillo" />
+			<option value="yellow1" label="Amarillo1" />
+			<option value="yellow2" label="Amarillo2" />
+			<option value="yellow3" label="Amarillo3" />
+			<option value="yellow4" label="Amarillo4" />
+			<option value="wheat" label="Amarillo trigo" />
+			<option value="yellowgreen" label="Amarillo verdoso" />
+			<option value="blue" label="Azul" />
+			<option value="blue1" label="Azul1" />
+			<option value="blue2" label="Azul2" />
+			<option value="blue3" label="Azul3" />
+			<option value="blue4" label="Azul4" />
+			<option value="steelblue" label="Azul acero" />
+			<option value="azure" label="Azul celeste" />
+			<option value="skyblue" label="Azul cielo" />
+			<option value="royalblue" label="Azul real" />
+			<option value="white" label="Blanco" />
+			<option value="snow" label="Blanco nieve" />
+			<option value="cyan" label="Cian" />
+			<option value="gray" label="Gris" />
+			<option value="gray1" label="Gris1" />
+			<option value="gray2" label="Gris2" />
+			<option value="gray3" label="Gris3" />
+			<option value="gray4" label="Gris4" />
+			<option value="slategrey" label="Gris plomo" />
+			<option value="linen" label="Lino" />
+			<option value="magenta" label="Magenta" />
+			<option value="magenta1" label="Magenta1" />
+			<option value="magenta2" label="Magenta2" />
+			<option value="magenta3" label="Magenta3" />
+			<option value="magenta4" label="Magenta4" />
+			<option value="brown" label="Marrón" />
+			<option value="tan" label="Marrón bronceado" />
+			<option value="sienna" label="Marrón Siena" />
+			<option value="sandybrown" label="Melocotón" />
+			<option value="peachpuff" label="Melocotón pálido" />
+			<option value="orange" label="Naranja" />
+			<option value="navajowhite" label="Naranja pálido" />
+			<option value="papayawhip" label="Naranja papaya" />
+			<option value="black" label="Negro" />
+			<option value="gold" label="Oro" />
+			<option value="red" label="Rojo" />
+			<option value="red1" label="Rojo1" />
+			<option value="red2" label="Rojo2" />
+			<option value="red3" label="Rojo3" />
+			<option value="red4" label="Rojo4" />
+			<option value="tomato" label="Rojo tomate" />
+			<option value="pink" label="Rosa" />
+			<option value="mistyrose" label="Rosa pálido" />
+			<option value="salmon" label="Salmón" />
+			<option value="green" label="Verde" />
+			<option value="green1" label="Verde1" />
+			<option value="green2" label="Verde2" />
+			<option value="green3" label="Verde3" />
+			<option value="green4" label="Verde4" />
+			<option value="lawngreen" label="Verde cesped" />
+			<option value="limegreen" label="Verde lima" />
+			<option value="seagreen" label="Verde mar" />
+			<option value="mintcream" label="Verde menta" />
+			<option value="palegreen" label="Verde pálido" />
+			<option value="springgreen" label="Verde primavera" />
+			<option value="violet" label="Violeta" />
+			<option value="violetred1" label="Violeta1" />
+			<option value="violetred2" label="Violeta2" />
+			<option value="violetred3" label="Violeta3" />
+			<option value="violetred4" label="Violeta4" />
+			<option value="thistle" label="Violeta cardo" />
+			<option value="orchid" label="Violeta orquídea" />
+			<option value="darkviolet" label="Violeta oscuro" />
+		</dropdown>
+	</dialog>
+</document>

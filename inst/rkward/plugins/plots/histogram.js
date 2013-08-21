@@ -1,8 +1,9 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
+var data, variable, variablename, laby, fill, position, barcolor;
 
 function preprocess(){
 	// add requirements etc. here
-	echo('require(TeachingExtras)\n');
+	echo('require(ggplot2)\n');
 }
 
 function printout () {
@@ -15,10 +16,17 @@ function preview () {
 
 // internal helper functions
 function doPrintout (full) {
-	var var1 = getValue ("var1");
-	
+	variable = getString("variable");
+	data = variable.split('[[')[0];
+	variablename = getString("variable.shortname");
+	laby="Frecuencia absoluta";
+	fill = '';
+	position = '';
+	barcolor = ', fill="blue"';
+
+
 	if (full) {
-		echo ('rk.header ("Histograma", parameters=list ("Variable", rk.get.description (' + var1 + ')' + getValue ("histogram_opt.code.printout") + getValue ("cells.code.printout") + '))\n');
+		echo ('rk.header ("Histograma", parameters=list ("Variable" = rk.get.description (' + variable + ')' + getValue ("histogram_opt.code.printout") + getValue ("cells.code.printout") + '))\n');
 		echo ('\n');
 		echo ('rk.graph.on ()\n');
 	}
@@ -45,7 +53,12 @@ function doPrintout (full) {
 	histplotoptions += histbordercol + histfillcol;
 
 	echo ('try ({\n');
-	echo ('histGraph(' + var1 + getValue ("histogram_opt.code.calculate") + getValue ("cells.code.calculate") + histplotoptions + getValue ("plotoptions.code.printout") + ')\n');
+//	echo ('histGraph(' + var1 + getValue ("histogram_opt.code.calculate") + getValue ("cells.code.calculate") + histplotoptions + getValue ("plotoptions.code.printout") + ')\n');
+	echo('p<-ggplot(' + data + ', aes(' + variablename + ')' + fill + ') + geom_histogram(' + getString("cells.code.calculate") + barcolor + position + ') +  xlab("' +  variablename + '") + ylab("' + laby + '")\n');
+	if (getBoolean("poly")) {
+		echo ('p <- p + geom_freqpoly(' + getString("cells.code.calculate") + ')\n');
+	}
+	echo('print(p)\n');
 	var plotdensity = getValue ("histogram_opt.plotdensity");
 	if (plotdensity){
 		var bw =  getValue ("histogram_opt.bw");

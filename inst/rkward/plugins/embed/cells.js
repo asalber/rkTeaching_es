@@ -1,42 +1,27 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var calcoptions;
-var headeroptions;
+var classes;
+var classesheader;
 
 function makeCodes () {
-	calcoptions = ", breaks=";
-	headeroptions = ', "M&eacute;todo de determinaci&oacute;n de los intervalos " = "';
+	classes = 'breaks=';
+	classesheader = ', "M&eacute;todo de determinaci&oacute;n de los intervalos " = "';
 	var variable = getString("variable");
 	var breaks = getString("breaksFunction");
 	if (breaks == "num") {
-		calcoptions += getString ("breaks_num");
-		headeroptions += 'Aproximadamente ' + getString ("breaks_num") + ' intervalos"';
+		classes += 'pretty(range(' + variable + '),' + getString("breaks_num") + ')';
+		classesheader += 'Aproximadamente ' + getString("breaks_num") + ' intervalos"';
 	} else if (breaks == "int") {
-		calcoptions += "seq (floor (min (" + variable + ", na.rm=TRUE))-0.5, ceiling (max (" + variable + ", na.rm=TRUE))+0.5)";
-		headeroptions += 'Enteros"';
+		classes += 'seq (floor (min (' + variable + ', na.rm=TRUE))-0.5, ceiling (max(' + variable + ', na.rm=TRUE))+0.5)';
+		classesheader += 'Enteros"';
 	} else if (breaks == "vec") {
-		calcoptions += 'c(' +  getString("breaks_vec") + ')';
-		headeroptions += 'Definidos por el usuario: ' + getString ("breaks_vec") + '"';
+		classes += 'c(' +  getString("breaks_vec") + ')';
+		classesheader += 'Definidos por el usuario: ' + getString ("breaks_vec") + '"';
 	} else {
-		calcoptions += "\"" + breaks + "\"";
-		headeroptions += breaks + '"';
-	}
-	var right = getValue ("rightclosed");
-	if (right) {
-		headeroptions += ', "Intervalos cerrados a la derecha" = "Si"';
-		calcoptions += ", right=TRUE";
-	} else {
-		headeroptions += ', "Intervalos cerrados a la derecha" = "No"';
-		calcoptions += ", right=FALSE";
-	}
-	var inclowest = getValue ("include_lowest");
-	if (!inclowest) {
-		headeroptions += ', "Incluir el l&iacute;mite inferior del primer intervalo" = "Si"';
-		calcoptions += ", include.lowest=FALSE";
-	} else {
-		headeroptions += ', "Incluir el l&iacute;mite inferior del primer intervalo" = "No"';
-	}
+		classes += 'pretty(range(' + variable + '), nclass.' + breaks + '(' +  variable + '))';
+		classesheader += breaks + '"';
+	};
 }
 
 
@@ -47,11 +32,11 @@ function preprocess(){
 
 function calculate(){
 	// the R code to be evaluated
-	echo(calcoptions);
+	echo(classes);
 }
 
 function printout(){
 	// printout the results
-	echo(headeroptions);
+	echo(classesheader);
 }
 

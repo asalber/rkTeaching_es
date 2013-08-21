@@ -11,9 +11,8 @@ function calculate(){
 	var variable = getString("variable");
 	if (getBoolean("filter_frame.checked")){
 		var data = variable.split('[[')[0];
-		var variableName = getString("variable.shortname");
 		var filter = getString("filter");
-		echo (data + '<- subset(' + data + ', subset=' + filter + ')\n');
+		echo (data + ' <- subset(' + data + ', subset=' + filter + ')\n');
 	}
 }
 

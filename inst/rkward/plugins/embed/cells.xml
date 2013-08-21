@@ -19,7 +19,7 @@
 		<column id="col1">
 			<radio id="breaksFunction" label="Método" >
 				<option value="Sturges" label="Sturges"  checked="true" />
-				<option value="Scott" label="Scott" />
+				<option value="scott" label="Scott" />
 				<option value="FD" label="Friedman-Diaconis" />
 				<option value="num" label="Número de intervalos" />
 				<option value="int" label="Números enteros" />
