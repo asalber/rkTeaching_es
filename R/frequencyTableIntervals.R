@@ -1,21 +1,40 @@
-frequencyTableIntervals <- function(x, breaks="Sturges", right=FALSE, include.lowest=TRUE){
-	h<-hist(x, breaks, right=right, include.lowest=include.lowest, plot=FALSE)
-	t<-as.data.frame(table(cut(x, breaks=h$breaks, right=right, include.lowest=include.lowest)))
-	ni<-t$Freq
-	n<-sum(ni)
-	fi<-ni/n
-	Ni<-cumsum(ni)
-	Fi<-Ni/n
-	nc<-length(ni)
-	z<-rep(0,5*nc)
-	dim(z)<-c(nc,5)
-	z[,1]<-h$mids
-	z[,2]<-ni
-	z[,3]<-fi
-	z[,4]<-Ni
-	z[,5]<-Fi
-	colnames(z)<-c("Class.Mark", "Abs.Freq", "Rel.Freq.", "Cum.Abs.Freq.", "Cum.Rel.Freq.")
-	rownames(z)<-t$Var1
-	return(z)
+frequencyTableIntervals <- function(data, variable, breaks, right=TRUE, include.lowest=TRUE, groups=NULL){
+	require(plyr)
+	if (!is.data.frame(data)) {
+		stop("data must be a data frame")
+	}
+	if (!variable %in% colnames(data)) {
+		stop(paste(variable, "is not a column of data frame"))
+	}
+	if (!is.numeric(data[[variable]])) {
+		stop(paste(variable, "must be numeric"))
+	}
+	if (!is.null(groups)) {
+		for (i in 1:length(groups)) {
+			if (!groups[i] %in% colnames(data)) {
+				stop(paste(groups[i], "is not a column of data frame", data))
+			}
+			if (!is.factor(data[[groups[i]]])) {
+				stop(paste(groups[i], "is not a factor"))
+			}
+		}
+	}
+	data <- transform(data, clases=cut(data[[variable]], breaks=breaks, right=right, include.lowest=include.lowest))
+	colnames(data)[colnames(data)=="clases"]=paste("clases",variable,sep=".")
+	if (is.null(groups)){
+		result <- count(data, paste("clases",variable,sep="."))
+		colnames(result)[2] <- "Freq.Abs"
+		result <- mutate(result,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+	}
+	else {
+		f <- function(df){
+			output <- count(df,paste("clases",variable,sep="."))
+			colnames(output)[2] <- "Freq.Abs"
+			mutate(output,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+		}
+		result <- dlply(data,groups,f)
+	}
+	return(result)
+	
 }
 

@@ -5,7 +5,10 @@
 	<help file="FrequencyTabulationGroupedData.rkh" />
 
 	<logic>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
 		<connect client="cells.variable" governor="variable.available" />
+		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 
 	<dialog label="Distribución de frecuencias">
@@ -15,9 +18,9 @@
 					<varselector id="selector" label="Seleccionar variable"/>
 					<column>
 						<varslot id="variable" label="Variable a tabular" source="selector" types="number" required="true" />
-						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
-							<input id="filter" label="Condición de selección" />
-						</frame>
+						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 					</column>
 				</row>
 			</tab>

@@ -4,12 +4,15 @@ frequencyTable <- function(data, variable, groups=NULL){
 		stop("data must be a data frame")
 	}
 	if (!variable %in% colnames(data)) {
-		stop(paste(variable, " is not a column of data frame"))
+		stop(paste(variable, "is not a column of data frame"))
 	}
 	if (!is.null(groups)) {
 		for (i in 1:length(groups)) {
 			if (!groups[i] %in% colnames(data)) {
-				stop(paste(groups[i], " is not a column of data frame", data))
+				stop(paste(groups[i], "is not a column of data frame", data))
+			}
+			if (!is.factor(data[[groups[i]]])) {
+				stop(paste(groups[i], "is not a factor"))
 			}
 		}
 	}
