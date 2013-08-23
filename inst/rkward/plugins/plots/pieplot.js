@@ -1,141 +1,48 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var options;
-var baroptions;
-var plotoptions;
-var headeroptions;
+var data, variable, variablename, groups, groupsname, fill, xlab, ylab, facet; 
 
 function preprocess () {
+	echo('require(ggplot2)\n');
 }
 
-function set_options() {
-	var var1 = getValue ("vars");
-	// first fetch all relevant options
-	options = new Array();
-
-	options['rel'] = getValue("rel");
-	options['cum'] = getValue("cum");
-	options['poly'] = getValue("poly");
-	options['grouped'] = getValue("grouped");
-	options['grouping'] = getValue ("grouping");
-	if (options['grouping'] == "juxtaposed") {
-		options['juxtaposed'] = true;
-		options['labels'] = getValue ("labels");
-		if (options['labels']) {
-			options['place'] = getValue ("place");
-		}
-	} else {
-		options['labels'] = false;
-		options['juxtaposed'] = false;
+function calculate() {
+	variable = getString("variable");
+	data = variable.split('[[')[0];
+	variablename = getString("variable.shortname");
+	xlab = ', xlab=""';
+	ylab = ', ylab = "Frecuencia absoluta"';
+	// Set grouped mode
+	facet = '';
+	if (getBoolean("grouped")) {
+		groups = getString("groups");
+		groupsname = getString("groups.shortname");
+			facet = ' + facet_grid(.~' + groupsname + ')';
 	}
-	options['legend'] = getValue ("legend");
-
-	baroptions = "";
-	plotoptions = "";
-	headeroptions = "";
-	headeroptions += '"Variable", rk.get.description (' + var1 + ')';
-	if (options['grouped']) headeroptions += ', "Grouping", "' + options['grouping'] + '"';
-	if (options['rel']){
-		headeroptions += ', "Relative frequency", "Yes"';
-		baroptions += ', rel=TRUE';
-	} else {
-		headeroptions += ', "Relative frequency", "No"';
-	}
-	if (options['cum']){
-		headeroptions += ', "Cumulative frequency", "Yes"';
-		baroptions += ', cum=TRUE';
-	} else {
-		headeroptions += ', "Cumulative frequency", "No"';
-	}
-	if (options['poly']){
-		headeroptions += ', "Polygon", "Yes"';
-		baroptions += ', poly=TRUE';
-	} else {
-		headeroptions += ', "Polygon", "No"';
-	}
-	if (options['juxtaposed']) baroptions += ', beside=TRUE';
-	if (options['legend']) baroptions += ', legend.text=TRUE';
-	if (options['labels']) baroptions += ', ylim = yrange';
-	//Colors
-	options['colors'] = getValue ("colors");
-	if (options['colors'] == 'rainbow') {
-		plotoptions = ', col=rainbow (if(is.matrix(counts)) dim(counts) else length(counts))';
-	}
+    // Filter
+	echo(getString("filter_embed.code.calculate"));
 }
-
-
-
 
 function printout () {
 	doPrintout (true);
 }
 
-function preview () {
+function preview() {
 	doPrintout (false);
 }
 
-function getName(x){
-	return x.split('"')[1];
-}
-
-function doPrintout (full) {
-	var vars = getValue ("vars").split ("\n");
-	var title = 'paste(';
-	for (i=0; i<vars.length; i++){
-		title += 'rk.get.description(' + vars[i] + '),';
-	}
-	title += 'sep=", ")'; 
-	
-	vars = vars.join(", ");
-	
-	var radius = getValue ("radius");
-	var angle = getValue ("angle");
-	var angle_inc = getValue ("angle_inc");
-	var density = getValue ("density");
-	var density_inc = getValue ("density_inc");
-	var col = getValue ("colors");
-	var clockwise = getValue ("clockwise");
-	var clockwise_header = "";
-	var names_mode = getValue ("names_mode");
-
-	var options = ", clockwise =" + clockwise;
-	if ((density >= 0) || (density_inc != 0)) options += ", density =" + density;
-	if (density_inc != 0) options += " + " + density_inc + " * 0:length (x)";
-	if ((density > 0) || density_inc != 0) {
-		options += ", angle =" + angle;
-		if (angle_inc != 0) options += " + " + angle_inc + " * 0:length (x)";
-	}
-	if (radius != 0.8) options += ", radius=" + radius;
-	if (col == "rainbow") options += ", col=rainbow (if(is.matrix(x)) dim(x) else length(x))";
-	else if (col == "grayscale") options += ", col=gray.colors (if(is.matrix(x)) dim(x) else length(x))";
-	options += getValue ("plotoptions.code.printout");
-
-	var plotpre = getValue ("plotoptions.code.preprocess");
-	var plotpost = getValue ("plotoptions.code.calculate");
-
-	
-
+function doPrintout(full) {
+	// Print header
 	if (full) {
-		echo ('rk.header ("Diagrama de sectores", parameters=list ("Variable(s)"=' + title + '))\n');
-		echo ('\n');
+		echo ('rk.header ("Diagrama de sectores", list ("Variable" = rk.get.description(' + variable + ')))\n');
 		echo ('rk.graph.on ()\n');
 	}
-
-	echo ('try ({\n');
-	
-	
-//	if (plotpre.length > 0) printIndented ("\t", plotpre);
-//	if (names_mode == "rexp") {
-//		echo ("\tnames(x) <- " + getValue ("names_exp") + "\n");
-//	} else if (names_mode == "custom") {
-//		echo ("\tnames(x) <- c (\"" + str_replace (";", "\", \"", trim (getValue ("names_custom"))) + "\")\n");
-//	}
-//	
-//	
-//	echo ('pie(table(interaction(' + vars + '))' + options + ')\n');
-//	if (plotpost.length > 0) printIndented ("\t", plotpost);
+	// Plot
+	echo('try ({\n');
+	echo('p<-qplot(x=factor(1), data=' + data + ', fill=' + variablename + xlab + ylab + getString("plotoptions.code.printout") + ')' + ' + geom_bar(width=1) +  coord_polar(theta="y") + theme(axis.text.y=element_blank())' + facet + getString("plotoptions.code.calculate") + '\n');
+	echo('print(p)\n');
 	echo ('})\n');
+
 	if (full) {
 		echo ('rk.graph.off ()\n');
 	}

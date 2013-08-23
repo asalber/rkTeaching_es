@@ -1,7 +1,6 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var variable, variablename, groups, groupsname, border, fill, position, xlab, ylab, barcolor; 
+var variable, variablename, groups, groupsname, fill, position, xlab, ylab, barcolor, bordercolor, facet; 
 
 function preprocess() {
 	echo('require(ggplot2)\n');
@@ -13,6 +12,7 @@ function calculate() {
 	xlab = ', xlab="' + variablename + '"';
 	ylab = ', ylab = "Frecuencia absoluta"';
 	fill = '';
+	// Set bar color
 	barcolor = getString("barfillcolor.code.printout")
 	if (barcolor!='') {
 		barcolor = ', fill=I(' + barcolor + ')';
@@ -20,19 +20,25 @@ function calculate() {
 	else {
 		barcolor = ', fill=I("#FF9999")';
 	}
-    
+    // Set border color
 	bordercolor = getString("barbordercolor.code.printout");
 	if (bordercolor != '') {
 		bordercolor = ', colour=I(' + bordercolor + ')';
 	}
+	// Set grouped mode
 	position = '';
+	facet = '';
 	if (getBoolean("grouped")) {
 		groups = getString("groups");
 		groupsname = getString("groups.shortname");
 		fill = ', fill=' + groupsname;
-		position = ', position="' + getString("position") + '"';
+		if (getString("position")!='faceted') {
+			position = ', position="' + getString("position") + '"';
+		}
+		else {
+			facet = ' + facet_grid(.~' + groupsname + ')';
+		}
 		barcolor = '';
-		bordercolor = '';
 	}
     // Filter
 	echo(getString("filter_embed.code.calculate"));
@@ -77,7 +83,7 @@ function doPrintout(full) {
 	}
 	// Plot
 	echo('try ({\n');
-	echo('p<-qplot(' +  variablename + ', Freq, data=df, geom="bar", stat="identity"' + fill + barcolor + bordercolor + position + xlab + ylab + getString("plotoptions.code.printout") + ')' + getString("plotoptions.code.calculate") + '\n');
+	echo('p<-qplot(' +  variablename + ', Freq, data=df, geom="bar", stat="identity"' + fill + barcolor + bordercolor + position + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
 	if (getBoolean("polygon")) {
 		if (getBoolean("cumulative")) {
 			echo('p <- p + geom_step(aes(group=1))\n');

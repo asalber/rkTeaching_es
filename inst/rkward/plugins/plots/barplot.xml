@@ -43,6 +43,7 @@
 						<radio id="position" label="Agrupamiento" >
 							<option value="dodge" label="Yuxtapuestas" checked="true"/>
 							<option value="stack" label="Apiladas"/>
+							<option value="faceted" label="Separadas"/>
 						</radio>
 						<stretch/>
 					</column>

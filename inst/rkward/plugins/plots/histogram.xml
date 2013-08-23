@@ -5,32 +5,19 @@
 	<code file="histogram.js" />
 	<help file="histogram.rkh" />
 	<logic>
-		<connect client="histogram_opt.variable" governor="variable.available" />
 		<connect client="cells.variable" governor="variable.available" />
-		<connect client="plotoptions.xvar" governor="variable.available"/>
-		<set id="plotoptions.allow_log" to="false"/>
-		<set id="plotoptions.allow_type" to="false"/>
-				
-		<convert id="isdensityGT0" mode="range" sources="density.int" min="1" />
-		<convert id="ishistlty_notblank" sources="histlinetype.string" mode="notequals" standard="blank" />
-		<convert id="ishistlty_blank" sources="histlinetype.string" mode="equals" standard="blank" />
-
-		<connect client="density.enabled" governor="ishistlty_notblank"/>
-
-		<convert id="isdensityGT0ishistlty_notblank" mode="and" sources="isdensityGT0;ishistlty_notblank" />
-		<connect client="angle.enabled" governor="isdensityGT0ishistlty_notblank"/>-->
-
-		<set id="histbordercol.argument" to=", border="/>
-		<connect client="frame_histborderoptions.enabled" governor="ishistlty_notblank"/>
-		<connect client="histbordercol.color.enabled" governor="doborder.state" />
-
-		<convert id="isdensity_non0" sources="density.int" mode="notequals" standard="0" />
-
-		<connect client="frame_histfilloptions.enabled" governor="isdensity_non0"/>
-		<connect client="histfillcol.color.enabled" governor="usefillcol.state" />
-
-		<connect client="usefillcol.enabled" governor="ishistlty_notblank"/>
-		<connect client="usefillcol.state" governor="ishistlty_blank"/>
+		<set id="plotoptions.allow_log" to="false"/>		
+		<convert id="relativefreq" mode="equals" sources="relative.state" standard="1" />
+		<connect client="density.enabled" governor="relativefreq"/>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="position.enabled" governor="grouped_mode"/>
+		<connect client="cumulative.enabled" governor="grouped_mode.not"/>
+		<connect client="polygon.enabled" governor="grouped_mode.not"/>
+		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not"/>
+		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not"/>
+		<connect client="plotoptions.allow_legend" governor="grouped_mode" />
+		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 	
 	<dialog label="Histograma" >
@@ -39,54 +26,46 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variable"/>
 					<column>
-						<varslot id="variable" label="Variable" multi="false" type="numeric" source="selector" required="true" />
+						<varslot id="variable" label="Variable" type="numeric" source="selector" required="true" />
+						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" source="selector" required="true"/>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<stretch/>
 						<preview id="preview"/>
 					</column>
 				</row>
 			</tab>
-			<tab id="tab_histoptions" label="Opciones del histograma">
-				<frame id="frame_freq" label="Frecuencias">
-					<checkbox id="rel" label="Frecuencia relativa" checked="false" value_unchecked="0" />
-					<checkbox id="cum" label="Frecuencia acumulada" checked="false" value_unchecked="0" />
-					<checkbox id="density" label="Densidad" value="1" value_unchecked="0" checked="false"/>
-				</frame>
-				<checkbox id="poly" label="Polígono" checked="false" value_unchecked="0" />
-				<stretch/>
+			<tab id="tab_hist_options" label="Opciones del histograma">
+				<row>
+					<column>
+						<frame id="frame_freq" label="Frecuencias">
+							<checkbox id="relative" label="Frecuencia relativa" checked="false" value="1" />
+							<checkbox id="cumulative" label="Frecuencia acumulada" checked="false" value="1" />
+							<checkbox id="density" label="Densidad" value="1" checked="false"/>
+						</frame>
+						<checkbox id="polygon" label="Polígono" checked="false" value="1" />
+						<radio id="position" label="Agrupamiento" >
+							<option value="identity" label="Sobrepuestas" checked="true" />
+							<option value="dodge" label="Yuxtapuestas" />
+							<option value="stack" label="Apiladas"/>
+							<option value="faceted" label="Separadas" />
+						</radio>
+						<stretch/>
+					</column>
+					<column>
+						<frame id="frame_barfillcolor" label="Color de relleno">
+							<embed id="barfillcolor" component="rkTeaching::color_chooser" label="Color de relleno"/>
+						</frame>
+						<frame id="frame_barbordercolor" label="Color de borde">
+							<embed id="barbordercolor" component="rkTeaching::color_chooser" label="Color de borde"/>
+						</frame>
+						<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
+						<stretch/>
+					</column>
+				</row>
 			</tab>
 			<tab id="tab_cells" label="Clases" >
 				<embed id="cells" component="rkTeaching::cells"/>
-			</tab>
-			<tab id="tab_graphics_options" label="Opciones gráficas">
-				<row id="graphics_options_row">
-				<column>
-					<frame id="frame_histlineoptions" label="Opciones de línea de relleno">
-						<dropdown id="histlinetype" label="Tipo de línea" >
-							<option value="blank" label="Sin línea" />
-							<option value="solid" label="Solida" checked="true"/>
-							<option value="dashed" label="Rayas cortas" />
-							<option value="dotted" label="Puntos" />
-							<option value="dotdash" label="Rayas-puntos" />
-							<option value="longdash" label="Rayas largas" />
-							<option value="twodash" label="Dos rayas" />
-						</dropdown>
-						<spinbox id="density" label="Densidad de relleno" type="integer" min="-1" initial="-1" default_precision="1"/>
-						<spinbox id="angle" label="Ángulo de líneas de relleno" min="0" max = "360" initial="45" default_precision="0"/>
-					</frame>
-				</column>
-				<column>
-					<frame id="frame_histborderoptions" label="Opciones del borde">
-						<checkbox id="doborder" label="Dibujar borde" checked="true"/>
-						<embed id="histbordercol" component="rkward::color_chooser" label="Color"/>
-					</frame>
-					<frame id="frame_histfilloptions" label="Opciones de relleno">
-						<checkbox id="usefillcol" label="Usar color de relleno" checked="false"/>
-						<embed id="histfillcol" component="rkward::color_chooser" label="Color"/>
-					</frame>
-				</column>
-				</row>
-				<stretch/>
-				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas generales"/>
 			</tab>
 		</tabbook>
 	</dialog>

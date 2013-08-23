@@ -5,7 +5,7 @@ var classes;
 var classesheader;
 
 function makeCodes () {
-	classes = 'breaks=';
+	classes = ', breaks=';
 	classesheader = ', "M&eacute;todo de determinaci&oacute;n de los intervalos " = "';
 	var variable = getString("variable");
 	var breaks = getString("breaksFunction");

@@ -7,6 +7,15 @@
 		<external id="default_main" default="" />
 		<external id="default_xlab" default="" />
 		<external id="default_ylab" default="" />
+		
+		<external id="allow_legend" default="false"/>
+		<connect client="tab_legend.visible" governor="allow_legend" />
+		
+		<external id="allow_grid" default="true" />
+		<connect client="tab_grid.visible" governor="allow_grid"/>
+		
+		<external id="allow_axes" default="true" />
+		<connect client="tab_axex.visible" governor="allow_axes"/>
 
 		<external id="allow_log" default="true" />
 		<external id="allow_xlim" default="true" />
@@ -44,23 +53,18 @@
 		<connect client="xlog.visible" governor="allow_log"/>
 		<connect client="ylog.visible" governor="allow_log"/>
 				
-		<external id="allow_legend" default="false"/>
-		<connect client="tab_legend.visible" governor="allow_legend" />
-		
-		<external id="allow_grid" default="true" />
-		<connect client="tab_grid.visible" governor="allow_grid"/>
  	</logic>
 	
 	<dialog label="Opciones gráficas" >
 		<tabbook>
-			<tab id="titlepage" label="Título">
+			<tab id="tab_title" label="Título">
 				<column>
 					<input id="main" label="Título" size="large" />
 					<checkbox id="main_expression" label="Expresión de R" checked="false"/>
  				<stretch/>
 				</column>
 			</tab>
-			<tab id="axespage" label="Ejes" >
+			<tab id="tab_axes" label="Ejes" >
 				<row>
 					<column>
 						<frame id="x_axe" label="Eje X">

@@ -6,7 +6,7 @@
 	<help file="pieplot.rkh" />
 	
 	<logic>
-		<set id="plotoptions.allow_axes" to="false" />
+
 	</logic>
 	
 	<dialog label="Diagrama de sectores">

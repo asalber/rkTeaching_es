@@ -1,27 +1,30 @@
-frequencyTable <- function(x){
-	t<-as.data.frame(table(x))
-	ni<-t$Freq
-	n<-sum(ni)
-	fi<-ni/n
-	nf<-length(ni)
-	if (is.numeric(x)) {
-		Ni<-cumsum(ni)
-		Fi<-Ni/n
-		z<-rep(0,4*nf)
-		dim(z)<-c(nf,4)
-		z[,1]<-ni
-		z[,2]<-fi
-		z[,3]<-Ni
-		z[,4]<-Fi
-		colnames(z)<-c("Abs.Freq.","Rel.Freq.","Cum.Abs.Freq.","Cum.Rel.Freq.")
+frequencyTable <- function(data, variable, groups=NULL){
+	require(plyr)
+	if (!is.data.frame(data)) {
+		stop("data must be a data frame")
+	}
+	if (!variable %in% colnames(data)) {
+		stop(paste(variable, " is not a column of data frame"))
+	}
+	if (!is.null(groups)) {
+		for (i in 1:length(groups)) {
+			if (!groups[i] %in% colnames(data)) {
+				stop(paste(groups[i], " is not a column of data frame", data))
+			}
+		}
+	}
+	if (is.null(groups)){
+		result <- count(data, variable)
+		colnames(result)[2] <- "Freq.Abs"
+		result <- mutate(result,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
 	}
 	else {
-		z<-rep(0,2*nf)
-		dim(z)<-c(nf,2)
-		z[,1]<-ni
-		z[,2]<-fi
-		colnames(z)<-c("Abs.Freq.","Rel.Freq.")
+		f <- function(df){
+			output <- count(df,variable)
+			colnames(output)[2] <- "Freq.Abs"
+			mutate(output,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+		}
+		result <- dlply(data,groups,f)
 	}
-	rownames(z)<-t$x
-	return(z)
+	return(result)
 }
