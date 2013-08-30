@@ -11,7 +11,7 @@ function calculate() {
 	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
 	xlab = ', xlab=""';
-	ylab = ', ylab = "Frecuencia absoluta"';
+	ylab = ', ylab = ""';
 	// Set grouped mode
 	facet = '';
 	if (getBoolean("grouped")) {
@@ -39,7 +39,7 @@ function doPrintout(full) {
 	}
 	// Plot
 	echo('try ({\n');
-	echo('p<-qplot(x=factor(1), data=' + data + ', fill=' + variablename + xlab + ylab + getString("plotoptions.code.printout") + ')' + ' + geom_bar(width=1) +  coord_polar(theta="y") + theme(axis.text.y=element_blank())' + facet + getString("plotoptions.code.calculate") + '\n');
+	echo('p<-qplot(x=factor(1), data=' + data + ', fill=factor(' + variablename + ')' + xlab + ylab + getString("plotoptions.code.printout") + ')' + ' + geom_bar(width=1) +  coord_polar(theta="y") + theme( axis.ticks.y=element_blank(), axis.text.y=element_blank())' + facet + getString("plotoptions.code.calculate") + '\n');
 	echo('print(p)\n');
 	echo ('})\n');
 

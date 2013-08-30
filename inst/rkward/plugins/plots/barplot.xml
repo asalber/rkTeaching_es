@@ -8,11 +8,12 @@
 	<logic>
 		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
 		<connect client="groups.visible" governor="grouped_mode"/>
-		<connect client="position.enabled" governor="grouped_mode"/>
-		<connect client="cumulative.enabled" governor="grouped_mode.not"/>
 		<connect client="polygon.enabled" governor="grouped_mode.not"/>
 		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not"/>
 		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not"/>
+		<convert id="cumulative_mode" mode="equals" sources="cumulative.state" standard="1"/>
+		<convert id="grouped_noncumulative_mode" mode="and" sources="grouped_mode;cumulative_mode.not"/>
+		<connect client="position.enabled" governor="grouped_noncumulative_mode"/>
 		<connect client="plotoptions.allow_legend" governor="grouped_mode" />
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
@@ -25,21 +26,21 @@
 					<column>
 						<varslot id="variable" label="Variable" source="selector" required="true"/>
 						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" source="selector" required="true"/>
+						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<stretch/>
 						<preview id="preview"/>
 					</column>
 				</row>
 			</tab>
-			<tab label="Opciones de las barras" id="tab_bars_options">
+			<tab id="tab_bars_options" label="Opciones de las barras" >
 				<row>
 					<column>
 						<frame id="frame_freq" label="Frecuencias">
-							<checkbox id="relative" label="Frecuencia relativa" checked="false" value_unchecked="0" />
-							<checkbox id="cumulative" label="Frecuencia acumulada" checked="false" value_unchecked="0" />
+							<checkbox id="relative" label="Frecuencia relativa" checked="false" value="1" />
+							<checkbox id="cumulative" label="Frecuencia acumulada" checked="false" value="1" />
 						</frame>
-						<checkbox id="polygon" label="Polígono" checked="false" value_unchecked="0" />
+						<checkbox id="polygon" label="Polígono" checked="false" />
 						<radio id="position" label="Agrupamiento" >
 							<option value="dodge" label="Yuxtapuestas" checked="true"/>
 							<option value="stack" label="Apiladas"/>

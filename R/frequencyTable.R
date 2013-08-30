@@ -18,14 +18,14 @@ frequencyTable <- function(data, variable, groups=NULL){
 	}
 	if (is.null(groups)){
 		result <- count(data, variable)
-		colnames(result)[2] <- "Freq.Abs"
-		result <- mutate(result,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+		colnames(result)[2] <- "Frec.Abs."
+		result <- mutate(result,Frec.Rel.=Frec.Abs./sum(Frec.Abs.),Frec.Abs.Acum.=cumsum(Frec.Abs.),Frec.Rel.Acum.=cumsum(Frec.Rel.))
 	}
 	else {
 		f <- function(df){
 			output <- count(df,variable)
-			colnames(output)[2] <- "Freq.Abs"
-			mutate(output,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+			colnames(output)[2] <- "Frec.Abs."
+			mutate(output,Frec.Rel.=Frec.Abs./sum(Frec.Abs.),Frec.Abs.Acum.=cumsum(Frec.Abs.),Frec.Rel.Acum.=cumsum(Frec.Rel.))
 		}
 		result <- dlply(data,groups,f)
 	}

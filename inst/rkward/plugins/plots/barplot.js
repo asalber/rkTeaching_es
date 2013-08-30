@@ -1,13 +1,16 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-var variable, variablename, groups, groupsname, fill, position, xlab, ylab, barcolor, bordercolor, facet; 
+var data, variable, variablename, y, groups, groupsname, fill, position, xlab, ylab, barcolor, bordercolor, facet; 
 
 function preprocess() {
+	echo('require(rk.Teaching)\n');
 	echo('require(ggplot2)\n');
 }
 
 function calculate() {
+	// Load variables
 	variable = getString("variable");
+	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
 	xlab = ', xlab="' + variablename + '"';
 	ylab = ', ylab = "Frecuencia absoluta"';
@@ -18,7 +21,7 @@ function calculate() {
 		barcolor = ', fill=I(' + barcolor + ')';
 	}
 	else {
-		barcolor = ', fill=I("#FF9999")';
+		barcolor = ', fill=I("#FF9999")'; // Defauklt bar color
 	}
     // Set border color
 	bordercolor = getString("barbordercolor.code.printout");
@@ -32,11 +35,11 @@ function calculate() {
 		groups = getString("groups");
 		groupsname = getString("groups.shortname");
 		fill = ', fill=' + groupsname;
-		if (getString("position")!='faceted') {
-			position = ', position="' + getString("position") + '"';
+		if (getBoolean("cumulative") || getString("position")==='faceted') {
+			facet = ' + facet_grid(.~' + groupsname + ')';
 		}
 		else {
-			facet = ' + facet_grid(.~' + groupsname + ')';
+			position = ', position="' + getString("position") + '"';
 		}
 		barcolor = '';
 	}
@@ -44,23 +47,29 @@ function calculate() {
 	echo(getString("filter_embed.code.calculate"));
 	// Previous settings
 	if (getBoolean("grouped")) {
-		echo('df <- as.data.frame(table(' + variable + ', ' + groups + '))\n');
-		echo('names(df)[2] <- "' +  groupsname + '"\n');
-	} else {
-		echo('df <- as.data.frame(table(' + variable + '))\n');
+		groups = getList("groups");
+		groupsname = getList("groups.shortname");
+		echo('df <- ldply(frequencyTable(' + data + ', ' + quote(variablename) + ', groups=c(' + groupsname.map(quote) + ')))\n');
 	}
+	else {
+		echo('df <- frequencyTable(' + data + ', ' + quote(variablename) + ')\n');
+	}
+	y = ', Frec.Abs.';
 	if (getBoolean("relative")) {
-		echo('df[["Freq"]] <- df[["Freq"]]/sum(df[["Freq"]])\n');
+		y = ', Frec.Rel.';
 		ylab = ', ylab="Frecuencia relativa"';
+		if (getBoolean("grouped") && getString("position")==='stack' ) {
+			echo('df <- transform(df,Frec.Rel.=Frec.Abs./sum(Frec.Abs.))\n');
+		}
 	}
 	if (getBoolean("cumulative")) {
-		echo('df[["Freq"]] <- cumsum(df[["Freq"]])\n');
+		y = ', Frec.Abs.Acum.';
 		ylab = ', ylab="Frecuencia acumulada"';
 		if (getBoolean("relative")){
+			y = ', Frec.Rel.Acum.';
 			ylab = ', ylab="Frecuencia relativa acumulada"';
 		}
 	}
-	echo('names(df)[1] <- "' +  variablename + '"\n');
 }
 
 function printout () {
@@ -83,7 +92,7 @@ function doPrintout(full) {
 	}
 	// Plot
 	echo('try ({\n');
-	echo('p<-qplot(' +  variablename + ', Freq, data=df, geom="bar", stat="identity"' + fill + barcolor + bordercolor + position + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
+	echo('p<-qplot(' +  variablename + y + ', data=df, geom="bar", stat="identity"' + fill + barcolor + bordercolor + position + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
 	if (getBoolean("polygon")) {
 		if (getBoolean("cumulative")) {
 			echo('p <- p + geom_step(aes(group=1))\n');

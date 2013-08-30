@@ -51,8 +51,7 @@
 		<connect client="main_expression.enabled" governor="mainfilled" />
 
 		<connect client="xlog.visible" governor="allow_log"/>
-		<connect client="ylog.visible" governor="allow_log"/>
-				
+		<connect client="ylog.visible" governor="allow_log"/>			
  	</logic>
 	
 	<dialog label="Opciones gráficas" >
@@ -61,8 +60,8 @@
 				<column>
 					<input id="main" label="Título" size="large" />
 					<checkbox id="main_expression" label="Expresión de R" checked="false"/>
- 				<stretch/>
 				</column>
+				<stretch/>
 			</tab>
 			<tab id="tab_axes" label="Ejes" >
 				<row>
@@ -111,17 +110,6 @@
 				</row>
 				<checkbox id="flip_axis" label="Intercambiar ejes" checked="false"/>
 			</tab>
-			<tab id="tab_legend" label="Leyenda">
-				<dropdown id="legend" label="Posición de la leyenda" >
-					<option value="" label="defecto" checked="true" />
-					<option value="none" label="ninguna" />
-					<option value="top" label="arriba" />
-					<option value="bottom" label="abajo" />
-					<option value="left" label="izquierda" />
-					<option value="right" label="derecha" />					
-				</dropdown>
-				<stretch/>
-			</tab>
 			<tab id="tab_grid" label="Cuadrícula" >
 				<row>
 					<frame id="grid_major" label="Cuadrícula mayor">
@@ -138,6 +126,17 @@
 				<frame id="frame_grid_background_color" label="Color de fondo">
 					<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
 				</frame>			
+				<stretch/>
+			</tab>
+			<tab id="tab_legend" label="Leyenda" >
+				<dropdown id="legend" label="Posición de la leyenda" >
+					<option value="" label="defecto" checked="true" />
+					<option value="none" label="ninguna" />
+					<option value="top" label="arriba" />
+					<option value="bottom" label="abajo" />
+					<option value="left" label="izquierda" />
+					<option value="right" label="derecha" />					
+				</dropdown>
 				<stretch/>
 			</tab>
 		</tabbook>
