@@ -7,12 +7,14 @@
 	<logic>
 		<connect client="cells.variable" governor="variable.available" />
 		<set id="plotoptions.allow_log" to="false"/>		
-		<convert id="relativefreq" mode="equals" sources="relative.state" standard="1" />
-		<connect client="density.enabled" governor="relativefreq"/>
+		<convert id="relative_freq" mode="equals" sources="relative.state" standard="1" />
+		<convert id="cumulative_freq" mode="equals" sources="cumulative.state" standard="1"/>
+		<convert id="relative_noncumulative_freq" mode="and" sources="relative_freq;cumulative_freq.not" />
+		<connect client="density.enabled" governor="relative_noncumulative_freq"/>
 		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<convert id="grouped_noncumulative_mode" mode="and" sources="grouped_mode;cumulative_freq.not"/>
+		<connect client="position.enabled" governor="grouped_noncumulative_mode"/>
 		<connect client="groups.visible" governor="grouped_mode"/>
-		<connect client="position.enabled" governor="grouped_mode"/>
-		<connect client="cumulative.enabled" governor="grouped_mode.not"/>
 		<connect client="polygon.enabled" governor="grouped_mode.not"/>
 		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not"/>
 		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not"/>

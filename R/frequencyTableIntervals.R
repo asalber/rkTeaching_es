@@ -1,4 +1,4 @@
-frequencyTableIntervals <- function(data, variable, breaks, right=TRUE, include.lowest=TRUE, groups=NULL){
+frequencyTableIntervals <- function(data, variable, breaks, right=FALSE, include.lowest=TRUE, center=FALSE, width=FALSE, groups=NULL){
 	require(plyr)
 	if (!is.data.frame(data)) {
 		stop("data must be a data frame")
@@ -19,22 +19,39 @@ frequencyTableIntervals <- function(data, variable, breaks, right=TRUE, include.
 			}
 		}
 	}
-	data <- transform(data, clases=cut(data[[variable]], breaks=breaks, right=right, include.lowest=include.lowest))
-	colnames(data)[colnames(data)=="clases"]=paste("clases",variable,sep=".")
 	if (is.null(groups)){
-		result <- count(data, paste("clases",variable,sep="."))
-		colnames(result)[2] <- "Freq.Abs"
-		result <- mutate(result,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+		result <- tabulateFrequenciesIntervals(data=data, variable=variable, breaks=breaks, right=right, include.lowest=include.lowest, center=center, width=width)
 	}
 	else {
 		f <- function(df){
-			output <- count(df,paste("clases",variable,sep="."))
-			colnames(output)[2] <- "Freq.Abs"
-			mutate(output,Freq.Rel=Freq.Abs/sum(Freq.Abs),Frec.Abs.Acum=cumsum(Freq.Abs),Frec.Rel.Acum=cumsum(Freq.Rel))
+			tabulateFrequenciesIntervals(data=df, variable=variable, breaks=breaks, right=right, include.lowest=include.lowest, center=center, width=width)
 		}
-		result <- dlply(data,groups,f)
+		result <- dlply(data, groups, f)
 	}
 	return(result)
-	
 }
 
+tabulateFrequenciesIntervals <- function(data, variable, breaks, right=FALSE, include.lowest=TRUE, center=FALSE, width=FALSE) {
+	centers <- (breaks[-1]+breaks[-length(breaks)])/2
+	result <- data
+	for (i in 1:length(centers)) {
+		result[nrow(result)+1,] <- NA
+		result[nrow(result),variable] <- centers[i]
+	}
+	result <- transform(result, clases=cut(result[[variable]], breaks=breaks, right=right, include.lowest=include.lowest))
+	result <- count(result, "clases")
+	colnames(result)[1] <- paste("Clases",variable,sep=".")
+	colnames(result)[2] <- "Frec.Abs."
+	result[["Frec.Abs."]] <- result[["Frec.Abs."]] - rep(1,length(centers))
+	if (center) {
+		result[["Centro"]] <- centers
+	}
+	if (width) {
+		result[["Amplitud"]] <- breaks[-1]-breaks[-length(breaks)]
+	}
+	if (center | width) {
+		result <- cbind(result[,names(result)!="Frec.Abs."], Frec.Abs.=result[["Frec.Abs."]])
+	}
+	result <- mutate(result, Frec.Rel.=Frec.Abs./sum(Frec.Abs.), Frec.Abs.Acum.=cumsum(Frec.Abs.), Frec.Rel.Acum.=cumsum(Frec.Rel.))
+	return(result)
+}

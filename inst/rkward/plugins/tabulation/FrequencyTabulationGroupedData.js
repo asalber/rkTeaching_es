@@ -12,8 +12,11 @@ function calculate(){
 	variable = getString("variable");
 	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
+	// Filter
 	echo(getString("filter_embed.code.calculate"));
+	// Calculate frequencies
 	echo('result <- frequencyTableIntervals(' + data + ', ' + quote(variablename) + getString("cells.code.calculate")); 
+    // Grouped mode
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
 		groupsname = getList("groups.shortname");

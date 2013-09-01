@@ -1,9 +1,11 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-var variable, y, variablename, data, groups, groupsname, fill, position, xlab, ylab, barcolor, bordercolor, facet; 
+var variable, y, variablename, data, groups, groupsname, cells, fill, position, xlab, ylab, barcolor, bordercolor, facet; 
 
 function preprocess(){
 	// add requirements etc. here
+	echo('require(rk.Teaching)\n');
+	echo('require(plyr)\n');
 	echo('require(ggplot2)\n');
 }
 
@@ -12,8 +14,8 @@ function calculate() {
 	variable = getString("variable");
 	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
-	xlab = ', xlab="' + variablename + '"';
-	ylab = ', ylab = "Frecuencia absoluta"';
+	xlab = ' + xlab("' + variablename + '")';
+	ylab = ' + ylab("Frecuencia absoluta")';
 	fill = '';
 	// Set bar color
 	barcolor = getString("barfillcolor.code.printout")
@@ -38,33 +40,62 @@ function calculate() {
 		groups = getString("groups");
 		groupsname = getString("groups.shortname");
 		fill = ', fill=' + groupsname;
-		if (getString("position")!='faceted') {
+		if (getBoolean("cumulative") || getString("position")==='faceted') {
+			facet = ' + facet_grid(.~' + groupsname + ')';
+		}
+		else {
 			position = ', position="' + getString("position") + '"';
 			if (getString("position")==='identity') {
 				position += ', alpha=.5';
 			}
 		}
-		else {
-			facet = ' + facet_grid(.~' + groupsname + ')';
-		}
 		barcolor = '';
 	}
+
     // Filter
 	echo(getString("filter_embed.code.calculate"));
-	// Set frecuency type
-	y = '';
-	if (getBoolean("relative")) {
-		y = ', y=..density..';
-		ylab = ', ylab="Frecuencia relativa"';
+	// Interval breaks
+	cells = getString("cells.code.calculate");
+	echo('breaks <- ' + getString("cells.code.preprocess") + '\n');	
+	// Calculate frequencies
+	if (getBoolean("grouped")) {
+		groups = getList("groups");
+		groupsname = getList("groups.shortname");
+		echo('df <- ldply(frequencyTableIntervals(' + data + ', ' + quote(variablename) + cells + ', center=TRUE, width=TRUE, groups=c(' + groupsname.map(quote) + ')))\n');
 	}
-	if (getBoolean("cumulative")) {
-		y = ', y=cumsum(..count..)';
-		ylab = ', ylab="Frecuencia acumulada"';
-		if (getBoolean("relative")){
-			y = ', y=cumsum(..density..)';
-			ylab = ', ylab="Frecuencia relativa acumulada"';
+	else {
+		echo('df <- frequencyTableIntervals(' + data + ', ' + quote(variablename) + cells + ', center=TRUE, width=TRUE)\n');
+	}
+	// Set frecuency type
+	y = 'Frec.Abs.';
+	if (getBoolean("relative")) {
+		y = 'Frec.Rel.';
+		ylab = ' + ylab("Frecuencia relativa")';
+		if (getBoolean("grouped") && getString("position")==='stack' ) {
+			echo('df <- transform(df,Frec.Rel.=Frec.Abs./sum(Frec.Abs.))\n');
 		}
 	}
+	if (getBoolean("cumulative")) {
+		y = 'Frec.Abs.Acum.';
+		ylab = ' + ylab("Frecuencia absoluta acumulada")';
+		if (getBoolean("relative")){
+			y = 'Frec.Rel.Acum.';
+			ylab = ' + ylab("Frecuencia relativa acumulada")';
+		}
+	}
+//	y = '';
+//	if (getBoolean("relative")) {
+//		y = ', y=..density..';
+//		ylab = ', ylab="Frecuencia relativa"';
+//	}
+//	if (getBoolean("cumulative")) {
+//		y = ', y=cumsum(..count..)';
+//		ylab = ', ylab="Frecuencia acumulada"';
+//		if (getBoolean("relative")){
+//			y = ', y=cumsum(..density..)';
+//			ylab = ', ylab="Frecuencia relativa acumulada"';
+//		}
+//	}
 }
 
 function printout () {
@@ -84,12 +115,26 @@ function doPrintout (full) {
 	}
 	// Plot
 	echo('try ({\n');
-	echo('p<-qplot(' +  variablename + y + ', data=' + data + ', geom="histogram"' + stat + getString("cells.code.calculate") + fill + barcolor + bordercolor + position + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
+	// Histogram
+	echo('p <- ggplot(data=df, aes(x=Centro, y=' + y + ')' + getString("plotoptions.code.printout") + ') + geom_bar(aes(width=Amplitud' + fill + '), stat="identity"' + barcolor + bordercolor + position + ')' + ' + scale_x_continuous(breaks=breaks)' + xlab + ylab + facet + getString("plotoptions.code.calculate") + '\n');
+	// Density
 	if (getBoolean("density")) {
-		echo('p <- p + geom_line(aes(y = ..density..), stat = "density")\n');
+		echo('p <- p + geom_line(aes(x=' + variablename + ', y = ..density..), data=' + data + ', stat = "density")\n');
 	}
+	// Polygon
 	if (getBoolean("polygon")) {
-		echo('p <- p + geom_freqpoly(' + getString("cells.code.calculate") + ')\n');
+		if (getBoolean("cumulative")) {
+			if (getBoolean("relative")) {
+				echo('df <- data.frame(x=breaks, y=c(0,df[["Frec.Rel.Acum."]]))\n');
+			}
+			else {
+				echo('df <- data.frame(x=breaks, y=c(0,df[["Frec.Abs.Acum."]]))\n');
+			}
+			echo('p <- p + geom_line(aes(x=x, y=y), data=df)\n');
+		}
+		else {
+			echo('p <- p + geom_line()\n');
+		}
 	}
 	echo('print(p)\n');
 	echo('})\n');

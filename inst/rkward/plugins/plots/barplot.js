@@ -45,7 +45,7 @@ function calculate() {
 	}
     // Filter
 	echo(getString("filter_embed.code.calculate"));
-	// Previous settings
+	// Prepare data
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
 		groupsname = getList("groups.shortname");
@@ -54,6 +54,7 @@ function calculate() {
 	else {
 		echo('df <- frequencyTable(' + data + ', ' + quote(variablename) + ')\n');
 	}
+	// Set frequency type
 	y = ', Frec.Abs.';
 	if (getBoolean("relative")) {
 		y = ', Frec.Rel.';

@@ -22,7 +22,6 @@
 				<option value="scott" label="Scott" />
 				<option value="FD" label="Friedman-Diaconis" />
 				<option value="num" label="Número de intervalos" />
-				<option value="int" label="Números enteros" />
 				<option value="vec" label="Definir los límites de los intervalos" />
 			</radio>
 			<row>
@@ -31,9 +30,7 @@
 				<input id="breaks_vec" label="Insertar los puntos de corte separados por comas" size="small" required="true" />
 			</row>
 			<row>
-				<checkbox id="rightclosed" label="Intervalos cerrados a la derecha"/>
-				<text>  </text>
-				<checkbox id="include_lowest" label="Incluir valor del límite inferior de la primera clase" checked="true"/>
+				<checkbox id="rightclosed" label="Intervalos cerrados por la derecha"/>
 			</row>
 			<stretch/>
 		</column>

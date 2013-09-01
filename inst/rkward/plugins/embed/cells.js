@@ -1,33 +1,38 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var classes;
-var classesheader;
+var classes, breaks, classesheader;
 
 function makeCodes () {
-	classes = ', breaks=';
 	classesheader = ', "M&eacute;todo de determinaci&oacute;n de los intervalos " = "';
 	var variable = getString("variable");
-	var breaks = getString("breaksFunction");
-	if (breaks == "num") {
-		classes += 'pretty(range(' + variable + '),' + getString("breaks_num") + ')';
+	var breaksmethod = getString("breaksFunction");
+	if (breaksmethod == "num") {
+		breaks = 'pretty(range(' + variable + '),' + getString("breaks_num") + ')';
 		classesheader += 'Aproximadamente ' + getString("breaks_num") + ' intervalos"';
-	} else if (breaks == "int") {
-		classes += 'seq (floor (min (' + variable + ', na.rm=TRUE))-0.5, ceiling (max(' + variable + ', na.rm=TRUE))+0.5)';
-		classesheader += 'Enteros"';
-	} else if (breaks == "vec") {
-		classes += 'c(' +  getString("breaks_vec") + ')';
+	} else if (breaksmethod == "vec") {
+		breaks = 'c(' +  getString("breaks_vec") + ')';
 		classesheader += 'Definidos por el usuario: ' + getString ("breaks_vec") + '"';
 	} else {
-		classes += 'pretty(range(' + variable + '), nclass.' + breaks + '(' +  variable + '))';
-		classesheader += breaks + '"';
+		breaks = 'pretty(range(' + variable + '), nclass.' + breaksmethod + '(' +  variable + '))';
+		classesheader += breaksmethod + '"';
 	};
+	classes = ', breaks=' + breaks;
+	if (getBoolean("rightclosed")) {
+		classes += ', right=TRUE';
+	}
+	else {
+		classes += ', right=FALSE';
+	}
 }
 
+function prueba() {
+	echo("hola");
+}
 
 function preprocess(){
 	// add requirements etc. here
 	makeCodes();
+	echo(breaks);
 }
 
 function calculate(){
