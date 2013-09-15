@@ -1,0 +1,12 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="packages/" namespace="rkTeaching" id="packagespluginmap">
+	<components>
+		<component type="standard" id="install_local_package" file="install_local_package.xml" label="Instalar paquete local" />
+	</components>
+	
+	<hierarchy>
+		<menu id="workspace">
+			<entry component="install_local_package" />
+		</menu>	</hierarchy>
+</document>

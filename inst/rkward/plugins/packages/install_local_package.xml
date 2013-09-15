@@ -1,0 +1,11 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="install_local_package.js" />
+	<help file="install_local_package.rkh" />
+		
+	<dialog label="Instalar paquete local">
+		<browser size="small" id="file" label="Fichero del paquete" filter="*.zip *.tar.gz *.tgz" />
+	</dialog>
+</document>

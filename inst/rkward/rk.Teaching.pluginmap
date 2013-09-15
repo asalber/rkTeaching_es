@@ -18,11 +18,10 @@
 		 />
 	</about>
 	<dependencies rkward_min_version="0.6.1" />
-	
+	<require file="plugins/packages.pluginmap"/>
 	<require file="plugins/data.pluginmap"/>
 	<require file="plugins/frequencytabulation.pluginmap"/>
 	<require file="plugins/plots.pluginmap"/>
-	
 	<require file="plugins/statistics.pluginmap"/>
 	<require file="plugins/regression.pluginmap"/>
 	<require file="plugins/parametric_tests.pluginmap"/>
