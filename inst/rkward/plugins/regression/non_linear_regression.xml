@@ -3,6 +3,10 @@
 	<code file="non_linear_regression.js"/>
 	<help file="non_linear_regression.rkh"/>
 	
+	<logic>
+		<connect client="filter_embed.variable" governor="y.available" />
+	</logic>
+	
 	<dialog label="Ajuste de Modelo No Lineal">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variables">
@@ -11,9 +15,7 @@
 					<column>
 						<varslot id="y" label="Variable dependiente" type="numeric" source="selector" required="true" />
 						<varslot id="x" label="Variable independiente" type="numeric" source="selector" required="true" />
-						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
-							<input id="filter" label="Condición de selección" />
-						</frame>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>						
 						<saveobject id="save" label="Guardar modelo" initial="regression.model" checkable="true"/>
 					</column>
 				</row>

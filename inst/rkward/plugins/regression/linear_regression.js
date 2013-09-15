@@ -1,67 +1,67 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, y, xname, yname, data, equation, depvars, depvarsnames, modelname, filter;
+var x, y, xname, yname, data, intercept, modelname;
 
 
 function calculate () {
+    // Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Load variables
 	y = getString("y");
 	yname = getString("y.shortname");
 	data = y.split('[[')[0];
 	x = getList("x");
 	xname = getList("x.shortname");
-	equation =  "'" + yname + ' = ';
-	depvars = 'paste(';
-	depvarsnames='';
-	var intercept = "";
-	if (!getValue ("intercept.state.numeric")){
-		intercept = "0 + ";
+	// Set intercept
+	intercept = '';
+	if (!getBoolean("intercept")){
+		intercept = "0";
 	}
-	else {
-		equation += 'c0'; 
-	}
-	var formula = yname + ' ~' + intercept;
+	// Set regression formula
+	var formula = yname + '~' + intercept;
 	for (i=0; i<x.length; i++){
-		formula += ' + ' + xname[i];
-		equation += ' + c' + (i+1) + '*' + xname[i];
-		depvars += 'rk.get.description(' + x[i] + '),';
-		depvarsnames += ',"' + xname[i] + '"';
+		formula += '+' + xname[i];
 	}
-	depvars += 'sep=", ")';
-	equation += "'";
-	filter = '';
-	if (getBoolean("filter_frame.checked")){
-		filter = ', subset=' + getValue("filter");
-	}
+	// Calculate model
 	if (getBoolean("save.active")){
 		modelname = getString("save");
-		echo ('assign("' + modelname + '", lm (' + formula + ', data=' + data + filter + '), .GlobalEnv)\n');
+		echo ('assign("' + modelname + '", lm (' + formula +  ', data=' + data + '), .GlobalEnv)\n');
 		echo ('results <- summary(' + modelname + ')\n');
 	}
 	else{
-		echo ('results <- summary(lm (' + formula + ', data=' + data + filter + '))\n');
+		echo ('results <- summary(lm (' + formula + ', data=' + data + '))\n');
 	}
 }
 
 function printout () {
-	echo('rk.header ("Regresi&oacute;n Lineal", parameters=list("Variable dependiente" = rk.get.description(' + y + "), 'Variables independientes' = " + depvars + ', "Ecuaci&oacute;n del modelo" = ' + equation);
+	echo('rk.header ("Regresi&oacute;n Lineal", parameters=list("Variable dependiente" = rk.get.description(' + y + '), "Variables independientes" = rk.get.description(' + x + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
 	if (getBoolean("save.active")){
 		echo(', "Nombre del modelo" = "' + modelname + '"');
 	}
-	if (getBoolean("filter_frame.checked")){
-		echo(", 'Filtro' = '" + getString("filter") + "'");
-	}
 	echo("))\n");
-	//echo ('rk.print(results)\n');
-	echo('rk.header ("Ecuaci&oacute;n del modelo",level=3)\n'); // REVISAR PARA REGRESIÓN MÚLTIPLE
-	echo('rk.print (c("' + yname + '", " = ", round(results$coeff[1,1],4),"+",round(results$coeff[2,1],4),"*"' + depvarsnames +'))\n');
+	// Ecuación del modelo
+	echo('rk.header ("Ecuaci&oacute;n del modelo",level=3)\n'); 
+	if (getBoolean("intercept")){
+		echo('rk.print (c("' + yname + '", " = ", paste(round(results$coeff[1,1],4), paste(round(results$coeff[-1,1],4), rownames(results$coeff)[-1], collapse=" + "), sep=" + ")))\n');
+	}
+	else{
+		echo('rk.print (c("' + yname + '", " = ", paste(round(results$coeff[,1],4), rownames(results$coeff), collapse=" + ")))\n');
+	}
+	// Estimaciones
 	echo('rk.header ("Coeficientes del modelo",level=3)\n');
 	echo('rk.results (list(');
-	echo('"Coeficiente" = c("T&eacute;rmino independiente"' + depvarsnames + '),');
-	echo('"Estimaci&oacute;n" = results$coeff[,1],');
-	echo('"Error est&aacute;ndar" = results$coeff[,2],');
-	echo('"Estad&iacute;stico t" = results$coeff[,3],');
-	echo('"p-valor" = results$coeff[,4]))\n');
+    if (getBoolean("intercept")){
+    	echo('"Coeficiente" = c("T&eacute;rmino independiente", rownames(results$coeff)[-1])');
+    }
+    else{
+    	echo('"Coeficiente" = rownames(results$coeff)');
+    }
+		echo(', "Estimaci&oacute;n" = results$coeff[,1]');
+		echo(', "Error est&aacute;ndar" = results$coeff[,2]');
+		echo(', "Estad&iacute;stico t" = results$coeff[,3]');
+		echo(', "p-valor" = results$coeff[,4]))\n');
+	// Ajuste del modelo
 	echo('rk.header ("Ajuste del modelo", level=3)\n');
 	echo('rk.results (list(');
 	echo('"R<sup>2</sup>" = results$r.squared,');

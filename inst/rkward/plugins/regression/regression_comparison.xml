@@ -11,15 +11,14 @@
 					<column>
 						<varslot id="y" label="Variable dependiente" type="numeric" source="selector" required="true" />
 						<varslot id="x" label="Variable independiente" type="numeric" source="selector" required="true" />
-						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
-							<input id="filter" label="Condición de selección" />
-						</frame>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>	
+						<stretch/>					
 					</column>
 				</row>
 			</tab>
 			<tab id="model_tab" label="Modelos de regresión">		
 				<frame id="model" label="Modelo" >
-					<checkbox id="linear" label="Lineal" value="'linear',"/>
+					<checkbox id="linear" label="Lineal" value="'linear'," checked="true"/>
 					<checkbox id="cuadratic" label="Cuadrático" value="'cuadratic',"/>
 					<checkbox id="cubic" label="Cúbico" value="'cubic',"/>
 					<checkbox id="potential" label="Potencial" value="'potential',"/>
