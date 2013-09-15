@@ -4,6 +4,7 @@ var data, variable, variablename, y, groups, groupsname, fill, position, xlab, y
 
 function preprocess() {
 	echo('require(rk.Teaching)\n');
+	echo('require(plyr)\n');
 	echo('require(ggplot2)\n');
 }
 
@@ -32,11 +33,11 @@ function calculate() {
 	position = '';
 	facet = '';
 	if (getBoolean("grouped")) {
-		groups = getString("groups");
-		groupsname = getString("groups.shortname");
-		fill = ', fill=' + groupsname;
+		groups = getList("groups");
+		groupsname = getList("groups.shortname");
+		fill = ', fill=' + groupsname.join('.');
 		if (getBoolean("cumulative") || getString("position")==='faceted') {
-			facet = ' + facet_grid(.~' + groupsname + ')';
+			facet = ' + facet_grid(.~' + groupsname.join('.') + ')';
 		}
 		else {
 			position = ', position="' + getString("position") + '"';
@@ -47,9 +48,10 @@ function calculate() {
 	echo(getString("filter_embed.code.calculate"));
 	// Prepare data
 	if (getBoolean("grouped")) {
-		groups = getList("groups");
-		groupsname = getList("groups.shortname");
 		echo('df <- ldply(frequencyTable(' + data + ', ' + quote(variablename) + ', groups=c(' + groupsname.map(quote) + ')))\n');
+		if (groupsname.length>1){
+			echo('df <- transform(df,' + groupsname.join('.') + '=interaction(df[,c(' + groupsname.map(quote) + ')]))\n');
+		}
 	}
 	else {
 		echo('df <- frequencyTable(' + data + ', ' + quote(variablename) + ')\n');
@@ -84,9 +86,9 @@ function preview() {
 function doPrintout(full) {
 	// Print header
 	if (full) {
-		echo ('rk.header ("Diagrama de barras", list ("Variable" = rk.get.description(' + variable + ')');
+		echo ('rk.header ("Diagrama de barras", list ("Variable" = rk.get.description(' + variable + ')' + getString("filter_embed.code.printout"));
 		if (getBoolean("grouped")) {
-			echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ')');
+			echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}
 		echo('))\n');
 		echo ('rk.graph.on ()\n');

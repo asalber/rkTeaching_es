@@ -20,7 +20,7 @@
 	
 	<dialog label="Diagrama de barras">
 		<tabbook>
-			<tab label="Seleccionar variable" id="tab_variables">
+			<tab id="tab_variables" label="Seleccionar variable(s)">
 				<row>
 					<varselector id="selector" label="Seleccionar variable"/>
 					<column>

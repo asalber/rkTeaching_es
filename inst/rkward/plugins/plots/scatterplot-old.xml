@@ -1,0 +1,107 @@
+<!DOCTYPE rkplugin>
+<document>
+	<code file="scatterplot.js"/>
+	<help file="scatterplot.rkh"/>
+	
+	<logic>
+		<!-- <convert id="grouped" mode="equals" sources="groups_frame.state" standard="1" />  -->
+		<!-- <connect client="regression_frame.enabled" governor="grouped.not"/>  -->z
+ 		<convert id="smooth_check" mode="equals" sources="smooth.state" standard="TRUE"/>
+		<connect client="spread.enabled" governor="smooth_check"/>
+		
+		<set id="plotoptions.allow_type" to="false" />
+	</logic>
+	
+	<dialog label="Scatterplot" >
+		<tabbook>
+			<tab id="variables_tab" label="Variables">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables" />
+					<column>
+						<varslot id="y" label="Variable Y" source="selector" types="number unknown" required="true" />
+						<varslot id="x" label="Variable X" source="selector" types="number unknown" required="true" />						
+						<frame id="groups_frame" label="Diferenciar grupos" checkable="true" checked="false" value_unckecked="0" value="1">
+							<varslot id="groups" label="Variable de agrupación" source="selector" required="true"/>
+						</frame>
+						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+							<input id="filter" label="Condición de selección" />
+						</frame>
+						<stretch/>
+						<preview id="preview"/>
+					</column>
+				</row>
+			</tab>
+			<tab id="regression_tab" label="Línea de ajuste">
+				<checkbox id="regression" label="Dibujar recta de regresión" checked="false" value_unchecked="NULL" value="lm"/>
+				<frame id="regression_frame" label="Dibujar curva de regresión no lineal" checkable="true" checked="false" value="1">
+					<radio id="model" label="Modelo" >
+ 						<option value="cuadratic" label="Cuadrático" />
+						<option value="cubic" label="Cúbico" />
+						<option value="potential" label="Potencial" />
+						<option value="exponential" label="Exponencial" />
+						<option value="logarithmic" label="Logarítmico" />
+						<option value="inverse" label="Inverso" />
+						<option value="sigmoid" label="Sigmoidal" />
+					</radio>
+				</frame>
+				<checkbox id="smooth" label="Dibujar línea suavizada" checked="false" value_unchecked="FALSE" value="TRUE"/>
+				<checkbox id="spread" label="Dibujar líneas de dispersión" checked="false" value_unchecked="FALSE" value="TRUE"/>
+				<stretch/>
+			</tab>
+		
+			<tab id="options_tab" label="Graphics options" >
+				<!--
+				<frame label="Point symbols">
+					<row>
+						<radio id="isPch" label="Symbol" >
+							<option value="all" label="Same for all variables" />
+							<option value="each" label="Different for each variable" />
+						</radio>
+						<column>
+							<text>
+								Either an integer specifying a symbol or a single character to be used as the default in plotting points.
+							</text>
+							<input id="pch" label="Enter value - for diff.symbol. enter a vector -" size="small" initial="1" />
+						</column>
+					</row>
+				</frame>
+
+				<frame label="Point Colors">
+					<row>
+						<radio id="color" label="Color" >
+							<option value="all" label="Same color for all variables" />
+							<option value="each" label="Different for each variable" />
+						</radio>
+						<column>
+							<text>
+						Enter value - for diff.col. enter a vector -<br/>
+						eg:  c(1,2) or c('red','green')
+							</text>
+							<input id="col" label=" " size="small" initial="'black'" />
+						</column>
+					</row>
+				</frame>
+				-->
+				<embed id="plotoptions" component="rkward::plot_options" label="General plot options"/>
+			</tab>
+		</tabbook>
+	</dialog>
+	
+	<wizard label="Scatterplot">
+		<page id="pag_vars">
+			<text>
+				Seleccionar las variables a dibujar en los ejes X e Y.
+				Si se desea diferenciar los puntos por grupos, seleccionar la variable de agrupación.
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<page id="pag_regression">
+			<text>
+				Si se desea dibujar algún modelo de regresión, active la la opción correspondiente.  
+			</text>
+			<copy id="regression_frame" />
+		</page>
+		
+		<copy id="options_tab" copy_element_tag_name="page" />
+	</wizard>
+</document>

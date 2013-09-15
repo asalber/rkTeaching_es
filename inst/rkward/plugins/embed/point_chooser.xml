@@ -1,0 +1,22 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="point_chooser.js" />
+	<help file="point_chooser.rkh" />
+	<logic>
+	</logic>
+	<dialog label="Tipo de punto" >
+		<dropdown id="point" label="Símbolo del punto">
+			<option value="" label="defecto" checked="true" />
+			<option value="0" label="Cuadrado hueco" />
+			<option value="1" label="Círculo hueco" />
+			<option value="2" label="Triángulo hueco" />
+			<option value="5" label="Rombo hueco" />
+			<option value="15" label="Cuadrado relleno" />
+			<option value="16" label="Círculo relleno" />
+			<option value="17" label="Triángulo relleno" />
+			<option value="18" label="Rombo relleno" />
+		</dropdown>
+	</dialog>
+</document>
