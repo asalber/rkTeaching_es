@@ -8,10 +8,12 @@ function preprocess(){
 }
 
 function calculate(){
+	// Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Load variables
 	variable = getString("variable");
 	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
-	echo(getString("filter_embed.code.calculate"));
 	echo('result <- frequencyTable(' + data + ', ' + quote(variablename)); 
 	if (getBoolean("grouped")) {
 		groups = getList("groups");

@@ -3,6 +3,10 @@
 	<code file="regression_comparison.js"/>
 	<help file="regression_comparison.rkh"/>
 	
+	<logic>
+		<connect client="filter_embed.variable" governor="y.available" />
+	</logic>
+
 	<dialog label="Comparación de Modelos de Regresión">
 		<tabbook>
 			<tab id="variables_tab" label="Variables">

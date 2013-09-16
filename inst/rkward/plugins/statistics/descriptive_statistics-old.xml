@@ -9,6 +9,21 @@
 		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
 		<connect client="groups.visible" governor="grouped_mode"/>
 		<connect client="grouping.enabled" governor="grouped_mode"/>
+	
+		<connect client="constMad.enabled" governor="mad.state" />
+		<connect client="pourcent.enabled" governor="trim.state" />
+		<connect client="winsor.enabled" governor="huber.state" />
+
+		<connect client="customMu.enabled" governor="huber.state" />
+		<convert id="mubox" mode="and" sources="customMu.state;customMu.enabled" />
+		<connect client="mu.enabled" governor="mubox" />
+
+		<connect client="customS.enabled" governor="huber.state" />
+		<convert id="sbox" mode="and" sources="customS.state;customS.enabled" />
+		<connect client="s.enabled" governor="sbox" />
+
+		<connect client="tol.enabled" governor="huber.state" />
+		<connect client="initmu.enabled" governor="huber.state" />
 	</logic>
 	
 	<dialog label="Estadística Descriptiva" >
@@ -18,11 +33,8 @@
 					<varselector id="selector" label="Seleccionar variables"/>
 					<column>
 						<varslot id="variables" label="Variable(s)" source="selector" multi="true" classes="numeric integer" required="true" />
-						<checkbox id="grouped" label="Estadísticas por grupos" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
-						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
-							<input id="filter" label="Condición de selección" />
-						</frame>
+						<checkbox id="grouped" label="Estadísticas por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" source="selector" required="true"/>
 						<checkbox id="narm" label="Omitir valores desconocidos" value_unchecked="0" value="1" checked="true"/>
 					</column>
 				</row>
