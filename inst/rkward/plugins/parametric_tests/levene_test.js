@@ -6,6 +6,9 @@ function preprocess () {
 }
 
 function calculate () {
+	// Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Load variables
 	variable = getString("variable");
 	factor = getString("factor");
 	center = getString("center");
@@ -15,7 +18,7 @@ function calculate () {
 
 function printout () {
 	echo ('rk.header ("Test de Levene para la comparaci&oacute;n de varianzas", ');
-	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + variable + '), "Seg&uacute;n" = rk.get.description(' + factor + ')');
+	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + variable + '), "Seg&uacute;n" = rk.get.description(' + factor + ')' + getString("filter_embed.code.printout"));
 	if (center=="median") {
 		echo (', "Variabilidad con respecto a la" = "Mediana"');
 	}

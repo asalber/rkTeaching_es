@@ -16,6 +16,9 @@ function calculate () {
 		category='';
 	}
 	else {
+		// Filter
+		echo(getString("filter_embed.code.calculate"));
+		// Load variables
 		x = getString("variable");
 		category = getString("category");
 		echo ('freq <- length(' + x + '[' + x + '=="' + category + '"])\n');
@@ -50,7 +53,7 @@ function printout () {
 		echo ('parameters=list ("Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');
 	}
 	else{
-		echo ('parameters=list ("Variable" = rk.get.description(' + x + '), "Proporci&oacute;n de" = "' + category + '", "Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');		
+		echo ('parameters=list ("Variable" = rk.get.description(' + x + '), "Proporci&oacute;n de" = "' + category + '"' + getString("filter_embed.code.printout") + ', "Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');		
 	}
 	echo(', "Hip&oacute;tesis nula" = "proporci&oacute;n ' + category + ' = ' + p + '"');
 	if (hypothesis=="two.sided"){

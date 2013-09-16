@@ -26,6 +26,7 @@
 		<connect governor="within_or_mixed" client="within.required" />
 		<connect governor="dataframe_sel" client="row_observed.enabled" />
 		<connect governor="dataframe.available" client="selector2.root" />
+		<connect client="filter_embed.variable" governor="dep.available" />
 	</logic>
 	
 	<dialog label="ANOVA">
@@ -48,7 +49,9 @@
 							<varslot id="between" label="Factores entre individuos" source="selector" multi="true" />
 							<varslot id="caseid" label="Identificador de los individuos" source="selector" multi="false" />							
 						</frame>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<saveobject id="save" label="Guardar resultados en el espacio de trabajo" checkable="true" initial="anova.results" />
+						<stretch />					
 					</column>
 				</row>
 			</tab>

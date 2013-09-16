@@ -32,6 +32,9 @@ function calculate () {
 		category = ''; 
 	}
 	else {
+		// Filter
+		echo(getString("filter_embed.code.calculate"));
+		// Load variables
 		x = getString("variable");
 		factor = getString("factor");
 		category = getString("category");
@@ -52,7 +55,7 @@ function printout () {
 	if (getBoolean("manual.checked")){
 		echo ('"Frecuencia de la primera muestra" = "' + freq1 + '", "Tama&ntilde;o de la primera muestra" = "' + n1 + '", "Frecuencia de la segunda muestra" = "' + freq2 + '", "Tama&ntilde;o de la segunda muestra" = "' + n2 + '"');
 	} else {
-		echo('"Comparaci&oacute;n de" = rk.get.description(' + x + '), "Seg&uacute;n" = rk.get.description(' + factor + '), "Proporci&oacute;n de" = "' + category + '"');
+		echo('"Comparaci&oacute;n de" = rk.get.description(' + x + '), "Seg&uacute;n" = rk.get.description(' + factor + ')' + getString("filter_embed.code.printout") + ', "Proporci&oacute;n de" = "' + category + '"');
 	}		
 	echo(', "Hip&oacute;tesis nula" = paste("proporci&oacute;n ' + category + ' en ",  levels(' + factor + ')[1], " = proporci&oacute;n ' + category + ' en ", levels(' + factor + ')[2])');
 	if (hypothesis=="two.sided"){

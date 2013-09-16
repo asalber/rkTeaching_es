@@ -1,0 +1,25 @@
+<!DOCTYPE rkhelp>
+<document>
+	<summary>
+	Test F de Fiser para la comparción de varianzas
+	</summary>
+
+	<usage>
+	El procedimiento realiza un test F de Fisher para comparar la varianza de una variable en dos grupo definidos por un factor. 
+	</usage>
+
+	<settings>
+		<caption id="tab_variables"/>
+		<setting id="variable">Una variable numérica o vector de la que se quiere comparar la varianza</setting>
+		<setting id="factor">Un factor con exactamente dos niveles que definen los grupos a comparar</setting>
+		<caption id="tab_settings"/>
+		<setting id="hypothesis">Elegir el tipo de hipótesis alternativa (bilateral, unilateral mayor o unilateral menor).</setting>
+		<setting id="confint">Activar esta casilla para obtener el intervalo de confianza del cociente de varianzas.</setting>
+		<setting id="conflevel">Nivel de confianza del intervalo.</setting>
+	</settings>
+	<related>
+		<ul>
+			<li><link href="rkward://component/F_test"/></li>
+		</ul>
+	</related>
+</document>

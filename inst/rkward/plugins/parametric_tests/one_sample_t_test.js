@@ -4,10 +4,12 @@
 var x, mean, confint, conflevel, hypothesis;
 
 function preprocess () {
-
 }
 
 function calculate () {
+	// Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Load variables
 	x = getString("variable");
 	mean = getString("mean");
 	confint = getBoolean ("confint_frame.checked");
@@ -17,22 +19,20 @@ function calculate () {
 	if (confint) {
 		options += ", conf.level=" + conflevel;
 	}
-	
-	
 	echo('result <- t.test (' + x + options + ')\n');
 }
 
 function printout () {
 	echo ('rk.header ("Test T para una media", ');
-	echo ('parameters=list ("Variable" = rk.get.description(' + x + '), "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), "= ' + mean + '")');
+	echo ('parameters=list ("Variable" = rk.get.description(' + x + ')' + getString("filter_embed.code.printout") + ', "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), "= ' + mean + '")');
 	if (hypothesis=="two.sided"){
-		echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), "&ne; ' + mean + '")');
+		echo(', "Hip&oacute;tesis alternativa" = paste("media &ne; ' + mean + '")');
 	}
 	else if (hypothesis=="greater") {
-		echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), "&gt; ' + mean + '")');
+		echo(', "Hip&oacute;tesis alternativa" = paste("media &gt; ' + mean + '")');
 	}
     else {
-    	echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), "&lt; ' + mean + '")');
+    	echo(', "Hip&oacute;tesis alternativa" = paste("media &lt; ' + mean + '")');
     }
 	if (confint) {
 		echo (', "Nivel de confianza del intervalo" = "' + conflevel + '"');

@@ -5,6 +5,10 @@
 	<code file="two_independent_samples_t_test.js"/>
 	<help file="two_independent_samples_t_test.rkh"/>
 	
+	<logic>
+		<connect client="filter_embed.variable" governor="variable.available" />
+	</logic>
+	
 	<dialog label="Test T para la comparación de medias de dos poblaciones independientes">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variables">
@@ -13,6 +17,8 @@
 					<column>
 						<varslot id="variable" label="Comparar" source="selector" types="number" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+						<stretch />
 					</column>
 				</row>
 			</tab>

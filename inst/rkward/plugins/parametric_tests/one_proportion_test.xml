@@ -12,6 +12,8 @@
 		<connect client="category.enabled" governor="manual_checked.not" />
 		<connect client="freq.enabled" governor="manual_checked" />
 		<connect client="n.enabled" governor="manual_checked" />
+		<connect client="filter_embed.enabled" governor="manual_checked.not" />		
+		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 	
 	<dialog label="Test para una proporción">
@@ -22,10 +24,12 @@
 					<column>
 						<varslot id="variable" label="Variable" source="selector" required="true" />	
 						<input id="category" label="Categoría" size="small" required="true"/>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>						
 						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unchecked="0">		
 							<input id="freq" label="Frecuencia muestral" size="small" required="true" />
 							<input id="n" label="Tamaño muestral" size="small" required="true"/>
-						</frame>	
+						</frame>
+						<stretch />
 					</column>
 				</row>
 			</tab>
@@ -43,11 +47,13 @@
 							<option value="normal" label="Aproximación normal sin corrección por continuidad" />
 							<option value="binomial" label="Binomial exacto" />
 						</radio>
+						<stretch />
 					</column>
 					<column>
 						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
 							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
 						</frame>
+						<stretch />
 					</column>
 				</row>
 			</tab>

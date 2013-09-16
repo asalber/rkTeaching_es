@@ -1,5 +1,5 @@
 // globals
-var design, dep, within, between, caseid, sumsq, dep_name, within_name, between_name, caseid_name, sumsq_type;
+var design, dep, data, within, between, caseid, sumsq, dep_name, within_name, between_name, caseid_name, sumsq_type;
 
 function preprocess () {
 	echo('require(ez)\n');
@@ -8,7 +8,10 @@ function preprocess () {
 }
 
 function calculate () {
-	var data = getString("dataframe");
+	// Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Load variables
+	data = getString("dataframe");
 	design = getString("design");
 	dep = getString("dep");
 	dep_name = getValue("dep.shortname");
@@ -76,6 +79,7 @@ function printout () {
 	if(within != "" & design !="between"){
 		echo(', "Factores dentro de los individuos" = rk.get.description(' + within + ', paste.sep=", ")');
 	}
+	echo(getString("filter_embed.code.printout")); 
 	echo(', "Sumas de cuadrados" = "Tipo ' + sumsq_type + '"))\n');
 	// Resultado ANOVA
 	echo('rk.results(list(');

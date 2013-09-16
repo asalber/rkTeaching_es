@@ -5,6 +5,10 @@
 	<code file="two_paired_samples_t_test.js"/>
 	<help file="two_paired_samples_t_test.rkh"/>
 
+	<logic>
+		<connect client="filter_embed.variable" governor="x.available" />
+	</logic>
+
 	<dialog label="Test T para la comparación de medias de dos poblaciones pareadas">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variables">
@@ -13,6 +17,8 @@
 					<column>
 						<varslot id="x" label="Comparar" source="selector" types="number" required="true" />
 						<varslot id="y" label="con" source="selector" types="number" required="true" />
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+						<stretch />
 					</column>
 				</row>
 			</tab>

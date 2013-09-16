@@ -20,6 +20,7 @@
 						<checkbox id="grouped" label="Tabular por grupos" value_unchecked="0" checked="false" />
 						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+						<stretch />
 					</column>
 				</row>
 			</tab>

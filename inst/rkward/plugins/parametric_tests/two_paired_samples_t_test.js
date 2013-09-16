@@ -8,6 +8,9 @@ function preprocess () {
 }
 
 function calculate () {
+	// Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Load variables
 	x = getString("x");
 	y = getString("y");
 	confint = getBoolean("confint_frame.checked");
@@ -22,7 +25,7 @@ function calculate () {
 
 function printout () {
 	echo ('rk.header ("Test T de comparaci&oacute;n de medias para dos muestras pareadas", ');
-	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "con" = rk.get.description(' + y + '), "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), " = media ", rk.get.short.name(' + y + '))');
+	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "Con" = rk.get.description(' + y + ')' + getString("filter_embed.code.printout") + ', "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), " = media ", rk.get.short.name(' + y + '))');
 	if (hypothesis=="two.sided"){
 		echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), " &ne; media ", rk.get.short.name(' + y + '))');
 	}
