@@ -2,24 +2,21 @@
 <!DOCTYPE rkpluginmap>
 <document base_prefix="data/" namespace="rkTeaching" id="datapluginmap">
 	<components>
-		<component type="standard" id="sort_data" file="sort.xml" label="Ordenar" />
 		<component type="standard" id="filter" file="filter.xml" label="Filtrar datos" />
 		<component type="standard" id="variable_calculation" file="variable_calculation.xml" label="Calcular variable" />
 		<component type="standard" id="recode" file="recode.xml" label="Recodificar variable" />
 		<component type="standard" id="weight" file="weight.xml" label="Ponderar datos" />
-		<component type="standard" id="generate_random" file="generate_random.xml" label="Generar datos aleatorios" />
-		<component type="standard" id="trabajo" file="trabajo.xml" label="Datos trabajo" />
+		<component type="standard" id="zscore" file="zscore.xml" label="Tipificar variables" />
 	</components>
 	
 	<hierarchy>
 		<menu id="teaching" label="Teaching">
 			<menu id="datamenu" label="Datos">
-				<entry component="sort_data"/>
 				<entry component="filter"/>
 				<entry component="variable_calculation"/>
 				<entry component="recode"/>
 				<entry component="weight"/>
-				<entry component="trabajo"/>
+				<entry component="zscore"/>
 			</menu>
 		</menu>
 	</hierarchy>

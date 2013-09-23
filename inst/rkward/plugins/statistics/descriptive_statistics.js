@@ -13,7 +13,8 @@ function calculate () {
 	if (getBoolean("narm")) narm = "na.rm=TRUE";
 	vars = getList("variables");
 	varnames = getList("variables.shortname");
-	data = vars[0].split('[[')[0];
+	data = vars.join();
+	data = data.split('[[')[0];
 	// Filter
 	if (getBoolean("filter_frame.checked")){
 		filter = getString("filter");
@@ -59,6 +60,9 @@ function printout () {
 		echo('\t rk.header(names(result)[i],level=3)\n');
 		echo('\t\t rk.results(result[[i]])\n');
 		echo('}\n');
+	}
+	else {
+		echo('\t\t rk.results(result)\n');
 	}
 
 }

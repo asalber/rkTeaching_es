@@ -1,0 +1,26 @@
+<!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="zscore.js"/>
+	<help file="zscore.rkh"/>
+		
+	<dialog label="Cálculo de variable" >
+		<row id="row_vars">
+			<varselector id="selector" label="Espacio de trabajo"/>
+			<column>
+				<varslot id="variables" label="Variables a tipificar" source="selector" required="true" multi="true" classes="numeric integer"/>
+			</column>
+		</row>
+	</dialog>
+	
+	<wizard label="Cálculo de variable">
+		<page id="variable">
+			<text>
+				Seleccionar las variables a tipificar.
+			</text>
+			<copy id="selector" />
+			<copy id="variables" />
+		</page>
+	</wizard>
+</document>
