@@ -76,11 +76,13 @@ function calculate() {
 }
 
 function printout () {
-	doPrintout (true);
+	doPrintout(true);
 }
 
 function preview() {
-	doPrintout (false);
+	preprocess();
+	calculate();
+	doPrintout(false);
 }
 
 function doPrintout(full) {
@@ -91,7 +93,7 @@ function doPrintout(full) {
 			echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}
 		echo('))\n');
-		echo ('rk.graph.on ()\n');
+		echo ('rk.graph.on()\n');
 	}
 	// Plot
 	echo('try ({\n');
@@ -108,7 +110,7 @@ function doPrintout(full) {
 	echo ('})\n');
 
 	if (full) {
-		echo ('rk.graph.off ()\n');
+		echo ('rk.graph.off()\n');
 	}
 }
 

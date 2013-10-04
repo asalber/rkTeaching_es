@@ -70,7 +70,7 @@ function calculate () {
 			echo(', groups=' + data + '[["groups"]]');
 		}
 		echo(')\n');
-		smooth = '+ scale_linetype("Ajuste de regresion")';
+		smooth = '+ scale_linetype("Ajuste de regresi\u00f3n")';
 	}
 	if (getBoolean("linear")){
 		if (getBoolean("grouped")) {
@@ -89,7 +89,7 @@ function calculate () {
 		else {
 			echo('df_cuadratic <- predictions(lm(y~x+I(x^2),data=df),seq(min(df[["x"]]), max(df[["x"]]), length.out=100),interval="confidence")\n');
 		}
-		smooth += ' + geom_smooth(aes(x=x, y=pred.y' + se + smoothcolor + ', linetype="Cuadratico"), data=df_cuadratic, stat="identity")';
+		smooth += ' + geom_smooth(aes(x=x, y=pred.y' + se + smoothcolor + ', linetype="Cuadr\u00e1tico"), data=df_cuadratic, stat="identity")';
 		model.push('Cuadr&aacute;tico (' + yname + ' = a+b*' + xname + '+c*' + xname + '^2)');
 	}
 	if (getBoolean("cubic")){
@@ -99,7 +99,7 @@ function calculate () {
 		else {
 			echo('df_cubic <- predictions(lm(y~x+I(x^2)+I(x^3),data=df),seq(min(df[["x"]]), max(df[["x"]]), length.out=100),interval="confidence")\n');
 		}
-		smooth += ' + geom_smooth(aes(x=x, y=pred.y' + se + smoothcolor + ', linetype="Cubico"), data=df_cubic, stat="identity")';
+		smooth += ' + geom_smooth(aes(x=x, y=pred.y' + se + smoothcolor + ', linetype="C\u00fabico"), data=df_cubic, stat="identity")';
 		model.push('C&uacute;bico (' + yname + ' = a+b*' + xname + '+c*' + xname + '^2+d*' + xname + '^3)');
 	}
 	if (getBoolean("potential")){
@@ -137,7 +137,7 @@ function calculate () {
 		else {
 			echo('df_logarithmic <- predictions(lm(y~log(x),data=df),seq(min(df[["x"]]), max(df[["x"]]), length.out=100),interval="confidence")\n');
 		}
-		smooth += ' + geom_smooth(aes(x=x, y=pred.y' + se + smoothcolor + ', linetype="Logaritmico"), data=df_logarithmic, stat="identity")';
+		smooth += ' + geom_smooth(aes(x=x, y=pred.y' + se + smoothcolor + ', linetype="Logar\u00edtmico"), data=df_logarithmic, stat="identity")';
 		model.push('Logar&iacute;tmico (' + yname + ' = a+b*log(' + xname + '))');
 	}
 	if (getBoolean("inverse")){
@@ -167,12 +167,13 @@ function calculate () {
 }
 
 function printout () {
-	doPrintout (true);
+	doPrintout(true);
 }
 
 function preview () {
-	calculate ();
-	doPrintout (false);
+	preprocess();
+	calculate();
+	doPrintout(false);
 }
 
 function doPrintout (full) {

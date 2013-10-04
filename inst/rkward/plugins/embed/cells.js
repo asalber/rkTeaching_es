@@ -7,13 +7,13 @@ function makeCodes () {
 	var variable = getString("variable");
 	var breaksmethod = getString("breaksFunction");
 	if (breaksmethod == "num") {
-		breaks = 'pretty(range(' + variable + '),' + getString("breaks_num") + ')';
+		breaks = 'pretty(range(na.omit(' + variable + ')),' + getString("breaks_num") + ')';
 		classesheader += 'Aproximadamente ' + getString("breaks_num") + ' intervalos"';
 	} else if (breaksmethod == "vec") {
 		breaks = 'c(' +  getString("breaks_vec") + ')';
 		classesheader += 'Definidos por el usuario: ' + getString ("breaks_vec") + '"';
 	} else {
-		breaks = 'pretty(range(' + variable + '), nclass.' + breaksmethod + '(' +  variable + '))';
+		breaks = 'pretty(range(na.omit(' + variable + ')), nclass.' + breaksmethod + '(' +  variable + '))';
 		classesheader += breaksmethod + '"';
 	};
 	classes = ', breaks=' + breaks;

@@ -13,7 +13,7 @@ function calculate () {
 	data= data.split('[[')[0];
 	variablesnames = getList ("variables.shortname");
 	for (var i=0; i<variables.length; i++){
-		echo(data + '<- transform(' + data + ',' + variablesnames[i] + '.tipificada=(' + variablesnames[i] + '-mean(' + variablesnames[i] + '))/stdev(' + variablesnames[i] + '))\n');
+		echo(data + '<- transform(' + data + ',' + variablesnames[i] + '.tipificada=(' + variablesnames[i] + '-mean(' + variablesnames[i] + ',na.rm=TRUE))/stdev(' + variablesnames[i] + ',na.rm=TRUE))\n');
 	}
 	echo ('.GlobalEnv$' + data + ' <- ' + data + '\n');
 }

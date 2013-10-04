@@ -33,17 +33,11 @@ function printout(){
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
 		echo('\t rk.header(names(result)[i],level=3)\n');
-		echo('\t if (is.numeric(' + variable + '))\n');
 		echo('\t\t rk.results(result[[i]])\n');
-		echo('\t else\n');
-		echo('\t\t rk.results(result[[i]][1:3])\n');
 		echo('}\n');
 	}
 	else {
-		echo('if (is.numeric(' + variable + '))\n');
 		echo('\t rk.results(result)\n');
-		echo('else\n');
-		echo('\t rk.results(result[1:3])\n');
 	}
 // Para mostrar la interpretación con un botón	
 //	echo('rk.print("<a href=\\"javascript:unhide(\'interpretation\');\\" class=\\"button\\">Interpretaci&oacute;n</a>")\n');

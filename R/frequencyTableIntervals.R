@@ -1,4 +1,4 @@
-frequencyTableIntervals <- function(data, variable, breaks, right=FALSE, include.lowest=TRUE, center=FALSE, width=FALSE, groups=NULL){
+frequencyTableIntervals <- function(data, variable, breaks=NULL, right=FALSE, include.lowest=TRUE, center=FALSE, width=FALSE, groups=NULL, decimals=4){
 	require(plyr)
 	if (!is.data.frame(data)) {
 		stop("data must be a data frame")
@@ -20,24 +20,30 @@ frequencyTableIntervals <- function(data, variable, breaks, right=FALSE, include
 		}
 	}
 	if (is.null(groups)){
-		result <- tabulateFrequenciesIntervals(data=data, variable=variable, breaks=breaks, right=right, include.lowest=include.lowest, center=center, width=width)
+		result <- tabulateFrequenciesIntervals(data=data, variable=variable, breaks=breaks, right=right, include.lowest=include.lowest, center=center, width=width, decimals=decimals)
 	}
 	else {
 		f <- function(df){
-			tabulateFrequenciesIntervals(data=df, variable=variable, breaks=breaks, right=right, include.lowest=include.lowest, center=center, width=width)
+			tabulateFrequenciesIntervals(data=df, variable=variable, breaks=breaks, right=right, include.lowest=include.lowest, center=center, width=width, decimals=decimals)
 		}
 		result <- dlply(data, groups, f)
 	}
 	return(result)
 }
 
-tabulateFrequenciesIntervals <- function(data, variable, breaks, right=FALSE, include.lowest=TRUE, center=FALSE, width=FALSE) {
-	centers <- (breaks[-1]+breaks[-length(breaks)])/2
-	result <- data
-	for (i in 1:length(centers)) {
-		result[nrow(result)+1,] <- NA
-		result[nrow(result),variable] <- centers[i]
+tabulateFrequenciesIntervals <- function(data, variable, breaks=NULL, right=FALSE, include.lowest=TRUE, center=FALSE, width=FALSE, decimals=4) {
+	require(plyr)
+	result <- na.omit(data[[variable]])
+	if (is.null(breaks)){
+		breaks <- pretty(range(result), nclass.Sturges(result))
 	}
+	centers <- (breaks[-1]+breaks[-length(breaks)])/2
+	#for (i in 1:length(centers)) {
+		#result[nrow(result)+1,] <- NA
+		#result[nrow(result),variable] <- centers[i]
+	#}
+	result <- data.frame(c(result,centers))
+	colnames(result) <- variable
 	result <- transform(result, clases=cut(result[[variable]], breaks=breaks, right=right, include.lowest=include.lowest))
 	result <- count(result, "clases")
 	colnames(result)[1] <- paste("Clases",variable,sep=".")
@@ -52,6 +58,6 @@ tabulateFrequenciesIntervals <- function(data, variable, breaks, right=FALSE, in
 	if (center | width) {
 		result <- cbind(result[,names(result)!="Frec.Abs."], Frec.Abs.=result[["Frec.Abs."]])
 	}
-	result <- mutate(result, Frec.Rel.=Frec.Abs./sum(Frec.Abs.), Frec.Abs.Acum.=cumsum(Frec.Abs.), Frec.Rel.Acum.=cumsum(Frec.Rel.))
+	result <- mutate(result, Frec.Rel.=round(Frec.Abs./sum(Frec.Abs.),decimals), Frec.Abs.Acum.=cumsum(Frec.Abs.), Frec.Rel.Acum.=round(Frec.Abs.Acum./sum(Frec.Abs.),decimals))
 	return(result)
 }

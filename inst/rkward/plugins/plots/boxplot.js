@@ -67,6 +67,8 @@ function printout () {
 }
 
 function preview() {
+	preprocess();
+	calculate();
 	doPrintout (false);
 }
 

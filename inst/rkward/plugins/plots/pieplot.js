@@ -29,18 +29,20 @@ function calculate() {
 }
 
 function printout () {
-	doPrintout (true);
+	doPrintout(true);
 }
 
 function preview() {
-	doPrintout (false);
+	preprocess();
+	calculate();
+	doPrintout(false);
 }
 
 function doPrintout(full) {
 	// Print header
 	if (full) {
 		echo ('rk.header ("Diagrama de sectores", list ("Variable" = rk.get.description(' + variable + ')))\n');
-		echo ('rk.graph.on ()\n');
+		echo ('rk.graph.on()\n');
 	}
 	// Plot
 	echo('try ({\n');
@@ -49,7 +51,7 @@ function doPrintout(full) {
 	echo ('})\n');
 
 	if (full) {
-		echo ('rk.graph.off ()\n');
+		echo ('rk.graph.off()\n');
 	}
 }
 

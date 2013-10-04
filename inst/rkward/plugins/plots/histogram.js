@@ -59,13 +59,13 @@ function calculate() {
 	echo('breaks <- ' + getString("cells.code.preprocess") + '\n');	
 	// Calculate frequencies
 	if (getBoolean("grouped")) {
-		echo('df <- ldply(frequencyTableIntervals(' + data + ', ' + quote(variablename) + cells + ', center=TRUE, width=TRUE, groups=c(' + groupsname.map(quote) + ')))\n');
+		echo('df <- ldply(frequencyTableIntervals(' + data + ', ' + quote(variablename) + ', breaks=breaks, center=TRUE, width=TRUE, groups=c(' + groupsname.map(quote) + ')))\n');
 		if (groupsname.length>1){
 			echo('df <- transform(df,' + groupsname.join('.') + '=interaction(df[,c(' + groupsname.map(quote) + ')]))\n');
 		}
 	}
 	else {
-		echo('df <- frequencyTableIntervals(' + data + ', ' + quote(variablename) + cells + ', center=TRUE, width=TRUE)\n');
+		echo('df <- frequencyTableIntervals(' + data + ', ' + quote(variablename) + ', breaks=breaks, center=TRUE, width=TRUE)\n');
 	}
 	// Set frecuency type
 	y = 'Frec.Abs.';
@@ -104,6 +104,8 @@ function printout () {
 }
 
 function preview () {
+	preprocess();
+	calculate();
 	doPrintout (false);
 }
 

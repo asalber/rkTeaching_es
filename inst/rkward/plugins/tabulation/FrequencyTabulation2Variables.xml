@@ -1,0 +1,46 @@
+<!-- Author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="FrequencyTabulation2Variables.js" />
+	<help file="FrequencyTabulation2Variables.rkh" />
+	
+	<logic>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="filter_embed.variable" governor="variable.available" />
+	</logic>
+
+	<dialog label="Distribución de frecuencias">
+		<tabbook id="tabs">
+			<tab label="Variables" id="tab_vars">
+				<row id="row_vars">
+					<varselector id="selector" />
+					<column>
+						<varslot id="var_rows" label="Variable para las filas" source="selector" required="true" />
+						<varslot id="var_colums" label="Variable para las columnas" source="selector" required="true" />
+						<checkbox id="grouped" label="Tabular por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+						<stretch />
+					</column>
+				</row>
+			</tab>
+			<tab label="Opciones de las frecuencias" id="tab_freq">
+				<checkbox id="relative_freq" label="Frecuencias relativas" value_unchecked="0" checked="false" />
+				<checkbox id="marginal_freq" label="Frecuencias marginales" value_unchecked="0" checked="false" />
+				<stretch />
+			</tab>
+		</tabbook>
+	</dialog>
+	<wizard label="Distribución de frecuencias">
+		<page id="page_vars">
+			<text id="txt_var">
+				Seleccionar la variable a tabular en las filas y la variable a tabular en las columnas de la tabla de frecuencias. 
+			</text>
+			<copy id="selector" />
+			<copy id="var_rows" />
+			<copy id="var_columns" />
+		</page>
+		<embed id="filter_embed" component="rkTeaching::filter_embed"/>		
+	</wizard>
+</document>
