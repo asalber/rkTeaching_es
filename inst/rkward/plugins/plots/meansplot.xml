@@ -1,0 +1,42 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+
+<!DOCTYPE rkplugin>
+<document>
+	<code file="meansplot.js" />
+	<help file="meansplot.rkh" />
+	
+	<logic>
+		<set id="plotoptions.allow_type" to="true"/>
+		<set id="plotoptions.allow_ylim" to="true"/>
+		<set id="plotoptions.allow_xlim" to="false"/>
+		<set id="plotoptions.allow_log" to="false"/>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="plotoptions.allow_legend" governor="grouped_mode" />
+	</logic>
+	
+	<dialog label="Diagrama de puntos" >
+	<tabbook>
+		<tab label="Seleccionar variables" id="tab_variables">
+			<row>
+				<varselector id="selector" label="Seleccionar variables" />
+				<column>
+					<varslot id="variable" label="Variable(s)" multi="true" type="numeric" source="selector" required="true"/>
+					<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
+					<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
+					<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+					<stretch/>
+				</column>
+			</row>
+		</tab>
+		<tab id="tab_means_options" label="Opciones de las medias" >
+			<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
+				<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+			</frame>
+			<checkbox id="points" label="Dibujar los valores de la variable" checked="false" />
+			<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
+			<stretch/>
+		</tab>
+	</tabbook>
+</dialog>
+</document>

@@ -7,8 +7,7 @@
 		<component type="standard" id="histogram_options" file="histogram_options.xml" label="Opciones de histograma" />
 		<component type="standard" id="pieplot" file="pieplot.xml" label="Diagrama de sectores" />
 		<component type="standard" id="boxplot" file="boxplot.xml" label="Diagrama de caja" />
-		<component type="standard" id="stripchart" file="stripchart.xml" label="Diagrama de puntos" />		
-		<component type="standard" id="means" file="means.xml" label="Diagrama de medias" />		
+		<component type="standard" id="meansplot" file="meansplot.xml" label="Diagrama de medias" />		
 		<component type="standard" id="interactionplot" file="interactionplot.xml" label="Diagrama de interacción" />		
 		<component type="standard" id="scatterplot" file="scatterplot.xml" label="Diagrama de dispersión" />
 		<component type="standard" id="scatterplot_matrix" file="scatterplot_matrix.xml" label="Matriz de dispersión" />
@@ -20,8 +19,7 @@
 				<entry component="histogram"/>
 				<entry component="pieplot"/>
 				<entry component="boxplot"/>
-				<entry component="stripchart"/>
-				<entry component="means"/>
+				<entry component="meansplot"/>
 				<entry component="interactionplot"/>
 				<entry component="scatterplot"/>
 				<entry component="scatterplot_matrix"/>
