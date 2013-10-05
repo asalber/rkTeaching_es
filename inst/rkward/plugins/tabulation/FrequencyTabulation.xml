@@ -1,39 +1,51 @@
-<!-- Author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
 <!DOCTYPE rkplugin>
 <document>
 	<code file="FrequencyTabulation.js" />
 	<help file="FrequencyTabulation.rkh" />
-	
+
 	<logic>
 		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
 		<connect client="groups.visible" governor="grouped_mode"/>
+		<connect client="cells.variable" governor="variable.available" />
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 
 	<dialog label="Distribución de frecuencias">
-		<tabbook id="tabs">
+		<tabbook>
 			<tab label="Variables" id="tab_vars">
 				<row id="row_vars">
-					<varselector id="selector" />
+					<varselector id="selector" label="Seleccionar variable"/>
 					<column>
 						<varslot id="variable" label="Variable a tabular" source="selector" required="true" />
 						<checkbox id="grouped" label="Tabular por grupos" value_unchecked="0" checked="false" />
 						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-						<stretch />
 					</column>
 				</row>
 			</tab>
+			<tab label="Clases" id="tab_cells">
+				<frame id="intervals_frame" label="Agrupar en intervalos" checkable="true" checked="false">
+					<embed id="cells" component="rkTeaching::cells"/>
+				</frame>
+			</tab>
 		</tabbook>
 	</dialog>
+	
 	<wizard label="Distribución de frecuencias">
 		<page id="page_vars">
 			<text id="txt_var">
-				Seleccionar la variable a tabular. 
+				Seleccionar la variable a tabular. Debe ser una variable numérica. 
 			</text>
 			<copy id="selector" />
 			<copy id="variable" />
 		</page>
-		<embed id="filter_embed" component="rkTeaching::filter_embed"/>		
+		<page id="page_filter">
+			<text id="txt_var">
+				Activar la casilla siguiente para realizar un filtrado previo de los datos e introducir la condición de selección de los datos. 
+			</text>
+			<copy id="filter_frame" />
+		</page>
+		<embed id="cells" component="rkTeaching::cells"/>
 	</wizard>
 </document>

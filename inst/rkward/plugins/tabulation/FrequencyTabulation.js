@@ -1,20 +1,29 @@
-//author: Alfredo Sánchez Alberca (asalber@ceu.es)
+// author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-var data, variable, variablename;
+// globals
+var variable;
 
 function preprocess(){
 	// add requirements etc. here
-	echo("require(rk.Teaching)\n");
+	echo('require(rk.Teaching)\n');
 }
 
 function calculate(){
-	// Filter
-	echo(getString("filter_embed.code.calculate"));
-	// Load variables
 	variable = getString("variable");
 	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
-	echo('result <- frequencyTable(' + data + ', ' + quote(variablename)); 
+	// Filter
+	echo(getString("filter_embed.code.calculate"));
+	// Calculate frequencies 
+	// Intervals
+	if (getBoolean("intervals_frame.checked")){
+		echo('result <- frequencyTableIntervals(' + data + ', ' + quote(variablename) + getString("cells.code.calculate")); 
+	}
+	// Non intervals
+	else{
+		echo('result <- frequencyTable(' + data + ', ' + quote(variablename)); 
+	}
+	// Grouped mode
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
 		groupsname = getList("groups.shortname");
@@ -25,11 +34,15 @@ function calculate(){
 
 function printout(){
 	// printout the results
-	echo('rk.header("Tabla de frecuencias", parameters=list("Variable" = rk.get.description (' + variable + ')' + getString("filter_embed.code.printout"));
+	echo('rk.header("Tabla de frecuencias de ' + variablename + '", ');
+	echo('parameters=list("Variable" = rk.get.description(' + variable + ')' + getString("filter_embed.code.printout"));
+	if (getBoolean("intervals_frame.checked")){
+		echo(getString("cells.code.printout"));
+	}
 	if (getBoolean("grouped")) {
 		echo(', "Variable(s) de agrupaci&oacute;n" = rk.get.description(' + groups + ',paste.sep=", ")');
 	}
-	echo('))\n');
+	echo ('))\n');
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
 		echo('\t rk.header(names(result)[i],level=3)\n');
@@ -37,10 +50,7 @@ function printout(){
 		echo('}\n');
 	}
 	else {
-		echo('\t rk.results(result)\n');
+		echo('rk.results(result)\n');
 	}
-// Para mostrar la interpretación con un botón	
-//	echo('rk.print("<a href=\\"javascript:unhide(\'interpretation\');\\" class=\\"button\\">Interpretaci&oacute;n</a>")\n');
-//	echo('rk.print("<div id=\\"interpretation\\">Frecuencia absoluta $n_i$: Es el número de veces que se repite el valor en la muestra </div>")\n');
 }
 

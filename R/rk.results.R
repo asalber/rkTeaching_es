@@ -38,7 +38,7 @@ rk.results <- function (x, titles = NULL, print.rownames)
 		cat("<table border=\"1\">\n<tr>")
 		try({
 					for (i in 1:length(x)) {
-						cat("<td>", titles[i], "</td>", sep = "")
+						cat('<th scope="col">', titles[i], "</th>", sep = "")
 					}
 					cat("</tr>\n")
 					if (is.data.frame(x)) {

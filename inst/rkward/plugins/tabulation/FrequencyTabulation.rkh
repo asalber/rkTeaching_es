@@ -1,30 +1,21 @@
 <!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
-<!DOCTYPE rkhelp>
+<!DOCTYPE rkplugin>
 <document>
-
 	<summary>
-	Procedimiento para obtener la tabla de distribución de frecuencias de una variable.
+		Dialog for tabulation of data in intervals.
 	</summary>
 	<usage>
+		
 	</usage>
-	<!-- <section id="sct_EDITORDE" title="EDIT OR DELETE ME">
-					EDIT OR DELETE ME
-				</section> -->
 	<settings>
+		<caption id="frame_breaks"/>
+		<setting id="breaksFunction">This is the method for setting the intervals or cells. Unless either 'Integer numbers' or 'Vector of break points' is chosen. The 'Integer numbers' options sets the break points as the integers between the minimum and the maximum of the variable. The 'Vector of break points' options sets equally spaced break points in the range of the variable. The number of break points in this case is provided by 'Vector length' (see below).</setting>
+		<setting id="histbreaks_ncells">If 'A single number' is chosen in the above field, then this provides a suggestion to the number of cells. This is the <i>breaks</i> parameter with a single number argument.</setting>
+		<setting id="histbreaks_veclength">If 'Vector of break points' is chosen in the above field, then this provides the length of the vector of equally spaced break points in the range of the variable. This is the <i>breaks</i> parameter with a vector argument. The actual sequence is calculated by an inline function call (see the generated code). The range of the variable is extended by 10% before obtaining the sequence, so that both the minimum and maximum points are included.</setting>
 	</settings>
-	<!-- <related>
-					<ul>
-						<li>
-							<link href="rkward://rhelp/..." />
-						</li>
-					</ul>
-				</related> -->
-	<technical>
-	La tabla incluye cuatro tipos de frecuencias:
-	<ul>
-	<li>Frecuencias absolutas: $n_i$</li>
-	<li>Frecuencias relativas: $f_i$</li>
-	<li>Frecuencias absolutas acumuladas: $N_i$</li>
-	<li>Frecuencias relativas acumuladas: $F_i$</li>
-	</technical>
+	<related>
+		<ul>
+			<li><link href="rkward://rhelp/FrequencyTableIntervals"/></li>
+		</ul>
+	</related>
 </document>

@@ -8,8 +8,6 @@
 		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
 		<connect client="groups.visible" governor="grouped_mode"/>
 		<connect client="filter_embed.variable" governor="variable.available" />
-		<connect client="cells_rows.variable" governor="var_rows.available" />
-		<connect client="cells_columns.variable" governor="var_columns.available" />
 	</logic>
 
 	<dialog label="Distribución de frecuencias">
@@ -18,8 +16,8 @@
 				<row id="row_vars">
 					<varselector id="selector" />
 					<column>
-						<varslot id="var_rows" label="Variable a tabular en filas" source="selector" required="true" />
-						<varslot id="var_columns" label="Variable a tabular en columnas" source="selector" required="true" />
+						<varslot id="var_rows" label="Variable para las filas" source="selector" required="true" />
+						<varslot id="var_colums" label="Variable para las columnas" source="selector" required="true" />
 						<checkbox id="grouped" label="Tabular por grupos" value_unchecked="0" checked="false" />
 						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
@@ -32,19 +30,8 @@
 				<checkbox id="marginal_freq" label="Frecuencias marginales" value_unchecked="0" checked="false" />
 				<stretch />
 			</tab>
-			<tab label="Clases de las filas" id="tab_cells_rows">
-				<frame id="intervals_rows_frame" label="Agrupar en intervalos la variable de las filas" checkable="true" checked="false">
-					<embed id="cells_rows" component="rkTeaching::cells"/>
-				</frame>
-			</tab>
-			<tab label="Clases de las columnas" id="tab_cells_columns">
-				<frame id="intervals_columns_frame" label="Agrupar en intervalos la variable de las columnas" checkable="true" checked="false">
-					<embed id="cells_columns" component="rkTeaching::cells"/>
-				</frame>
-			</tab>		
 		</tabbook>
 	</dialog>
-	
 	<wizard label="Distribución de frecuencias">
 		<page id="page_vars">
 			<text id="txt_var">

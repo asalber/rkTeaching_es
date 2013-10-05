@@ -3,14 +3,12 @@
 <document base_prefix="tabulation/" namespace="rkTeaching">
 	<components>
 		<component id="FrequencyTabulation" label="Tabla de frecuencias" file="FrequencyTabulation.xml" type="standard"/>
-		<component id="FrequencyTabulationGroupedData" label="Tabla de frecuencias (datos agrupados)" file="FrequencyTabulationGroupedData.xml" type="standard"/>
 		<component id="FrequencyTabulation2Varibles" label="Tabla de frecuencias bidimensional" file="FrequencyTabulation2Variables.xml" type="standard"/>
 	</components>
 	<hierarchy>
 		<menu id="teaching">
 			<menu id="FrequencyTabulation" label="Distribución de frecuencias">
 				<entry component="FrequencyTabulation" />
-				<entry component="FrequencyTabulationGroupedData" />
 				<entry component="FrequencyTabulation2Varibles" />
 			</menu>
 		</menu>

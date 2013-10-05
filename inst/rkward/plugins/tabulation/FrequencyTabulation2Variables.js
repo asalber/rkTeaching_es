@@ -12,10 +12,16 @@ function calculate(){
 	echo(getString("filter_embed.code.calculate"));
 	// Load variables
 	varrows = getString("var_rows");
-	varcolumns = getString("var_colums");
+	varcolumns = getString("var_columns");
 	data = varrows.split('[[')[0];
 	varrowsname = getString("var_rows.shortname");
-	varcolumnsname = getString("var_colums.shortname");
+	varcolumnsname = getString("var_columns.shortname");
+	if (getBoolean("intervals_rows_frame.checked")){
+		echo(varrows + '<-' + 'cut(' + varrows  + getString("cells_rows.code.calculate") + ', include.lowest=TRUE)\n');
+	}
+	if (getBoolean("intervals_columns_frame.checked")){
+		echo(varcolumns + '<-' + 'cut(' + varcolumns  + getString("cells_columns.code.calculate") + ', include.lowest=TRUE)\n');
+	}
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
 		groupsname = getList("groups.shortname");
@@ -55,10 +61,10 @@ function printout(){
 	// printout the results
 	echo('rk.header(');
 	if (getBoolean("relative_freq")){
-		echo('"Tabla bidimensional de frecuencias relativas"');
+		echo('"Tabla bidimensional de frecuencias relativas de ' + varrowsname + ' y ' + varcolumnsname + '"');
 	}
 	else {
-		echo('"Tabla bidimensional de frecuencias absolutas"');
+		echo('"Tabla bidimensional de frecuencias absolutas de ' + varrowsname + ' y ' + varcolumnsname + '"');
 	}
 	echo(', parameters=list("Variable de las filas" = rk.get.description (' + varrows + ')' + ', "Variable de las columnas" = rk.get.description (' + varcolumns + ')' + getString("filter_embed.code.printout"));
 	if (getBoolean("grouped")) {
