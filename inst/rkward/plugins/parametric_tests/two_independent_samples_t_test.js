@@ -22,7 +22,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Test T de comparaci&oacute;n de medias para dos muestras independientes", ');
+	echo ('rk.header ("Test T de comparaci&oacute;n de medias de ' + getString("variable.shortname") + ' seg&uacute;n ' + getString("factor.shortname") + '", ');
 	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + variable + '), "Seg&uacute;n" = rk.get.description(' + factor + ')' + getString("filter_embed.code.printout") + ', "Hip&oacute;tesis nula" = paste("media", levels(' + factor + ')[1], " = media ", levels(' + factor + ')[2])');
 	if (hypothesis=="two.sided"){
 		echo(', "Hip&oacute;tesis alternativa" = paste("media", levels(' + factor + ')[1], " &ne; media ", levels(' + factor + ')[2])');

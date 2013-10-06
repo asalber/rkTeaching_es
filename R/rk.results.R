@@ -57,7 +57,7 @@ rk.results <- function (x, titles = NULL, print.rownames)
 							cat("<td>")
 							for (row in 1:length(col)) {
 								if (row != 1) 
-									cat("\n<br/>")
+									cat("<br/>")
 								cat(col[row])
 							}
 							cat("</td>")

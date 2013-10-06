@@ -14,7 +14,7 @@ function calculate () {
 	data = getString("dataframe");
 	design = getString("design");
 	dep = getString("dep");
-	dep_name = getValue("dep.shortname");
+	dep_name = getString("dep.shortname");
 	caseid = getString("caseid");
 	caseid_name = getValue("caseid.shortname");
 	within = getList("within");
@@ -71,7 +71,7 @@ function calculate () {
 
 function printout () {
 	//Título y parámetros
-	echo('rk.header("ANOVA", ');
+	echo('rk.header("ANOVA de ' + dep_name + '", ');
 	echo('parameters=list ("Variable dependiente"= rk.get.description(' + dep + ')');
 	if(between != "" & design !="within"){
 		echo(', "Factores entre individuos" = rk.get.description(' + between + ', paste.sep=", ")');

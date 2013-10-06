@@ -24,7 +24,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Test T de comparaci&oacute;n de medias para dos muestras pareadas", ');
+	echo ('rk.header ("Test T para la media de ' + getString("x.shortname") + ' - ' + getString("y.shortname") + '", ');
 	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "Con" = rk.get.description(' + y + ')' + getString("filter_embed.code.printout") + ', "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), " = media ", rk.get.short.name(' + y + '))');
 	if (hypothesis=="two.sided"){
 		echo(', "Hip&oacute;tesis alternativa" = paste("media ", rk.get.short.name(' + x + '), " &ne; media ", rk.get.short.name(' + y + '))');

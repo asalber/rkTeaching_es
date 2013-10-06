@@ -48,12 +48,12 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Test para una proporci&oacute;n", ');
+	echo ('rk.header ("Test para ');
 	if (getBoolean("manual.checked")){
-		echo ('parameters=list ("Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');
+		echo ('una proporci&oacute;n", parameters=list ("Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');
 	}
 	else{
-		echo ('parameters=list ("Variable" = rk.get.description(' + x + '), "Proporci&oacute;n de" = "' + category + '"' + getString("filter_embed.code.printout") + ', "Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');		
+		echo ('la proporci&oacute;n de ' + getString("variable.shortname") + '=' + category + '", parameters=list ("Variable" = rk.get.description(' + x + '), "Proporci&oacute;n de" = "' + category + '"' + getString("filter_embed.code.printout") + ', "Frecuencia muestral" = freq, "Tama&ntilde;o muestral" = n');		
 	}
 	echo(', "Hip&oacute;tesis nula" = "proporci&oacute;n ' + category + ' = ' + p + '"');
 	if (hypothesis=="two.sided"){

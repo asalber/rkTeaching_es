@@ -45,7 +45,7 @@ function calculate () {
 		echo ('	for (j in i:length (data)) {\n');
 		echo ('		if (i != j) {\n');
 		echo ('			t <- cor.test (data[[i]], data[[j]], method="' + method + '")\n');
-		echo ('			result.p[i, j] <- t$p.value\n');
+		echo ('			result.p[i, j] <- format.pval(t$p.value)\n');
 		echo ('			result.p[j, i] <- sum (complete.cases (data[[i]], data[[j]]))\n');
 		echo ('		}\n');
 		echo ('	}\n');
@@ -54,7 +54,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Matriz de Correlaci&oacute;n", parameters=list ("Variables" = rk.get.description(' + variables + ', paste.sep=", "), "M&eacute;todo" = "' + method + '"');
+	echo ('rk.header ("Matriz de Correlaci&oacute;n de ' + getList("variables.shortname").join(', ') + '", parameters=list ("Variables" = rk.get.description(' + variables + ', paste.sep=", "), "M&eacute;todo" = "' + method + '"');
 	if (missing="pairwise.complete.obs"){
 		echo(', "Exclusi&oacute;n de casos con valores omitidos" = "Por pares"');
 	} else {
@@ -62,7 +62,7 @@ function printout () {
 	}
 	echo('))\n');
 	echo ('rk.header ("Coeficientes de correlaci&oacute;n", level=3)\n');
-	echo ('rk.results (data.frame (result, check.names=FALSE), titles=c ("Coeficientes", colnames(data)))\n');
+	echo ('rk.results (data.frame (round(result,4), check.names=FALSE), titles=c ("Coeficientes", colnames(data)))\n');
 	if (getBoolean("p")) {	
 		echo ('rk.header ("p-valor y tama&ntilde;o de la muestra", level=3)\n');
 		echo ('rk.results (data.frame (result.p, check.names=FALSE), titles=c ("n \\\\ p", names (data)))\n');

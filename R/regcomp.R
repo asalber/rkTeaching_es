@@ -1,4 +1,4 @@
-regcomp <- function(y,x, models=c("linear", "cuadratic", "cubic", "potential", "exponential", "logarithmic", "inverse", "sigmoid"), subset=NULL){
+regcomp <- function(y,x, models=c("linear", "cuadratic", "cubic", "potential", "exponential", "logarithmic", "inverse", "sigmoid"), subset=NULL, decimals=4){
 	if (length(models)==0){
 		stop("You must select at least a model type")
 	}
@@ -51,7 +51,7 @@ regcomp <- function(y,x, models=c("linear", "cuadratic", "cubic", "potential", "
 		r <- c(r,summary(m)$r.squared)
 		p <- c(p,pf(q=c(summary(m)$fstatistic["value"]),df1=summary(m)$fstatistic["numdf"],df2=summary(m)$fstatistic["dendf"],lower.tail=FALSE))
 	}
-	t <- data.frame(names,r,p)
+	t <- data.frame(names,round(r,decimals),format.pval(p))
 	t <- t[order(-r),]
 	colnames(t) <- c("Modelo","R<sup>2</sup>","P-valor")
 	rownames(t) <- rep(NULL,nrow(t))

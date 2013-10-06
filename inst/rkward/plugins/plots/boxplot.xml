@@ -15,6 +15,7 @@
 		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not"/>
 		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not"/>
 		<connect client="plotoptions.allow_legend" governor="grouped_mode" />
+		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 	
 	<dialog label="Diagrama de caja" >

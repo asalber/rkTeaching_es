@@ -20,7 +20,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Test F de comparaci&oacute;n de varianzas para dos poblaciones independientes", ');
+	echo ('rk.header ("Test F de comparaci&oacute;n de varianzas de ' + getString("variable.shortname") + ' seg&uacute;n ' + getString("factor.shortname") + '", ');
 	echo ('parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + variable + '), "Seg&uacute;n" = rk.get.description(' + factor + ')' + getString("filter_embed.code.printout") + ', "Hip&oacute;tesis nula" = paste("varianza", levels(' + factor + ')[1], " = varianza ", levels(' + factor + ')[2])');
 	if (hypothesis=="two.sided"){
 		echo(', "Hip&oacute;tesis alternativa" = paste("varianza", levels(' + factor + ')[1], " &ne; varianza ", levels(' + factor + ')[2])');

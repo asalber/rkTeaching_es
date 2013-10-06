@@ -35,7 +35,7 @@ function calculate () {
 }
 
 function printout () {
-	echo('rk.header ("Regresi&oacute;n Lineal", parameters=list("Variable dependiente" = rk.get.description(' + y + '), "Variables independientes" = rk.get.description(' + x + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
+	echo('rk.header ("Regresi&oacute;n Lineal de ' + yname + ' sobre ' + xname + '", parameters=list("Variable dependiente" = rk.get.description(' + y + '), "Variables independientes" = rk.get.description(' + x + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
 	if (getBoolean("save.active")){
 		echo(', "Nombre del modelo" = "' + modelname + '"');
 	}

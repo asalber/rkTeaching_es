@@ -88,7 +88,7 @@ function preview() {
 function doPrintout(full) {
 	// Print header
 	if (full) {
-		echo ('rk.header ("Diagrama de barras", list ("Variable" = rk.get.description(' + variable + ')' + getString("filter_embed.code.printout"));
+		echo ('rk.header ("Diagrama de barras de ' + variablename + '", list ("Variable" = rk.get.description(' + variable + ')' + getString("filter_embed.code.printout"));
 		if (getBoolean("grouped")) {
 			echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}

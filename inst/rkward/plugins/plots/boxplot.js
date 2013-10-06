@@ -75,7 +75,7 @@ function preview() {
 function doPrintout(full) {
 	// Print header
 	if (full) {
-		echo ('rk.header ("Diagrama de cajas", list ("Variable(s)" = rk.get.description(' + variable + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
+		echo ('rk.header ("Diagrama de cajas de ' + getList("variable.shortname").join(', ') + '", list ("Variable(s)" = rk.get.description(' + variable + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
 		if (getBoolean("grouped")) {
 			echo(', "Variable(s) de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}

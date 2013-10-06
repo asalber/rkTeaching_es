@@ -112,7 +112,7 @@ function preview () {
 function doPrintout (full) {
 	// Print header
 	if (full) {
-		echo('rk.header ("Histograma", parameters=list ("Variable" = rk.get.description (' + variable + ')' + getString("filter_embed.code.printout"));
+		echo('rk.header ("Histograma de ' + variablename + '", parameters=list ("Variable" = rk.get.description (' + variable + ')' + getString("filter_embed.code.printout"));
 		if (getBoolean("grouped")) {
 			echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}

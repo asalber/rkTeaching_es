@@ -29,8 +29,7 @@ rk.header <- function (title, parameters = list(), level = 1, toc = NULL)
 		else {
 			pnames <- names(parameters)
 		}
-		cat("<h", level + 1, ">Par&aacute;metros</h", level + 1, ">\n<ul>", 
-				sep = "")
+		cat("<ul>")
 		for (i in 1:length(parameters)) {
 			cat("<li>", pnames[i], ": ", parameters[[i]], "</li>\n", 
 					sep = "")

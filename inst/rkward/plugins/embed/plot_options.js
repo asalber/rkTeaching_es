@@ -16,6 +16,12 @@ function preprocess () {
 
 function calculate () {
 	var ggplotoptions = '';
+	// Title
+	var main = prepareLabel('main');
+	if (main!=''){
+		main = ' + labs(title=' + main + ')';
+	}
+
 	// X axe
 	// X axi label
 	var xlab = prepareLabel("xlab");
@@ -34,7 +40,6 @@ function calculate () {
 	if (x_lab_orientation!=='') {
 		x_lab_orientation = ' + theme(axis.text.x=element_text(angle=' + x_lab_orientation + ', vjust=0.5))';
 	} 
-
 	
 	// Y axe
 	// X axi label
@@ -100,7 +105,7 @@ function calculate () {
 		grid_minor_line_color = ' + theme(panel.grid.minor=element_line(colour=' + grid_minor_line_color + '))';
 	}
 	
-	ggplotoptions =  xlab + ylab + coord + flip_axis + x_lab_orientation + y_lab_orientation + legend + grid_horizontal_major + grid_horizontal_minor + grid_vertical_major + grid_vertical_minor + grid_major_line_color + grid_minor_line_color + grid_background_color;
+	ggplotoptions =  main + xlab + ylab + coord + flip_axis + x_lab_orientation + y_lab_orientation + legend + grid_horizontal_major + grid_horizontal_minor + grid_vertical_major + grid_vertical_minor + grid_major_line_color + grid_minor_line_color + grid_background_color;
 	echo (ggplotoptions);
 }
 

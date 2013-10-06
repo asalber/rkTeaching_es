@@ -178,7 +178,7 @@ function preview () {
 
 function doPrintout (full) {
 	if (full) {
-		echo ('rk.header ("Diagrama de dispersi&oacute;n", parameters = list ("Variable X" = rk.get.description(' + x + "), 'Variable Y' = rk.get.description(" + y +  ')' + getString("filter_embed.code.printout"));
+		echo ('rk.header ("Diagrama de dispersi&oacute;n de ' + yname + ' sobre ' + xname + '", parameters = list ("Variable X" = rk.get.description(' + x + "), 'Variable Y' = rk.get.description(" + y +  ')' + getString("filter_embed.code.printout"));
 		if (getBoolean("grouped")) {
 			echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}

@@ -31,8 +31,8 @@
 			<tab id="tab_pie_options" label="Opciones de los sectores">
 				<frame id="frame_freq" label="Frecuencias">
 					<checkbox id="relative" label="Frecuencia relativa" checked="false" value="1" />
-					<checkbox id="show_freq" label="Mostrar frecuencias" value="1" />
 				</frame>
+				<stretch/>
 				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones generales de gráficos"/>
 			</tab>
 		</tabbook>

@@ -1,7 +1,7 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var data, x, variable, variablename, groups, groupsname, xlab, ylab, points, confintervals, meancolor; 
+var data, x, variable, variablename, groups, groupsname, xlab, ylab, points, confintervals, meancolor, intervalcolor; 
 
 function preprocess() {
 	echo('require(ggplot2)\n');
@@ -26,17 +26,19 @@ function calculate() {
 	xlab = ', xlab=""';
 	ylab = ', ylab=""';
 	fill = '';
-	// Set mean color
-	meancolor = ', colour=I("#FF9999")';
+	// Set mean and interval color
+	meancolor = ', colour=I("#FF5555")';
+	intervalcolor = ', colour=I("#FF5555")';
 	// Set grouped mode
 	facet = '';
 	if (getBoolean("grouped")) {
 		meancolor = ', colour=' + groupsname;
+		intervalcolor = '';
 	}
 	// Set confidence intervals
 	confintervals = '';
 	if (getBoolean("confint_frame.checked")) {
-		confintervals = ' + stat_summary(fun.data=function(x) mean_cl_normal(x, conf.int=' + getString("conflevel") + '), geom="pointrange", position=position_dodge(width=0.25))';
+		confintervals = ' + stat_summary(fun.data=function(x) mean_cl_normal(x, conf.int=' + getString("conflevel") + '), geom="pointrange"' + intervalcolor + ', position=position_dodge(width=0.25))';
 	}
 	// Set points
 	points = '';

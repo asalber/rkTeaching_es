@@ -23,7 +23,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Test T para una media", ');
+	echo ('rk.header ("Test T para la media de ' + getString("variable.shortname") + '", ');
 	echo ('parameters=list ("Variable" = rk.get.description(' + x + ')' + getString("filter_embed.code.printout") + ', "Hip&oacute;tesis nula" = paste("media ", rk.get.short.name(' + x + '), "= ' + mean + '")');
 	if (hypothesis=="two.sided"){
 		echo(', "Hip&oacute;tesis alternativa" = paste("media &ne; ' + mean + '")');

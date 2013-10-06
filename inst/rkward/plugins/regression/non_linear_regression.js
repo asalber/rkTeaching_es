@@ -57,7 +57,7 @@ function calculate () {
 }
 
 function printout () {
-	echo ('rk.header ("Regresi&oacute;n ' + typemodel + '", parameters=list("Variable dependiente" = rk.get.description(' + y + "), 'Variable independiente'= rk.get.description(" + x + ')' + getString("filter_embed.code.printout"));
+	echo ('rk.header ("Regresi&oacute;n ' + typemodel +  ' de ' + yname + ' sobre ' + getList("x.shortname").join(', ') + '", parameters=list("Variable dependiente" = rk.get.description(' + y + "), 'Variable independiente'= rk.get.description(" + x + ')' + getString("filter_embed.code.printout"));
 	if (getBoolean("save.active")){
 		echo(', "Nombre del modelo" = "' + modelname + '"');
 	}
