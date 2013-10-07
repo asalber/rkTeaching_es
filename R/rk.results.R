@@ -25,8 +25,7 @@ rk.results <- function (x, titles = NULL, print.rownames)
 	if (is.list(x)) {
 		if (is.data.frame(x)) {
 			if (missing(print.rownames)) 
-				print.rownames <- !isTRUE(all.equal(rownames(x), 
-								as.character(1:dim(x)[1])))
+				print.rownames <- !isTRUE(all.equal(rownames(x), as.character(1:dim(x)[1])))
 			if (isTRUE(print.rownames)) {
 				x <- cbind(rownames(x), x, stringsAsFactors = FALSE)
 				names(x)[1] <- ""
