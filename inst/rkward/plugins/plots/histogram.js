@@ -41,7 +41,7 @@ function calculate() {
 		groupsname = getList("groups.shortname");
 		fill = ', fill=' + groupsname.join('.');
 		if (getBoolean("cumulative") || getString("position")==='faceted') {
-			facet = ' + facet_grid(.~' + groupsname.join('.') + ')';
+			facet = ' + facet_grid(' + groupsname.join('.') + '~.)';
 		}
 		else {
 			position = ', position="' + getString("position") + '"';
