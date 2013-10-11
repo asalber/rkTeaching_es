@@ -5,6 +5,8 @@
 	
 	<logic>
 		<connect client="filter_embed.variable" governor="y.available" />
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
 	</logic>
 
 	<dialog label="Comparación de Modelos de Regresión">
@@ -15,6 +17,8 @@
 					<column>
 						<varslot id="y" label="Variable dependiente" type="numeric" source="selector" required="true" />
 						<varslot id="x" label="Variable independiente" type="numeric" source="selector" required="true" />
+						<checkbox id="grouped" label="Ajuste por grupos" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>	
 						<stretch/>					
 					</column>

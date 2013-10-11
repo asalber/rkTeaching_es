@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, y, xname, yname, equation, modelname, model, typemodel, filter;
+var x, y, xname, yname, data, groups, groupsname, equation, modelname, model, typemodel, filter;
 
 function calculate () {
     // Filter
@@ -11,7 +11,7 @@ function calculate () {
 	yname = getString("y.shortname");
 	x = getString("x"); 
 	xname = getString("x.shortname"); 
-	var data = y.split('[[')[0];
+	data = y.split('[[')[0];
 	var formula = '';
 	model = getString("model");
 	if (model == "linear"){
@@ -46,63 +46,130 @@ function calculate () {
 		typemodel = "Sigmoidal"
 		formula += 'log(' + yname + ') ~ I(1/' + xname + ')';
 	}
-	if (getBoolean("save.active")){
-		modelname = getString("save");
-		echo('assign("' + modelname + '", lm (' + formula + ', data=' + data + '), .GlobalEnv)\n');
-		echo('results <- summary(' + modelname + ')\n');
+	// Grouped mode
+	if (getBoolean("grouped")) {
+		groups = getList("groups");
+		groupsname = getList("groups.shortname");
+		echo(data + ' <- transform(' + data + ', .groups=interaction(' + data + '[,c(' + groupsname.map(quote) + ')]))\n');
+		echo('result <- dlply(' + data + ', ".groups", function(df) lm(' +  formula + ', data=df))\n');
+		// Save model
+		if (getBoolean("save.active")){
+			modelname = getString("save");
+			echo('for (i in 1:length(result)){\n');
+			echo('\t assign(paste("' + modelname + '", names(result)[i], sep="."), result[[i]], .GlobalEnv)\n');
+			echo('}\n');
+		}
+		echo('result <- lapply(result,summary)\n');
 	}
 	else{
-		echo('results <- summary(lm (' + formula + ', data=' + data + '))\n');
+		echo ('result <- lm (' + formula + ', data=' + data + ')\n');
+		// Save model
+		if (getBoolean("save.active")){
+			modelname = getString("save");
+			echo ('assign("' + modelname + '", result, .GlobalEnv)\n');
+		}
+		echo('result <- summary(result)\n');
 	}
 }
 
 function printout () {
 	echo ('rk.header ("Regresi&oacute;n ' + typemodel +  ' de ' + yname + ' sobre ' + getList("x.shortname").join(', ') + '", parameters=list("Variable dependiente" = rk.get.description(' + y + "), 'Variable independiente'= rk.get.description(" + x + ')' + getString("filter_embed.code.printout"));
+	if (getBoolean("grouped")) {
+		echo(', "Variable de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
+	}
 	if (getBoolean("save.active")){
 		echo(', "Nombre del modelo" = "' + modelname + '"');
 	}
 	echo("))\n");
-	// Ecuación del modelo
-	echo('rk.header ("Ecuaci&oacute;n del modelo",level=3)\n'); 
-	if (model == "linear"){
-		echo('rk.print (c("' + yname + '", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "' + xname + '"))\n');
+	// Grouped mode
+	if (getBoolean("grouped")){
+		echo('for (i in 1:length(result)){\n');
+		echo('\t rk.header(paste("Grupo", names(result)[i]),level=3)\n');
+		// Ecuación del modelo
+		echo('\t rk.header ("Ecuaci&oacute;n del modelo",level=4)\n'); 
+		if (model == "linear"){
+			echo('rk.print (c("' + yname + '", " = ", round(result[[i]][[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "' + xname + '"))\n');
+		}
+		if (model == "cuadratic"){
+			echo('rk.print (c("' + yname + '", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "' + xname + ' + ", round(result[[i]]$coeff[3,1],4), "' + xname + '^2"))\n');
+		}
+		if (model == "cubic"){
+			echo('rk.print (c("' + yname + '", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "' + xname + ' + ", round(result[[i]]$coeff[3,1],4), "' + xname + '^2 + ", round(result[[i]]$coeff[4,1],4), "' + xname + '^3"))\n');
+		}
+		if (model == "potential"){
+			echo('rk.print (c("log(' + yname + ')", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "log(' + xname + ')"))\n');
+		}
+		if (model == "exponential"){
+			echo('rk.print (c("log(' + yname + ')", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "' + xname + '"))\n');
+		}
+		if (model == "logarithmic"){
+			echo('rk.print (c("' + yname + '", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "log(' + xname + ')"))\n');
+		}
+		if (model == "inverse"){
+			echo('rk.print (c("' + yname + '", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "/ ' + xname + '"))\n');
+		}
+		if (model == "sigmoid"){
+			echo('rk.print (c("log(' + yname + ')", " = ", round(result[[i]]$coeff[1,1],4), " + ", round(result[[i]]$coeff[2,1],4), "/ ' + xname + '"))\n');
+		}
+		// Estimaciones del modelo 
+		echo('\t rk.header ("Coeficientes del modelo",level=4)\n');
+		echo('rk.results (list(');
+		echo('"Coeficiente" = rownames(result[[i]]$coeff)');
+		echo(', "Estimaci&oacute;n" = result[[i]]$coeff[,1]');
+		echo(', "Error est&aacute;ndar" = result[[i]]$coeff[,2]');
+		echo(', "Estad&iacute;stico t" = result[[i]]$coeff[,3]');
+		echo(', "p-valor" = result[[i]]$coeff[,4]))\n');
+		// Ajuste del modelo
+		echo('\t rk.header ("Ajuste del modelo", level=4)\n');
+		echo('rk.results (list(');
+		echo('"R<sup>2</sup>" = result[[i]]$r.squared,');
+		echo('"R<sup>2</sup> ajustado" = result[[i]]$adj.r.squared,');
+		echo('"Estad&iacute;stico F" = result[[i]]$fstatistic[1],');
+		echo('"p-valor" = pf(result[[i]]$fstatistic[1],result[[i]]$fstatistic[2],result[[i]]$fstatistic[3],lower.tail=FALSE)))\n');
+		echo('}\n');
 	}
-	if (model == "cuadratic"){
-		echo('rk.print (c("' + yname + '", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "' + xname + ' + ", round(results$coeff[3,1],4), "' + xname + '^2"))\n');
+	else{
+		// Ecuación del modelo
+		echo('rk.header ("Ecuaci&oacute;n del modelo",level=4)\n'); 
+		if (model == "linear"){
+			echo('rk.print (c("' + yname + '", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "' + xname + '"))\n');
+		}
+		if (model == "cuadratic"){
+			echo('rk.print (c("' + yname + '", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "' + xname + ' + ", round(result$coeff[3,1],4), "' + xname + '^2"))\n');
+		}
+		if (model == "cubic"){
+			echo('rk.print (c("' + yname + '", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "' + xname + ' + ", round(result$coeff[3,1],4), "' + xname + '^2 + ", round(result$coeff[4,1],4), "' + xname + '^3"))\n');
+		}
+		if (model == "potential"){
+			echo('rk.print (c("log(' + yname + ')", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "log(' + xname + ')"))\n');
+		}
+		if (model == "exponential"){
+			echo('rk.print (c("log(' + yname + ')", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "' + xname + '"))\n');
+		}
+		if (model == "logarithmic"){
+			echo('rk.print (c("' + yname + '", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "log(' + xname + ')"))\n');
+		}
+		if (model == "inverse"){
+			echo('rk.print (c("' + yname + '", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "/ ' + xname + '"))\n');
+		}
+		if (model == "sigmoid"){
+			echo('rk.print (c("log(' + yname + ')", " = ", round(result$coeff[1,1],4), " + ", round(result$coeff[2,1],4), "/ ' + xname + '"))\n');
+		}
+		// Estimaciones del modelo 
+		echo('rk.header ("Coeficientes del modelo",level=4)\n');
+		echo('rk.results (list(');
+		echo('"Coeficiente" = rownames(result$coeff)');
+		echo(', "Estimaci&oacute;n" = result$coeff[,1]');
+		echo(', "Error est&aacute;ndar" = result$coeff[,2]');
+		echo(', "Estad&iacute;stico t" = result$coeff[,3]');
+		echo(', "p-valor" = result$coeff[,4]))\n');
+		// Ajuste del modelo
+		echo('rk.header ("Ajuste del modelo", level=4)\n');
+		echo('rk.results (list(');
+		echo('"R<sup>2</sup>" = result$r.squared,');
+		echo('"R<sup>2</sup> ajustado" = result$adj.r.squared,');
+		echo('"Estad&iacute;stico F" = result$fstatistic[1],');
+		echo('"p-valor" = pf(result$fstatistic[1],result$fstatistic[2],result$fstatistic[3],lower.tail=FALSE)))\n');
 	}
-	if (model == "cubic"){
-		echo('rk.print (c("' + yname + '", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "' + xname + ' + ", round(results$coeff[3,1],4), "' + xname + '^2 + ", round(results$coeff[4,1],4), "' + xname + '^3"))\n');
-	}
-	if (model == "potential"){
-		echo('rk.print (c("log(' + yname + ')", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "log(' + xname + ')"))\n');
-	}
-	if (model == "exponential"){
-		echo('rk.print (c("log(' + yname + ')", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "' + xname + '"))\n');
-	}
-	if (model == "logarithmic"){
-		echo('rk.print (c("' + yname + '", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "log(' + xname + ')"))\n');
-	}
-	if (model == "inverse"){
-		echo('rk.print (c("' + yname + '", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "/ ' + xname + '"))\n');
-	}
-	if (model == "sigmoid"){
-		echo('rk.print (c("log(' + yname + ')", " = ", round(results$coeff[1,1],4), " + ", round(results$coeff[2,1],4), "/ ' + xname + '"))\n');
-	}
-	
-	// Estimaciones del modelo 
-	echo('rk.header ("Coeficientes del modelo",level=3)\n');
-	echo('rk.results (list(');
-	echo('"Coeficiente" = rownames(results$coeff)');
-	echo(', "Estimaci&oacute;n" = results$coeff[,1]');
-	echo(', "Error est&aacute;ndar" = results$coeff[,2]');
-	echo(', "Estad&iacute;stico t" = results$coeff[,3]');
-	echo(', "p-valor" = results$coeff[,4]))\n');
-	// Ajuste del modelo
-	echo('rk.header ("Ajuste del modelo", level=3)\n');
-	echo('rk.results (list(');
-	echo('"R<sup>2</sup>" = results$r.squared,');
-	echo('"R<sup>2</sup> ajustado" = results$adj.r.squared,');
-	echo('"Estad&iacute;stico F" = results$fstatistic[1],');
-	echo('"p-valor" = pf(results$fstatistic[1],results$fstatistic[2],results$fstatistic[3],lower.tail=FALSE)))\n');
 }
 

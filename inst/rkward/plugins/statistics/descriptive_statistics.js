@@ -57,7 +57,7 @@ function printout () {
 	echo ('))\n');
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
-		echo('\t rk.header(names(result)[i],level=3)\n');
+		echo('\t rk.header(paste("Grupo", names(result)[i]),level=3)\n');
 		echo('\t\t rk.results(result[[i]])\n');
 		echo('}\n');
 	}

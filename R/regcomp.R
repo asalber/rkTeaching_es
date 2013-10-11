@@ -3,11 +3,13 @@ regcomp <- function(y,x, models=c("linear", "cuadratic", "cubic", "potential", "
 		stop("You must select at least a model type")
 	}
 	names = c()
+	r=NULL
+	p=NULL
 	if ("linear" %in% models){
 		names <- c(names,"Lineal")
 		m <- lm(y~x,subset=subset)
-		r <- c(summary(m)$r.squared)
-		p <- c(pf(q=c(summary(m)$fstatistic["value"]),df1=summary(m)$fstatistic["numdf"],df2=summary(m)$fstatistic["dendf"],lower.tail=FALSE))
+		r <- c(r,summary(m)$r.squared)
+		p <- c(p,pf(q=c(summary(m)$fstatistic["value"]),df1=summary(m)$fstatistic["numdf"],df2=summary(m)$fstatistic["dendf"],lower.tail=FALSE))
 	}
 	if ("cuadratic" %in% models){
 		names <- c(names,"Cuadr&aacute;tico")

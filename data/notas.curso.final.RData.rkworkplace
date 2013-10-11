@@ -1,0 +1,14 @@
+base::::file:///media/datos/Dropbox/ceu/docencia/mooc/curso%20estadistica%20r/datos
+help::::rkward://page/rkward_welcome
+data::::datos.curso
+output::::file:///home/alf/.rkward/rk_out.html
+script::::file:///media/datos/Dropbox/ceu/docencia/mooc/curso%20estadistica%20r/guiones%20R/descriptiva.R
+workspace::sidebar,0::
+commandlog::sidebar,3::
+filebrowser::sidebar,0::
+pendingjobs::sidebar,4::
+console::sidebar,3::
+helpsearch::sidebar,3::
+debugframes::sidebar,1::
+debugconsole::sidebar,4::
+rkdebugmessages::sidebar,4::
