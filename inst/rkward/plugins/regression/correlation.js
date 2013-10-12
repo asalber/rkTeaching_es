@@ -10,8 +10,15 @@ function preprocess() {
 function calculate () {
 	variables = getList("variables");
 	variablesnames = getList("variables.shortname")
+	data = variables.join();
+	data = data.split('[[')[0];
 	method = getString("method");
 	missing = getString ("missing");
+	// Filter
+	if (getBoolean("filter_frame.checked")){
+		filter = getString("filter");
+		echo (data + ' <- subset(' + data + ', subset=' + filter + ')\n');
+	}
 
 	echo ('# building data frame\n');
 	echo ('data.list <- rk.list (' + variables.join(",") + ')\n');

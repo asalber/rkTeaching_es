@@ -8,7 +8,12 @@
 			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
 					<varselector id="selector"/>
-					<varslot id="variables" label="Variable(s):" type="numeric" min_vars="2" multi="true" source="selector" required="true" num_dimensions="1"/>
+					<column>
+						<varslot id="variables" label="Variable(s):" type="numeric" min_vars="2" multi="true" source="selector" required="true" num_dimensions="1"/>
+						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
+							<input id="filter" label="Condición de selección" />
+						</frame>
+					</column>
 				</row>
 			</tab>
 			<tab id="tab_Options" label="Opciones de correlación" >
