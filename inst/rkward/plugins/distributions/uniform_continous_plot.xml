@@ -16,6 +16,7 @@
 				<spinbox default_precision="2" type="real" id="min" initial="0" label="Mínimo" />
 				<spinbox default_precision="2" type="real" id="max" initial="1" label="Máximo"/>
 			</frame>
+			<stretch/>
 		</snippet>
 		<snippet id="parameters_wizard">
 			<text>

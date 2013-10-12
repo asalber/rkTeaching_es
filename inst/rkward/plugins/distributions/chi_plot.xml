@@ -10,7 +10,7 @@
 	
 	<snippets>
 		<snippet id="range_options">
-			<frame id="range" label="Rango" >
+			<frame id="range" label="Rango" checkable="true" checked="false">
 				<spinbox default_precision="2" type="real" id="min" initial="0" label="Mínimo" />
 				<spinbox default_precision="2" type="real" id="max" initial="15" label="Máximo" />
 			</frame>

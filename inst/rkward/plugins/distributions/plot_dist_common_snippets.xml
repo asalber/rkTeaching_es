@@ -38,7 +38,7 @@
 				<insert snippet="discrete_options"/>
 				<stretch/>
 				<preview id="preview" label="Previsualizar"/>
-				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />	
+				<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
 			</column>
 		</row>
 	</snippet>
@@ -53,7 +53,7 @@
 				<insert snippet="continous_options"/>
 				<stretch/>
 				<preview id="preview" label="Previsualizar"/>
-				<embed id="plotoptions" component="rkward::plot_options" as_button="true" label="Opciones gráficas" />	
+				<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
 			</column>
 		</row>
 	</snippet>

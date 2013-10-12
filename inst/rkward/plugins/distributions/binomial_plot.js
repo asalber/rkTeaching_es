@@ -1,32 +1,29 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var options;
+var size, prob;
 
 include ('plot_dist_common.js');
 
-function getParameters () {
-	options['size'] = getString ("size");
-	options['prob'] = getString ("prob");
-	options['min'] = 0;
-	options['max'] = getString ("size");
-	options['n'] = options['max'] - options['min'] + 1;
-
-
-	if (options['is_density']) {
-		options['fun'] = 'dbinom';
-		options['label'] = 'probabilidad'; 
+function getParameters() {
+	size = getString ("size");
+	prob = getString ("prob");
+	setDistParameters()
+		if (density) {
+		fun = "dbinom";
 	} else {
-		options['fun'] = 'pbinom';
-		options['label'] = 'distribuci&oacute;n';
+		fun = "pbinom";
 	}
+	min = 0;
+	max = parseInt(getString("size"));
+	n = max+1;
 }
 
 function doHeader () {
-	echo ('rk.header ("Funci&oacute;n de ' + options['label'] + ' Binomial", list ("N&uacute;mero de repeticiones"= "' + options['size'] + '", "Probabilidad de &eacute;xito" = "' + options['prob'] + '"))\n');
+	echo ('rk.header ("Funci&oacute;n de ' + label + ' Binomial B(' + size + ',' + prob + ')", list ("N&uacute;mero de repeticiones"= "' + size + '", "Probabilidad de &eacute;xito" = "' + prob + '"))\n');
 }
 
 function doFunCall () {
-	echo (options['fun'] + '(x, size=' + options['size'] + ', prob=' + options['prob'] + ')');
+	echo('ylim <- max(' + fun + '(seq(' + min + ',' + max + '), size=' + size + ', prob=' + prob + '))\n');
+	echo('p <- qplot(c(' + min + ',' + max + '), geom="blank") + stat_function(fun=' + fun + ', colour="#FF5555", n=' + n + ', geom="point", size=I(3), args=list(size=' + size + ', prob=' + prob + ')) + ylim(0,ylim)');
 }
 

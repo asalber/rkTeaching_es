@@ -17,6 +17,7 @@
 				<spinbox default_precision="2" type="integer" id="size" min="1" initial="1" label="Número de repeticiones" />
 				<spinbox default_precision="2" type="real" id="prob" min="0" initial="0.5" label="Probabilidad de éxito"/>
 			</frame>
+			<stretch />
 		</snippet>
 		<snippet id="parameters_wizard">
 			<text>

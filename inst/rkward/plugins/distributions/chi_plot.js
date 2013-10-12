@@ -1,26 +1,26 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var options;
+var df;
 
 include ('plot_dist_common.js');
 
 function getParameters () {
-	options['df'] = getString("df");
-	getContRangeParameters ();
-
-	if (options['is_density']) {
-		options['fun'] = "dchisq";
+	df = getString("df");
+	min = 0;
+	max = parseFloat(df)+4*Math.sqrt(2*parseFloat(df));
+	setContParameters();
+	if (density) {
+		fun = "dchisq";
 	} else {
-		options['fun'] = "pchisq";
+		fun = "pchisq";
 	}
 }
 
 function doHeader () {
-	echo ('rk.header ("Funci&oacute;n de ' + options['label'] + ' Chi-cuadrado", list ("Grados de libertad"= "' + options['df'] + '"))\n');
+	echo ('rk.header ("Funci&oacute;n de ' + label + ' Chi-cuadrado &#967;(' + df + ')", list ("Grados de libertad"= "' + df + '"))\n');
 }
 
 function doFunCall () {
-	echo (options['fun'] + '(x, df=' + options['df'] + ')');
+	echo ('p <- qplot(c(' + min + ',' + max + '), geom="blank") + stat_function(fun=' + fun + ', colour="#FF5555", args=list(df=' + df + '))');
 }
 
