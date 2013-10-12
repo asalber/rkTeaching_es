@@ -1,14 +1,15 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var q, fun;
+var q, fun, lambda, tail;
 
 function calculate () {
-	q = "c (" + getString("q").replace (/[, ]+/g, ", ") + ")";
+	lambda = getString("lambda");
+	q = 'c(' + getString("q").replace (/[, ]+/g, ", ") + ')';
+	tail = getString("tail");
 	fun = getString("function");
-	echo ('result <- ' + fun + 'pois(' + q + ', lambda = ' + getString("lambda"));
+	echo ('result <- ' + fun + 'pois(' + q + ', lambda = ' + lambda);
 	if (fun == 'p'){
-		echo(', ' + getString("tail"));
+		echo(', ' + tail);
 	}
 	echo(')\n');
 }
@@ -19,12 +20,12 @@ function printout () {
 	if (fun == 'p') {
 		title += ' acumuladas';
 		label += ' , "Cola de acumulaci&oacute;n" = ';
-		if (getValue ("tail")=="lower.tail=TRUE" )
+		if (tail=="lower.tail=TRUE" )
 			label += '"Izquierda (&le;)"';
 		else
-			label += '"Derecha (&gh;)"';
+			label += '"Derecha (>)"';
 	}
-	echo ('rk.header ("' + title + ' Poisson", list ("Media" = "' + getString("lambda") + '"' + label + '))\n');
+	echo ('rk.header ("' + title + ' Poisson P(' + lambda + ')", list ("Media" = "' + lambda + '"' + label + '))\n');
 	echo ('rk.results (list("Valores" = ' + q + ', "' + title + '" = result))\n');
 }
 

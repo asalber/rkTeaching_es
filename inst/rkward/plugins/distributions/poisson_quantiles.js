@@ -1,17 +1,17 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var p;
+var p, fun, lambda, tail;
 
 function calculate () {
-	p = "c (" + getString("p").replace (/[, ]+/g, ", ") + ")";
-
-	echo ('result <- (qpois(p = ' + p + ', lambda = ' + getString("lambda") + ', ' + getString("tail") + '))\n');
+	lambda = getString("lambda");
+	p = 'c(' + getString("p").replace (/[, ]+/g, ", ") + ')';
+	tail = getString("tail");
+	echo ('result <- (qpois(p = ' + p + ', lambda = ' + lambda + ', ' + tail + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Cuantiles Poisson", list ("Media" = "' + getString("lambda") + '", "Cola de acumulaci&oacute;n" = ');
-	if (getString("tail")=="lower.tail=TRUE" )
+	echo ('rk.header ("Cuantiles Poisson P(' + lambda + ')", list ("Media" = "' + lambda + '", "Cola de acumulaci&oacute;n" = ');
+	if (tail=="lower.tail=TRUE" )
 		echo('"Izquierda (&le;)"));\n');
 	else
 		echo('"Derecha (&gt;)"));\n');

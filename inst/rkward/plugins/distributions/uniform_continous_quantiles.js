@@ -1,17 +1,18 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var p;
+var q, min, max;
 
 function calculate () {
-	p = "c (" + getString("p").replace (/[, ]+/g, ", ") + ")";
-
-	echo ('result <- (qunif(p = ' + p + ', min = ' + getString("min") + ', max = ' + getString("max") + ', ' + getString("tail") + '))\n');
+	min = getString("min");
+	max = getString("max");
+	p = 'c(' + getString("p").replace (/[, ]+/g, ", ") + ')';
+	tail = getString("tail");
+	echo ('result <- (qunif(p = ' + p + ', min = ' + min + ', max = ' + max + ', ' + tail + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Cuantiles Uniforme continua", list ("L&iacute;mite inferior" = "' + getString("min") + '", "L&iacute;mite superior" = "' + getString("max") + '", "Cola de acumulaci&oacute;n" = ');
-	if (getString("tail")=="lower.tail=TRUE" )
+	echo ('rk.header ("Cuantiles Uniforme continua U(' + min + ',' + max + ')", list ("L&iacute;mite inferior" = "' + min + '", "L&iacute;mite superior" = "' + max + '", "Cola de acumulaci&oacute;n" = ');
+	if (tail=="lower.tail=TRUE" )
 		echo('"Izquierda (&le;)"));\n');
 	else
 		echo('"Derecha (&gt;)"));\n');

@@ -8,7 +8,7 @@ function getParameters() {
 	size = getString ("size");
 	prob = getString ("prob");
 	setDistParameters()
-		if (density) {
+	if (density) {
 		fun = "dbinom";
 	} else {
 		fun = "pbinom";

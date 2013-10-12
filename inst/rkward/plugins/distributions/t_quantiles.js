@@ -1,17 +1,17 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var p;
+var p, df, tail;
 
 function calculate () {
-	p = "c (" + getString("p").replace (/[, ]+/g, ", ") + ")";
-
-	echo ('result <- (qt(p = ' + p + ', df = ' + getString("df") + ', ' + getString("tail") + '))\n');
+	df = getString("df");
+	p = 'c(' + getString("p").replace (/[, ]+/g, ", ") + ')';
+	tail = getString("tail");
+	echo ('result <- (qt(p = ' + p + ', df = ' + df + ', ' + tail + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Cuantiles T de student", list ("Grados de libertad" = "' + getString("df") + '", "Cola de acumulaci&oacute;n" = ');
-	if (getString("tail")=="lower.tail=TRUE" )
+	echo ('rk.header ("Cuantiles T de student T(' + df + ')", list ("Grados de libertad" = "' + df + '", "Cola de acumulaci&oacute;n" = ');
+	if (tail=="lower.tail=TRUE" )
 		echo('"Izquierda (&le;)"));\n');
 	else
 		echo('"Derecha (&gt;)"));\n');

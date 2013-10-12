@@ -52,7 +52,7 @@
 			</column>
 			<column>
 				<radio id="tail" label="Cola de acumulación" >
-					<option value="lower.tail=TRUE" label="Izquierda (&lt;)" />
+					<option value="lower.tail=TRUE" label="Izquierda (&#8804;)" />
 					<option value="lower.tail=FALSE" label="Derecha (&gt;)" />
 				</radio>
 				<stretch/>

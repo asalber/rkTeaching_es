@@ -1,31 +1,28 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var options;
+var lambda, fun, min, max, n;
 
 include ('plot_dist_common.js');
 
 function getParameters () {
-	options['lambda'] = getString("lambda");
-	options['min'] = 0;
-	options['max'] = 2*options['lambda']+5;
-	options['n'] = options['max'] - options['min'] + 1;
-
-
-	if (options['is_density']) {
-		options['fun'] = "dpois";
-		options['label'] = 'probabilidad';
+	lambda = getString("lambda");
+	setDistParameters()
+	if (density) {
+		fun = "dpois";
 	} else {
-		options['fun'] = "ppois";
-		options['label'] = 'distribuci&oacute;n';
+		fun = "ppois";
 	}
+	min = 0;
+	max = parseInt(lambda) + Math.round(4*Math.sqrt(parseFloat(lambda)));
+	n = max - min + 1;
 }
 
 function doHeader () {
-	echo ('rk.header ("Funci&oacute;n de ' + options['label'] + ' Poisson", list ("Media"= "' + options['lambda'] + '"))\n');
+	echo ('rk.header ("Funci&oacute;n de ' + label + ' Poisson P(' + lambda + ')", list ("Media"= "' + lambda + '"))\n');
 }
 
 function doFunCall () {
-	echo (options['fun'] + '(x, lambda=' + options['lambda'] + ')');
+	echo('ylim <- max(' + fun + '(seq(' + min + ',' + max + '), lambda=' + lambda + '))\n');
+	echo('p <- qplot(c(' + min + ',' + max + '), geom="blank") + stat_function(fun=' + fun + ', colour="#FF5555", n=' + n + ', geom="point", size=I(3), args=list(lambda=' + lambda + ')) + ylim(0,ylim)');
 }
 

@@ -1,17 +1,19 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
-var p;
+var p, fun, size, prob, tail;
 
 function calculate () {
-	p = "c (" + getString("p").replace (/[, ]+/g, ", ") + ")";
-	echo ('result <- (qbinom(p = ' + p + ', size = ' + getString("size") + ', prob = ' + getString("prob") + ', ' + getString("tail") + '))\n');
+	size = getString("size");
+	prob = getString("prob");
+	p = 'c(' + getString("p").replace (/[, ]+/g, ", ") + ')';
+	tail = getString("tail");
+	echo ('result <- (qbinom(p = ' + p + ', size = ' + size + ', prob = ' + prob + ', ' + tail + '))\n');
 }
 
 function printout () {
-	echo ('rk.header ("Cuantiles Binomial", list ("N&ordm; de repeticiones" = "' + getString("size") + '", "Probabilidad de &eacute;xito" = "' + getString("prob") + '", "Cola de acumulaci&oacute;n" = ');
-	if (getString("tail")=="lower.tail=TRUE" )
-		echo('"Izquierda (&lt;=)"));\n');
+	echo ('rk.header ("Cuantiles Binomial B(' + size + ',' + prob + ')", list ("N&ordm; de repeticiones" = "' + size + '", "Probabilidad de &eacute;xito" = "' + prob + '", "Cola de acumulaci&oacute;n" = ');
+	if (tail=="lower.tail=TRUE" )
+		echo('"Izquierda (&le;)"));\n');
 	else
 		echo('"Derecha (&gt;)"));\n');
 	echo ('rk.results (list("Probabilidades acumuladas" = ' + p + ', "Cuantiles" = result))\n');
