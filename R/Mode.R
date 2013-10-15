@@ -1,4 +1,7 @@
-Mode <- function(data, ...) {
-	x <- unique(data)
-	x[which.max(tabulate(match(data,x)))]
+Mode <- function(x, na.rm=TRUE, ...) {
+	if (na.rm){
+		x <- x[!is.na(x)]
+	}
+	xval <- unique(x)
+	xval[which.max(tabulate(match(x,xval)))]
 }

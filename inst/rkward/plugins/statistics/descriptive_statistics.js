@@ -1,6 +1,5 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
 var vars, varnames, data, statistics, groups, groupsnames, filter;
 
 function preprocess(){
@@ -38,13 +37,13 @@ function calculate () {
 		groupsnames = getList("groups.shortname");
 		groups = '",' + groupsnames.map(quote) + ')], groups=c(' + groupsnames.map(quote) + ')';
 	}
-	echo ('result <- descriptiveStats(' + data + '[,c("' + varnames.join('","') + groups + ', statistics=' + statistics + ', quantiles= ' + quantiles + ')\n');
+	echo ('result <- descriptiveStats(' + data + '[c("' + varnames.join('","') + groups + ', statistics=' + statistics + ', quantiles= ' + quantiles + ')\n');
 	
 }
 
 function printout () {
-	echo ('rk.header ("Estad&iacute;stica Descriptiva"');
-	echo (', parameters=list("Variables" = rk.get.description(' + getList("variables") + ', paste.sep=", ")');
+	echo ('rk.header ("Estad&iacute;sticos descriptivos de ' + varnames.join(', ') + '"');
+	echo (', parameters=list("Variables" = rk.get.description(' + vars + ', paste.sep=", ")');
 	if (getBoolean("filter_frame.checked")){
 		echo(", 'Filtro' = '" + getString("filter") + "'");
 	}

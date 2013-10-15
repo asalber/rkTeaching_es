@@ -70,6 +70,7 @@ function calculate () {
 			echo(', groups=' + data + '[["groups"]]');
 		}
 		echo(')\n');
+		echo('df <- df[complete.cases(df),]\n');
 		smooth = '+ scale_linetype("Ajuste de regresi\u00f3n")';
 	}
 	if (getBoolean("linear")){
