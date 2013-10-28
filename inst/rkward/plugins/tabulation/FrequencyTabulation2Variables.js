@@ -1,6 +1,6 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-var data, varrows, varcolumns, varrowsname, varcolumnsname;
+var data, varrows, varcolumns, varrowsname, varcolumnsname, groupsnames;
 
 function preprocess(){
 	// add requirements etc. here
@@ -24,21 +24,21 @@ function calculate(){
 	}
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
-		groupsname = getList("groups.shortname");
+		groupsnames = getList("groups.shortname");
 		if (getBoolean("relative_freq")){
 			if (getBoolean("marginal_freq")){
-				echo('result <- dlply(' + data + ', c(' + groupsname.map(quote) + '), function(x) with(x,round(addmargins(prop.table(table(' + varrowsname + ', ' + varcolumnsname + '))),4)))\n');
+				echo('result <- dlply(' + data + ', c(' + groupsnames.map(quote) + '), function(x) with(x,round(addmargins(prop.table(table(' + varrowsname + ', ' + varcolumnsname + '))),4)))\n');
 			}
 			else{
-				echo('result <- dlply(' + data + ', c(' + groupsname.map(quote) + '), function(x) with(x,round(prop.table(table(' + varrowsname + ', ' + varcolumnsname + ')),4)))\n');
+				echo('result <- dlply(' + data + ', c(' + groupsnames.map(quote) + '), function(x) with(x,round(prop.table(table(' + varrowsname + ', ' + varcolumnsname + ')),4)))\n');
 			}
 		}
 		else{
 			if (getBoolean("marginal_freq")){
-				echo('result <- dlply(' + data + ', c(' + groupsname.map(quote) + '), function(x) with(x,addmargins(table(' + varrowsname + ', ' + varcolumnsname + '))))\n');
+				echo('result <- dlply(' + data + ', c(' + groupsnames.map(quote) + '), function(x) with(x,addmargins(table(' + varrowsname + ', ' + varcolumnsname + '))))\n');
 			}
 			else{
-				echo('result <- dlply(' + data + ', c(' + groupsname.map(quote) + '), function(x) with(x,table(' + varrowsname + ', ' + varcolumnsname + ')))\n');
+				echo('result <- dlply(' + data + ', c(' + groupsnames.map(quote) + '), function(x) with(x,table(' + varrowsname + ', ' + varcolumnsname + ')))\n');
 			}
 		}
 	}
@@ -73,7 +73,7 @@ function printout(){
 	echo('))\n');
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
-		echo('\t rk.header(names(result)[i],level=3)\n');
+		echo('\t rk.header(paste("Grupo ' + groupsnames.join('.') + ' = ", names(result)[i]),level=3)\n');
 		echo('\t\t rk.results(result[[i]])\n');
 		echo('}\n');
 	}

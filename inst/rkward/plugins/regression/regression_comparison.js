@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, y, xname, yname, filter;
+var x, y, xname, yname, filter, groupsname;
 
 function preprocess(){
 	echo('require(rk.Teaching)\n');
@@ -36,7 +36,7 @@ function printout () {
 	// Grouped mode
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
-		echo('\t rk.header(paste("Grupo", names(result)[i]),level=3)\n');
+		echo('\t rk.header(paste("Grupo ' + groupsname.join('.') + ' = ", names(result)[i]),level=3)\n');
 		echo('\t rk.results(result[[i]])\n');
 		echo('}\n');
 	}

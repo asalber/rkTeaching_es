@@ -1,9 +1,9 @@
 NOMBRE	EDAD	SEXO	ESTATURA	PESO	ESTRES	PAD_INI	PAD_FIN	PAS_INI	PAS_FIN	TAB_INI	TAB_FIN	CAR_ISQUE	FARMACO
-SGL	57	Mujer	165	93	42	80	84	180	155	si	si	si	Ca Antagonista + Diurético
-JCZ	40	Mujer	154	80	30	92	89	167	140	no	no	no	Ca Antagonista + Diurético
+SGL	57	Mujer	165	93	42	80	84	180	155	si	si	si	Antagonista Calcio + Diurético
+JCZ	40	Mujer	154	80	30	92	89	167	140	no	no	no	Antagonista Calcio + Diurético
 APZ	30	Hombre	156	74	21	87	83	148	130	no	no	no	Placebo
-NDG	44	Hombre	181	88	33	84	79	167	141	si	no	si	Ca Antagonista + Diurético
-CLO	38	Mujer	184	86	36	88	80	170	142	si	si	no	Ca Antagonista + Diurético
+NDG	44	Hombre	181	88	33	84	79	167	141	si	no	si	Antagonista Calcio + Diurético
+CLO	38	Mujer	184	86	36	88	80	170	142	si	si	no	Antagonista Calcio + Diurético
 LFZ	48	Hombre	179	73	22	70	82	148	128	si	si	no	Placebo
 OAR	41	Mujer	159	70	31	91	80	173	132	no	no	no	IECA
 SGH	31	Hombre	153	57	12	84	73	140	123	no	no	no	Placebo
@@ -11,23 +11,23 @@ ZLZ	39	Mujer	172	55	21	69	67	155	115	no	no	no	IECA
 YSJ	31	Hombre	154	50	24	84	77	153	135	no	no	no	Placebo
 VSH	34	Hombre	170	64	32	88	75	166	128	si	si	si	IECA
 SZS	27	Mujer	154	57	20	85	83	153	133	si	no	no	Placebo
-JSS	32	Mujer	162	54	30	83	80	166	142	si	si	no	Ca Antagonista + Diurético
-BMH	59	Hombre	162	77	26	88	72	158	131	no	no	si	Ca Antagonista + Diurético
-DGM	29	Mujer	173	91	18	75	72	153	125	no	no	no	Ca Antagonista + Diurético
+JSS	32	Mujer	162	54	30	83	80	166	142	si	si	no	Antagonista Calcio + Diurético
+BMH	59	Hombre	162	77	26	88	72	158	131	no	no	si	Antagonista Calcio + Diurético
+DGM	29	Mujer	173	91	18	75	72	153	125	no	no	no	Antagonista Calcio + Diurético
 POJ	35	Mujer	177	58	19	67	81	151	130	no	no	no	Placebo
 EAI	41	Hombre	164	88	27	81	86	163	145	no	no	no	Placebo
 MLS	33	Mujer	175	75	35	83	87	170	155	si	si	si	Placebo
 JVP	47	Hombre	184	122	44	96	85	195	159	no	no	si	IECA
 MNL	37	Mujer	155	34	6	84	63	134	94	si	no	no	IECA
-SHS	37	Mujer	156	91	31	76	83	167	140	si	no	no	Ca Antagonista + Diurético
+SHS	37	Mujer	156	91	31	76	83	167	140	si	no	no	Antagonista Calcio + Diurético
 HSA	47	Hombre	160	91	30	75	87	165	148	si	si	si	Placebo
 NYS	57	Hombre	161	81	33	82	72	169	131	no	no	no	IECA
-ISS	31	Mujer	171	68	8	79	66	133	105	no	no	no	Ca Antagonista + Diurético
-HSL	44	Mujer	159	71	16	69	76	151	124	no	no	no	Ca Antagonista + Diurético
+ISS	31	Mujer	171	68	8	79	66	133	105	no	no	no	Antagonista Calcio + Diurético
+HSL	44	Mujer	159	71	16	69	76	151	124	no	no	no	Antagonista Calcio + Diurético
 NBJ	53	Hombre	188	85	21	82	79	151	111	no	no	no	IECA
 SGM	48	Hombre	185	93	12	85	68	137	116	no	no	no	Placebo
 JSB	30	Hombre	167	52	11	84	62	145	105	no	no	no	IECA
-SST	41	Hombre	167	72	19	74	72	152	125	si	si	no	Ca Antagonista + Diurético
+SST	41	Hombre	167	72	19	74	72	152	125	si	si	no	Antagonista Calcio + Diurético
 HSA	60	Mujer	176	78	39	93	80	180	141	si	si	si	IECA
 GSV	44	Mujer	165	67	22	95	83	155	137	no	no	si	Placebo
 SVJ	35	Hombre	173	62	19	76	74	152	112	no	no	no	IECA
@@ -37,65 +37,65 @@ SSJ	40	Mujer	180	85	29	87	84	164	144	si	si	si	Placebo
 ASS	33	Mujer	170	85	33	84	87	167	149	no	no	no	Placebo
 OMR	60	Hombre	167	59	24	92	79	158	139	no	no	no	Placebo
 CIG	28	Hombre	182	96	16	85	68	144	103	no	no	si	IECA
-GSJ	34	Hombre	187	124	36	85	82	169	143	si	no	no	Ca Antagonista + Diurético
+GSJ	34	Hombre	187	124	36	85	82	169	143	si	no	no	Antagonista Calcio + Diurético
 MHS	43	Hombre	173	77	42	90	86	178	139	no	no	si	IECA
 NLI	55	Hombre	178	84	15	87	73	140	120	no	no	no	Placebo
 JGH	52	Mujer	170	71	65	107	88	191	153	si	si	si	IECA
 FLS	49	Hombre	165	83	21	90	72	155	115	no	no	no	IECA
-SEL	56	Hombre	167	91	8	83	96	195	172	si	no	si	Ca Antagonista + Diurético
+SEL	56	Hombre	167	91	8	83	96	195	172	si	no	si	Antagonista Calcio + Diurético
 BYA	54	Hombre	164	57	7	75	60	137	96	no	no	no	IECA
-HVB	37	Mujer	168	71	20	77	71	156	130	si	si	no	Ca Antagonista + Diurético
-SSM	52	Hombre	152	83	33	92	86	169	144	si	si	si	Ca Antagonista + Diurético
+HVB	37	Mujer	168	71	20	77	71	156	130	si	si	no	Antagonista Calcio + Diurético
+SSM	52	Hombre	152	83	33	92	86	169	144	si	si	si	Antagonista Calcio + Diurético
 SJD	30	Mujer	150	63	19	85	70	149	107	no	no	no	IECA
 AGN	29	Hombre	173	57	12	78	77	150	129	si	si	no	Placebo
 JHC	39	Hombre	169	67	22	81	57	144	104	no	no	no	IECA
 LYH	43	Mujer	158	49	4	73	64	117	96	no	no	no	Placebo
-YJB	29	Hombre	165	81	33	78	77	167	143	si	si	no	Ca Antagonista + Diurético
+YJB	29	Hombre	165	81	33	78	77	167	143	si	si	no	Antagonista Calcio + Diurético
 HJA	54	Hombre	157	50	16	75	74	150	128	no	no	no	Placebo
 SPS	49	Mujer	156	52	6	88	59	136	95	no	no	no	IECA
 ASN	55	Hombre	174	49	28	78	67	154	114	si	no	no	IECA
-SHH	52	Hombre	156	54	20	65	75	160	134	no	no	no	Ca Antagonista + Diurético
+SHH	52	Hombre	156	54	20	65	75	160	134	no	no	no	Antagonista Calcio + Diurético
 PEZ	39	Mujer	177	81	28	90	84	163	145	no	no	no	Placebo
 SCI	38	Hombre	170	67	23	74	85	153	137	si	si	si	Placebo
 ASD	45	Mujer	171	95	33	88	77	163	120	no	no	no	IECA
-BAH	30	Mujer	159	61	29	83	83	171	145	si	si	no	Ca Antagonista + Diurético
+BAH	30	Mujer	159	61	29	83	83	171	145	si	si	no	Antagonista Calcio + Diurético
 ASH	32	Hombre	164	93	32	82	74	172	134	no	no	si	IECA
 ATJ	39	Mujer	156	79	40	85	74	174	133	si	si	si	IECA
 GEO	47	Mujer	169	58	27	100	69	162	123	no	no	no	IECA
 SHG	52	Hombre	171	76	23	93	82	157	139	no	no	no	Placebo
-HIH	37	Hombre	168	64	24	93	77	160	134	si	no	no	Ca Antagonista + Diurético
+HIH	37	Hombre	168	64	24	93	77	160	134	si	no	no	Antagonista Calcio + Diurético
 EYL	57	Hombre	171	62	28	78	86	155	137	si	si	no	Placebo
 IHP	58	Hombre	179	112	25	81	74	160	119	no	no	no	IECA
 ESN	48	Hombre	157	65	13	81	62	142	99	no	no	no	IECA
-ZSF	62	Mujer	158	75	33	87	78	169	144	no	no	no	Ca Antagonista + Diurético
+ZSF	62	Mujer	158	75	33	87	78	169	144	no	no	no	Antagonista Calcio + Diurético
 AVH	55	Hombre	187	130	41	94	85	179	163	si	no	si	Placebo
 PMI	47	Mujer	155	67	28	76	76	163	125	si	si	no	IECA
-SHD	57	Mujer	146	45	7	81	68	136	106	no	no	no	Ca Antagonista + Diurético
-AIS	45	Hombre	177	68	10	81	65	137	109	no	no	no	Ca Antagonista + Diurético
+SHD	57	Mujer	146	45	7	81	68	136	106	no	no	no	Antagonista Calcio + Diurético
+AIS	45	Hombre	177	68	10	81	65	137	109	no	no	no	Antagonista Calcio + Diurético
 IMS	38	Hombre	164	54	42	86	71	177	138	si	no	no	IECA
-GGS	47	Hombre	179	86	32	94	83	167	141	si	si	si	Ca Antagonista + Diurético
-OMS	38	Mujer	175	81	27	89	85	162	133	no	no	no	Ca Antagonista + Diurético
-GMM	51	Mujer	166	74	11	73	70	142	114	no	no	no	Ca Antagonista + Diurético
-SSD	45	Hombre	162	99	25	72	83	162	137	no	no	no	Ca Antagonista + Diurético
+GGS	47	Hombre	179	86	32	94	83	167	141	si	si	si	Antagonista Calcio + Diurético
+OMS	38	Mujer	175	81	27	89	85	162	133	no	no	no	Antagonista Calcio + Diurético
+GMM	51	Mujer	166	74	11	73	70	142	114	no	no	no	Antagonista Calcio + Diurético
+SSD	45	Hombre	162	99	25	72	83	162	137	no	no	no	Antagonista Calcio + Diurético
 BHL	42	Mujer	150	79	32	98	82	176	136	si	no	si	IECA
 YST	51	Mujer	167	61	25	84	79	157	137	si	si	no	Placebo
 GST	54	Hombre	174	52	18	86	69	151	110	no	no	no	IECA
-HSH	39	Mujer	156	58	17	80	76	150	122	si	no	no	Ca Antagonista + Diurético
+HSH	39	Mujer	156	58	17	80	76	150	122	si	no	no	Antagonista Calcio + Diurético
 HGK	44	Hombre	183	93	21	75	68	153	114	no	no	no	IECA
-STL	52	Hombre	172	94	29	90	79	163	135	si	si	no	Ca Antagonista + Diurético
-CBM	52	Hombre	163	46	14	95	76	150	123	si	si	si	Ca Antagonista + Diurético
-EMA	38	Hombre	158	64	30	86	80	165	138	si	si	no	Ca Antagonista + Diurético
+STL	52	Hombre	172	94	29	90	79	163	135	si	si	no	Antagonista Calcio + Diurético
+CBM	52	Hombre	163	46	14	95	76	150	123	si	si	si	Antagonista Calcio + Diurético
+EMA	38	Hombre	158	64	30	86	80	165	138	si	si	no	Antagonista Calcio + Diurético
 BCC	43	Mujer	169	87	17	83	75	152	134	no	no	no	Placebo
 YGL	52	Hombre	164	82	43	95	98	189	173	si	no	si	Placebo
 SLH	39	Hombre	167	87	24	91	82	159	138	si	no	no	Placebo
-AFJ	57	Mujer	163	50	12	84	70	142	116	no	no	no	Ca Antagonista + Diurético
+AFJ	57	Mujer	163	50	12	84	70	142	116	no	no	no	Antagonista Calcio + Diurético
 JSS	47	Hombre	175	94	34	81	86	166	147	si	si	si	Placebo
 PDL	55	Mujer	186	81	15	73	69	148	106	no	no	no	IECA
 HTH	56	Mujer	185	81	30	89	72	168	131	si	no	no	IECA
 MLN	53	Mujer	156	53	16	81	77	141	122	si	si	si	Placebo
 SHI	51	Mujer	163	55	31	76	83	170	152	si	si	no	Placebo
-HJN	31	Hombre	185	67	12	84	71	150	122	no	no	no	Ca Antagonista + Diurético
+HJN	31	Hombre	185	67	12	84	71	150	122	no	no	no	Antagonista Calcio + Diurético
 LSA	32	Mujer	171	65	24	99	82	158	142	no	no	no	Placebo
-MTG	57	Mujer	167	73	9	66	69	138	110	no	no	no	Ca Antagonista + Diurético
+MTG	57	Mujer	167	73	9	66	69	138	110	no	no	no	Antagonista Calcio + Diurético
 IEY	37	Hombre	178	89	17	73	71	151	130	no	no	no	Placebo
 OHA	35	Hombre	150	65	27	77	72	160	121	si	si	no	IECA

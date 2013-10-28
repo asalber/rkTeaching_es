@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var variable;
+var variable, groupsnames;
 
 function preprocess(){
 	// add requirements etc. here
@@ -26,8 +26,8 @@ function calculate(){
 	// Grouped mode
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
-		groupsname = getList("groups.shortname");
-		echo(', groups=c(' + groupsname.map(quote) + ')');
+		groupsnames = getList("groups.shortname");
+		echo(', groups=c(' + groupsnames.map(quote) + ')');
 	}
 	echo(')\n');
 }
@@ -45,7 +45,7 @@ function printout(){
 	echo ('))\n');
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
-		echo('\t rk.header(names(result)[i],level=3)\n');
+		echo('\t rk.header(paste("Grupo ' + groupsnames.join('.') + ' = ", names(result)[i]),level=3)\n');
 		echo('\t\t rk.results(result[[i]])\n');
 		echo('}\n');
 	}

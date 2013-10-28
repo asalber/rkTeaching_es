@@ -84,7 +84,7 @@ function printout () {
 	// Grouped mode
 	if (getBoolean("grouped")){
 		echo('for (i in 1:length(result)){\n');
-		echo('\t rk.header(paste("Grupo", names(result)[i]),level=3)\n');
+		echo('\t rk.header(paste("Grupo ' + groupsname.join('.') + ' = ", names(result)[i]),level=3)\n');
 		// Ecuación del modelo
 		echo('\t rk.header ("Ecuaci&oacute;n del modelo",level=4)\n'); 
 		if (model == "linear"){
