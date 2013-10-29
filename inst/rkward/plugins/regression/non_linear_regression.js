@@ -3,6 +3,10 @@
 // globals
 var x, y, xname, yname, data, groups, groupsname, equation, modelname, model, typemodel, filter;
 
+function preprocess(){
+	echo('require(plyr)\n');
+}
+
 function calculate () {
     // Filter
 	echo(getString("filter_embed.code.calculate"));
