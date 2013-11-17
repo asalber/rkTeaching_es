@@ -1,11 +1,9 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-// globals
 var nsamples, size, dataframe;
 
 function preprocess(){
-	// add requirements etc. here
-	echo('require(TeachingExtras)\n');
+	echo('require(rk.Teaching)\n');
 }
 
 
