@@ -13,7 +13,7 @@ function calculate () {
 	newvar = getString("save")
 	rules = getString("rules");
 	rules = rules.replace(/\n/gi,'; ');
-	echo ('.GlobalEnv$' + newvar + ' <- recode(' + variable + ", '" + rules + "'");
+	echo ('.GlobalEnv$' + newvar + ' <- car::recode(' + variable + ", '" + rules + "'");
 	if (getBoolean("asfactor")) echo (', as.factor.result=TRUE');
 	else echo (', as.factor.result=FALSE');
 	echo (')\n');	
