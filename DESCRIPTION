@@ -6,62 +6,78 @@ Version: 1.0
 Date: 2013-10-01
 Author: Alfredo Sánchez Alberca <asalber@ceu.es>
 Maintainer: Alfredo Sánchez Alberca <asalber@ceu.es>
-Depends: stats, utils, graphics, grDevices, rkward (>= 0.6.1), ggplot2, plyr, R2HTML, car, e1071, Hmisc, ez, R (>= 3.0.1)
+Depends:
+    stats,
+    utils,
+    graphics,
+    grDevices,
+    rkward (>= 0.6.1),
+    ggplot2,
+    plyr,
+    R2HTML,
+    car,
+    e1071,
+    Hmisc,
+    ez,
+    R (>= 3.0.0)
 Enhances: rkward
-Description: Basic utilities for teaching statistics. 
-	It contains procedures for:
-	- Data manipulation:
-		- Fiter data
-		- Calculate variable
-		- Recoding variable
-		- Weight data
-	- Frequency tabulation:
-		- Frequency tabulation (non grouped data)
-		- Frequency tabulation (grouped data)
-	- Plots:
-  		- Bar graph
-  		- Histogram
-  		- Pie graph
-  		- Box graph
-  		- Scatterplot
-	- Descriptive statistics
-		- Statistics
-		- Detailed calculation
-	- Regression:
-  		- Linear Regression
-  		- Non linear regression
-  		- Regression model comparison
-  		- Regression prediction
-	- Parametric tests:
-		- Means:
-			- T test for one sample
-			- T test for two independent samples
-			- T test for two paired samples
-			- ANOVA
-			- Sample size calculation for mean estimation
-  		- Variances:
-			- Fisher test for two samples
-			- Levene test for multiple samples
-		- Proportions:
-			- Test for one proportion
-			- Test for two proportions
-			- Sample size calculation for proportion estimation
-	- Non parametric tests:
-  		- Normality tests: Shapiro-Wilk, Kolmogorov
-  		- U Mann-Whitney test
-  		- Wilcoxon test
-  		- Friedman test
-  		- Kruskal-Wallis test
-  		- Chi-square test
-	- Concordance
-  		- Intraclass correlation coefficient
-  		- Cohen's kappa
-	- Simulations:
-  		- Coins tosses
-  		- Dice roll
-  		- Sample generation
-  		- Small numbers law
-  		- Central limit theorem
+Description: Basic utilities for teaching statistics.
+    It contains procedures for:
+    - Data manipulation:
+    - Fiter data
+    - Calculate variable
+    - Recoding variable
+    - Weight data
+    - Frequency distributions:
+    - Frequency tabulation
+    - Bidimensional frequency tabulation
+    - Plots:
+    - Bar graph
+    - Histogram
+    - Pie graph
+    - Box graph
+    - Means graph
+    - Interaction graph
+    - Scatterplot
+    - Descriptive statistics
+    - Statistics
+    - Detailed calculation
+    - Regression:
+    - Linear Regression
+    - Non linear regression
+    - Regression model comparison
+    - Regression prediction
+    - Parametric tests:
+    - Means:
+    - T test for one sample
+    - T test for two independent samples
+    - T test for two paired samples
+    - ANOVA
+    - Sample size calculation for mean estimation
+    - Variances:
+    - Fisher test for two samples
+    - Levene test for multiple samples
+    - Proportions:
+    - Test for one proportion
+    - Test for two proportions
+    - Sample size calculation for proportion estimation
+    - Non parametric tests:
+    - Normality tests: Shapiro-Wilk, Kolmogorov
+    - U Mann-Whitney test
+    - Wilcoxon test
+    - Friedman test
+    - Kruskal-Wallis test
+    - Chi-square test
+    - Concordance
+    - Intraclass correlation coefficient
+    - Cohen's kappa
+    - Simulations:
+    - Coins tosses
+    - Dice roll
+    - Small numbers law
+    - Central limit theorem
 License: GPL (>= 3)
 LazyLoad: yes
 LazyData: yes
+Suggests:
+    testthat

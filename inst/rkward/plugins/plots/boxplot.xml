@@ -29,6 +29,7 @@
 					<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
 					<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 					<stretch/>
+					<preview id="preview"/>
 				</column>
 			</row>
 		</tab>
