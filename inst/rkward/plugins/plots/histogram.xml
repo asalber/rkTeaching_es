@@ -28,9 +28,9 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variable"/>
 					<column>
-						<varslot id="variable" label="Variable" type="numeric" source="selector" required="true" />
+						<varslot id="variable" label="Variable" types="number" source="selector" required="true" />
 						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
+						<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" multi="true" required="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<stretch/>
 						<preview id="preview"/>
@@ -39,7 +39,7 @@
 			</tab>
 			<tab id="tab_hist_options" label="Opciones del histograma">
 				<row>
-					<column>
+					<column id="col_freq_options">
 						<frame id="frame_freq" label="Frecuencias">
 							<checkbox id="relative" label="Frecuencia relativa" checked="false" value="1" />
 							<checkbox id="cumulative" label="Frecuencia acumulada" checked="false" value="1" />
@@ -54,7 +54,7 @@
 						</radio>
 						<stretch/>
 					</column>
-					<column>
+					<column id="col_color_options">
 						<frame id="frame_barfillcolor" label="Color de relleno">
 							<embed id="barfillcolor" component="rkTeaching::color_chooser" label="Color de relleno"/>
 						</frame>
@@ -73,19 +73,40 @@
 	</dialog>
 	
 	<wizard label="Histogram">
-		<page id="pag_vars">
+		<page id="page_variables">
 			<text id="txt_var">
-				Seleccionar la variable numérica para la que desea dibujar el histograma.
+				Seleccionar la variable numérica para la que desea dibujar el histograma.<br/>
+				Si se desean varios histogramas para las categorías de una variable, marcar la casilla "Dibujar por grupos" y seleccionar la variable categórica.  
 			</text>
 			<copy id="row_vars" />
 		</page>
-		<embed id="histogram_opt" component="rkTeaching::histogram_options"/>
-		<embed id="cells" component="rkTeaching::cells"/>
-		<page id="pag_graphics_options">
-			<text>
-				Seleccionar, si se desea, el color de relleno y de los bordes de las barras.
+		<page id="page_hist_options">
+			<text> 
+				Seleccionar el tipo de frecuencias a representar<br/>
 			</text>
-			<copy id="graphics_options_row" />
-		</page>	
+			<copy id="frame_freq" />
+			<text> 
+				Marcar la casilla si se desea dibujar un polígono sobre el histograma.<br/>
+			</text>
+			<copy id="polygon" />
+			<text> 
+				En el caso de dibujar varios histogramas para las categorías de una variable, indicar la forma en que se se presentarán las barras (sobrepuestas unas sobre otras, yuxtapuestas unas al lado de otras, apiladas unas encima de otras o separadas en histogramas separados). 
+			</text>
+			<copy id="position" />
+			<stretch/>
+		</page>
+		<embed id="cells" component="rkTeaching::cells"/>
+		<page id="page_color_border">
+			<text> 
+				Seleccionar el color del borde de las barras. 
+			</text>
+			<embed id="barfillcolor" component="rkTeaching::color_chooser" label="Color de relleno"/>
+			<text> 
+				Seleccionar el color de relleno de las barras. 
+			</text>
+			<embed id="barbordercolor" component="rkTeaching::color_chooser" label="Color de borde"/>
+			<stretch/>
+		</page>
+		<embed id="plot_options" component="rkTeaching::plot_options"/>
 	</wizard>
 </document>
