@@ -59,7 +59,7 @@
 			<option value="red2" label="Rojo2" />
 			<option value="red3" label="Rojo3" />
 			<option value="red4" label="Rojo4" />
-			<option value="tomato" label="Rojo tomate" />
+			<option value="tomato" label="Rojo tomate" /><copy id="row_vars" />
 			<option value="pink" label="Rosa" />
 			<option value="mistyrose" label="Rosa pálido" />
 			<option value="salmon" label="Salmón" />
@@ -84,4 +84,8 @@
 			<option value="darkviolet" label="Violeta oscuro" />
 		</dropdown>
 	</dialog>
+	
+	<wizard label="Histogram">
+		<copy id="color" />
+	</wizard>
 </document>
