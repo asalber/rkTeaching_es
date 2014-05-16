@@ -5,11 +5,11 @@
 	<code file="zscore.js"/>
 	<help file="zscore.rkh"/>
 		
-	<dialog label="Cálculo de variable" >
+	<dialog label="Tipificación de variables" >
 		<row id="row_vars">
 			<varselector id="selector" label="Espacio de trabajo"/>
 			<column>
-				<varslot id="variables" label="Variables a tipificar" source="selector" required="true" multi="true" classes="numeric integer"/>
+				<varslot id="variables" label="Variables a tipificar" source="selector" required="true" multi="true" types="number"/>
 			</column>
 		</row>
 	</dialog>

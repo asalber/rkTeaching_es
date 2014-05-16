@@ -14,6 +14,7 @@ function calculate () {
 	variablesnames = getList ("variables.shortname");
 	for (var i=0; i<variables.length; i++){
 		echo(data + '<- transform(' + data + ',' + variablesnames[i] + '.tipificada=(' + variablesnames[i] + '-mean(' + variablesnames[i] + ',na.rm=TRUE))/stdev(' + variablesnames[i] + ',na.rm=TRUE))\n');
+	    echo('\t attr(' + data + '[["' + variablesnames[i] + '.tipificada"]],".rk.meta") = NULL\n');
 	}
 	echo ('.GlobalEnv$' + data + ' <- ' + data + '\n');
 }
