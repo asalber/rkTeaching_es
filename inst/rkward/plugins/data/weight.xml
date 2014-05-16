@@ -15,7 +15,7 @@
 			<varselector id="selector" label="Seleccionar conjunto de datos"/>
 			<column>
 				<varslot id="dataframe" label="Conjunto de datos a ponderar" source="selector" classes="data.frame" required="true" />
-				<varslot id="freq" label="Frecuencias de ponderación" source="selector" classes="numeric" required="true" />
+				<varslot id="freq" label="Frecuencias de ponderación" source="selector" types="number" required="true" />
 				<saveobject id="save" label="Guardar conjunto de datos" initial="datos.nuevo" />
 			</column>
 		</row>
