@@ -57,17 +57,18 @@
 	<dialog label="Opciones gráficas" >
 		<tabbook>
 			<tab id="tab_title" label="Título">
-				<column>
-					<input id="main" label="Título" size="large" />
-					<checkbox id="main_expression" label="Expresión de R" checked="false"/>
-				</column>
-				<stretch/>
+				<row id="row_title">
+					<column>
+						<input id="main" label="Título" size="large" />
+						<checkbox id="main_expression" label="Expresión de R" checked="false"/>
+					</column>
+					<stretch/>
+				</row>
 			</tab>
 			<tab id="tab_axes" label="Ejes" >
 				<row>
-					<column>
+					<column id="col_x_axe">
 						<frame id="x_axe" label="Eje X">
-							<checkbox id="xlog" label="Escala logarítmica" checked="false"/>
 							<frame label="Etiqueta">
 								<input id="xlab" label="Título" />
 								<checkbox id="xlab_expression" label="Expresión de R" checked="false" />
@@ -83,12 +84,12 @@
 								<option value="0" label="Horizontal" />
 								<option value="90" label="Vertical" />
 							</dropdown>
+							<checkbox id="xlog" label="Escala logarítmica" checked="false"/>
 						</frame>
 						<stretch/>
 					</column>
-					<column>
+					<column id="col_y_axe">
 						<frame id="y_axe" label="Eje Y">
-							<checkbox id="ylog" label="Escala logarítmica" checked="false"/>
 							<frame label="Etiqueta">
 								<input id="ylab" label="Título" />
 								<checkbox id="ylab_expression" label="Expresión de R" checked="false" />
@@ -104,6 +105,7 @@
 								<option value="0" label="Horizontal" />
 								<option value="90" label="Vertical" />
 							</dropdown>
+							<checkbox id="ylog" label="Escala logarítmica" checked="false"/>
 						</frame>
 						<stretch/>
 					</column>
@@ -111,22 +113,22 @@
 				<checkbox id="flip_axis" label="Intercambiar ejes" checked="false"/>
 			</tab>
 			<tab id="tab_grid" label="Cuadrícula" >
-				<row>
-					<frame id="grid_major" label="Cuadrícula mayor">
-						<checkbox id="grid_horizontal_major" label="Horizontales" checked="true"/>
-						<checkbox id="grid_vertical_major" label="Verticales" checked="true"/>
-						<embed id="grid_major_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula mayor"/>
-					</frame>
-					<frame id="grid_minor" label="Cuadrícula menor">
-						<checkbox id="grid_horizontal_minor" label="Horizontales" checked="true"/>
-						<checkbox id="grid_vertical_minor" label="Verticales" checked="true"/>
-						<embed id="grid_minor_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula menor"/>
-					</frame>
-				</row>
-				<frame id="frame_grid_background_color" label="Color de fondo">
-					<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
-				</frame>			
-				<stretch/>
+					<row id="row_grid">
+						<frame id="grid_major" label="Cuadrícula mayor">
+							<checkbox id="grid_horizontal_major" label="Horizontales" checked="true"/>
+							<checkbox id="grid_vertical_major" label="Verticales" checked="true"/>
+							<embed id="grid_major_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula mayor"/>
+						</frame>
+						<frame id="grid_minor" label="Cuadrícula menor">
+							<checkbox id="grid_horizontal_minor" label="Horizontales" checked="true"/>
+							<checkbox id="grid_vertical_minor" label="Verticales" checked="true"/>
+							<embed id="grid_minor_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula menor"/>
+						</frame>
+					</row>
+					<frame id="frame_grid_background_color" label="Color de fondo">
+						<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
+					</frame>			
+					<stretch/>
 			</tab>
 			<tab id="tab_legend" label="Leyenda" >
 				<dropdown id="legend" label="Posición de la leyenda" >
@@ -141,4 +143,58 @@
 			</tab>
 		</tabbook>
 	</dialog>
+	
+	<wizard label="Opciones gráficas" >
+		<page id="page_title">
+			<text>
+				Introduce el título del gráfico.
+			</text>
+			<copy id="row_title"/>
+		</page>
+		<page id="page_x_axe">
+			<text>
+				Introduce el título del eje X, el rango de valores a representar y la orientación de las etiquetas del eje.<br/>
+				Si se desea una escala logarítmica marcar la casilla corespondiente. 
+			</text>
+			<copy id="col_x_axe"/>
+			<stretch/>
+		</page>
+		<page id="page_y_axe">
+			<text>
+				Introduce el título del eje Y, el rango de valores a representar y la orientación de las etiquetas del eje.<br/>
+				Si se desea una escala logarítmica marcar la casilla corespondiente. 
+			</text>
+			<copy id="col_y_axe"/>
+			<stretch/>
+		</page>
+		<page id="page_flip_axis">
+			<text>
+				Si se desea intercambiar los ejes, marcar la casilla.
+			</text>
+			<copy id="flip_axis" />
+			<stretch/>
+		</page>
+		<page id="page_grid">
+			<text>
+				Si se desea dibujar una cuadrícula horizontal o vertical, marcar las casillas correspondientes y elegir el color de las líneas de la cuadrícula.
+			</text>
+			<copy id="row_grid" />
+			<stretch/>
+		</page>
+		<page id="page_grid">
+			<text>
+				Seleccionar el color de fondo de la cuadrícula.
+			</text>
+			<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
+			<stretch/>
+		</page>
+		<page id="page_leyend">
+			<text>
+				Si se desea dibujar una leyenda, indicar la posición.
+			</text>
+			<copy id="legend"/>
+			<stretch/>
+		</page>
+	</wizard>
+	
 </document>
