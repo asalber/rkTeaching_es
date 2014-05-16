@@ -11,7 +11,10 @@ function calculate () {
 	variable = getString("save");
 	data = getString("dataframe");
 	expresion = getString("expression");
+	// Create a new variable from a formula
 	echo ('.GlobalEnv$' + variable + ' <- with(' + data + ', ' + expresion + ')\n');	
+	// Clean the label of the new variable
+    echo('\t attr(.GlobalEnv$' + variable + ',".rk.meta") = NULL\n');
 }
 
 function printout () {
