@@ -17,9 +17,9 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables"/>
 					<column>
-						<varslot id="variables" label="Variable(s)" source="selector" multi="true" classes="numeric integer" required="true" />
+						<varslot id="variables" label="Variable(s)" source="selector" types="number" required="true" multi="true" />
 						<checkbox id="grouped" label="Estadísticas por grupos" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" multi="true" types="factor" source="selector" required="true"/>
+						<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" required="true" multi="true"/>
 						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
 							<input id="filter" label="Condición de selección" />
 						</frame>

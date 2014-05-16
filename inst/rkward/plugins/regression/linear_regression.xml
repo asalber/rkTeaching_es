@@ -14,10 +14,10 @@
 		<row id="row_vars">
 			<varselector id="selector" label="Seleccionar variables"/>
 			<column>
-				<varslot id="y" label="Variable dependiente" source="selector" type="numeric" required="true" />
-				<varslot id="x" label="Variable(s) independiente(s)" type="numeric" source="selector" required="true" multi="true" />
+				<varslot id="y" label="Variable dependiente" source="selector" types="number" required="true" />
+				<varslot id="x" label="Variable(s) independiente(s)" types="number" source="selector" required="true" multi="true" />
 				<checkbox id="grouped" label="Ajuste por grupos" checked="false" />
-				<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
+				<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" multi="true" required="true"/>
 				<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 				<checkbox id="intercept" label="Incluir término constante" checked="true"/>
 				<saveobject id="save" label="Guardar modelo" initial="regression.model" checkable="true"/>
