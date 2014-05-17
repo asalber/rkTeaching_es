@@ -4,36 +4,36 @@
 <document>
 	<code file="barplot.js" />
 	<help file="barplot.rkh" />
-	
+
 	<logic>
-		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
-		<connect client="groups.visible" governor="grouped_mode"/>
-		<connect client="polygon.enabled" governor="grouped_mode.not"/>
-		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not"/>
-		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not"/>
-		<convert id="cumulative_mode" mode="equals" sources="cumulative.state" standard="1"/>
-		<convert id="grouped_noncumulative_mode" mode="and" sources="grouped_mode;cumulative_mode.not"/>
-		<connect client="position.enabled" governor="grouped_noncumulative_mode"/>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1" />
+		<connect client="groups.visible" governor="grouped_mode" />
+		<connect client="polygon.enabled" governor="grouped_mode.not" />
+		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not" />
+		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not" />
+		<convert id="cumulative_mode" mode="equals" sources="cumulative.state" standard="1" />
+		<convert id="grouped_noncumulative_mode" mode="and" sources="grouped_mode;cumulative_mode.not" />
+		<connect client="position.enabled" governor="grouped_noncumulative_mode" />
 		<connect client="plotoptions.allow_legend" governor="grouped_mode" />
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
-	
+
 	<dialog label="Diagrama de barras">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variable(s)">
-				<row>
-					<varselector id="selector" label="Seleccionar variable"/>
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variable" />
 					<column>
-						<varslot id="variable" label="Variable" source="selector" required="true"/>
+						<varslot id="variable" label="Variable" source="selector" required="true" />
 						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-						<stretch/>
-						<preview id="preview"/>
+						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true" />
+						<embed id="filter_embed" component="rkTeaching::filter_embed" />
+						<stretch />
+						<preview id="preview" />
 					</column>
 				</row>
 			</tab>
-			<tab id="tab_bars_options" label="Opciones de las barras" >
+			<tab id="tab_bars_options" label="Opciones de las barras">
 				<row>
 					<column>
 						<frame id="frame_freq" label="Frecuencias">
@@ -41,25 +41,68 @@
 							<checkbox id="cumulative" label="Frecuencia acumulada" checked="false" value="1" />
 						</frame>
 						<checkbox id="polygon" label="Polígono" checked="false" />
-						<radio id="position" label="Agrupamiento" >
-							<option value="dodge" label="Yuxtapuestas" checked="true"/>
-							<option value="stack" label="Apiladas"/>
-							<option value="faceted" label="Separadas"/>
+						<radio id="position" label="Agrupamiento">
+							<option value="dodge" label="Yuxtapuestas" checked="true" />
+							<option value="stack" label="Apiladas" />
+							<option value="faceted" label="Separadas" />
 						</radio>
-						<stretch/>
+						<stretch />
 					</column>
 					<column>
 						<frame id="frame_barfillcolor" label="Color de relleno">
-							<embed id="barfillcolor" component="rkTeaching::color_chooser" label="Color de relleno"/>
+							<embed id="barfillcolor" component="rkTeaching::color_chooser" label="Color de relleno" />
 						</frame>
 						<frame id="frame_barbordercolor" label="Color de borde">
-							<embed id="barbordercolor" component="rkTeaching::color_chooser" label="Color de borde"/>
+							<embed id="barbordercolor" component="rkTeaching::color_chooser" label="Color de borde" />
 						</frame>
-						<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
-						<stretch/>
+						<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos" />
+						<stretch />
 					</column>
 				</row>
 			</tab>
 		</tabbook>
 	</dialog>
+
+	<wizard label="Asistente para diagrama de barras">
+		<page id="page_variables">
+			<text>
+				Seleccionar la variable para la que desea dibujar el histograma.
+				<br />
+				Si se desean varios diagramas de barras para las categorías de una variable, marcar la casilla "Dibujar por grupos" y
+				seleccionar la variable categórica que define los grupos.
+			</text>
+			<copy id="row_vars" />
+		</page>
+		<page id="page_bar_options">
+			<text>
+				Seleccionar el tipo de frecuencias a representar
+				<br />
+			</text>
+			<copy id="frame_freq" />
+			<text>
+				Marcar la casilla si se desea dibujar un polígono sobre el histograma.
+				<br />
+			</text>
+			<copy id="polygon" />
+			<text>
+				En el caso de dibujar varios diagramas de barras para las categorías de una variable, indicar la forma en que se se
+				presentarán las barras (yuxtapuestas unas al lado de otras, apiladas unas encima de otras o separadas en diagramas
+				separados).
+			</text>
+			<copy id="position" />
+			<stretch />
+		</page>
+		<page id="page_color_border">
+			<text>
+				Seleccionar el color de relleno de las barras.
+			</text>
+			<embed id="barfillcolor" component="rkTeaching::color_chooser" label="Color de relleno" />
+			<text>
+				Seleccionar el color del borde de las barras.
+			</text>
+			<embed id="barbordercolor" component="rkTeaching::color_chooser" label="Color de borde" />
+			<stretch />
+		</page>
+		<embed id="plotoptions" component="rkTeaching::plot_options" />
+	</wizard>
 </document>
