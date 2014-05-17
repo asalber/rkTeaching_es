@@ -144,7 +144,7 @@
 		</tabbook>
 	</dialog>
 	
-	<wizard label="Opciones gráficas" >
+	<wizard label="Asistente para opciones gráficas" >
 		<page id="page_title">
 			<text>
 				Introduce el título del gráfico.
@@ -196,5 +196,4 @@
 			<stretch/>
 		</page>
 	</wizard>
-	
 </document>

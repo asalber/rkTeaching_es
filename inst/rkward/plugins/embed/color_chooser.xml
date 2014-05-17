@@ -85,7 +85,7 @@
 		</dropdown>
 	</dialog>
 	
-	<wizard label="Histogram">
+	<wizard label="Asistente para selector de color">
 		<copy id="color" />
 	</wizard>
 </document>
