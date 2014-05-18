@@ -1,7 +1,7 @@
 //author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var data, x, variable, variablename, groups, groupsname, xlab, ylab, points, confintervals, meancolor, intervalcolor; 
+var data, variable, variablename, groups, groupsname, xlab, ylab, points, confintervals, meancolor, intervalcolor; 
 
 function preprocess() {
 	echo('require(ggplot2)\n');

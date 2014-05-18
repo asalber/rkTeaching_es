@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var variable, groupsnames;
+var data, variable, variablename, groups, groupsnames;
 
 function preprocess(){
 	// add requirements etc. here
