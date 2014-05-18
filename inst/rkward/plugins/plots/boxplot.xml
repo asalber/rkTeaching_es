@@ -69,7 +69,7 @@
 		</page>
 		<page id="page_box_options">
 			<text>
-				Si se desea dibujar muescas (), la media o los valores de la variable sobre el diagrama, marcar las casillas correspondientes.
+				Si se desea dibujar muescas (intervalo de confianza para la mediana), la media o los valores de la variable sobre el diagrama, marcar las casillas correspondientes.
 			</text>
 			<copy id="col_box_options" />
 			<stretch />

@@ -20,7 +20,7 @@ function calculate() {
 	freq = "Frecuencia absoluta";
 	// Set relative frequencies
 	relative = '';
-	if (getBoolean("relative")) {
+	if (getBoolean("rel_freq")) {
 		relative = ', position="fill"';
 		freq = "Frecuencia relativa";
 	}
