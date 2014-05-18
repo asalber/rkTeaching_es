@@ -47,7 +47,7 @@
 		</page>
 		<page id="page_interaction_options">
 			<text>
-				Si se deseas que se dibujen líneas uniendo las medias de la misma categoría marca la casilla.
+				Si se desea dibujar líneas uniendo las medias de la misma categoría marcar la casilla.
 			</text>
 			<copy id="lines" />
 			<stretch />
