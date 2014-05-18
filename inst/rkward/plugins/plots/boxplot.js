@@ -28,14 +28,14 @@ function calculate() {
 	fill = '';
 	// Set box color
 	boxcolor = getString("boxfillcolor.code.printout");
-	if (boxcolor!='') {
+	if (boxcolor != '') {
 		boxcolor = ', fill=I(' + boxcolor + ')';
 	}
 	else {
 		boxcolor = ', fill=I("#FF9999")'; // Default box color
 	}
     // Set border color
-	bordercolor = getString("barbordercolor.code.printout");
+	bordercolor = getString("boxbordercolor.code.printout");
 	if (bordercolor != '') {
 		bordercolor = ', colour=I(' + bordercolor + ')';
 	}
@@ -75,7 +75,7 @@ function preview() {
 function doPrintout(full) {
 	// Print header
 	if (full) {
-		echo ('rk.header ("Diagrama de cajas de ' + getList("variable.shortname").join(', ') + '", list ("Variable(s)" = rk.get.description(' + variable + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
+		echo ('rk.header ("Diagrama de caja de ' + getList("variable.shortname").join(', ') + '", list ("Variable(s)" = rk.get.description(' + variable + ', paste.sep=", ")' + getString("filter_embed.code.printout"));
 		if (getBoolean("grouped")) {
 			echo(', "Variable(s) de agrupaci&oacute;n" = rk.get.description(' + groups + ', paste.sep=", ")');
 		}

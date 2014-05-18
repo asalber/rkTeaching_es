@@ -4,55 +4,87 @@
 <document>
 	<code file="boxplot.js" />
 	<help file="boxplot.rkh" />
-	
+
 	<logic>
-		<set id="plotoptions.allow_type" to="true"/>
-		<set id="plotoptions.allow_ylim" to="true"/>
-		<set id="plotoptions.allow_xlim" to="false"/>
-		<set id="plotoptions.allow_log" to="false"/>
-		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
-		<connect client="groups.visible" governor="grouped_mode"/>
-		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not"/>
-		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not"/>
+		<set id="plotoptions.allow_type" to="true" />
+		<set id="plotoptions.allow_ylim" to="true" />
+		<set id="plotoptions.allow_xlim" to="false" />
+		<set id="plotoptions.allow_log" to="false" />
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1" />
+		<connect client="groups.visible" governor="grouped_mode" />
+		<connect client="frame_barfillcolor.enabled" governor="grouped_mode.not" />
+		<connect client="frame_barbordercolor.enabled" governor="grouped_mode.not" />
 		<connect client="plotoptions.allow_legend" governor="grouped_mode" />
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
-	
-	<dialog label="Diagrama de caja" >
-	<tabbook>
-		<tab label="Seleccionar variables" id="tab_variables">
-			<row>
-				<varselector id="selector" label="Seleccionar variables" />
-				<column>
-					<varslot id="variable" label="Variable(s)" multi="true" type="numeric" source="selector" required="true"/>
-					<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-					<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
-					<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-					<stretch/>
-					<preview id="preview"/>
-				</column>
-			</row>
-		</tab>
-		<tab id="tab_box_options" label="Opciones de las cajas" >
-			<row>
-				<column>
-					<checkbox id="notch" label="Dibujar muescas" checked="false" />
-					<checkbox id="means" label="Dibujar medias" checked="false" />
-					<checkbox id="points" label="Dibujar puntos" checked="false" />
-					<stretch/>
-				</column>
-				<column>
-					<frame id="frame_boxfillcolor" label="Color de relleno">
-						<embed id="boxfillcolor" component="rkTeaching::color_chooser" label="Color de relleno"/>
-					</frame>
-					<frame id="frame_boxbordercolor" label="Color de borde">
-						<embed id="boxbordercolor" component="rkTeaching::color_chooser" label="Color de borde"/>
-					</frame>
-					<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
-					<stretch/>
-				</column>
-			</row>
-		</tab>
-	</tabbook>
-</dialog>
+
+	<dialog label="Diagrama de caja">
+		<tabbook>
+			<tab label="Seleccionar variables" id="tab_variables">
+				<row id="row_vars">
+					<varselector id="selector" label="Seleccionar variables" />
+					<column>
+						<varslot id="variable" label="Variable(s)" multi="true" types="number" source="selector" required="true" />
+						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
+						<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" multi="true" required="true" />
+						<embed id="filter_embed" component="rkTeaching::filter_embed" />
+						<stretch />
+						<preview id="preview" />
+					</column>
+				</row>
+			</tab>
+			<tab id="tab_box_options" label="Opciones de las cajas">
+				<row>
+					<column id="col_box_options">
+						<checkbox id="notch" label="Dibujar muescas" checked="false" />
+						<checkbox id="means" label="Dibujar medias" checked="false" />
+						<checkbox id="points" label="Dibujar puntos" checked="false" />
+						<stretch />
+					</column>
+					<column id="col_color_options">
+						<frame id="frame_boxfillcolor" label="Color de relleno">
+							<embed id="boxfillcolor" component="rkTeaching::color_chooser" label="Color de relleno" />
+						</frame>
+						<frame id="frame_boxbordercolor" label="Color de borde">
+							<embed id="boxbordercolor" component="rkTeaching::color_chooser" label="Color de borde" />
+						</frame>
+						<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos" />
+						<stretch />
+					</column>
+				</row>
+			</tab>
+		</tabbook>
+	</dialog>
+
+	<wizard label="Asistente para diagrama de caja">
+		<page id="page_variables">
+			<text>
+				Seleccionar la variable para la que desea dibujar el diagrama de caja.
+				<br />
+				Si se desean varios diagramas de caja para las categorías de una variable, marcar la casilla "Dibujar por grupos" y
+				seleccionar la variable categórica que define los grupos.
+			</text>
+			<copy id="row_vars" />
+			<stretch/>
+		</page>
+		<page id="page_box_options">
+			<text>
+				Si se desea dibujar muescas (), la media o los valores de la variable sobre el diagrama, marcar las casillas correspondientes.
+			</text>
+			<copy id="col_box_options" />
+			<stretch />
+		</page>
+		<page id="page_color_options">
+			<text>
+				Seleccionar el color de relleno de la caja.
+			</text>
+			<embed id="boxfillcolor" component="rkTeaching::color_chooser" label="Color de relleno" />
+			<text>
+				Seleccionar el color del borde de la caja.
+			</text>
+			<embed id="boxbordercolor" component="rkTeaching::color_chooser" label="Color de borde" />
+			<stretch />
+		</page>
+		<embed id="plotoptions" component="rkTeaching::plot_options" />
+	</wizard>
 </document>
