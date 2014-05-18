@@ -1,38 +1,38 @@
 <!DOCTYPE rkplugin>
 <document>
-	<code file="scatterplot.js"/>
-	<help file="scatterplot.rkh"/>
-	
+	<code file="scatterplot.js" />
+	<help file="scatterplot.rkh" />
+
 	<logic>
-		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
-		<connect client="groups.visible" governor="grouped_mode"/>
-		<connect client="pointcolor.enabled" governor="grouped_mode.not"/>
-		<connect client="position.enabled" governor="grouped_mode"/>
- 		<convert id="smooth_check" mode="equals" sources="smooth.state" standard="1"/>
-		<connect client="spread.enabled" governor="smooth_check"/>
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1" />
+		<connect client="groups.visible" governor="grouped_mode" />
+		<connect client="pointcolor.enabled" governor="grouped_mode.not" />
+		<connect client="position.enabled" governor="grouped_mode" />
+		<convert id="smooth_check" mode="equals" sources="smooth.state" standard="1" />
+		<connect client="spread.enabled" governor="smooth_check" />
 		<connect client="filter_embed.variable" governor="x.available" />
 	</logic>
-	
-	<dialog label="Scatterplot" >
+
+	<dialog label="Scatterplot">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variables">
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables" />
 					<column>
 						<varslot id="y" label="Variable Y" source="selector" types="number unknown" required="true" />
-						<varslot id="x" label="Variable X" source="selector" types="number unknown" required="true" />						
+						<varslot id="x" label="Variable X" source="selector" types="number unknown" required="true" />
 						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true"/>
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-						<stretch/>
-						<preview id="preview"/>
+						<varslot id="groups" label="Variable de agrupación:" source="selector" types="factor" multi="true" required="true" />
+						<embed id="filter_embed" component="rkTeaching::filter_embed" />
+						<stretch />
+						<preview id="preview" />
 					</column>
 				</row>
 			</tab>
 			<tab id="tab_regression" label="Línea de ajuste">
-				<frame id="regression_frame" label="Modelo de regresión" >
+				<frame id="regression_frame" label="Modelo de regresión">
 					<checkbox id="linear" label="Lineal" />
- 					<checkbox id="cuadratic" label="Cuadrático" />
+					<checkbox id="cuadratic" label="Cuadrático" />
 					<checkbox id="cubic" label="Cúbico" />
 					<checkbox id="potential" label="Potencial" />
 					<checkbox id="exponential" label="Exponencial" />
@@ -40,46 +40,67 @@
 					<checkbox id="inverse" label="Inverso" />
 					<checkbox id="sigmoid" label="Sigmoidal" />
 				</frame>
-				<checkbox id="confidentstrip" label="Dibujar banda de error" checked="false"/>
-				<stretch/>
+				<checkbox id="confidentstrip" label="Dibujar banda de error" checked="false" />
+				<stretch />
 			</tab>
-		
-			<tab id="tab_point_options" label="Opciones de los puntos" >
+
+			<tab id="tab_point_options" label="Opciones de los puntos">
 				<row>
 					<column>
-						<radio id="position" label="Agrupamiento" >
-							<option value="mixed" label="Juntos" checked="true"/>
-							<option value="faceted" label="Separados"/>
+						<radio id="position" label="Agrupamiento">
+							<option value="mixed" label="Juntos" checked="true" />
+							<option value="faceted" label="Separados" />
 						</radio>
-						<stretch/>
+						<stretch />
 					</column>
 					<column>
 						<embed id="pointcolor" label="Color de los puntos" component="rkTeaching::color_chooser" />
 						<embed id="pointsymbol" label="Símbolo de los puntos" component="rkTeaching::point_chooser" />
 						<spinbox id="pointsize" label="Tamaño de los puntos" type="integer" min="0" max="10" initial="3" />
-						<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos"/>
-						<stretch/>
+						<embed id="plotoptions" component="rkTeaching::plot_options" as_button="true" label="Opciones generales de gráficos" />
+						<stretch />
 					</column>
 				</row>
 			</tab>
 		</tabbook>
 	</dialog>
-	
+
 	<wizard label="Scatterplot">
 		<page id="pag_vars">
 			<text>
 				Seleccionar las variables a dibujar en los ejes X e Y.
-				Si se desea diferenciar los puntos por grupos, seleccionar la variable de agrupación.
+				Si se desea diferenciar los puntos para las distintas
+				categorías de una variable categórica, seleccionar la variable categórica que define los grupos.
 			</text>
 			<copy id="row_vars" />
 		</page>
 		<page id="pag_regression">
 			<text>
-				Si se desea dibujar algún modelo de regresión, active la la opción correspondiente.  
+				Si se desea dibujar algún modelo de regresión, active la la opción correspondiente.
 			</text>
 			<copy id="regression_frame" />
 		</page>
-		
-		<copy id="tab_point_options" copy_element_tag_name="page" />
+		<page id="page_position_points">
+			<text>
+				Si se han diferenciado los puntos para las distintas categorías de una variable categórica, indicar si se desea
+				presentar los puntos de las distintas categorías en el mismo diagrama o en diagramas distintos.
+			</text>
+			<copy id="position" />
+		</page>
+		<page id="page_color_poins">
+			<text>
+				Indicar el color de los puntos (sólo en caso de no haber seleccionado la opción de dibujar por grupos).
+			</text>
+			<embed id="pointcolor" label="Color de los puntos" component="rkTeaching::color_chooser" />
+			<text>
+				Indicar el símbolo de los puntos.
+			</text>
+			<embed id="pointsymbol" label="Símbolo de los puntos" component="rkTeaching::point_chooser" />
+			<text>
+				Indicar el tamaño de los puntos.
+			</text>
+			<copy id="pointsize" />
+		</page>
+		<embed id="plotoptions" component="rkTeaching::plot_options" />
 	</wizard>
 </document>

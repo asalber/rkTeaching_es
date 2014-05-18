@@ -19,4 +19,8 @@
 			<option value="18" label="Rombo relleno" />
 		</dropdown>
 	</dialog>
+	
+	<wizard label="Asistente para selector del símbolo del punto">
+		<copy id="point" />
+	</wizard>
 </document>
