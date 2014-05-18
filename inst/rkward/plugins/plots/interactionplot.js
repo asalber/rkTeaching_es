@@ -13,10 +13,7 @@ function calculate() {
 	variablename = getString("variable.shortname");
 	xname = getString("x.shortname");
 	tracename = getString("trace.shortname");
-	points = '';
-	if (getBoolean("points")) {
-		points = ' + geom_point(stat="summary", fun.y=mean)';
-	}
+	points = ' + geom_point(stat="summary", fun.y=mean)';
 	lines = '';
 	if (getBoolean("lines")) {
 		lines = ' + geom_line(stat="summary", fun.y=mean, aes(group=' + tracename + '))';
