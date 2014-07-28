@@ -1,0 +1,14 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="rolldice.js" />
+	<help file="rolldice.rkh" />
+		
+	<dialog label="Espacio probabilístico del lanzamiento de dados" >
+		<stretch/>
+		<spinbox id="ndice" label="Número de dados" default_precision="2" type="integer" initial="1" min="1" max="20"/>
+		<spinbox id="nroll" label="Número de lanzamientos" default_precision="2" type="integer" initial="1" min="1" />
+		<checkbox id="freq" label="Distribución de frecuencias" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="lanzamiento.dados" />
+	</dialog>
+</document>

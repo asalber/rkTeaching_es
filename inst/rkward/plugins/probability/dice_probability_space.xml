@@ -1,0 +1,13 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="dice_probability_space.js" />
+	<help file="dice_probability_space.rkh" />
+		
+	<dialog label="Espacio probabilístico del lanzamiento de dados" >
+		<stretch/>
+		<spinbox id="ndice" label="Número de dados" default_precision="2" type="integer" initial="1" min="1" max="20"/>
+		<checkbox id="prob" label="Incluir probabilidades" checked="true" value="TRUE" uncheked_value="FALSE" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.muestral.dados" />
+	</dialog>
+</document>

@@ -1,0 +1,14 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="tosscoins.js" />
+	<help file="tosscoins.rkh" />
+		
+	<dialog label="Espacio probabilístico del lanzamiento de monedas" >
+		<stretch/>
+		<spinbox id="ncoins" label="Número de monedas" default_precision="2" type="integer" initial="1" min="1" max="30"/>
+		<spinbox id="ntoss" label="Número de lanzamientos" default_precision="2" type="integer" initial="1" min="1" />
+		<checkbox id="freq" label="Distribución de frecuencias" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="lanzamiento.monedas" />
+	</dialog>
+</document>

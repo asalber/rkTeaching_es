@@ -1,0 +1,26 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkpluginmap>
+<document base_prefix="probability/" namespace="rkTeaching">
+	<components>
+		<component type="standard" id="coins_probability_space" file="coins_probability_space.xml" label="Espacio probabilístico" />
+		<component type="standard" id="tosscoins" file="tosscoins.xml" label="Lanzamiento de monedas" />
+		<component type="standard" id="dice_probability_space" file="dice_probability_space.xml" label="Espacio probabilístico" />
+		<component type="standard" id="rolldice" file="rolldice.xml" label="Lanzamiento de dados" />
+	</components>
+	<hierarchy>
+		<menu id="teaching">
+			<menu id="probability" label="Probabilidad">
+				<menu id="gambling" label="Juegos de azar">
+					<menu id="coins" label="Monedas">
+						<entry component="coins_probability_space" />
+						<entry component="tosscoins" />
+					</menu>
+					<menu id="dice" label="Dados">
+						<entry component="dice_probability_space" />
+						<entry component="rolldice" />
+					</menu>
+				</menu> 
+			</menu>
+		</menu>
+	</hierarchy>
+</document>

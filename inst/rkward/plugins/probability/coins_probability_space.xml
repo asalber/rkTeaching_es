@@ -1,0 +1,13 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="coins_probability_space.js" />
+	<help file="coins_probability_space.rkh" />
+		
+	<dialog label="Espacio probabilístico del lanzamiento de monedas" >
+		<stretch/>
+		<spinbox id="ncoins" label="Número de monedas" default_precision="2" type="integer" initial="1" min="1" max="30"/>
+		<checkbox id="prob" label="Incluir probabilidades" checked="true" value="TRUE" uncheked_value="FALSE" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.muestral.monedas" />
+	</dialog>
+</document>
