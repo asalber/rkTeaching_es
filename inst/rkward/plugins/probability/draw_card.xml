@@ -1,0 +1,16 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="draw_card.js" />
+	<help file="draw_card.rkh" />
+
+	<dialog label="Extracción de naipes">
+		<radio id="deck" label="Tipo de baraja">
+			<option value="es" label="Española" checked="true" />
+			<option value="us" label="Americana" />
+		</radio>
+		<spinbox id="ncards" label="Número de cartas" type="integer" initial="1" min="1" />
+		<checkbox id="freq" label="Distribución de frecuencias" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="extraccion.naipes" />
+	</dialog>
+</document>

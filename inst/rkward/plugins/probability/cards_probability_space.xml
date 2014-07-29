@@ -1,0 +1,15 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="cards_probability_space.js" />
+	<help file="cards_probability_space.rkh" />
+
+	<dialog label="Espacio probabilístico de la extracción de naipes">
+		<radio id="deck" label="Tipo de baraja">
+			<option value="es" label="Española" checked="true" />
+			<option value="us" label="Americana" />
+		</radio>
+		<checkbox id="prob" label="Incluir probabilidades" checked="true" value="TRUE" uncheked_value="FALSE" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.muestral.cartas" />
+	</dialog>
+</document>

@@ -6,6 +6,8 @@
 		<component type="standard" id="tosscoins" file="tosscoins.xml" label="Lanzamiento de monedas" />
 		<component type="standard" id="dice_probability_space" file="dice_probability_space.xml" label="Espacio probabilístico" />
 		<component type="standard" id="rolldice" file="rolldice.xml" label="Lanzamiento de dados" />
+		<component type="standard" id="cards_probability_space" file="cards_probability_space.xml" label="Espacio probabilístico" />
+		<component type="standard" id="draw_card" file="draw_card.xml" label="Extracción de naipes" />
 	</components>
 	<hierarchy>
 		<menu id="teaching">
@@ -18,6 +20,10 @@
 					<menu id="dice" label="Dados">
 						<entry component="dice_probability_space" />
 						<entry component="rolldice" />
+					</menu>
+					<menu id="cards" label="Naipes">
+						<entry component="cards_probability_space" />
+						<entry component="draw_card" />
 					</menu>
 				</menu> 
 			</menu>
