@@ -1,0 +1,28 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="urn_probability_space.js" />
+	<help file="urn_probability_space.rkh" />
+
+	<logic>
+		<external id="variable"/>
+		<convert id="is_num" sources="objects.string" mode="equals" standard="num"/>
+		<connect client="num_objects.visible" governor="is_num"/>
+		<convert id="is_list" sources="objects.string" mode="equals" standard="list"/>
+		<connect client="list_objects.visible" governor="is_list"/>
+	</logic>
+
+	<dialog label="Espacio probabilístico de la extracción de una urna">
+		<radio id="objects" label="Objetos en la urna">
+			<option value="num" label="Número de objetos" />
+			<option value="list" label="Lista de objetos" />
+		</radio>
+		<spinbox id="num_objects" label="Número de objetos" type="integer" initial="2" min="1" max="1000" />
+		<input id="list_objects" label="Lista de objetos" size="small" required="true" />
+		<spinbox id="num_choices" label="Número de extracciones" type="integer" initial="1" min="1" max="30" />
+		<checkbox id="replace" label="Con reemplazamiento" value="TRUE" value_unchecked="FALSE" />
+		<checkbox id="ordered" label="Con orden" value="TRUE" value_unchecked="FALSE" />
+		<checkbox id="prob" label="Incluir probabilidades" checked="true" value="TRUE" value_unchecked="FALSE" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.muestral.urna" />
+	</dialog>
+</document>

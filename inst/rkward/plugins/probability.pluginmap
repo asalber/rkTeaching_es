@@ -8,6 +8,8 @@
 		<component type="standard" id="rolldice" file="rolldice.xml" label="Lanzamiento de dados" />
 		<component type="standard" id="cards_probability_space" file="cards_probability_space.xml" label="Espacio probabilístico" />
 		<component type="standard" id="draw_card" file="draw_card.xml" label="Extracción de naipes" />
+		<component type="standard" id="urn_probability_space" file="urn_probability_space.xml" label="Espacio probabilístico" />
+		<component type="standard" id="urn_draw" file="urn_draw.xml" label="Extracción de urna" />
 	</components>
 	<hierarchy>
 		<menu id="teaching">
@@ -24,6 +26,10 @@
 					<menu id="cards" label="Naipes">
 						<entry component="cards_probability_space" />
 						<entry component="draw_card" />
+					</menu>
+					<menu id="urn" label="Urna">
+						<entry component="urn_probability_space" />
+						<entry component="urn_draw" />
 					</menu>
 				</menu> 
 			</menu>
