@@ -10,6 +10,8 @@
 		<component type="standard" id="draw_card" file="draw_card.xml" label="Extracción de naipes" />
 		<component type="standard" id="urn_probability_space" file="urn_probability_space.xml" label="Espacio probabilístico" />
 		<component type="standard" id="urn_draw" file="urn_draw.xml" label="Extracción de urna" />
+		<component type="standard" id="build_probability_space" file="build_probability_space.xml" label="Construir espacio probabilístico" />
+		<component type="standard" id="combine_independent_probability_spaces" file="combine_independent_probability_spaces.xml" label="Combinación de espacios probabilísticos independientes" />
 	</components>
 	<hierarchy>
 		<menu id="teaching">
@@ -32,6 +34,8 @@
 						<entry component="urn_draw" />
 					</menu>
 				</menu> 
+				<entry component="build_probability_space" />
+				<entry component="combine_independent_probability_spaces" />  
 			</menu>
 		</menu>
 	</hierarchy>

@@ -1,6 +1,6 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
-var objects, num_objects, list_objects, num_choices, replace, ordered, prob, dataframe;
+var objects, num_objects, list_objects, num_choices, replace, ordered, dataframe;
 
 function preprocess(){
 	echo('require(prob)\n');
@@ -10,16 +10,18 @@ function preprocess(){
 function calculate () {
 	objects = getString("objects");
 	dataframe= getString("save");
-	prob = getString("prob");
 	num_choices = getString("num_choices");
 	replace = getString("replace");
 	ordered = getString("ordered");
 	if (objects=="num") {
 		num_objects = getString("num_objects");
-		echo('results <- urnsamples(1:' + num_objects + ', size=' + num_choices + ', replace=' + replace + ', ordered=' + ordered + ',makespace=' + prob + ')\n');
+		echo('results <- urnsamples(1:' + num_objects + ', size=' + num_choices + ', replace=' + replace + ', ordered=' + ordered + ')\n');
 	} else {
 		list_objects = getString("list_objects");
-		echo('results <- urnsamples(c("' + list_objects.replace(/,/g,'","') + '"), size=' + num_choices + ', replace=' + replace + ', ordered=' + ordered + ',makespace=' + prob + ')\n');
+		echo('results <- urnsamples(c("' + list_objects.replace(/,/g,'","') + '"), size=' + num_choices + ', replace=' + replace + ', ordered=' + ordered + ')\n');
+	}
+	if (getBoolean("prob.state")) {
+		echo('results <- probspace(results)\n');
 	}
 	echo ('assign("' + dataframe + '", results, .GlobalEnv)\n');
 }

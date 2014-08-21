@@ -1,0 +1,25 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="build_probability_space.js" />
+	<help file="build_probability_space.rkh" />
+
+	<logic>
+		<connect governor="current_object" client="dataframe.available" />
+		<connect governor="dataframe.available" client="selector.root" />
+		<convert id="freq_mode" mode="equals" sources="set_freq.state" standard="1" />
+		<connect client="freq.visible" governor="freq_mode" />
+	</logic>
+
+	<dialog label="Construcción de espacio probabilístico">
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar conjunto de datos" />
+			<column>
+				<varslot id="dataframe" label="Conjunto de datos" source="selector" classes="data.frame" required="true" />
+				<checkbox id="set_freq" label="Definir frecuencias" value_unchecked="0" checked="false" />
+				<varslot id="freq" label="Frecuencias" source="selector" types="number" required="true" />
+				<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.probabilistico" />
+			</column>
+		</row>
+	</dialog>
+</document>

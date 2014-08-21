@@ -1,0 +1,16 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="combine_independent_probability_spaces.js" />
+	<help file="combine_independent_probability_spaces.rkh" />
+
+	<dialog label="Combinación de espacios probabilísticos independientes">
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar espacios probabilísticos" />
+			<column>
+				<varslot id="spaces" label="Espacios probabilísticos" source="selector" multi="true" classes="data.frame" required="true" />
+				<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.probabilistico.combinado" />
+			</column>
+		</row>
+	</dialog>
+</document>
