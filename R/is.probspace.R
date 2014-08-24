@@ -16,7 +16,7 @@ is.probspace <- function (x) {
 		return(FALSE)
 	if (any(x[["probs"]] < 0)) 
 		return(FALSE)
-	if (sum(x[["probs"]]>1))
+	if (sum(x[["probs"]])>1)
 		return(FALSE)
 	return(TRUE)
 }
