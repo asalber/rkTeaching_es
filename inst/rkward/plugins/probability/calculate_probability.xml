@@ -1,0 +1,23 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<!DOCTYPE rkplugin>
+<document>
+	<code file="calculate_probability.js" />
+	<help file="calculate_probability.rkh" />
+
+	<logic>
+		<convert id="conditioned_mode" mode="equals" sources="conditioned.state" standard="1"/>
+		<connect client="condition.visible" governor="conditioned_mode"/>
+	</logic>
+
+	<dialog label="Calcular probabilidad">
+		<row id="row_vars">
+			<varselector id="selector" label="Seleccionar espacio probabilístico" />
+			<column>
+				<varslot id="probspace" label="Espacio probabilístico" source="selector" classes="data.frame" required="true" />
+				<input id="event" label="Suceso" required="true" size="small" />
+				<checkbox id="conditioned" label="Probabilidad condicionada" checked="false"  />
+				<input id="condition" label="Condición" required="true" size="small" />
+			</column>
+		</row>
+	</dialog>
+</document>
