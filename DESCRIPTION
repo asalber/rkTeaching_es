@@ -19,6 +19,7 @@ Depends:
     e1071,
     Hmisc,
     ez,
+    prob,
     R (>= 3.0.0)
 Enhances: rkward
 Description: Basic utilities for teaching statistics.
@@ -71,9 +72,27 @@ Description: Basic utilities for teaching statistics.
     - Concordance
     - Intraclass correlation coefficient
     - Cohen's kappa
+    - Probability:
+    - Random games:
+    - Coins
+    - Dice
+    - Cards
+    - Urn
+    - Build probability space
+    - Combine probability spaces
+    - Repeat probability space
+    - Calculate probability 
+    - Probability distributions
+    - Discrete:
+    - Binomial
+    - Poison
+    - Continous:
+    - Uniform 
+    - Normal
+    - Chi-square
+    - Student T
+    - Fisher F
     - Simulations:
-    - Coins tosses
-    - Dice roll
     - Small numbers law
     - Central limit theorem
 License: GPL (>= 3)
