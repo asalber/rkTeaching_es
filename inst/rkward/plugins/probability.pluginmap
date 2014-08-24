@@ -12,6 +12,8 @@
 		<component type="standard" id="urn_draw" file="urn_draw.xml" label="Extracción de urna" />
 		<component type="standard" id="build_probability_space" file="build_probability_space.xml" label="Construir espacio probabilístico" />
 		<component type="standard" id="combine_independent_probability_spaces" file="combine_independent_probability_spaces.xml" label="Combinación de espacios probabilísticos independientes" />
+		<component type="standard" id="repeat_independent_probability_space" file="repeat_independent_probability_space.xml" label="Repetición de espacio probabilístico" />
+		<component type="standard" id="calculate_probability" file="calculate_probability.xml" label="Calcular probabilidad" />
 	</components>
 	<hierarchy>
 		<menu id="teaching">
@@ -36,6 +38,8 @@
 				</menu> 
 				<entry component="build_probability_space" />
 				<entry component="combine_independent_probability_spaces" />  
+				<entry component="repeat_independent_probability_space" />  
+				<entry component="calculate_probability" />  
 			</menu>
 		</menu>
 	</hierarchy>
