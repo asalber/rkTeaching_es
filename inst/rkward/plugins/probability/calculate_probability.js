@@ -20,7 +20,7 @@ function calculate () {
 
 
 function printout () {
-	echo('rk.header("C&aacute;lculo de probabilidades", parameters=list("Espacio probabil&iacute;stico" = "' + probspace + '", "Suceso" = "' + event + '"))\n');
+	echo('rk.header("C&aacute;lculo de probabilidades", parameters=list("Espacio probabil&iacute;stico" = "' + probspace + '", "Suceso" = \'' + event + '\'))\n');
 	echo ('rk.results(list("Suceso" = \'' + event + '\'');
 	if (conditioned)
 		echo(', "Condici&oacute;n" = \'' + condition + '\'');
