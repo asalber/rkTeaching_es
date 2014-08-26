@@ -17,7 +17,7 @@ function calculate () {
 	} else {
 		echo('results <- empirical(' + source_dataframe + ')\n');
 	}
-	echo('names(results)[ncol(results)]="probabilidad"\n');
+	echo('names(results)[ncol(results)]="probs"\n');
 	echo ('assign("' + target_dataframe + '", results, .GlobalEnv)\n');
 }
 
