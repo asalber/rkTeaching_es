@@ -2,9 +2,9 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="f_test.js"/>
-	<help file="f_test.rkh"/>
-	
+	<code file="f_test.js" />
+	<help file="f_test.rkh" />
+
 	<logic>
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
@@ -17,7 +17,11 @@
 					<column>
 						<varslot id="variable" label="Comparar" source="selector" types="number" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+						<frame id="samples_frame" label="Definir poblaciones" checkable="true" checked="false" value="0">
+							<input id="sample1" label="Población 1" required="true" />
+							<input id="sample2" label="Población 2" required="true" />
+						</frame>
+						<embed id="filter_embed" component="rkTeaching::filter_embed" />
 						<stretch />
 					</column>
 				</row>
@@ -30,6 +34,7 @@
 							<option value="greater" label="Unilateral mayor (&gt;)" />
 							<option value="less" label="Unilateral menor (&lt;)" />
 						</radio>
+						<stretch />
 					</column>
 					<column>
 						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
@@ -40,36 +45,41 @@
 			</tab>
 		</tabbook>
 	</dialog>
-	
+
 	<wizard label="Test F para la comparación de varianzas de dos poblaciones independientes">
 		<page>
 			<text>
-			<p>Seleccionar la variable numérica a comparar.</p>
-			<p>Después, seleccionar el factor con los niveles a comparar. El factor debe tener exactamente dos niveles. 
-			</p>
+				<p>Seleccionar la variable numérica a comparar.</p>
+				<p>Después, seleccionar el factor con los niveles a comparar. El factor debe tener exactamente dos niveles. </p>
+				<p>Si la variable que define las poblaciones tiene más de dos categorías hay que definir las dos poblaciones a comparar marcando la
+					casilla correspondiente e introduciendo los valores de las categorías correspondientes a cada una de las dos poblaciones.</p>
 			</text>
-			<copy id="row_vars"/>
+			<copy id="row_vars" />
 		</page>
 		<page>
 			<text>
 				<p>Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué varianza se presume que es mayor:</p>
-                - Seleccionar bilateral, si se presupone que las varianzas de ambas poblaciones son distintas pero no se sabe qué varianza es mayor.<br/>
-                - Seleccionar unilateral mayor si se presupone que la varianza de la primera población es mayor que la varianza de la segunda.<br/>
-                - Seleccionar unilateral menor si se presupone que la varianza de la primera población es menor que la varianza de la segunda.
-                <p>El orden de las categorías es el establecido en la definición de las variables.</p>
-				<p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
+				- Seleccionar bilateral, si se presupone que las varianzas de ambas poblaciones son distintas pero no se sabe qué varianza es mayor.
+				<br />
+				- Seleccionar unilateral mayor si se presupone que la varianza de la primera población es mayor que la varianza de la segunda.
+				<br />
+				- Seleccionar unilateral menor si se presupone que la varianza de la primera población es menor que la varianza de la segunda.
+				<p>El orden de las categorías es el establecido en la definición de las variables.</p>
+				<p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p>
 			</text>
-			<copy id="hypothesis"/>
-			<stretch/>
+			<copy id="hypothesis" />
+			<stretch />
 		</page>
 		<page>
 			<text>
-			<p>Si se desea obtener un intervalo de confianza para estimar el cociente de varianzas entre las dos poblaciones, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
-			<p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
+				<p>Si se desea obtener un intervalo de confianza para estimar el cociente de varianzas entre las dos poblaciones,
+					seleccionar la opción
+					correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de
+					significación).</p>
+				<p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>
 			</text>
-			<copy id="confint_frame"/>
-			<stretch/>
+			<copy id="confint_frame" />
+			<stretch />
 		</page>
 	</wizard>
 </document>

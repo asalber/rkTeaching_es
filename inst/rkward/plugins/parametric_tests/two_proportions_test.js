@@ -1,7 +1,7 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, factor, category, freq1, n1, freq2, n2,  type, test, confint, conflevel, hypothesis;
+var variable, factor, category, factorname, defsamples, sample1, sample2, freq1, n1, freq2, n2,  type, test, confint, conflevel, hypothesis;
 
 function preprocess () {
 
@@ -40,10 +40,19 @@ function calculate () {
 		// Filter
 		echo(getString("filter_embed.code.calculate"));
 		// Load variables
-		x = getString("variable");
+		variable = getString("variable");
 		factor = getString("factor");
 		category = getString("category");
-		echo('.data <- split(' + x + ',' + factor +')\n');
+		defsamples = getBoolean("samples_frame.checked");
+		if (defsamples){
+			sample1 = getString("sample1");
+			sample2 = getString("sample2");
+			data = factor.split('[[')[0];
+			factorname = getString("factor.shortname");
+			echo (data + ' <- subset(' + data + ', subset=' + factorname + '=="' + sample1 + '" | ' + factorname + '=="' + sample2 + '")\n');
+			echo (factor + ' <- factor(' + factor + ')\n');
+		}
+		echo('.data <- split(' + variable + ',' + factor +')\n');
 		echo('.x1<-.data[[levels(' + factor + ')[1]]]\n');
 		echo('.x2<-.data[[levels(' + factor + ')[2]]]\n');
 		echo ('.freq1 <- length(.x1[.x1=="' + category + '"])\n');
@@ -75,7 +84,7 @@ function printout () {
 			echo(', "Hip&oacute;tesis nula" = "proporci&oacute;n 1 &lt; proporci&oacute;n 2"');
 		}	
 	} else {
-		echo(' de ' + getString("variable.shortname") + '=' + category + ' seg&uacute;n ' + getString("factor.shortname") + '", parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + x + '), "Seg&uacute;n" = rk.get.description(' + factor + ')' + getString("filter_embed.code.printout") + ', "Proporci&oacute;n de" = "' + category + '"');
+		echo(' de ' + getString("variable.shortname") + '=' + category + ' seg&uacute;n ' + getString("factor.shortname") + '", parameters=list ("Comparaci&oacute;n de" = rk.get.description(' + variable + '), "Seg&uacute;n" = rk.get.description(' + factor + ')' + getString("filter_embed.code.printout") + ', "Proporci&oacute;n de" = "' + category + '"');
 		echo(', "Hip&oacute;tesis nula" = paste("proporci&oacute;n ' + category + ' en ",  levels(' + factor + ')[1], " = proporci&oacute;n ' + category + ' en ", levels(' + factor + ')[2])');
 		if (hypothesis=="two.sided"){
 			echo(', "Hip&oacute;tesis alternativa" = paste("proporci&oacute;n ' + category + ' en ",  levels(' + factor + ')[1], " &ne; proporci&oacute;n ' + category + ' en ", levels(' + factor + ')[2])');

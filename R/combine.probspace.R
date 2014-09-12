@@ -16,7 +16,7 @@ combine.probspace <- function (...) {
 	noprobspace <- !sapply(spaces, is.probspace)
 	if (sum(noprobspace,na.rm=TRUE)>0)
 		stop(paste(c(names(noprobspace[noprobspace]), " are not probability spaces"), collapse=", "))
-	probs <- sapply(spaces, function(x) x[["probs"]])
+	probs <- lapply(spaces, function(x) x[["probs"]])
 	spaces <- lapply(spaces, function(x) x[!(names(x) %in% c("probs"))])
 	spaces <- Reduce(function(...) merge(..., by=NULL), spaces)
 	probs <- as.vector(Reduce(function(...) outer(...), probs))

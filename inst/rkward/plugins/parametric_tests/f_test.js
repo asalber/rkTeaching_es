@@ -1,5 +1,5 @@
 // globals
-var variable, factor, confint, conflevel, hypothesis;
+var data, variable, factor, factorname, defsamples, sample1, sample2, confint, conflevel, hypothesis;
 
 function preprocess () {
 
@@ -11,6 +11,15 @@ function calculate () {
 	// Load variables
 	variable = getString("variable");
 	factor = getString("factor");
+	defsamples = getBoolean("samples_frame.checked");
+	if (defsamples){
+		sample1 = getString("sample1");
+		sample2 = getString("sample2");
+		data = factor.split('[[')[0];
+		factorname = getString("factor.shortname");
+		echo (data + ' <- subset(' + data + ', subset=' + factorname + '=="' + sample1 + '" | ' + factorname + '=="' + sample2 + '")\n');
+		echo (factor + ' <- factor(' + factor + ')\n');
+	}
 	confint = getBoolean("confint_frame.checked");
 	conflevel = getString("conflevel");
 	hypothesis = getString("hypothesis");

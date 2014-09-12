@@ -2,8 +2,8 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="two_proportions_test.js"/>
-	<help file="two_proportions_test.rkh"/>
+	<code file="two_proportions_test.js" />
+	<help file="two_proportions_test.rkh" />
 
 	<logic>
 		<convert id="manual_checked" sources="manual.checked" mode="equals" standard="1" />
@@ -11,12 +11,13 @@
 		<connect client="factor.enabled" governor="manual_checked.not" />
 		<connect client="selector.enabled" governor="manual_checked.not" />
 		<connect client="category.enabled" governor="manual_checked.not" />
+		<connect client="samples_frame.enabled" governor="manual_checked.not" />
 		<connect client="freq.enabled" governor="manual_checked" />
 		<connect client="n.enabled" governor="manual_checked" />
 		<connect client="filter_embed.enabled" governor="manual_checked.not" />
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
-	
+
 	<dialog label="Test para la comparación de dos proporciones">
 		<tabbook>
 			<tab id="tab_variables" label="Seleccionar variable">
@@ -25,20 +26,24 @@
 					<column>
 						<varslot id="variable" label="Comparar" source="selector" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
-						<input id="category" label="Categoría" size="small" required="true"/>
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
+						<input id="category" label="Categoría" size="small" required="true" />
+						<frame id="samples_frame" label="Definir poblaciones" checkable="true" checked="false" value="0">
+							<input id="sample1" label="Población 1" required="true" />
+							<input id="sample2" label="Población 2" required="true" />
+						</frame>
+						<embed id="filter_embed" component="rkTeaching::filter_embed" />
 						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unckecked="0">
-							<row>	
+							<row>
 								<column>
 									<input id="freq1" label="Frecuencia muestral 1" size="small" required="true" />
-									<input id="n1" label="Tamaño muestral 1" size="small" required="true"/>
+									<input id="n1" label="Tamaño muestral 1" size="small" required="true" />
 								</column>
 								<column>
 									<input id="freq2" label="Frecuencia muestral 2" size="small" required="true" />
-									<input id="n2" label="Tamaño muestral 2" size="small" required="true"/>
+									<input id="n2" label="Tamaño muestral 2" size="small" required="true" />
 								</column>
-							</row>	
-						</frame>	
+							</row>
+						</frame>
 						<stretch />
 					</column>
 				</row>
@@ -67,45 +72,56 @@
 			</tab>
 		</tabbook>
 	</dialog>
-	
+
 	<wizard label="Test para la comparación de dos proporciones">
 		<page>
 			<text>
-				<p>Seleccionar una variable y la categoría o valor cuya proporción se desea contrastar. Después, seleccionar el factor con los niveles a comparar. El factor debe tener exactamente dos niveles.</p> 
-			    <p>O bien activar la casilla de introducción manual de frecuencias e introducir las frecuencias absolutas muestrales y los tamaños de ambas muestras.</p>
+				<p>Seleccionar una variable y la categoría o valor cuya proporción se desea contrastar. Después, seleccionar el factor con los niveles a
+					comparar. El factor debe tener exactamente dos niveles.</p>
+				<p>Si la variable que define las poblaciones tiene más de dos categorías hay que definir las dos poblaciones a comparar marcando la
+					casilla correspondiente e introduciendo los valores de las categorías correspondientes a cada una de las dos poblaciones.</p>
+				<p>O bien activar la casilla de introducción manual de frecuencias e introducir las frecuencias absolutas muestrales y los tamaños de
+					ambas muestras.</p>
 			</text>
-			<copy id="row_vars"/>
-			<stretch/>
+			<copy id="row_vars" />
+			<stretch />
 		</page>
 		<page>
 			<text>
 				<p>Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué proporción se presume que es mayor:</p>
-                - Seleccionar bilateral, si se presupone que las proporciones de ambas poblaciones son distintas pero no se sabe qué proporción es mayor.<br/>
-                - Seleccionar unilateral mayor si se presupone que la proporción de la primera población es mayor que la proporción de la segunda.<br/>
-                - Seleccionar unilateral menor si se presupone que la proporción de la primera población es menor que la proporción de la segunda.
-                <p>El orden de las categorías es el establecido en la definición de las variables.</p>
-				<p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
+				- Seleccionar bilateral, si se presupone que las proporciones de ambas poblaciones son distintas pero no se sabe qué proporción es
+				mayor.
+				<br />
+				- Seleccionar unilateral mayor si se presupone que la proporción de la primera población es mayor que la proporción de la segunda.
+				<br />
+				- Seleccionar unilateral menor si se presupone que la proporción de la primera población es menor que la proporción de la segunda.
+				<p>El orden de las categorías es el establecido en la definición de las variables.</p>
+				<p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p>
 			</text>
-			<copy id="hypothesis"/>
-			<stretch/>
+			<copy id="hypothesis" />
+			<stretch />
 		</page>
 		<page>
 			<text>
-				<p>Seleccionar el tipo de prueba a realizar:</p> 
-				- Aproximación normal con corrección por continuidad (es lo más habitual para muestras grandes).<br/>
-				- Aproximación normal sin corrección por continuidad.<br/>
+				<p>Seleccionar el tipo de prueba a realizar:</p>
+				- Aproximación normal con corrección por continuidad (es lo más habitual para muestras grandes).
+				<br />
+				- Aproximación normal sin corrección por continuidad.
+				<br />
 			</text>
-			<copy id="type"/>
-			<stretch/>
+			<copy id="type" />
+			<stretch />
 		</page>
 		<page>
 			<text>
-			<p>Si se desea obtener un intervalo de confianza para estimar la diferencia de proporciones entre las dos poblaciones, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
-            <p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
+				<p>Si se desea obtener un intervalo de confianza para estimar la diferencia de proporciones entre las dos poblaciones,
+					seleccionar la
+					opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de
+					significación).</p>
+				<p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>
 			</text>
-			<copy id="confint_frame"/>
-			<stretch/>
+			<copy id="confint_frame" />
+			<stretch />
 		</page>
 	</wizard>
 </document>
