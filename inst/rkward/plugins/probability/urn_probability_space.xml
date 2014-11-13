@@ -22,6 +22,6 @@
 		<checkbox id="replace" label="Con reemplazamiento" value="TRUE" value_unchecked="FALSE" />
 		<checkbox id="ordered" label="Con orden" value="TRUE" value_unchecked="FALSE" />
 		<checkbox id="prob" label="Incluir probabilidades" checked="true" />
-		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.muestral.urna" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.probabilistico.urna" />
 	</dialog>
 </document>

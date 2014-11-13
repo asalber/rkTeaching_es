@@ -10,6 +10,6 @@
 			<option value="us" label="Americana" />
 		</radio>
 		<checkbox id="prob" label="Incluir probabilidades" checked="true" value="TRUE" uncheked_value="FALSE" />
-		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.muestral.cartas" />
+		<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.probabilistico.cartas" />
 	</dialog>
 </document>
