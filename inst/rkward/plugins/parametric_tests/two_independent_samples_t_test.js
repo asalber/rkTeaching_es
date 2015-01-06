@@ -26,8 +26,8 @@ function calculate () {
 	var options = ", alternative=\"" + hypothesis + "\"";
 	if (confint) options += ", conf.level=" + conflevel;
 	echo('resultvar <- var.test (' + variable + ' ~ ' + factor + ', conf.level=0.95)\n');
-	echo('resultvareq <- t.test (' + variable + ' ~ ' + factor + options + ', var.equal=FALSE)\n');
-	echo('resultnovareq <- t.test (' + variable + ' ~ ' + factor + options + ', var.equal=TRUE)\n');
+	echo('resultnovareq <- t.test (' + variable + ' ~ ' + factor + options + ', var.equal=FALSE)\n');
+	echo('resultvareq <- t.test (' + variable + ' ~ ' + factor + options + ', var.equal=TRUE)\n');
 }
 
 function printout () {
@@ -66,20 +66,6 @@ function printout () {
 	echo('rk.results (list(');
 	echo('"Variable" = rk.get.short.name(' + variable + '), ');
 	echo('"Niveles del factor" = levels(' + factor + '), ');
-	echo('"Medias estimadas" = resultvareq$estimate, ');
-	echo('"Grados de libertad" = resultvareq$parameter, ');
-	echo('"Estad&iacute;stico t" = resultvareq$statistic, ');
-	echo('"p-valor" = resultvareq$p.value');
-	if (confint) {
-		echo(', "Nivel de confianza %" = (100 * attr(resultvareq$conf.int, "conf.level"))');
-		echo(', "Intervalo de confianza para la diferencia de medias" = resultvareq$conf.int');
-	}
-	echo('))\n');
-	//  Equal variances
-	echo('rk.header ("Suponiendo varianzas iguales",level=4)\n');
-	echo('rk.results (list(');
-	echo('"Variable" = rk.get.short.name(' + variable + '), ');
-	echo('"Niveles del factor" = levels(' + factor + '), ');
 	echo('"Medias estimadas" = resultnovareq$estimate, ');
 	echo('"Grados de libertad" = resultnovareq$parameter, ');
 	echo('"Estad&iacute;stico t" = resultnovareq$statistic, ');
@@ -87,6 +73,20 @@ function printout () {
 	if (confint) {
 		echo(', "Nivel de confianza %" = (100 * attr(resultnovareq$conf.int, "conf.level"))');
 		echo(', "Intervalo de confianza para la diferencia de medias" = resultnovareq$conf.int');
+	}
+	echo('))\n');
+	//  Equal variances
+	echo('rk.header ("Suponiendo varianzas iguales",level=4)\n');
+	echo('rk.results (list(');
+	echo('"Variable" = rk.get.short.name(' + variable + '), ');
+	echo('"Niveles del factor" = levels(' + factor + '), ');
+	echo('"Medias estimadas" = resultvareq$estimate, ');
+	echo('"Grados de libertad" = resultvareq$parameter, ');
+	echo('"Estad&iacute;stico t" = resultvareq$statistic, ');
+	echo('"p-valor" = resultvareq$p.value');
+	if (confint) {
+		echo(', "Nivel de confianza %" = (100 * attr(resultvareq$conf.int, "conf.level"))');
+		echo(', "Intervalo de confianza para la diferencia de medias" = resultvareq$conf.int');
 	}
 	echo('))\n');
 }
