@@ -6,7 +6,8 @@
 	<help file="two_independent_samples_t_test.rkh" />
 
 	<logic>
-		<connect client="filter_embed.variable" governor="variable.available" />
+		<connect governor="factor.available" client="levels.variable" />
+		<connect governor="variable.available" client="filter_embed.variable" />
 	</logic>
 
 	<dialog label="Test T para la comparación de medias de dos poblaciones independientes">
@@ -17,9 +18,15 @@
 					<column>
 						<varslot id="variable" label="Comparar" source="selector" types="number" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
-						<frame id="samples_frame" label="Definir poblaciones" checkable="true" checked="false" value="0">
-							<input id="sample1" label="Población 1" required="true" />
-							<input id="sample2" label="Población 2" required="true" />
+
+						<frame id="levels_frame" label="Definir poblaciones">
+							<row>
+								<embed id="levels" component="rkward::level_select" />
+								<column>
+									<valueslot id="population1" label="Población 1" source="levels.selector" />
+									<valueslot id="population2" label="Población 2" source="levels.selector" />
+								</column>
+							</row>
 						</frame>
 						<embed id="filter_embed" component="rkTeaching::filter_embed" />
 						<stretch />
@@ -70,10 +77,10 @@
 				<p>
 					Después, seleccionar el factor con las categorías a comparar en el campo
 					<b>Según</b>
-					. El factor debe tener exactamente dos categorías.
+					.
 				</p>
-				<p>Si el factor que define las poblaciones tiene más de dos categorías hay que definir las dos poblaciones a comparar marcando la
-					casilla correspondiente e introduciendo los valores de las categorías correspondientes a cada una de las dos poblaciones.</p>
+				<p>A continuación hay que definir las dos poblaciones a comparar seleccionando los valores de las categorías correspondientes a cada una
+					de las dos poblaciones.</p>
 			</text>
 			<copy id="row_vars" />
 			<stretch />
