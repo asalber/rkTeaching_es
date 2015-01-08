@@ -2,7 +2,6 @@
 var data, variable, factor, factorname, population1, population2, confint, conflevel, hypothesis;
 
 function preprocess () {
-
 }
 
 function calculate () {
@@ -13,15 +12,6 @@ function calculate () {
 	factor = getString("factor");
 	population1 = getString("population1");
 	population2 = getString("population2");
-//	defsamples = getBoolean("samples_frame.checked");
-//	if (defsamples){
-//		sample1 = getString("sample1");
-//		sample2 = getString("sample2");
-//		data = factor.split('[[')[0];
-//		factorname = getString("factor.shortname");
-//		echo (data + ' <- subset(' + data + ', subset=' + factorname + '=="' + sample1 + '" | ' + factorname + '=="' + sample2 + '")\n');
-//		echo (factor + ' <- factor(' + factor + ')\n');
-//	}
 	confint = getBoolean("confint_frame.checked");
 	conflevel = getString("conflevel");
 	hypothesis = getString("hypothesis");
