@@ -13,8 +13,8 @@ function calculate() {
 	variable = getString("variable");
 	data = variable.split('[[')[0];
 	variablename = getString("variable.shortname");
-	xlab = ', xlab="' + variablename + '"';
-	ylab = ', ylab = "Frecuencia absoluta"';
+	xlab = 'x="' + variablename + '"';
+	ylab = ', y="Frecuencia absoluta"';
 	fill = '';
 	// Set bar color
 	barcolor = getString("barfillcolor.code.printout")
@@ -24,7 +24,7 @@ function calculate() {
 	else {
 		barcolor = ', fill=I("#FF9999")'; // Defauklt bar color
 	}
-    // Set border color
+        // Set border color
 	bordercolor = getString("barbordercolor.code.printout");
 	if (bordercolor != '') {
 		bordercolor = ', colour=I(' + bordercolor + ')';
@@ -35,7 +35,7 @@ function calculate() {
 	if (getBoolean("grouped")) {
 		groups = getList("groups");
 		groupsname = getList("groups.shortname");
-		fill = ', fill=' + groupsname.join('.');
+		fill = ', aes(fill=' + groupsname.join('.') + ')';
 		if (getBoolean("cumulative") || getString("position")==='faceted') {
 			facet = ' + facet_grid(' + groupsname.join('.') + '~.)';
 		}
@@ -44,7 +44,7 @@ function calculate() {
 		}
 		barcolor = '';
 	}
-    // Filter
+        // Filter
 	echo(getString("filter_embed.code.calculate"));
 	// Prepare data
 	if (getBoolean("grouped")) {
@@ -57,20 +57,20 @@ function calculate() {
 		echo('df <- frequencyTable(' + data + ', ' + quote(variablename) + ')\n');
 	}
 	// Set frequency type
-	y = ', Frec.Abs.';
+	y = 'Frec.Abs.';
 	if (getBoolean("relative")) {
-		y = ', Frec.Rel.';
-		ylab = ', ylab="Frecuencia relativa"';
+		y = 'Frec.Rel.';
+		ylab = ', y="Frecuencia relativa"';
 		if (getBoolean("grouped") && getString("position")==='stack' ) {
 			echo('df <- transform(df,Frec.Rel.=Frec.Abs./sum(Frec.Abs.))\n');
 		}
 	}
 	if (getBoolean("cumulative")) {
-		y = ', Frec.Abs.Acum.';
-		ylab = ', ylab="Frecuencia acumulada"';
+		y = 'Frec.Abs.Acum.';
+		ylab = ', y="Frecuencia acumulada"';
 		if (getBoolean("relative")){
-			y = ', Frec.Rel.Acum.';
-			ylab = ', ylab="Frecuencia relativa acumulada"';
+			y = 'Frec.Rel.Acum.';
+			ylab = ', y="Frecuencia relativa acumulada"';
 		}
 	}
 }
@@ -96,8 +96,9 @@ function doPrintout(full) {
 		echo ('rk.graph.on()\n');
 	}
 	// Plot
-	echo('try ({\n');
-	echo('p<-qplot(' +  variablename + y + ', data=df, geom="bar", stat="identity"' + fill + barcolor + bordercolor + position + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
+	echo('try ({\n');       
+        echo('p<-ggplot(data=df, aes(x=' +  variablename + ', y=' + y + ')) +  geom_bar(stat="identity"' + fill + barcolor + bordercolor + position + ') + labs(' + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
+        
 	if (getBoolean("polygon")) {
 		if (getBoolean("cumulative")) {
 			echo('p <- p + geom_step(aes(group=1))\n');

@@ -3,8 +3,8 @@
 <document namespace="rkTeaching">
 	<about 
 		name="rk.Teaching"
-		shortinfo="RKWard GUI that introduces some utilities for teaching Statistic."
-		longinfo="RKWard GUI that introduces some utilities for teaching Statistic. This plugin is specially designed for using in introductory courses of Statistic."
+		shortinfo="RKWard GUI that introduces some utilities for teaching Statistics."
+		longinfo="RKWard GUI that introduces some utilities for teaching Statistics. This plugin is specially designed to use it in introductory courses of Statistics."
 		version="0.01"
 		releasedate="2013-06-01"
 		url="http://rkward.sf.net"

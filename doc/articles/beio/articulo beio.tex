@@ -61,11 +61,10 @@
 }
 \author{Alfredo Sánchez Alberca\\
 Departamento de Matemática Aplicada y Estadística \\
-Universidad San Pablo CEU\\
+Universidad CEU San Pablo\\
 asalber@ceu.es}
-\date{27 de diciembre de 2014%
-\vspace*{-0.8cm}%
-} \maketitle
+\date{}
+\maketitle
 
 \begin{abstract}
 This article presents  a new package for R named RKTeaching, developed at the San Pablo CEU University to facilitate the learning of
@@ -89,10 +88,10 @@ En las últimas décadas se ha desarrollado multitud de software específico par
 Estadística a todas las áreas de las Ciencias Experimentales de una manera generalizada.
 Este software ha permitido que, incluso profesionales no expertos en Estadística, puedan aplicar procedimientos estadísticos en sus análisis
 de datos e investigaciones de manera sencilla.
-De este modo, la docencia de la Estadística en nuestros días ineludiblemente va acompañada de la enseñanza del manejo de algún programa de
-análisis de datos que permita a los usuarios abstraerse de los tediosos cálculos y centrarse en el análisis de los resultados.
+De este modo, la docencia de la Estadística en nuestros días, ineludiblemente, va acompañada de la enseñanza del manejo
+de algún programa de análisis de datos que permita a los usuarios abstraerse de los tediosos cálculos y centrarse en el análisis de los resultados.
 
-En la última década, en la  Universidad San Pablo CEU se han utilizado programas de análisis de datos como
+En la última década, en la  Universidad CEU San Pablo se han utilizado programas de análisis de datos como
 Excel\footnote{\url{http://office.microsoft.com/es-es/excel/}}, Statgraphics\footnote{\url{http://www.statgraphics.net/}} o
 SPSS\footnote{\url{http://www-01.ibm.com/software/es/analytics/spss/}} para la docencia de la Estadística en titulaciones de Ciencias de la
 Salud como Medicina, Farmacia, Psicología, Fisioterapia, Enfermería, Óptica y Nutrición. 
@@ -103,7 +102,7 @@ bastante fácil de manejar para análisis de datos sencillos, pero no incorpora 
 \item[ Statgraphics] es un programa bastante pedagógico relativamente fácil de aprender a usar, por lo que está muy extendido en el ámbito
 universitario, pero muy poco en el ámbito hospitalario.
 \item[SPSS] es posiblemente el programa más extendido en el ámbito hospitalario y en general en las ciencias biosanitarias por su potencia
-para realizar casi cualquier tipo de análisis, ya que incorporar su propio lenguaje de programación. 
+para realizar casi cualquier tipo de análisis, ya que incorpora su propio lenguaje de programación. 
 Su contrapartida es que tiene una mayor dificultad de aprendizaje.
 \end{description}
 Sin embargo, todos estos programas tienen el serio inconveniente de que no son software libre, lo que supone, en primer lugar, que hay que
@@ -111,15 +110,16 @@ pagar por su uso, lo que es un serio inconveniente para que los alumnos puedan a
 tiene un precio prohibitivo para pequeños usuarios.
 Y en segundo lugar, no permiten acceder al código fuente, por lo que no son fácilmente adaptables a las necesidades docentes.
 
-Por tal motivo, en el 2008 el departamento de Matemáticas de la Universidad San Pablo CEU se planteó la introducción del software libre en
-la enseñanza de la Estadística.
+Por tal motivo, en el 2008 el departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo se
+planteó la introducción del software libre en la enseñanza de la Estadística.
 En aquella época, el software libre de análisis de datos más extendido y con más proyección era R\footnote{\url{http://www.r-project.org/}}
 [R Development Core Team (2001)] por lo que se decidió empezar a usarlo en las clases prácticas de Estadística de las titulaciones de
 Farmacia y Medicina.
 
 R es una implementación de código abierto del lenguaje de análisis de datos S.
 Al ser, en el fondo, un lenguaje de programación especialmente pensado para el tratamiento y análisis de datos, es fácilmente ampliable
-mediante nuevas funciones y procedimientos que suelen distribuirse en forma de paquetes también de código abierto. 
+mediante nuevas funciones y procedimientos que suelen distribuirse, también, en forma de paquetes de código
+abierto.
 En esta tarea de desarrollo y mantenimiento está involucrada una enorme comunidad de programadores en todo el mundo. 
 A finales de julio de 2014 el repositorio Comprehensive R Archive Network (CRAN) disponía de casi 4000
 paquetes\footnote{\url{http://cran.r-project.org/web/packages/}} que implementan los procedimientos estadísticos más habituales para el
@@ -139,13 +139,14 @@ Las principales características que requeríamos para una interfaz gráfica de 
 fácilmente configurable y ampliable para adaptarla a cualquier necesidad.
 Con estos criterios en mente, la evaluación de las distintas interfaces gráficas nos llevó a
 RKWard\footnote{\url{http://rkward.sourceforge.net/}}.
-RKWard es una interfaz gráfica para R desarrollada por Thomas Friedrichsmeier [Rödiger S., et al. (2012)]
+RKWard es una interfaz gráfica para R desarrollada por Thomas Friedrichsmeier (Rödiger S., et al. ,2012)
 que tiene las siguientes características:
 \begin{enumerate}
 \item Es software libre y por tanto permite acceder al código fuente para modificarlo y adaptarlo a cualquier necesidad. 
 \item Es multiplataforma (existen versiones para Unix/GNU Linux, Windows y Mac).
 \item Está basado en las librerías KDE y Qt que aportan una representación gráfica más moderna y homogénea.
-\item Dispone de menús y cuadros de diálogos para realizar los análisis de datos más habituales sin necesidad de conocer el lenguaje R.
+\item Dispone de menús y cuadros de diálogos para realizar los análisis de datos más habituales sin necesidad de conocer
+el lenguaje R, tal y como se aprecia en la figura~\ref{g:RKWard_entrada_datos}.
 \item La interfaz es transparente para el lenguaje R, es decir, el usuario puede ver si lo desea el código R asociado a los
 menús y las opciones de los cuadros de diálogos seleccionados.
 Esto puede ayudar a los usuarios que quieren aprender el lenguaje R a comprender
@@ -155,8 +156,8 @@ de diálogo o automatizando los análisis.
 su propia consola de ejecución y depuración. 
 \item La salida de los análisis es en formato html, lo cual permite aplicar un formato mucho más rico a los resultados de los análisis, así
 como insertar gráficos de forma sencilla y poder visualizarlo en cualquier navegador web. 
-\item Es fácilmente ampliable mediante un sistema de plugins que permiten añadir menús y cuadros de diálogo con nuevos procedimientos
-estadísticos. 
+\item Es fácilmente ampliable mediante un sistema de plugins (complementos) que permiten añadir menús y cuadros de
+diálogo con nuevos procedimientos estadísticos. 
 \end{enumerate}
 
 Es precisamente esta última característica la que nos hizo decantarnos por RKWard frente a otras interfaces gráficas quizá más extendidas
@@ -164,7 +165,7 @@ como podría ser RStudio. La creación de plugins es relativamente sencilla ya q
 esencia, un plugin de RKWard se compone de tres ficheros:
 un fichero XML que describe los componentes que configuran el cuadro de diálogo (botones, cuadros de selección, cuadros de entrada de texto,
 etc), un fichero con código javascript que se encarga de generar el código de R correspondiente a las opciones seleccionadas en el cuadro de
-diálogo, y un fichero de ayuda opcional en formato html [Friedrichsmeier T. y Michalke M. (2011)].
+diálogo, y un fichero de ayuda opcional en formato html (Friedrichsmeier T. y Michalke M., 2011).
 
 \begin{figure}[htp]
 \begin{center}
@@ -175,7 +176,7 @@ diálogo, y un fichero de ayuda opcional en formato html [Friedrichsmeier T. y M
 \end{figure}
 
 \section{El paquete RKTeaching}
-Aprovechando la modularidad de RKWard, en la Universidad San Pablo CEU hemos desarrollado un paquete para R llamado
+Aprovechando la modularidad de RKWard, en la Universidad CEU San Pablo hemos desarrollado un paquete para R llamado
 RKTeaching\footnote{\url{http://aprendeconalf.es/rkteaching}} que es a la vez un plugin para RKWard.
 Dado que el objetivo era construir una interfaz gráfica de usuario amigable, que permitiera a los alumnos utilizar R para realizar sus
 análisis incluso de manera más sencilla que con programas como SPSS o Statgraphics utilizados hasta entonces, los principios que han guiado
@@ -203,13 +204,32 @@ opciones comunes de los gráficos.
 las distintas opciones que debe seleccionar para realizar cada análisis.
 De este modo, si algún usuario duda ante la información requerida por un cuadro de diálogo, puede solicitar ayuda al asistente, que no sólo
 le informará de para qué sirve el procedimiento seleccionado, sino que le guiará paso a paso en cada una de las decisiones requeridas en el
-procedimiento. (fig \ref{g:asistente})
+procedimiento. (ver figura \ref{g:asistente})
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=\textwidth]{img/asistente.png}
-  \caption{Cuadros del diálogo del asistente para realizar el test T para la comparación de poblaciones independientes.}
-  \label{g:asistente}
+\begin{tabular}{lc}
+\Large 1 & \raisebox{-0.5\height}{\includegraphics[width=0.9\textwidth]{img/asistente1.png}}\\
+\Large 2 & \raisebox{-0.5\height}{\includegraphics[width=0.9\textwidth]{img/asistente2.png}}\\
+\end{tabular}
+\caption{Secuencia de cuadros del diálogo del asistente para realizar el test T para la comparación de medias de dos
+poblaciones independientes. (continúa\ldots)}
+\label{g:asistente}
+\end{center}
+\end{figure}
+
+\addtocounter{figure}{-1}
+
+\begin{figure}[htp]
+\begin{center}
+\begin{tabular}{lc}
+\Large 3 & \raisebox{-0.5\height}{\includegraphics[width=0.9\textwidth]{img/asistente3.png}}\\
+\Large 4 & \raisebox{-0.5\height}{\includegraphics[width=0.9\textwidth]{img/asistente4.png}}\\
+\Large 5 & \raisebox{-0.5\height}{\includegraphics[width=0.9\textwidth]{img/asistente5.png}}\\
+\end{tabular}
+\caption{(\ldots continúa) Secuencia de cuadros del diálogo del asistente para realizar el test T para la comparación de
+medias de dos poblaciones independientes.}
+\label{g:asistente}
 \end{center}
 \end{figure}
 
@@ -220,9 +240,10 @@ Por defecto, los procedimientos estadísticos implementados no muestran los deta
 Este comportamiento es el apropiado en la mayor parte de los análisis que se realizan en casos reales, donde los detalles de cálculo no
 aportan información significativa a la hora de interpretar los resultados o sacar conclusiones.
 Sin embargo, para alumnos que están aprendiendo por primera vez los fundamentos teóricos de un determinado procedimiento o test estadístico,
-el plugin da la posibilidad en algunos cuadros de diálogo de mostrar los detalles de cálculo y las fórmulas usadas para facilitar su
-comprensión.
-Esto permite, entre otras cosas, que un alumno que está realizando los cálculos a mano, pueda chequear si lo está haciendo bien o no. (fig.\ref{g:calculo_detallado}) 
+el plugin da la posibilidad, en algunos cuadros de diálogo, de mostrar los detalles de cálculo y las fórmulas usadas
+para facilitar su comprensión.
+Esto permite, entre otras cosas, que un alumno que está realizando los cálculos a mano, pueda chequear si lo está
+haciendo bien o no. (ver figura~\ref{g:calculo_detallado})
 
 \begin{figure}[htp]
 \begin{center}
@@ -244,7 +265,7 @@ En el anexo \ref{menus_rkteaching} se muestran los menús que incorpora la versi
 
 \section{Uso del paquete RKTeaching en la enseñanza de Bioestadística}
 El paquete RKTeaching se ha utilizado durante los últimos cinco años para impartir las prácticas de Bioestadística en las titulaciones de
-grado en Farmacia y Medicina de la Universidad San Pablo CEU. 
+grado en Farmacia y Medicina de la Universidad CEU San Pablo. 
 Para ello se ha elaborado el libro electrónico Bioestadística Aplicada con R y RKTeaching [Sánchez-Alberca A. (2014)] donde se pone
 de manifiesto cómo el paquete da soporte más que suficiente a un curso básico de Estadística Aplicada a las Ciencias Biosanitarias, con
 multitud de ejemplos prácticos desarrollados paso a paso. 
@@ -259,43 +280,43 @@ Universidad Complutense, la Universidad Carlos III y la Universidad Rey Juan Car
 En casi todos los casos se han interesado por el
 paquete como sustituto a SPSS en las prácticas de Estadística de distintas asignaturas.
 
-Finalmente, el paquete también se ha utilizado en un curso en línea abierto masivo (MOOC) de Bioestadística impartido en la plataforma
-Miríada X [Sánchez-Alberca A. (2013)] del que se han realizado ya dos ediciones y está a punto de comenzar la tercera, sumando entre todas
-más de 5000 alumnos a lo largo de todo el mundo que ya han utilizado el paquete con una valoración por parte de los alumnos muy satisfactoria.
+Finalmente, el paquete también se ha utilizado en un curso en línea abierto masivo (MOOC) de Bioestadística impartido en
+la plataforma Miríada X [Sánchez-Alberca A. (2013)]. Se han realizado ya tres ediciones de este curso con más de 5000
+alumnos de todo el mundo que ya han utilizado el paquete con una valoración por parte de los alumnos muy satisfactoria.
 
-Finalmente el paquete fue presentado en 2013 mediante una comunicación oral en el congreso Use R!, que es la conferencia internacional de
-usuarios de R más importante del mundo. 
+Finalmente, el paquete fue presentado en 2013 mediante una comunicación oral en el congreso Use R!, que es la
+conferencia internacional de usuarios de R más importante del mundo. 
   
 
-\section{Compartativa docente de RKTeaching con SPSS}
+\section{Comparativa docente de RKTeaching con SPSS}
 Puesto que el principal objetivo que nos marcamos al desarrollar este paquete era introducir el software libre, y en particular R, en la
 docencia de Estadística con una curva de aprendizaje igual o incluso más suave que la del software utilizado hasta entonces, que
 fundamentalmente era SPSS, se realizó un estudio comparativo de la facilidad de uso y el tiempo de aprendizaje entre RKTeaching y SPSS.
 
 En el estudio se tomó una muestra de 40 alumnos de medicina que habían aprobado el curso básico de estadística pero nunca habían manejado R
 con el paquete RKTeaching ni SPSS. 
-Los alumnos recibieron una pequeña clase introductoria sobre la introducción de datos con cada uno de los
+Los alumnos recibieron una pequeña clase introductoria sobre la entrada de datos con cada uno de los
 programas y a continuación se les pidió que realizasen una serie de ejercicios con ambos programas.
 Los ejercicios consistieron en introducir los datos de una muestra, dibujar un histograma, calcular varios estadísticos descriptivos,
 calcular un modelo de regresión lineal y dibujarlo, calcular una probabilidad de una variable normal y hacer un contraste de hipótesis de
 comparación de medias.
 
-Para que el orden de los programas no influyese, los alumnos se dividieron aleatoriamente en dos grupos de 20 alumnos, de manera que los
-primeros empezaron con RKTeaching y luego con SPSS y los segundos al revés.
-Al final se midió el tiempo que tardaron en hacer la tarea con cada programa y también se les pidió que hicieran una valoración sobre la
-facilidad de uso de cada programa.
-Las variables medidas fueron: Tiempo de realización de la tarea con rkTeaching (en min), tiempo de realización de la tarea con SPSS (en
-min), facilidad de uso de RKTeaching (escala discreta de 1=más difícil a 5=más fácil) y facilidad de uso de SPSS (escala discreta de 1=más
-difícil a 5=más fácil).
+Para que el orden de los programas no influyese, los alumnos se dividieron aleatoriamente en dos grupos de 20 alumnos,
+de manera que los primeros empezaron con RKTeaching y luego con SPSS y los segundos al revés.
+Al final, se midió el tiempo que tardaron en hacer la tarea con cada programa y también se les pidió que hicieran una
+valoración sobre la facilidad de uso de cada uno de ellos.
+Las variables medidas fueron: Tiempo de realización de la tarea con RKTeaching (en min), tiempo de realización de la
+tarea con SPSS (en min), facilidad de uso de RKTeaching (escala discreta de 1=más difícil a 5=más fácil) y facilidad de
+uso de SPSS (escala discreta de 1=más difícil a 5=más fácil).
 
 La comparativa de los tiempos de aprendizaje mostró que el tiempo de aprendizaje de SPSS fue significativamente mayor que el tiempo de
-aprendizaje con RKTeaching (fig.\ref{g:tiempo_aprendizaje}) con un p-valor  $4.8\cdot 10^{-17}$ y un intervalo de confianza del 95\% para
-diferencia de medias $(9.06, \infty)$, lo que indica que el tiempo medio para realizar las tareas con SPSS fue al menos 9 minutos mayor que el de
-rkTeaching, lo que supone una reducción del tiempo de al menos un 17\%.
+aprendizaje con RKTeaching (ver figura~\ref{g:tiempo_aprendizaje}) con un p-valor  $4.8\cdot 10^{-17}$ y un intervalo de
+confianza del 95\% para diferencia de medias $(9.06, \infty)$, lo que indica que el tiempo medio para realizar las tareas con SPSS fue al menos 9 minutos mayor que el de
+RKTeaching, lo que supone una reducción del tiempo de al menos un 17\%.
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=\textwidth]{img/histograma_tiempo_aprendizaje.png}
+  \includegraphics[width=0.8\textwidth]{img/histograma_tiempo_aprendizaje.png}
   \caption{Comparativa del tiempo requerido para realizar los ejercicios del experimento con SPSS y con RKTeaching. Como se aprecia la
   distribución de tiempos con RKTeaching es claramente inferior a la de SPSS.}
   \label{g:tiempo_aprendizaje}
@@ -309,7 +330,7 @@ de al menos un 10\%.
 
 \begin{figure}[htp]
 \begin{center}
-  \includegraphics[width=\textwidth]{img/diagrama_barras_facilidad_uso.png}
+  \includegraphics[width=0.8\textwidth]{img/diagrama_barras_facilidad_uso.png}
   \caption{Comparativa de la facilidad de uso de SPSS y RKTeaching. Como se
   aprecia la distribución de la puntuación de facilidad de uso de RKTeaching es claramente superior a la de SPSS.}
   \label{g:facilidad_uso}
@@ -317,23 +338,44 @@ de al menos un 10\%.
 \end{figure}
 
 \section{Conclusiones y trabajo futuro}
-Con el objetivo de introducir el uso del software libre, en concreto R, en la enseñanza de la estadística se ha desarrollado el paquete
-RKTeaching que incorpora a la interfaz gráfica de usuario RKWard nuevos menús y cuadros de diálogo para desarrollar los procedimientos
-estadísticos de un curso básico de Estadística de forma sencilla e intuitiva, sin necesidad de conocer el lenguaje de programación de R.
-El paquete RKTeaching se ha utilizado con éxito para impartir las prácticas de Estadística en las titulaciones de Medicina, Farmacia y
-Psicología en la Universidad San Pablo CEU y en otras universidades, además de para impartir un curso en línea abierto masivo.
-Para valorar la facilidad de uso de RKTeaching frente al SPSS, que era el software utilizado hasta el momento, se realizó un
-experimento que reveló que el aprendizaje con RKTeaching por parte de los alumnos es más rápido e intuitivo que con SPSS.
+Con el objetivo de introducir el uso del software libre, en concreto R, en la enseñanza de la estadística se ha
+desarrollado el paquete RKTeaching. Este paquete incorpora a la interfaz gráfica de usuario RKWard nuevos menús y
+cuadros de diálogo para desarrollar los procedimientos estadísticos de un curso básico de Estadística, de forma sencilla
+e intuitiva, sin necesidad de conocer el lenguaje de programación de R.
+El paquete RKTeaching se ha utilizado con éxito para impartir las prácticas de Estadística en las titulaciones de
+Medicina, Farmacia y Psicología en la Universidad CEU San Pablo y en otras universidades, y también para impartir un
+curso en línea abierto masivo.
+Para valorar la facilidad de uso de RKTeaching frente al SPSS, que era el software utilizado hasta el momento, se
+realizó un experimento que reveló que el aprendizaje con RKTeaching por parte de los alumnos es más rápido e intuitivo
+que con SPSS.
 
 Como trabajo futuro se plantea incorporar cuadros de diálogos para análisis más complejos como el análisis multivariante y mejorar aún más
 la interpretación de los resultados de los análisis. 
 También se ha empezado a desarrollar un módulo para la creación de ejercicios y prácticas personalizadas que permita la generación de datos
-personalizados para cada alumno y automatice la corrección de los ejercicios planteados sobre esos datos. 
+propios para cada alumno y automatice la corrección de los ejercicios planteados sobre esos datos. 
+
+\begin{thebibliography}{9}
+\bibitem{friedrichsmeier2011introduction} Friedrichsmeier T. y Michalke M. (2011). Introduction to Writting Plugins for RKWard. En:
+\url{http://rkward.sourceforge.net/documents/devel/-plugins/index.html} (accedido 26 de diciembre de 2014).
+
+\bibitem{R2001} R Development Core Team (2001). \emph{R: A Language and Environment for Statistical Computing}. Viena: R Foundation for
+Statistical Computing.
+
+\bibitem{Rödiger2012comprehensive} Rödiger S., Friedrichsmeier T., Kapat P. y Michalke M. (2012). RKWard: A Comprehensive Graphical
+User Interface and Integrated Development Environment for Statistical Analysis with R. \emph{Journal of Statistical Software},
+\textbf{49(9)}, 1-34.
+
+\bibitem{sanchez2013curso} Sánchez-Alberca A. (2013). Curso Práctico de Bioestadística con R. Plataforma Miríada X. En:
+\url{https://www.miriadax.net/web/curso-practico-bioestadistica-r-3edicion} (accedido 26 de diciembre de 2014).
+
+\bibitem{sanchez2014bioestadistica} Sánchez-Alberca A. (2014). Bioestadística Aplicada con R y RKTeaching. En
+\url{http://aprendeconalf.es/estadistica/bioestadistica-rkteaching} (accedido 26 de diciembre de 2014).
+\end{thebibliography}
 
 \appendix
-\section*{Anexos}
+\section*{Anexo}
 
-\section{Menús y procedimientos estadísticos del paquete RKTeaching}\label{menus_rkteaching}
+\section*{Menús y procedimientos estadísticos del paquete RKTeaching}\label{menus_rkteaching}
 A continuación se presenta la lista de menús y los correspondientes procedimientos estadísticos que incorpora paquete RKTeaching en su
 versión 1.2.
 Estos menús cuelgan de un nuevo menú \textsf{Teaching} que aparece en la barra de menús principal de RKWard tras instalar el paquete.
@@ -545,37 +587,21 @@ dibujar su función de probabilidad o de distribución.
 
 \item[Simulaciones] Simulaciones interactivas de varias leyes. 
 \begin{itemize}
-\item{Ley de los casos raros} Realiza una simulación de la aproximación de una distribución Binomial mediante una distribución de Poisson
-permitiendo que el usuario varíe los parámetros de la Binomial. 
-\litem{Teorema central del límite} Realiza una simulación del teorema central del límite generando varias variables con distribuciones
-fijadas por el usuario y dibujando la distribución de la suma.
+\litem{Ley de los casos raros} Realiza una simulación de la aproximación de una distribución Binomial mediante una
+distribución de Poisson permitiendo que el usuario varíe los parámetros de la Binomial. 
+\litem{Teorema central del límite} Realiza una simulación del Teorema Central del Límite generando varias variables con
+distribuciones fijadas por el usuario y dibujando la distribución de la suma.
 \litem{Precisión de un intervalo de confianza} Muestra un gráfico que refleja cómo varía la precisión de un intervalo de confianza a medida
 que cambiamos el tamaño de la muestra o el nivel de confianza del intervalo. 
 \end{itemize}
 \end{description}
 
-\begin{thebibliography}{9}
-\bibitem{R2001} R Development Core Team (2001). \emph{R: A Language and Environment for Statistical Computing}. Viena: R Foundation for
-Statistical Computing.
-
-\bibitem{friedrichsmeier2011introduction} Friedrichsmeier T. y Michalke M. (2011). Introduction to Writting Plugins for RKWard. En:
-\url{http://rkward.sourceforge.net/documents/devel/-plugins/index.html} (accedido 26 de diciembre de 2014).
-
-\bibitem{Rödiger2012comprehensive} Rödiger S., Friedrichsmeier T., Kapat P. y Michalke M. (2012). RKWard: A Comprehensive Graphical
-User Interface and Integrated Development Environment for Statistical Analysis with R. \emph{Journal of Statistical Software},
-\textbf{49(9)}, 1-34.
-
-\bibitem{sanchez2014bioestadistica} Sánchez-Alberca A. (2014). Bioestadística Aplicada con R y RKTeaching. En
-\url{http://aprendeconalf.es/estadistica/bioestadistica-rkteaching} (accedido 26 de diciembre de 2014).
-
-\bibitem{sanchez2013curso} Sánchez-Alberca A. (2013). Curso Práctico de Bioestadística con R. Plataforma Miríada X. En:
-\url{https://www.miriadax.net/web/curso-practico-bioestadistica-r-3edicion} (accedido 26 de diciembre de 2014).
 
 \subsection*{Acerca de los autores}%
 
-\textbf{Alfredo Sánchez Alberca} es profesor de Matemáticas en el Departamento de Matemática Aplicada y Estadística de la Universidad San
-Pablo CEU de Madrid. Es también miembro de la Unidad de Bioestadística de la Universidad San Pablo CEU donde ha dirigido multitud de estudios
-clínicos y epidemiológicos. Sus principales áreas de investación son la Estadística Aplicada y la Inteligencia Artificial, así como la
-docencia de Matemáticas y Estadística. 
+\textbf{Alfredo Sánchez Alberca} es profesor de Matemáticas en el Departamento de Matemática Aplicada y Estadística de la Universidad
+CEU San Pablo de Madrid. Es también miembro de la Unidad de Bioestadística de la Universidad CEU San Pablo donde ha
+dirigido multitud de estudios clínicos y epidemiológicos. Sus principales áreas de investigación son la Estadística
+Aplicada y la Inteligencia Artificial, así como la docencia de Matemáticas y Estadística. 
 
 \end{document}
