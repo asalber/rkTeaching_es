@@ -98,7 +98,14 @@ Innovation in teaching Statistics\\ with R and rk.Teaching\vspace{-3mm}}  %Para 
 \maketitle
 
 \begin{abstract}
-En este artículo se pretende dar una visión de ....... todo un resumen del artículo.\\
+En los últimos años el departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo ha hecho una
+apuesta decidida por el uso del software libre, y en particular de R, en la docencia de Estadística. 
+Para ello se ha desarrollado el paquete \rkteaching{} con el objeto de superar las limitaciones de las interfaces
+gráficas de usuario de R existentes hasta la fecha y liberar a los alumnos de la necesidad de aprender a programar R. 
+
+En este artículo se presentan las principales características del paquete \rkteaching{} y se valora uso docente en las
+clases prácticas de Estadística tanto presenciales como no presenciales.
+
 \newline
 \noindent\textbf{Palabras Clave:} Estadística, Análisis de Datos, Docencia, R, \rkteaching.
 \newline
@@ -124,9 +131,10 @@ cálculos y centrarse en el análisis de los resultados.
 
 La Universidad CEU San Pablo es una de las pioneras en introducción del software estadístico en sus titulaciones. 
 Desde hace más de dos décadas se han utilizado diversos programas de análisis de datos como
-Excel\footnote{\url{http://office.microsoft.com/es-es/excel/}}, \statgraphics{}\footnote{\url{http://www.\statgraphics{}.net/}} o
-\spss{}\footnote{\url{http://www-01.ibm.com/software/es/analytics/\spss{}/}} para la docencia de la Estadística en titulaciones de Ciencias de la
-Salud como Medicina, Farmacia, Psicología, Fisioterapia, Enfermería, Óptica y Nutrición.
+Excel\footnote{\url{http://office.microsoft.com/es-es/excel/}},
+\statgraphics{}\footnote{\url{http://www.statgraphics.net/}} o
+\spss{}\footnote{\url{http://www-01.ibm.com/software/es/analytics/spss/}} para la docencia de la Estadística en
+titulaciones de Ciencias de la Salud como Medicina, Farmacia, Psicología, Fisioterapia, Enfermería, Óptica y Nutrición.
 
 Como es lógico, estos programas han ido mejorando a lo largo del tiempo y ofreciendo cada vez más posibilidades y
 facilidades para el usuario, por lo que poco a poco han ido adquiriendo más protagonismo en las clases de Estadística.
@@ -415,30 +423,69 @@ Al finalizar las prácticas los alumnos tienen que hacer una trabajo práctico f
 Antes de empezar a usar R y \rkteaching{} la corrección de este trabajo requería bastante tiempo a los profesores y
 habitualmente se detectaban bastantes casos de plagio.
 Ahora, sin embargo, la infraestructura que aporta R y \rkteaching{} nos ha permitido automatizar casi por completo tanto
-la elaboración como la corrección de este trabajo. 
-Para cada curso se desarrolla un plugin que se integra en \rkteaching{} que permite a los alumnos generar unos datos
-personalizados en función de su DNI, y una hoja de cálculo con un formulario en el que deben introducir las respuestas a
+la preparación como la corrección de este trabajo. 
+Para cada curso se desarrolla un complemento que se integra en \rkteaching{} que permite a los alumnos generar unos
+datos personalizados en función de su DNI, y una hoja de cálculo con un formulario en el que deben introducir las respuestas a
 las preguntas planteadas.
 Al finalizar el trabajo los alumnos suben la hoja de cálculo al campus virtual desde donde el profesor puede
 descargarla y corregirla automáticamente de nuevo haciendo uso de un programa corrector implementado también en R.
 Las notas y las hojas de cálculo corregidas se suben automáticamente de nuevo al campus virtual donde los alumnos pueden
 consultarlas, y todo en un tiempo récord. 
 
-En los dos últimos años, el paquete RKTeaching también ha empezado a utilizarse en otras universidades, entre las que se encuentra la
-Universidad Complutense, la Universidad Carlos III y la Universidad Rey Juan Carlos de Madrid.
+\subsection{Docencia no presencial}
+El paquete también se ha utilizado en varios cursos masivos abiertos en línea (MOOCs) de Bioestadística impartidos
+en la plataforma Miríada X \cite{sanchez2013curso}.
+
+\begin{figure}[htp]
+\begin{center}
+\href{https://youtu.be/BTFOsbzInZo}{\includegraphics[width=0.8\textwidth]{img/mooc.png}}
+\caption{Vídeo promocional del curso MOOC de Bioestadística aplicada con R y rk.Teaching.}
+\label{f:mooc}
+\end{center}
+\end{figure}
+
+Hasta la fecha más de 5000 alumnos de todo el mundo se han inscrito en estos cursos y más de un 20\% han conseguido
+terminarlos (un porcentaje por encima de la media en este tipo de cursos).
+Estos cursos han sido unos de los mejores valorados en la plataforma Miriada X y se han recibido multitud de notas de
+agradecimiento por parte de los inscritos que además pedían que se ampliase el curso con más contenidos. 
+De momento los cursos sólo cubren la Estadística Descriptiva y la Regresión, pero ya se está preparando otro curso más
+ambicioso de introducción a la investigación que cubre también la Estadística Inferencial. 
+
+En los dos últimos años, el paquete \rkteaching{} también ha empezado a utilizarse, tanto presencial como no
+presencialmente, en otras universidades entre las que se encuentra la Universidad Complutense, la Universidad Carlos III y la Universidad Rey Juan Carlos de Madrid.
 En casi todos los casos se han interesado por el paquete como sustituto a \spss{} en las prácticas de Estadística de
 distintas asignaturas.
 
-\subsection{Docencia no presencial}
-Finalmente, el paquete también se ha utilizado en un curso en línea abierto masivo (MOOC) de Bioestadística impartido en
-la plataforma Miríada X [Sánchez-Alberca A. (2013)]. Se han realizado ya tres ediciones de este curso con más de 5000
-alumnos de todo el mundo que ya han utilizado el paquete con una valoración por parte de los alumnos muy satisfactoria.
+Pero el interés por \rkteaching{} no sólo se limita al ámbito educativo, sino que hay multitud de usuarios e incluso
+empresas que tras conocer el software a través del MOOC han empezado a usarlo a nivel profesional. 
 
-Finalmente, el paquete fue presentado en 2013 mediante una comunicación oral en el congreso Use R!, que es la
-conferencia internacional de usuarios de R más importante del mundo. 
 
 \section{Conclusiones y futuras líneas de investigación}
 \label{s:conclusiones}
+El departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo ha sido uno de los pioneros en
+introducir el software de análisis de datos en la docencia de Estadística. 
+En los últimos años el departamento ha hecho una apuesta decidida por el software libre, y en particular por R, en las
+clases prácticas de Estadística. 
+Para facilitar el uso de R a los alumnos, se ha desarrollado el paquete \rkteaching{} que, sobre la base de la interfaz
+gráfica \rkward{}, proporciona menús y cuadros de diálogo amigables, sencillos e intuitivos para realizar los
+procedimientos estadísticos requeridos en los cursos de Estadística impartidos. 
+
+El paquete \rkteaching{} se ha utilizado durante los últimos seis años en las clases prácticas de Estadística de las
+titulaciones de Farmacia y Medicina y también en varios cursos masivos en línea, con gran aceptación por parte de los
+alumnos y una valoración muy favorable de los docentes.
+Con esto se elimina la principal reticencia existente hasta ahora al uso de R en la docencia, que no era otra que la
+falta de una interfaz gráfica de usuario similar a las ofrecidas por el software propietario, y que no obligase a tener
+que programar en R.
+\rkward{} en combinación con \rkteaching{} se puede considerar ya una interfaz gráfica de usuario de R lo
+suficientemente madura para su uso en el ámbito de la docencia e incluso fuera de ella, llegando a superar incluso al
+software propietario, y en particular \spss{}, tanto en eficiencia como en facilidad de uso como ha quedado
+demostrado en varios experimentos realizados con los alumnos. 
+
+El desarrollo del paquete \rkteaching sigue activo y actualmente se está trabajando en la mejora de las interpretaciones
+de los resultados de los análisis y en incorporar procedimientos estadísticos más avanzados como algunas técnicas de
+análisis multivariante. 
+También se está desarrollando un nuevo curso MOOC de Estadística Inferencial para la introducción a la investigación
+biosanitaria. 
 
 \begin{thebibliography}{9}
 
