@@ -78,6 +78,7 @@ en la docencia de Estadística con R y rk.Teaching}}}
 \newcommand{\rkward}{\textsf{RKWard}}
 \newcommand{\spss}{\textsf{SPSS}}
 \newcommand{\statgraphics}{\textsf{Statgraphics}}
+\newcommand{\rcommander}{\textsf{R Commander}}
 
 
 \begin{document}
@@ -98,14 +99,13 @@ Innovation in teaching Statistics\\ with R and rk.Teaching\vspace{-3mm}}  %Para 
 \maketitle
 
 \begin{abstract}
-En los últimos años el departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo ha hecho una
+En los últimos años el Departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo ha hecho una
 apuesta decidida por el uso del software libre, y en particular de R, en la docencia de Estadística. 
 Para ello se ha desarrollado el paquete \rkteaching{} con el objeto de superar las limitaciones de las interfaces
 gráficas de usuario de R existentes hasta la fecha y liberar a los alumnos de la necesidad de aprender a programar R. 
 
 En este artículo se presentan las principales características del paquete \rkteaching{} y se valora uso docente en las
-clases prácticas de Estadística tanto presenciales como no presenciales.
-
+clases prácticas de Estadística tanto presenciales como no presenciales.\\
 \newline
 \noindent\textbf{Palabras Clave:} Estadística, Análisis de Datos, Docencia, R, \rkteaching.
 \newline
@@ -113,7 +113,13 @@ clases prácticas de Estadística tanto presenciales como no presenciales.
  \textbf{Abstract}
 \end{center}
 
-\vspace{1.2mm}A translation of the abstract in english.\\
+\vspace{1.2mm}In the last years the Department of Applied Mathematics and Statistics of the San Pablo CEU University has made a
+firm intent of using free software, R in particular, for teaching Statistics.
+For this reason we have developed the \rkteaching{} package in order to overcome the limitations of existing
+R graphical user interfaces and to free students of the technical and programming skills required to manage R.
+
+This article presents the main features of the package \rkteaching{} and evaluates its use in practical
+classes of both face-to-face and on-line Statistics courses.\\
 \newline
 \noindent\textbf{Keywords:} Statistics, Data Analysis, Teaching, R, \rkteaching.
 
@@ -131,7 +137,7 @@ cálculos y centrarse en el análisis de los resultados.
 
 La Universidad CEU San Pablo es una de las pioneras en introducción del software estadístico en sus titulaciones. 
 Desde hace más de dos décadas se han utilizado diversos programas de análisis de datos como
-Excel\footnote{\url{http://office.microsoft.com/es-es/excel/}},
+\textsf{Excel}\footnote{\url{http://office.microsoft.com/es-es/excel/}},
 \statgraphics{}\footnote{\url{http://www.statgraphics.net/}} o
 \spss{}\footnote{\url{http://www-01.ibm.com/software/es/analytics/spss/}} para la docencia de la Estadística en
 titulaciones de Ciencias de la Salud como Medicina, Farmacia, Psicología, Fisioterapia, Enfermería, Óptica y Nutrición.
@@ -146,7 +152,7 @@ Esto supone, en primer lugar, que los usuarios deben pagar una licencia para pod
 alumnos pueden afrontar, sobre todo en el caso de \spss{} que tiene un precio prohibitivo para pequeños usuarios.
 Y en segundo lugar, que no se puede acceder al código fuente, por lo que no pueden adaptarse a las necesidades docentes.
 
-Por tal motivo, el departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo se
+Por tal motivo, el Departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo se
 planteó en 2008 el cambio al software libre en la docencia de Estadística.
 Y así se empezó a utilizar R, que era el programa de análisis de datos libre más extendido en la comunidad
 científica, en las clases prácticas de Estadística de las titulaciones de Farmacia y Medicina.
@@ -166,11 +172,11 @@ datos más extendido entre la comunidad científica.
 
 Sin embargo, el principal inconveniente que presentaba R para su uso en la docencia era la falta de una interfaz
 gráfica de usuario (GUI) que evitase a los alumnos tener que usar la línea de comandos y, en definitiva, aprender a
-programar en R; algo sumamente útil, pero que tiene una de aprendizaje pronunciada. 
+programar en R; algo sumamente útil, pero que tiene una curva de aprendizaje pronunciada. 
 
 Así pues, el principal reto que nos marcamos fue el de conseguir una interfaz gráfica de usuario que le resultase a los
 alumnos al menos tan fácil de manejar como la de los otros programas que habían utilizado hasta entonces.
-Pero además lo suficiente versátil como para adaptarla a la visión que tenían los profesores del departamento de la
+Pero además, lo suficiente versátil como para adaptarla a la visión que tenían los profesores del departamento de la
 asignatura de Estadística y a las necesidades docentes en cada una de las titulaciones.
 
 En el resto del artículo se cuenta cómo se afrontó este reto mediante el uso de la interfaz gráfica \rkward{} y el
@@ -192,11 +198,11 @@ entonces eran aún muy primitivas y poco maduras.
 Las principales características que requeríamos para una interfaz gráfica de usuario era que fuese amigable,
 multiplataforma, configurable y ampliable para adaptarla a nuestras necesidades.
 
-En un primer momento se optó por \textsf{R Commander} \cite{fox2005r}, que fue la primera interfaz gráfica orientada a
+En un primer momento se optó por \rcommander{} \cite{fox2005r}, que fue la primera interfaz gráfica orientada a
 usuarios no expertos, multiplataforma y ampliable mediante un sistema de plugins.
-\textsf{R Commander} se utilizó durante dos años en las clases de Estadística de las titulaciones de Farmacia y
+\rcommander{} se utilizó durante dos años en las clases de Estadística de las titulaciones de Farmacia y
 Medicina.
-Sin embargo, \textsf{R Commander} no estaba a la altura de las interfaces gráficas mucho más maduras de \statgraphics{} o
+Sin embargo, \rcommander{} no estaba a la altura de las interfaces gráficas mucho más maduras de \statgraphics{} o
 \spss{}, por lo que a los alumnos les costó aceptar el cambio. 
 
 Mientras tanto, en 2002 Thomas Friedrichsmeier había comenzado el desarrollado de
@@ -204,12 +210,13 @@ Mientras tanto, en 2002 Thomas Friedrichsmeier había comenzado el desarrollado 
 código abierto basado en las librerías KDE y Qt, mucho más modernas y con un aspecto visual más homogéneo.
 Pero \rkward{} no era multiplataforma y sólo estaba disponible para sistemas Linux en un principio.
 No obstante, en 2010 se anuncia por fin la versión 0.5.5 de \rkward{} que ya era multiplataforma (disponible para
-Windows, Mac y Linux) y rápidamente se opta por empezar a usarla en lugar de \textsf{R Commander}.
+Windows, Mac y Linux) y rápidamente se opta por empezar a usarla en lugar de \rcommander{}.
+
 Poco después surgirá la interfaz \textsf{RStudio}\footnote{\url{https://www.rstudio.com/}}, que en estos últimos
 años se ha extendido con mucha más fuerza que \rkward{} convirtiéndose en la interfaz gráfica de usuario para R más
 utilizada incluso en el ámbito universitario.
 Sin embargo, la principal ventaja de \rkward{} frente a \textsf{RStudio}, y que hizo que nos decantásemos por esta
-primera, es que es fácilmente ampliable mediante un sistema de plugins (complementos) que permiten añadir menús y
+primera, es que es fácilmente ampliable mediante un sistema de complementos (plugins) que permiten añadir menús y
 cuadros de diálogo con nuevos procedimientos estadísticos \cite{friedrichsmeier2011introduction}, algo fundamental para
 nuestros propósitos ya que nos otorgaba la versatilidad que buscábamos para poder adaptar la herramienta a nuestras
 necesidades docentes.
@@ -251,9 +258,9 @@ para alumnos que están aprendiendo el uso de estos procedimientos.
 Al mismo tiempo las salidas de los procedimientos son bastante sintéticas y difíciles de interpretar para usuarios
 noveles. 
 
-Por tal motivo, aprovechando la modularidad de \rkward, se decidió crear un plugin específico para la docencia de
-Estadística que se adaptase más al perfil de usuario principiante de los alumnos universitarios que están aprendiendo
-Estadística y que facilitase su aprendizaje. 
+Por tal motivo, aprovechando la modularidad de \rkward, se decidió crear un complemento específico para la docencia de
+Estadística, que se adaptase más al perfil de usuario principiante de los alumnos universitarios que están aprendiendo
+Estadística, y que facilitase su aprendizaje. 
 Con esta idea surgió el paquete de R \rkteaching\footnote{\url{http://aprendeconalf.es/rkteaching}}.
 El objetivo que nos marcamos no sólo era desarrollar una interfaz gráfica de usuario amigable, que permitiera a los
 alumnos utilizar R para realizar sus análisis de forma similar a como lo hacían hasta entonces con \spss{} o \statgraphics{},
@@ -284,7 +291,7 @@ u opcionales están ocultos o no admiten la entrada de valores hasta que se acti
 Además, los campos de entrada de variables están configurados para impedir que se introduzcan variables de tipos no
 apropiados. 
 
-\item[Simplicidad] Por otro lado, los cuadros de diálogo han sido diseñados para ser lo más simple posibles,
+\item[Simplicidad] Por otro lado, los cuadros de diálogo han sido diseñados para ser lo más simples posible,
 eliminando las opciones más complejas que se han considerado prescindibles en los procedimientos estadísticos
 habituales, tal y como se muestra en la figura~\ref{f:dialogo-test-t}.
 
@@ -316,7 +323,7 @@ De este modo, si el usuario duda ante la información requerida por un cuadro de
 ayuda al asistente, que no sólo le informará del propósito del procedimiento estadístico seleccionado, sino que le
 guiará en cada una de las decisiones requeridas en el procedimiento.
 
-\item[Interpretación de resultados] Por último, pero no menos importante, las salidas tanto textuales como gráficas
+\item[Interpretación de resultados] Otra característica esencial es que las salidas tanto textuales como gráficas
 de los procedimientos estadísticos que ofrece \rkteaching{} han sido cuidadosamente diseñadas para facilitar al máximo
 la interpretación de los resultados. 
 Esta es, probablemente, la parte más crítica y que más dificultad supone para los alumnos, que muchas veces son
@@ -359,8 +366,8 @@ haciendo bien o no.
 Por otro lado, algunos procedimientos gráficos son interactivos, lo que permite que el alumno interactúe con el cuadro
 de diálogo cambiando algunas opciones al tiempo que ve los cambios que producen en la salida gráfica.
 De este modo, el alumno puede comprender más fácilmente el papel de la media y la desviación típica en la distribución
-normal al ver cómo cambia la forma de la campana de Gauss en una distribución normal al variar la media o la desviación
-típica; comprobar para qué valores de $n$ y $p$ se puede aproximar una distribución binomial $B(n,p)$ mediante una
+normal al ver cómo cambia la forma de la campana de Gauss al variar la media o la desviación
+típica; o comprobar para qué valores de $n$ y $p$ se puede aproximar una distribución binomial $B(n,p)$ mediante una
 distribución Poisson $P(np)$ aplicando la Ley de los casos raros, tal y como se muestra en la
 figura~\ref{f:ley-casos-raros}.
 
@@ -382,7 +389,7 @@ de frecuencias, hasta los test paramétricos y no paramétricos más comunes.
 Incluye además procedimientos para el cálculo de probabilidades que no suelen incluirse en el software comercial, y
 otros más específicos de Bioestadística como son los test diagnósticos. 
 Por motivos de espacio no se incluye la lista completa de procedimientos incluidos en el paquete pero el lector
-interesado puede obtenerla en \cite{asalber2016bringing} o en la propia página web del paquete
+interesado puede obtenerla en \cite{sanchez2015bringing} o en la propia página web del paquete
 \url{http://aprendeconalf.es/rkteaching}.
 
 Otra de las novedades de la última versión es que está disponible tanto en Castellano como en Inglés. 
@@ -407,13 +414,13 @@ Este libro cubre todos contenidos antes mencionados con multitud de ejemplos pr�
 Biosanitarias desarrollados paso a paso.
 
 En estos años, la valoración de las prácticas de Estadística ha aumentado considerablemente por parte de los alumnos,
-quienes agradecieron explícitamente el cambio experimentado con respecto a \textsf{R Commander}. 
-De hecho, a tras los dos primeros años de uso se hizo un experimento para comparar la facilidad de uso y la satisfacción
+quienes agradecieron explícitamente el cambio realizado con respecto a \rcommander{}. 
+De hecho, tras los dos primeros años de uso se hizo un experimento para comparar la facilidad de uso y la satisfacción
 de los alumnos con el nuevo software en comparación con \spss{}.
-Los resultados concluyeron una eficiencia de \rkteaching{} al menos un 17\% superior a \spss{} y una falicidad de uso al
+Los resultados concluyeron una eficiencia de \rkteaching{} al menos un 17\% superior a \spss{} y una facilidad de uso al
 menos un 10\% superior \cite{sanchez2011rkteaching}.
 
-La valoración de los docentes es si cabe más positiva aún ya que, gracias a la mayor eficiencia de \rkteaching{}, los
+La valoración de los docentes es más positiva aún, ya que, gracias a la mayor eficiencia de \rkteaching{}, los
 alumnos van más rápidos en la realización de las prácticas y asimilan mejor los contenidos. 
 Esto ha permitido añadir una práctica más de probabilidad a los contenidos del curso, y aún así realizar las prácticas
 más olgadamente que con el software anterior.
@@ -452,7 +459,8 @@ De momento los cursos sólo cubren la Estadística Descriptiva y la Regresión, 
 ambicioso de introducción a la investigación que cubre también la Estadística Inferencial. 
 
 En los dos últimos años, el paquete \rkteaching{} también ha empezado a utilizarse, tanto presencial como no
-presencialmente, en otras universidades entre las que se encuentra la Universidad Complutense, la Universidad Carlos III y la Universidad Rey Juan Carlos de Madrid.
+presencialmente, en otras universidades entre las que se encuentra la Universidad Complutense, la Universidad Carlos III
+y la Universidad Rey Juan Carlos de Madrid.
 En casi todos los casos se han interesado por el paquete como sustituto a \spss{} en las prácticas de Estadística de
 distintas asignaturas.
 
@@ -462,7 +470,7 @@ empresas que tras conocer el software a través del MOOC han empezado a usarlo a
 
 \section{Conclusiones y futuras líneas de investigación}
 \label{s:conclusiones}
-El departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo ha sido uno de los pioneros en
+El Departamento de Matemática Aplicada y Estadística de la Universidad CEU San Pablo ha sido uno de los pioneros en
 introducir el software de análisis de datos en la docencia de Estadística. 
 En los últimos años el departamento ha hecho una apuesta decidida por el software libre, y en particular por R, en las
 clases prácticas de Estadística. 
@@ -471,17 +479,17 @@ gráfica \rkward{}, proporciona menús y cuadros de diálogo amigables, sencillo
 procedimientos estadísticos requeridos en los cursos de Estadística impartidos. 
 
 El paquete \rkteaching{} se ha utilizado durante los últimos seis años en las clases prácticas de Estadística de las
-titulaciones de Farmacia y Medicina y también en varios cursos masivos en línea, con gran aceptación por parte de los
-alumnos y una valoración muy favorable de los docentes.
+titulaciones de Farmacia y Medicina, y también en varios cursos masivos abiertos en línea, con gran aceptación por parte
+de los alumnos y una valoración muy favorable de los docentes.
 Con esto se elimina la principal reticencia existente hasta ahora al uso de R en la docencia, que no era otra que la
 falta de una interfaz gráfica de usuario similar a las ofrecidas por el software propietario, y que no obligase a tener
 que programar en R.
 \rkward{} en combinación con \rkteaching{} se puede considerar ya una interfaz gráfica de usuario de R lo
 suficientemente madura para su uso en el ámbito de la docencia e incluso fuera de ella, llegando a superar incluso al
 software propietario, y en particular \spss{}, tanto en eficiencia como en facilidad de uso como ha quedado
-demostrado en varios experimentos realizados con los alumnos. 
+demostrado en varios experimentos realizados con alumnos. 
 
-El desarrollo del paquete \rkteaching sigue activo y actualmente se está trabajando en la mejora de las interpretaciones
+El desarrollo del paquete \rkteaching{} sigue activo y actualmente se está trabajando en la mejora de las interpretaciones
 de los resultados de los análisis y en incorporar procedimientos estadísticos más avanzados como algunas técnicas de
 análisis multivariante. 
 También se está desarrollando un nuevo curso MOOC de Estadística Inferencial para la introducción a la investigación
