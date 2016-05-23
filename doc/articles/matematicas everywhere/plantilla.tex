@@ -1,0 +1,330 @@
+\documentclass[a4paper,10pt,twoside]{article}
+
+\setlength{\parskip}{2mm}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{fancybox}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[pdftex]{graphicx} %Utilizarlo sólo si voy a compilar con pdftex y tengo imágenes pixeladas (no vectoriales) con las gráficas.
+\usepackage{cancel}
+\usepackage{fancyhdr}
+\usepackage{eurosym}
+\usepackage[dvips]{graphicx}%Utilizarlo para  cargar archivo de extensión *.eps (gráficos vectoriales)en el documento
+\DeclareGraphicsExtensions{.png,.pdf,.jpg}
+\usepackage{pstricks-add}%Utilizarlo para cargar código ps-tricks de geogebra por ejemplo (no usar con \usepackage[pdftex]{graphicx})
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+\usepackage{wrapfig}
+\usepackage{textcomp}
+\usepackage{nonfloat}%para poder poner notas al pie en los pies de Figuras o de Tablas
+                     %\begin{minipage}{\textwidth}
+                     %   \centering
+                     %   \begin{tabular}{|c|}
+                     %      \hline  Tabular stuff here \\ \hline
+                     %   \end{tabular}
+                     %   \tabcaption[Text of the caption (second example)]{Text of the caption (second example)\footnotemark}
+                     % \end{minipage}
+                     % \\[\intextsep]
+                     %\footnotetext{Text of the footnote (second example)}
+\usepackage{colortbl}%Para colores en tablas
+\usepackage{verbatim} %Para utilizar comentarios comentarios
+
+%Nueva geometría de la página, con respecto a la de por defecto
+\usepackage[text={14.7cm,22.6cm},centering]{geometry}
+\addtolength{\headsep}{-0.35cm}
+\addtolength{\footskip}{-0.3cm}
+\addtolength{\voffset}{0.6cm}%{-0.65cm}
+\addtolength{\hoffset}{-0.05cm}%{-0.65cm}
+
+
+%%%%% Para los encabezados y pies de Página
+\pagestyle{fancy}
+\lhead[\scriptsize{\textit{\href{mailto:mailautor@xxxx.es}{Nombre y Apellidos del/ los Autor/es}}}]{\scriptsize{\textit{Título del Artículo}}} % a completar por equipo editorial
+\chead{}
+\rhead[\scriptsize{\textit{Sección de la Revista}}]{\scriptsize{\textit{\href{mailto:mailautor@xxxx.es}{Nombre y Apellidos del Autor}}}} % a completar por equipo editorial
+\lfoot[\thepage \ \  |  \ \scriptsize{\textit{Revista ``Pensamiento Matemático''}}]{\scriptsize{\textit{Volumen X, Número X, Xxx'XX, ISSN 2174-0410}}}% a completar por equipo editorial
+\cfoot{}
+\rfoot[\scriptsize{\textit{Volumen X, Número X, Xxx'XX, ISSN 2174-0410}}]{\scriptsize{\textit{Revista ``Pensamiento Matemático''}}\ \ \ \normalsize{|} \   \thepage}
+%%%%% Fin de encabezados y pies de página
+
+%%%%% Genera los pies de Figuras y Tablas en itálicas y a tamaño footnote
+\usepackage[font={footnotesize,it}, format=plain, labelformat=simple, labelsep=period, center]{caption}
+\renewcommand\thefigure{\arabic{figure}} % Genera numeración X
+\renewcommand\thetable{\arabic{table}} % Genera numeración X
+
+\setcounter{page}{1}%para comenzar la numeración de las páginas en documentos. Dejar 1 por defecto.
+
+
+
+\begin{document}
+%Cambiar Palabra Cuadros por Tablas
+\renewcommand{\tablename}{Tabla} 
+
+\title{\vspace{-8mm}Sección de la Revista\\\vspace{4mm}
+Título del Artículo en castellano\\\vspace{4mm}
+Title of the Article in english\vspace{-3mm}}  %Para poner el título del artículo
+\author{\href{mailto:mailautor@xxxx.es}{Nombre y Apellidos del Autor}\\ \vspace{2mm} %pone el nombre del autor
+\scriptsize Revista de Investigación\\
+\small \href{http://www2.caminos.upm.es/Departamentos/matematicas/revistapm/}{\includegraphics[width=75.2mm]{logosrev.eps}}\\
+\scriptsize Volumen X, Número X, pp. xxx--yyy, ISSN 2174-0410\vspace{-2mm}\\ 
+\scriptsize Recepción: XX Xxx'XX; Aceptación: XX Xxx'XX} %xxx-yyy son las páginas inicial y final respectivamente
+\date{1 de octubre de 2012}
+%indispensable que al compilarlo se tenga en el mismo directorio raíz el archivo logomirinconbyn.eps que facilito en la descarga.
+\maketitle
+
+\begin{abstract}
+En este artículo se pretende dar una visión de ....... todo un resumen del artículo.\\
+\newline
+\noindent\textbf{Palabras Clave:} Palabra/s Clave/s 1, Palabra/s Clave/s 2, ... .
+\newline
+\begin{center}
+ \textbf{Abstract}
+\end{center}
+
+\vspace{1.2mm}A translation of the abstract in english.\\
+\newline
+\noindent\textbf{Keywords:} Keyword/s 1, Keyword/s 2,... .
+
+\end{abstract}
+
+\section{Título 1}
+\subsection{Título 1.1}
+\subsubsection{Título 1.1.1.}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum. 
+
+%Nuevo párrafo. Para identar el mismo dejar un renglón en blanco de separación entre éste y el anterior párrafo
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum. 
+
+\begin{quote}
+\emph{Aquí irán las citas textuales. En cursiva.}
+\end{quote}
+
+%La siguiente expresión es para las ecuaciones, que irán centradas. Si fuera necesario numerarlas utilizar \begin{equation}\end{equation} 
+$$e^x=+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\ldots,\quad -\infty<x<\infty$$
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.
+
+
+
+
+
+\section{Titulo 2}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.
+
+%\begin{comment}
+\def\svgwidth{15.05cm}
+\vspace*{-4mm}\hspace*{-7mm}\input{lorem.eps_tex}
+%\end{comment}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.
+
+\section{Título 3}
+%Para figuras a la derecha del párrafo en cuestión. Ver paquete Figure de Latex.
+\begin{wrapfigure}{r}{100mm}
+\vspace{-4mm}%{-8mm}
+    \includegraphics[width=100mm]{logosrev.eps}
+\vspace*{-6mm}\figcaption[]{Pie de Imagen.\footnotemark}\label{figura1}
+\vspace*{-3mm}
+\end{wrapfigure}
+\footnotetext{ \href{http://www.google.es}
+%por si es necesario hacer una referencia mediante pie de página a la imagen en cuestión. Si no
+%es necesario quitar footnotemark y footnotetext.
+{http://www.google.es}}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.
+
+\begin{figure}[htbp!]
+ \includegraphics[width=0.7\textwidth]{logosrev.eps}
+\figcaption[]{Pie de Imagen.\footnotemark}
+\end{figure}
+\footnotetext{ \href{http://www.google.es}
+%por si es necesario hacer una referencia mediante pie de página a la imagen en cuestión. Si no
+%es necesario quitar footnotemark y footnotetext.
+{http://www.google.es}}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+officia deserunt mollit anim id est laborum.
+
+%Ejemplo de Tabla
+\begin{table}[htbp!]
+\caption{Título de la tabla en parte superior de la misma.\label{patrones}}
+ \setlength{\tabcolsep}{0.63mm}
+\begin{tabular}{lccccccccccccccccccccl}
+\hline
+ &  &  & \multicolumn{19}{c}{} Posible longitud de la clave (o factores)  \\ \cline{4-22}
+Secuencia & Repetición & Separación & 2 &3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20  \\ \hline
+HISIEKA & 2 & 112 & \checkmark &  & \checkmark &  &  & \textcolor{red}{\checkmark} & \checkmark &  &  &  &  &  & \checkmark &  & \checkmark &  &  &  &  \\ \hline
+    &      & 21  &  & \checkmark &  &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \cline{3-22}
+    &      & 35    &  &  &  & \checkmark &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \cline{3-22}
+    &      & 329    &  &  &  &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \cline{3-22}
+    &      & 364    & \checkmark &  & \checkmark &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  & \checkmark & \checkmark &  &  &  &  &  &  \\ \cline{3-22}
+TIQ & 5    & 385    &  &  &  & \checkmark &  & \textcolor{red}{\checkmark} &  &  &  & \checkmark &  &  &  &  &  &  &  &  &  \\ \cline{3-22}
+    &      & 399    &  & \checkmark &  &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  &  &  &  &  &  & \checkmark &  \\ \cline{3-22}
+    &      & 420    & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \textcolor{red}{\checkmark} &  &  & \checkmark &  & \checkmark &  & \checkmark & \checkmark &  &  &  &  & \checkmark \\ \cline{3-22}
+    &      & 728    & \checkmark &  & \checkmark &  &  & \textcolor{red}{\checkmark} & \checkmark &  & \checkmark &  &  & \checkmark & \checkmark &  &  &  &  &  &  \\ \cline{3-22}
+    &      & 749    &  &  &  &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+DRG & 2    & 329 &  &  &  &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+VOXSE & 2 & 266 & \checkmark &  &  &  &  & \textcolor{red}{\checkmark} &  &  &  &  &  &  & \checkmark &  &  &  &  & \checkmark &  \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{thebibliography}{9}
+
+
+\bibitem{ash}
+\textsc{Ash}, M. G.,
+\textit{Forced migration and scientific change in the Nazi era}, 
+Emigration of Mathematicians and Transmission of Mathematics: Historical Lessons and Consequences of the Third Reich,
+Mathematisches Forschungsinstitut Oberwolfach, Nº 51, 2011.
+
+\begin{comment}% Ejemplo de como irá compilada la bibliografía.
+\bibitem{butzer}
+\textsc{Butzer}, P., \textsc{Volkmann}, L.,
+\textit{Otto Blumenthal (1876-1944) in retrospect}, 
+Journal of Approximation Theory, Nº 138, pp. 1--36, november 2005.
+
+\bibitem{fernandez}
+\textsc{Fernández}, S.,
+\textit{La Criptografía Clásica}, Revista SIGMA, Nº 24, pp. 119--141, abril 2004.
+
+\bibitem{garron}
+\textsc{Garron}, L., 
+\textit{National Socialism and the Death of German Mathematics}, 
+Stanford-in-Berlin Program course ``Science, Medicine, and Technology in Nazi Germany'',
+december 2010.
+
+\bibitem{hodges}
+\textsc{Hodges}, A., 
+\textit{The Military Use of Alan Turing}, 
+Mathematics and War, pp. 312--325, Bernhelm Booss Bavnbek and Jens H\o{}yrup Editors, Birkhäuser,
+2003.
+
+\bibitem{lahoz}
+\textsc{Lahoz-Beltrá}, R., 
+\textit{Turing: Del primer ordenador a la inteligencia artificial}, 
+Colección: La matemática y sus personajes, Nº 24, 1ª Edición. Nívola, Madrid, 2005.
+
+\bibitem{maclane}
+\textsc{MacLane}, S., 
+\textit{Mathematics at Göttingen under the Nazis},
+Notices of AMS, Vol. 42, Nº 10, october 1995.
+
+\bibitem{miller}
+\textsc{Miller}, A. R., 
+\textit{The Criptographic Mathematics of Enigma},
+Center for Crypologic History, 1996.
+
+\bibitem{oberdiek}
+\textsc{Oberdiek}, A., 
+\textit{Göttinger Universitäts-Bauten. Die Baugeschichte der
+Georg-August-Univeristät}, Verlag Göttinger Tageblatt \textsc{GMBH \& CO. KG}, p. 46, 1989.
+
+\bibitem{remmert}
+\textsc{Remmert}, V. R., 
+\textit{Mathematical Publishing in the Third Reich: Springer-Verlag and the Deutsche Mathematiker-Vereinigung},
+The Mathematical Intelligencer, Springer-Verlag, New York, 2000.
+
+\bibitem{segal}
+\textsc{Segal}, S. L., 
+\textit{Mathematicians under Nazis},
+Princeton University Press, 2003.
+
+\bibitem{segal2}
+------,
+\textit{Mathematics and German Politics: The National Socialist Experience},
+Historia Mathematica, Nº 13, pp. 118--135, 1986.
+
+\bibitem{siegmund}
+\textsc{Siegmund-Schultze}, R., 
+\textit{Mathematicians fleeing from Nazi Germany. Individual Fates and Global Impact},
+Princeton University Press, 2009.
+
+\bibitem{siegmund2}
+------,
+\textit{Emigration of mathematicians and of mathematics: facts and open questions}, 
+Emigration of Mathematicians and Transmission of Mathematics: Historical Lessons and Consequences of the Third Reich,
+Mathematisches Forschungsinstitut Oberwolfach, Nº 51, 2011.
+
+\bibitem{singh}
+\textsc{Singh}, S., 
+\textit{Los Códigos Secretos: El arte y la ciencia de la criptografía, desde el antiguo Egipto a la era Internet}, Editorial Debate, 2000.  
+
+\bibitem{smith}
+\textsc{Smith}, D., \textsc{Simmons}, C., 
+\textit{The Effect of the Nazi Regime on the World of Mathematics and Individual Mathematicians},
+University of Central Oklahoma, 2010.
+
+\bibitem{tobies}
+\textsc{Tobies}, R.,
+\textit{Expelled female mathematicians in exile: working conditions, and the impact on pure and applied mathematics}, 
+Emigration of Mathematicians and Transmission of Mathematics: Historical Lessons and Consequences of the Third Reich,
+Mathematisches Forschungsinstitut Oberwolfach, Nº 51, 2011.
+\end{comment}
+
+\end{thebibliography}
+
+
+
+\vspace{1cm}
+\noindent\textbf{Sobre el/los autor/es:}\\
+\emph{Nombre:} Nombre de autor 1\\
+\emph{Correo electrónico:} \href{mailto:autor1@xxxxxx.es}{autor1@xxxxxx.es}\\
+\emph{Institución:} A la que pertenece (instituto, universidad, etc).
+
+\noindent\emph{Nombre:} Nombre de autor 2\\
+\emph{Correo electrónico:} \href{mailto:autor2@xxxxxx.es}{autor2@xxxxxx.es}\\
+\emph{Institución:} A la que pertenece (instituto, universidad, etc).\\
+
+
+
+\end{document}

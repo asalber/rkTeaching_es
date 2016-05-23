@@ -12,19 +12,19 @@
 
 	<dialog label="Test T para la comparación de medias de dos poblaciones independientes">
 		<tabbook>
-			<tab id="tab_variables" label="Seleccionar variables">
+			<tab id="tab_variables" label="Variables">
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="variable" label="Comparar" source="selector" types="number" required="true" />
+						<varslot id="variable" label="Comparar las medias de" source="selector" types="number" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
 
-						<frame id="levels_frame" label="Definir poblaciones">
+						<frame id="levels_frame" label="Poblaciones a comparar">
 							<row>
 								<embed id="levels" component="rkward::level_select" />
 								<column>
-									<valueslot id="population1" label="Población 1" source="levels.selector" />
-									<valueslot id="population2" label="Población 2" source="levels.selector" />
+									<valueslot id="population1" label="Comparar población" source="levels.selector" />
+									<valueslot id="population2" label="con población" source="levels.selector" />
 								</column>
 							</row>
 						</frame>
@@ -53,7 +53,7 @@
 		</tabbook>
 	</dialog>
 
-	<wizard label="Test T para la comparación de medias de dos poblaciones independientes">
+	<wizard label="Asistente del test T para la comparación de medias de dos poblaciones independientes">
 		<page>
 			<text>
 				<p>
@@ -62,8 +62,11 @@
 						de confianza.</b>
 				</p>
 				<p>
-					<b>Para aplicar este procedimiento, la variable dependiente debe ser numérica y la variable independiente debe ser un factor con dos
-						categorías que definan las poblaciones a comparar.</b>
+					Para aplicar este procedimiento, la variable dependiente debe ser numérica y la variable independiente debe ser un factor con dos
+                                                categorías que definan las poblaciones a comparar.
+				</p>
+                                <p>
+					Es preciso además que las muestras de ambas poblaciones sean grandes (tamaño muestral mayor o igual que 30), o en caso de ser pequeñas (tamaño muesral entre 10 y 30) que las poblaciones sean normales. Para muestras muy pequeñas (tamaño muestral menor de 10) se recomienda aplicar el test no paramétrico de la U de Mann Whitney. 
 				</p>
 			</text>
 		</page>
@@ -71,16 +74,15 @@
 			<text>
 				<p>
 					Seleccionar la variable numérica cuyas medias se desea comparar en el campo
-					<b>Comparar</b>
-					.
+					<b>Comparar las medias de</b>.
 				</p>
 				<p>
 					Después, seleccionar el factor con las categorías a comparar en el campo
-					<b>Según</b>
-					.
+					<b>Según</b>.
 				</p>
 				<p>A continuación hay que definir las dos poblaciones a comparar seleccionando los valores de las categorías correspondientes a cada una
-					de las dos poblaciones.</p>
+					de las dos poblaciones.
+                                </p>
 			</text>
 			<copy id="row_vars" />
 			<stretch />
