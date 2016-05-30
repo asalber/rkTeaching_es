@@ -99,4 +99,4 @@ License: GPL (>= 3)
 LazyLoad: yes
 LazyData: yes
 Suggests:
-    testthat
+    testthat 
