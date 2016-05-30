@@ -2,7 +2,7 @@
 var variable, factor, pairwise;
 
 function preprocess () {
-	echo('require(TeachingExtras)\n');
+	echo('require(rk.Teaching)\n');
 }
 
 function calculate () {

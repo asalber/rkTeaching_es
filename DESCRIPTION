@@ -2,7 +2,7 @@ Encoding: UTF-8
 Package: rk.Teaching
 Type: Package
 Title: A RKWard plugin with basic utilities for teaching statistics
-Version: 1.0
+Version: 1.1.0
 Date: 2013-10-01
 Author: Alfredo Sánchez Alberca <asalber@ceu.es>
 Maintainer: Alfredo Sánchez Alberca <asalber@ceu.es>

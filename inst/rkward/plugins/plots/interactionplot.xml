@@ -17,7 +17,7 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="variable" label="Variable respuesta" multi="false" types="number" source="selector" required="true" />
+						<varslot id="variable" label="Variable respuesta" multi="false" types="numeric" source="selector" required="true" />
 						<varslot id="x" label="Grupos eje X" multi="false" types="factor" source="selector" required="true" />
 						<varslot id="trace" label="Grupos de trazado" multi="false" types="factor" source="selector" required="true" />
 						<embed id="filter_embed" component="rkTeaching::filter_embed" />

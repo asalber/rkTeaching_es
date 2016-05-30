@@ -15,7 +15,7 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="variable" label="Comparar" source="selector" types="number" required="true" />
+						<varslot id="variable" label="Comparar" source="selector" types="numeric" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
 						<frame id="samples_frame" label="Definir poblaciones" checkable="true" checked="false" value="0">
 							<input id="sample1" label="Población 1" required="true" />

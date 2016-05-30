@@ -12,4 +12,3 @@ aplicación de los procedimientos para usuarios que están
 aprendiendo Estadística sin necesidad de trabajar con
 comandos de R.
 }
-

@@ -15,8 +15,8 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables"/>
 					<column>
-						<varslot id="x" label="Comparar" source="selector" types="number" required="true" />
-						<varslot id="y" label="con" source="selector" types="number" required="true" />
+						<varslot id="x" label="Comparar" source="selector" types="numeric" required="true" />
+						<varslot id="y" label="con" source="selector" types="numeric" required="true" />
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<stretch />
 					</column>

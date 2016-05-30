@@ -17,7 +17,7 @@
 				<varselector id="selector" label="Seleccionar variables" />
 			</column>
 			<column>
-				<varslot id="variable" label="Variable(s):" types="number" source="selector" required="true" />
+				<varslot id="variable" label="Variable(s):" types="numeric" source="selector" required="true" />
 				<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
 				<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" multi="true" required="true" />
 				<embed id="filter_embed" component="rkTeaching::filter_embed" />

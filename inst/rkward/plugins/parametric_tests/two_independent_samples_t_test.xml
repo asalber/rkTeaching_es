@@ -16,7 +16,7 @@
 				<row id="row_vars">
 					<varselector id="selector" label="Seleccionar variables" />
 					<column>
-						<varslot id="variable" label="Comparar las medias de" source="selector" types="number" required="true" />
+						<varslot id="variable" label="Comparar las medias de" source="selector" types="numeric" required="true" />
 						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
 
 						<frame id="levels_frame" label="Poblaciones a comparar">
