@@ -6,7 +6,9 @@
 	<help file="one_sample_t_test.rkh"/>
 	
 	<logic>
-		<connect client="filter_embed.variable" governor="variable.available" />
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
+	  <connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 	
 	<dialog label="Test T para la media de una población">
@@ -16,6 +18,8 @@
 					<varselector id="selector" label="Seleccionar variable" />
 					<column>
 						<varslot id="variable" label="Variable" source="selector" types="numeric" required="true" />
+						<checkbox id="grouped" label="Test por grupos" checked="false" />
+						<varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" required="true" multi="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<stretch />
 					</column>
@@ -30,11 +34,13 @@
 							<option value="greater" label="Unilateral mayor (&gt;)" />
 							<option value="less" label="Unilateral menor (&lt;)" />
 						</radio>
+						<stretch />
 					</column>
 					<column>
 						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
 							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
 						</frame>
+						<stretch />
 					</column>
 				</row>
 			</tab>

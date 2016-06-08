@@ -8,7 +8,7 @@
 	<logic>
 		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
 		<connect client="groups.visible" governor="grouped_mode"/>
-		<connect client="grouping.enabled" governor="grouped_mode"/>
+		<connect client="filter_embed.variable" governor="variables.available" />
 	</logic>
 	
 	<dialog label="Estadística Descriptiva" >
@@ -19,11 +19,10 @@
 					<column>
 						<varslot id="variables" label="Variable(s)" source="selector" types="numeric" required="true" multi="true" />
 						<checkbox id="grouped" label="Estadísticas por grupos" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" required="true" multi="true"/>
-						<frame id="filter_frame" label="Filtro" checkable="true" checked="false" value_unckecked="0" value="1">
-							<input id="filter" label="Condición de selección" />
-						</frame>
+						<varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" required="true" multi="true"/>
+						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
 						<checkbox id="narm" label="Omitir valores desconocidos" value_unchecked="0" value="1" checked="true"/>
+						<stretch />
 					</column>
 				</row>
 			</tab>

@@ -1,10 +1,10 @@
 // author: Alfredo Sánchez Alberca (asalber@ceu.es)
 
 // globals
-var x, y, confint, conflevel, hypothesis;
+var x, y, xname, yname, data, groups, groupsname, confint, conflevel, hypothesis;
 
 function preprocess () {
-
+  echo('require(rk.Teaching)\n');
 }
 
 function calculate () {
@@ -13,14 +13,25 @@ function calculate () {
 	// Load variables
 	x = getString("x");
 	y = getString("y");
+	xname = getString("x.shortname");
+	yname = getString("y.shortname")
+	data = x.split('[[')[0];
 	confint = getBoolean("confint_frame.checked");
 	conflevel = getString("conflevel");
 	hypothesis = getString("hypothesis");
 	var options = ', alternative="' + hypothesis + '", paired=TRUE';
 	if (confint) {
 		options += ", conf.level=" + conflevel;
-	}	
-	echo('result <- t.test (' + x + ', ' + y + options + ')\n');
+	}
+  // Grouped mode
+	if (getBoolean("grouped")) {
+		groups = getList("groups");
+		groupsname = getList("groups.shortname");
+		echo(data + ' <- transform(' + data + ', .groups=interaction(' + data + '[,c(' + groupsname.map(quote) + ')]))\n');
+		echo('result <- dlply(' + data + ', ".groups", function(df) t.test(df[["' + xname + '"]], df[["' + yname + '"]]' + options + '))\n');
+	} else {
+	  echo('result <- t.test (' + x + ', ' + y + options + ')\n');
+	}
 }
 
 function printout () {
@@ -39,17 +50,44 @@ function printout () {
 		echo (', "Nivel de confianza del intervalo" = "' + conflevel + '"');
 	}
 	echo('))\n');
-	echo ('rk.results (list(');
-	echo ('"Variable" = paste(rk.get.short.name(' + x + '), "-", rk.get.short.name(' + y + ')), ');
-	echo ('"Diferencia media estimada" = result$estimate, ');
-	echo ('"Grados de libertad" = result$parameter, ');
-	echo ('"Estad&iacute;stico t" = result$statistic, ');
-	echo ('"p-valor" = result$p.value');
-	if (confint) {
-		echo (', "Nivel de confianza %" = (100 * attr(result$conf.int, "conf.level"))');
-		echo (', "Intervalo de confianza para la media de la diferencia" = result$conf.int');
+  // Grouped mode
+	if (getBoolean("grouped")){
+		echo('for (i in 1:length(result)){\n');
+		echo('\t rk.header(paste("Grupo ' + groupsname.join('.') + ' = ", names(result)[i]),level=3)\n');
+		echo ('rk.results (list(');
+		echo ('"Variable" = paste(rk.get.short.name(' + x + '), "-", rk.get.short.name(' + y + ')), ');
+	  echo ('"Diferencia media estimada" = result[[i]]$estimate, ');
+	  echo ('"Grados de libertad" = result[[i]]$parameter, ');
+	  echo ('"Estad&iacute;stico t" = result[[i]]$statistic, ');
+	  echo ('"p-valor" = result[[i]]$p.value');
+	  if (confint) {
+		  echo (', "Nivel de confianza %" = (100 * attr(result[[i]]$conf.int, "conf.level"))');
+		  echo (', "Intervalo de confianza para la media de la diferencia" = result[[i]]$conf.int');
+		  echo ('))\n');
+	    echo ('rk.interpretation.paired.t.test(result[[i]])\n');
+	  } else {
+	    echo ('))\n');
+	    echo ('rk.interpretation.paired.t.test(result[[i]], conf.int=FALSE)\n');
+	  }
+	  echo('}\n');
+	// Non-grouped mode
+	} else {
+		echo ('rk.results (list(');
+	  echo ('"Variable" = paste(rk.get.short.name(' + x + '), "-", rk.get.short.name(' + y + ')), ');
+	  echo ('"Diferencia media estimada" = result$estimate, ');
+	  echo ('"Grados de libertad" = result$parameter, ');
+	  echo ('"Estad&iacute;stico t" = result$statistic, ');
+	  echo ('"p-valor" = result$p.value');
+	  if (confint) {
+		  echo (', "Nivel de confianza %" = (100 * attr(result$conf.int, "conf.level"))');
+		  echo (', "Intervalo de confianza para la media de la diferencia" = result$conf.int');
+		  echo ('))\n');
+		  echo ('rk.interpretation.paired.t.test(result)\n');
+	  } else {
+		  echo ('))\n');  
+		  echo ('rk.interpretation.paired.t.test(result, conf.int=FALSE)\n');
+	  }
 	}
-	echo ('))\n');
 }
 
 

@@ -7,6 +7,8 @@ function preprocess(){
 }
 
 function calculate () {
+  // Filter
+  echo(getString("filter_embed.code.calculate"));	
 	// Load variables
 	var narm = "na.rm=FALSE";
 	if (getBoolean("narm")) narm = "na.rm=TRUE";
@@ -14,12 +16,7 @@ function calculate () {
 	varnames = getList("variables.shortname");
 	data = vars.join();
 	data = data.split('[[')[0];
-	// Filter
-	if (getBoolean("filter_frame.checked")){
-		filter = getString("filter");
-		echo (data + ' <- subset(' + data + ', subset=' + filter + ')\n');
-	}
-	
+  
 	statistics = getString("min") + getString("max") + getString("mean") + getString("median") + getString("mode") + getString("variance") + getString("unvariance") + getString("stdev") + getString("sd") + getString("cv") + getString("range") + getString("iqrange") + getString("skewness") + getString("kurtosis");
 	if (getBoolean("quartile") || getString("quantiles")!=''){
 		statistics += "'quantiles',";

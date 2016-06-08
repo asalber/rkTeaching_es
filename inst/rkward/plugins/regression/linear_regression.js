@@ -7,7 +7,7 @@ function preprocess(){
 }
 
 function calculate () {
-    // Filter
+  // Filter
 	echo(getString("filter_embed.code.calculate"));
 	// Load variables
 	y = getString("y");
