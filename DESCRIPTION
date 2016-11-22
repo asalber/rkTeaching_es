@@ -11,6 +11,7 @@ Depends:
     utils,
     graphics,
     grDevices,
+    rkward (>= 0.6.1),
     ggplot2,
     plyr,
     R2HTML,
