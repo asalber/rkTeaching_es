@@ -1,0 +1,59 @@
+---
+title: Innovación en la docencia de Estadística<br/>con R y rk.Teaching
+author: Alfredo Sánchez Alberca (asalber@ceu.es)
+date: 18 de Junio de 2016 <br/> Castro Urdiales <br/> <img src="img/logo_matematicas_everywhere.png"/>
+output: 
+  revealjs::revealjs_presentation:
+    theme: night   # black - white - league - sky - beige - simple - serif - blood - night - moon - solarized
+    transition: convex   # none - fade - slide - convex - concave - zoom - page
+    center: true
+    self_contained: false
+#    lib_path: lib
+    reveal_options:
+#      slideNumber: true
+      previewLinks: true
+---
+
+## La apuesta por el conocimiento y el software libre
+
+<img src="img/rizoma.png"/>
+
+## La curva de aprendizaje de R
+
+<img src="img/curva_aprendizaje_r.jpg" width="800px"/>
+
+## La interfaz gráfica RKWard
+
+[![Logo RKWard](img/logo_rkward.png)](https://rkward.kde.org/)
+
+- Software libre
+- Multiplataforma
+- Fácilmente ampliable mediante un sistema de plugins
+- Basada en librerías gráficas Qt
+- Salida en formato html
+- Orientada tanto a usuarios que no conocen R como a programadores
+
+## El paquete [rk.Teaching](http://aprendeconalf.es/rkteaching/)
+
+###Principios de diseño
+
+- Intuición 
+- Simplicidad
+- Asistencia al usuario
+- Interpretación de resultados
+- Pedagogía
+
+## Experiencia docente presencial
+
+[![Prácticas Bioestadística](img/practicas_bioestadistica.png)](http://aprendeconalf.es/estadistica/rkteaching/bioestadistica/)
+
+## Experiencia docente no presencial
+
+[![Curso MiriadaX](img/curso_miriadax.png)](https://miriadax.net/web/curso-practico-bioestadistica-r-3edicion)
+
+
+## Más info http://aprendeconalf.es
+
+
+
+

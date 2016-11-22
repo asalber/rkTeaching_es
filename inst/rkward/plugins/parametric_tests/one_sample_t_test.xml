@@ -26,23 +26,16 @@
 				</row>
 			</tab>
 			<tab id="tab_settings" label="Opciones de contraste">
-				<row>
-					<column id="hypotesis_col">
-						<input id="mean" label="Valor de la media según la hipótesis nula" size="small" initial="0" />
-						<radio id="hypothesis" label="Hipotesis alternativa">
-							<option value="two.sided" label="Bilateral (&#8800;)" />
-							<option value="greater" label="Unilateral mayor (&gt;)" />
-							<option value="less" label="Unilateral menor (&lt;)" />
-						</radio>
-						<stretch />
-					</column>
-					<column>
-						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
-							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
-						</frame>
-						<stretch />
-					</column>
-				</row>
+				<input id="mean" label="Valor de la media según la hipótesis nula" size="small" initial="0" />
+				<radio id="hypothesis" label="Hipótesis alternativa">
+					<option value="two.sided" label="Bilateral (&#8800;)" />
+					<option value="greater" label="Unilateral mayor (&gt;)" />
+					<option value="less" label="Unilateral menor (&lt;)" />
+				</radio>
+				<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1" >
+					<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
+				</frame>
+				<stretch />
 			</tab>
 		</tabbook>
 	</dialog>

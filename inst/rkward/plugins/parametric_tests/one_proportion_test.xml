@@ -9,10 +9,14 @@
 		<convert id="manual_checked" sources="manual.checked" mode="equals" standard="1" />
 		<connect client="variable.enabled" governor="manual_checked.not" />
 		<connect client="selector.enabled" governor="manual_checked.not" />
-		<connect client="category.enabled" governor="manual_checked.not" />
+		<connect client="levels_frame.enabled" governor="manual_checked.not" />
 		<connect client="freq.enabled" governor="manual_checked" />
 		<connect client="n.enabled" governor="manual_checked" />
 		<connect client="filter_embed.enabled" governor="manual_checked.not" />		
+		<connect governor="variable.available" client="levels.variable" />
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.enabled" governor="manual_checked.not" />
+		<connect client="groups.visible" governor="grouped_mode"/>
 		<connect client="filter_embed.variable" governor="variable.available" />
 	</logic>
 	
@@ -23,39 +27,41 @@
 					<varselector id="selector" label="Seleccionar variable" />
 					<column>
 						<varslot id="variable" label="Variable" source="selector" required="true" />	
-						<input id="category" label="Categoría" size="small" required="true"/>
+						<frame id="levels_frame" label="Categoría">
+							<row>
+								<embed id="levels" component="rkward::level_select" />
+								<valueslot id="category" label="Proporción de" source="levels.selector" required="true"/>
+							</row>
+						</frame>
+						<checkbox id="grouped" label="Test por grupos" checked="false" />
+						<varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" required="true" multi="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed"/>						
-						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unchecked="0">		
-							<input id="freq" label="Frecuencia muestral" size="small" required="true" />
-							<input id="n" label="Tamaño muestral" size="small" required="true"/>
+						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unchecked="0">
+						  <row>
+							  <input id="freq" label="Frecuencia muestral" size="small" required="true" />
+							  <input id="n" label="Tamaño muestral" size="small" required="true"/>
+							</row>
 						</frame>
 						<stretch />
 					</column>
 				</row>
 			</tab>
 			<tab id="tab_settings" label="Opciones de contraste">
-				<row>
-					<column id="hypotesis_col">
-						<input id="proportion" label="Valor de la proporción según la hiótesis nula" size="small" initial="0.5" />
-						<radio id="hypothesis" label="Hipotesis alternativa">
-							<option value="two.sided" label="Bilateral" />
-							<option value="greater" label="Unilateral mayor" />
-							<option value="less" label="Unilateral menor" />
-						</radio>
-						<radio id="type" label="Tipo de prueba">
-							<option value="normal_correction" label="Aproximación normal con correción por continuidad" />
-							<option value="normal" label="Aproximación normal sin corrección por continuidad" />
-							<option value="binomial" label="Binomial exacto" />
-						</radio>
-						<stretch />
-					</column>
-					<column>
-						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
-							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
-						</frame>
-						<stretch />
-					</column>
-				</row>
+				<input id="proportion" label="Valor de la proporción según la hiótesis nula" size="small" initial="0.5" />
+				<radio id="hypothesis" label="Hipotesis alternativa">
+					<option value="two.sided" label="Bilateral" />
+					<option value="greater" label="Unilateral mayor" />
+					<option value="less" label="Unilateral menor" />
+				</radio>
+				<radio id="type" label="Tipo de prueba">
+					<option value="normal_correction" label="Aproximación normal con correción por continuidad" />
+					<option value="normal" label="Aproximación normal sin corrección por continuidad" />
+					<option value="binomial" label="Binomial exacto" />
+				</radio>
+				<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
+					<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
+				</frame>
+				<stretch />
 			</tab>
 		</tabbook>
 	</dialog>

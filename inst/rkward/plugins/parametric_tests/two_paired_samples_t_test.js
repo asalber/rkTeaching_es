@@ -30,6 +30,7 @@ function calculate () {
 		echo(data + ' <- transform(' + data + ', .groups=interaction(' + data + '[,c(' + groupsname.map(quote) + ')]))\n');
 		echo('result <- dlply(' + data + ', ".groups", function(df) t.test(df[["' + xname + '"]], df[["' + yname + '"]]' + options + '))\n');
 	} else {
+	// Non-grouped mode
 	  echo('result <- t.test (' + x + ', ' + y + options + ')\n');
 	}
 }
@@ -70,8 +71,8 @@ function printout () {
 	    echo ('rk.interpretation.paired.t.test(result[[i]], conf.int=FALSE)\n');
 	  }
 	  echo('}\n');
-	// Non-grouped mode
 	} else {
+	  // Non-grouped mode
 		echo ('rk.results (list(');
 	  echo ('"Variable" = paste(rk.get.short.name(' + x + '), "-", rk.get.short.name(' + y + ')), ');
 	  echo ('"Diferencia media estimada" = result$estimate, ');

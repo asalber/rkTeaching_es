@@ -7,6 +7,8 @@
 
 	<logic>
 		<connect governor="factor.available" client="levels.variable" />
+		<convert id="grouped_mode" mode="equals" sources="grouped.state" standard="1"/>
+		<connect client="groups.visible" governor="grouped_mode"/>
 		<connect governor="variable.available" client="filter_embed.variable" />
 	</logic>
 
@@ -28,27 +30,23 @@
 								</column>
 							</row>
 						</frame>
+						<checkbox id="grouped" label="Test por grupos" checked="false" />
+						<varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" required="true" multi="true"/>
 						<embed id="filter_embed" component="rkTeaching::filter_embed" />
 						<stretch />
 					</column>
 				</row>
 			</tab>
 			<tab id="tab_settings" label="Opciones de contraste">
-				<row>
-					<column id="hypotesis_col">
-						<radio id="hypothesis" label="Hipotesis alternativa">
-							<option value="two.sided" label="Bilateral (&#8800;)" />
-							<option value="greater" label="Unilateral mayor (&gt;)" />
-							<option value="less" label="Unilateral menor (&lt;)" />
-						</radio>
-						<stretch />
-					</column>
-					<column>
-						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
-							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
-						</frame>
-					</column>
-				</row>
+				<radio id="hypothesis" label="Hipótesis alternativa">
+					<option value="two.sided" label="Bilateral (&#8800;)" />
+					<option value="greater" label="Unilateral mayor (&gt;)" />
+					<option value="less" label="Unilateral menor (&lt;)" />
+				</radio>
+				<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1" >
+					<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
+				</frame>
+				<stretch />
 			</tab>
 		</tabbook>
 	</dialog>
