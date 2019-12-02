@@ -14,8 +14,8 @@ function calculate () {
 	rules = getString("rules");
 	rules = rules.replace(/\n/gi,'; ');
 	echo ('.GlobalEnv$' + newvar + ' <- car::recode(' + variable + ", '" + rules + "'");
-	if (getBoolean("asfactor")) echo (', as.factor.result=TRUE');
-	else echo (', as.factor.result=FALSE');
+	if (getBoolean("asfactor")) echo (', as.factor=TRUE');
+	else echo (', as.factor=FALSE');
 	echo (')\n');	
 }
 
