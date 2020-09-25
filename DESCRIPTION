@@ -1,17 +1,18 @@
 Encoding: UTF-8
-Package: rk.Teaching
+Package: rkTeaching
 Type: Package
-Title: A RKWard plugin with basic utilities for teaching statistics
+Title: Un paquete de RKWard con utilidades básicas para el aprendizaje de Estadística
 Version: 1.3.0
-Date: 2013-10-01
+Date: 2020-09-01
 Author: Alfredo Sánchez Alberca <asalber@ceu.es>
 Maintainer: Alfredo Sánchez Alberca <asalber@ceu.es>
+Enhances: rkward
+URL: https://aprendeconalf.es/en/project/rkteaching/
 Depends:
     stats,
     utils,
     graphics,
     grDevices,
-    rkward (>= 0.6.1),
     ggplot2,
     plyr,
     R2HTML,
@@ -20,8 +21,7 @@ Depends:
     Hmisc,
     ez,
     R (>= 3.0.0)
-Enhances: rkward
-Description: Basic utilities for teaching statistics.
+Description: Basic utilities for teaching Statistics.
     It contains procedures for:
     - Data manipulation:
     - Fiter data

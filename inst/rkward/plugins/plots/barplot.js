@@ -3,7 +3,7 @@
 var data, variable, variablename, y, groups, groupsname, fill, position, xlab, ylab, barcolor, bordercolor, facet; 
 
 function preprocess() {
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 	echo('require(plyr)\n');
 	echo('require(ggplot2)\n');
 }
@@ -97,7 +97,7 @@ function doPrintout(full) {
 	}
 	// Plot
 	echo('try ({\n');       
-        echo('p<-ggplot(data=df, aes(x=' +  variablename + ', y=' + y + ')) +  geom_bar(stat="identity"' + fill + barcolor + bordercolor + position + ') + labs(' + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
+        echo('p<-ggplot(data=df, aes(x=' +  variablename + ', y=' + y + ')) +  geom_bar(stat="identity", orientation="x"' + fill + barcolor + bordercolor + position + ') + labs(' + xlab + ylab + getString("plotoptions.code.printout") + ')' + facet + getString("plotoptions.code.calculate") + '\n');
         
 	if (getBoolean("polygon")) {
 		if (getBoolean("cumulative")) {

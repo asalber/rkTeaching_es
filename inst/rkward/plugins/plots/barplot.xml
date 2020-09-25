@@ -26,7 +26,7 @@
 					<column>
 						<varslot id="variable" label="Variable" source="selector" required="true" />
 						<checkbox id="grouped" label="Dibujar por grupos" value_unchecked="0" checked="false" />
-						<varslot id="groups" label="Variable de agrupación:" source="selector" multi="true" required="true" />
+						<varslot id="groups" label="Variable de agrupación:" types="factor" source="selector" multi="true" required="true" />
 						<embed id="filter_embed" component="rkTeaching::filter_embed" />
 						<stretch />
 						<preview id="preview" />

@@ -9,7 +9,7 @@
 		<row id="row_vars">
 			<varselector id="selector" label="Espacio de trabajo"/>
 			<column>
-				<varslot id="variables" label="Variables a tipificar" source="selector" required="true" multi="true" types="number"/>
+				<varslot id="variables" label="Variables a tipificar" source="selector" required="true" multi="true" types="numeric"/>
 			</column>
 		</row>
 	</dialog>

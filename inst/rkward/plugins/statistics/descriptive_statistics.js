@@ -3,7 +3,7 @@
 var vars, varnames, data, statistics, groups, groupsnames, filter;
 
 function preprocess(){
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 }
 
 function calculate () {

@@ -2,12 +2,11 @@
 <!DOCTYPE rkpluginmap>
 <document namespace="rkTeaching">
 	<about 
-		name="rk.Teaching"
-		shortinfo="RKWard GUI that introduces some utilities for teaching Statistics."
-		longinfo="RKWard GUI that introduces some utilities for teaching Statistics. This plugin is specially designed to use it in introductory courses of Statistics."
-		version="0.01"
-		releasedate="2013-06-01"
-		url="http://rkward.sf.net"
+		name="rkTeaching"
+		shortinfo="Plugin para RKWard con utilidades básicas para el aprendizaje de Estadística."
+		version="1.3.0"
+		releasedate="2020-09-01"
+		url="https://aprendeconalf.es/en/project/rkteaching/"
 		license="GPL (&gt;= 3)"
 	>
 		<author 
@@ -30,5 +29,4 @@
 	<require file="plugins/probability.pluginmap" />
 	<require file="plugins/distributions.pluginmap"/>
 	<require file="plugins/simulations.pluginmap"/>
-<!--	-->
 </document>

@@ -3,13 +3,13 @@
 <document base_prefix="statistics/" namespace="rkTeaching">
 	<components>
 		<component type="standard" id="descriptive_statistics" file="descriptive_statistics.xml" label="Estadísticos" />
-		<component type="standard" id="statistics_calculation" file="statistics_calculation.xml" label="Cálculo detallado" />
+<!--		<component type="standard" id="statistics_calculation" file="statistics_calculation.xml" label="Cálculo detallado" /> -->
 	</components>
 	<hierarchy>
 		<menu id="teaching">
 			<menu id="sample_statistics" label="Estadística descriptiva">
 				<entry component="descriptive_statistics"/>
-				<entry component="statistics_calculation"/>
+				<!-- <entry component="statistics_calculation"/> -->
 			</menu>
 		</menu>
 	</hierarchy>

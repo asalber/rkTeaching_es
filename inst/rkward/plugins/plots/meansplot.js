@@ -72,7 +72,7 @@ function doPrintout(full) {
 	}
     // Plot
     echo('try ({\n');
-    echo('p <- ggplot(data=df, aes(x=.x,y=.y' + meancolor + getString("plotoptions.code.printout") + ')) + stat_summary(fun.y="mean", size=3,  geom="point", position=position_dodge(width=0.25)' + intervalcolor + ')' + points + confintervals + xlab + ylab + facet + getString("plotoptions.code.calculate") + '\n');
+    echo('p <- ggplot(data=df, aes(x=.x,y=.y' + meancolor + getString("plotoptions.code.printout") + ')) + stat_summary(fun="mean", size=3,  geom="point", position=position_dodge(width=0.25)' + intervalcolor + ')' + points + confintervals + xlab + ylab + facet + getString("plotoptions.code.calculate") + '\n');
     echo('print(p)\n');
     echo ('})\n');
     

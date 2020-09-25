@@ -17,7 +17,7 @@
 			<column>
 				<varslot id="dataframe" label="Conjunto de datos" source="selector" classes="data.frame" required="true" />
 				<checkbox id="set_freq" label="Definir frecuencias" value_unchecked="0" checked="false" />
-				<varslot id="freq" label="Frecuencias" source="selector" types="number" required="true" />
+				<varslot id="freq" label="Frecuencias" source="selector" types="numeric" required="true" />
 				<saveobject id="save" label="Guardar conjunto de datos" initial="espacio.probabilistico" />
 			</column>
 		</row>

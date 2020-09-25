@@ -13,10 +13,10 @@
 		<setting id="variable">A numeric variable or vector</setting>
 		<setting id="factor">A factor with two levels to compare.</setting>
 		<setting id="varequal">Whether to assume equal variances for the two samples (for independent samples t-test, only). This option is implied for a paired test.</setting>
-		<setting id="hypothesis">Alternative hypothesis (H1) of the test.</setting>
+		<setting id="hypothesis">Hipótesis alternativa (H1) of the test.</setting>
 		<caption id="tab_options"/>
 		<setting id="confint">Whether to print the confidence interval of the estimated mean.</setting>
-		<setting id="conflevel">Confidence level to print.</setting>
+		<setting id="conflevel">Nivel de confianza to print.</setting>
 	</settings>
 	<related>
 		<ul>

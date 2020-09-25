@@ -1,80 +1,88 @@
 <!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
-
 <!DOCTYPE rkplugin>
 <document>
-	<code file="one_sample_t_test.js"/>
-	<help file="one_sample_t_test.rkh"/>
-	
-	<logic>
-		<connect client="filter_embed.variable" governor="variable.available" />
-	</logic>
-	
-	<dialog label="Test T para la media de una población">
-		<tabbook>
-			<tab id="tab_variables" label="Seleccionar variable">
-				<row id="row_vars">
-					<varselector id="selector" label="Seleccionar variable" />
-					<column>
-						<varslot id="variable" label="Variable" source="selector" types="numeric" required="true" />
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-						<stretch />
-					</column>
-				</row>
-			</tab>
-			<tab id="tab_settings" label="Opciones de contraste">
-				<row>
-					<column id="hypotesis_col">
-						<input id="mean" label="Valor de la media según la hipótesis nula" size="small" initial="0" />
-						<radio id="hypothesis" label="Hipotesis alternativa">
-							<option value="two.sided" label="Bilateral (&#8800;)" />
-							<option value="greater" label="Unilateral mayor (&gt;)" />
-							<option value="less" label="Unilateral menor (&lt;)" />
-						</radio>
-					</column>
-					<column>
-						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1">
-							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
-						</frame>
-					</column>
-				</row>
-			</tab>
-		</tabbook>
-	</dialog>
-	
-	<wizard label="Test T para la media de una población">
-		<page>
-			<text>
-			Seleccionar la variable numérica a contrastar.
-			</text>
-			<copy id="row_vars"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-				<p>Introducir el valor de la media poblacional según la hipótesis nula. </p>
-			</text>
-			<copy id="mean"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-				<p>Seleccionar el tipo de hipótesis alternativa a contrastar:</p>
-                - Seleccionar bilateral, si se presupone que la media poblacional es distinta del valor de contraste pero no se sabe si es mayor o menor.<br/> 
-                - Seleccionar unilateral mayor si se presupone que la media poblacional es mayor que el valor de contraste.<br/>
-                - Seleccionar unilateral menor si se presupone que la media poblacional es menor que el valor de contraste.
-                <p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
-			</text>
-			<copy id="hypothesis"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-			<p>Si se desea obtener un intervalo de confianza para estimar la diferencia entre la media y el valor de contraste, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
-            <p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
-			</text>
-			<copy id="confint_frame"/>
-			<stretch/>
-		</page>
-	</wizard>
+  <code file="one_sample_t_test.js"/>
+  <help file="one_sample_t_test.rkh"/>
+  <logic>
+    <convert id="groupedMode" mode="equals" sources="grouped.state" standard="1"/>
+    <connect client="groups.visible" governor="groupedMode"/>
+    <convert id="filterMode" mode="equals" sources="filter.state" standard="1"/>
+    <connect client="condition.visible" governor="filterMode"/>
+  </logic>
+  <dialog label="Test T para la media de una población">
+    <tabbook>
+      <tab id="tabVariables" label="Variable">
+        <row id="rowVars">
+          <varselector id="selector" label="Seleccionar variable(s)"/>
+          <column>
+            <varslot id="variable" label="Media de" source="selector" types="numeric" required="true"/>
+            <checkbox id="grouped" label="Contraste por grupos" value_unchecked="0" checked="false"/>
+            <varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" multi="true" required="true"/>
+            <include file="../common/filter.xml"/>
+            <stretch/>
+          </column>
+        </row>
+      </tab>
+      <tab id="tabOptions" label="Opciones del test">
+        <row>
+          <column id="colHypothesis">
+            <input id="mean" label="Valor de la media según la hipótesis nula" size="small" initial="0"/>
+            <radio id="hypothesis" label="Hipótesis alternativa">
+              <option value="two.sided" label="Bilateral (&#8800;)"/>
+              <option value="greater" label="Mayor (&gt;)"/>
+              <option value="less" label="Menor (&lt;)"/>
+            </radio>
+            <frame id="frameConfInt" label="Intervalo de confianza para la media" checkable="true" checked="true" value="1">
+              <spinbox id="confLevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
+            </frame>
+          </column>
+        </row>
+        <stretch/>
+      </tab>
+    </tabbook>
+  </dialog>
+  <wizard label="Test T para la media de una población">
+    <page>
+      <text>
+        <p>This procedure performs the T test for detecting a significant difference between the mean of one population and a given value, and estimating the mean with a confidence interval.        </p>
+      </text>
+    </page>
+    <page>
+      <text>
+        <p>Insert the numeric variable to test.</p>
+        <p>If you want different tests for the categories of one or several factors, check the box          
+          <b>Test por grupos</b>          and select the factors to define the groups. If you select more than one factor you will get one test for every category combination of the factors.
+        </p>
+      </text>
+      <copy id="rowVars"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>Enter the value of the mean in the null hypothesis</p>
+      </text>
+      <copy id="mean"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>Select the type of Hipótesis alternativa to test:</p>
+        <ul>
+          <li>Check Bilateral you have no assumption about what mean is greater.</li>
+          <li>Check greater if you assume that the mean of the first population is greater than the mean of the second population.</li>
+          <li>Check less if you assume that the mean of the first population is less than the mean of the second population.</li>
+        </ul>
+        <p>The one-sided hypothesis tends to increase the power of the test.</p>
+      </text>
+      <copy id="hypothesis"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>If you wants a confidence interval to estimate the mean of the population check the box and enter the desired confidence level (a 95% of confidence correspond to a 5% of significance).</p>
+      </text>
+      <copy id="frameConfInt"/>
+      <stretch/>
+    </page>
+  </wizard>
 </document>

@@ -4,7 +4,7 @@
 var x, y, data, groups, pointcolor, pointsymbol, facet, smooth, se, smoothcolor, legend, regression, model, formula, equation, typemodel;
 
 function preprocess(){
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 	echo('require(plyr)\n');
 	echo('require(ggplot2)\n');
 }

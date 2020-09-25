@@ -1,8 +1,8 @@
 \docType{package}
-\name{rk.Teaching}
-\alias{rk.Teaching}
-\alias{rk.Teaching-package}
-\title{rk.Teaching}
+\name{rkTeaching}
+\alias{rkTeaching}
+\alias{rkTeaching-package}
+\title{rkTeaching}
 \description{
 Un plugin de RKWard para la enseñanza de Estadística
 }

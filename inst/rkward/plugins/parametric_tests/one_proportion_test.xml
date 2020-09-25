@@ -1,109 +1,129 @@
 <!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
-
 <!DOCTYPE rkplugin>
 <document>
-	<code file="one_proportion_test.js"/>
-	<help file="one_proportion_test.rkh"/>
-
-	<logic>
-		<convert id="manual_checked" sources="manual.checked" mode="equals" standard="1" />
-		<connect client="variable.enabled" governor="manual_checked.not" />
-		<connect client="selector.enabled" governor="manual_checked.not" />
-		<connect client="category.enabled" governor="manual_checked.not" />
-		<connect client="freq.enabled" governor="manual_checked" />
-		<connect client="n.enabled" governor="manual_checked" />
-		<connect client="filter_embed.enabled" governor="manual_checked.not" />		
-		<connect client="filter_embed.variable" governor="variable.available" />
-	</logic>
-	
-	<dialog label="Test para una proporción">
-		<tabbook>
-			<tab id="tab_variables" label="Seleccionar variable">
-				<row id="row_vars">
-					<varselector id="selector" label="Seleccionar variable" />
-					<column>
-						<varslot id="variable" label="Variable" source="selector" required="true" />	
-						<input id="category" label="Categoría" size="small" required="true"/>
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>						
-						<frame id="manual" label="Introducción manual de frecuencias" checkable="true" checked="false" value="1" value_unchecked="0">		
-							<input id="freq" label="Frecuencia muestral" size="small" required="true" />
-							<input id="n" label="Tamaño muestral" size="small" required="true"/>
-						</frame>
-						<stretch />
-					</column>
-				</row>
-			</tab>
-			<tab id="tab_settings" label="Opciones de contraste">
-				<row>
-					<column id="hypotesis_col">
-						<input id="proportion" label="Valor de la proporción según la hiótesis nula" size="small" initial="0.5" />
-						<radio id="hypothesis" label="Hipotesis alternativa">
-							<option value="two.sided" label="Bilateral" />
-							<option value="greater" label="Unilateral mayor" />
-							<option value="less" label="Unilateral menor" />
-						</radio>
-						<radio id="type" label="Tipo de prueba">
-							<option value="normal_correction" label="Aproximación normal con correción por continuidad" />
-							<option value="normal" label="Aproximación normal sin corrección por continuidad" />
-							<option value="binomial" label="Binomial exacto" />
-						</radio>
-						<stretch />
-					</column>
-					<column>
-						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value_unckecked="0" value="1">
-							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95" />
-						</frame>
-						<stretch />
-					</column>
-				</row>
-			</tab>
-		</tabbook>
-	</dialog>
-	
-	<wizard label="Test para una proporción">
-		<page>
-			<text>
-				<p>Seleccionar una variable y la categoría o valor cuya proporción se desea contrastar, o bien activar la casilla de introducción manual de frecuencias e introducir la frecuencia absoluta muestral y el tamaño de la muestra.</p>
-			</text>
-			<copy id="row_vars"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-				<p>Introducir el valor de la proporción poblacional según la hipótesis nula.</p> 
-			</text>
-			<copy id="proportion"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-				<p>Seleccionar el tipo de hipótesis alternativa a contrastar:</p>
-                - Seleccionar bilateral, si se presupone que la proporción poblacional es distinta del valor de contraste pero no se sabe si es mayor o menor.<br/> 
-                - Seleccionar unilateral mayor si se presupone que la proporción poblacional es mayor que el valor de contraste.<br/>
-                - Seleccionar unilateral menor si se presupone que la proporción poblacional es menor que el valor de contraste.
-                <p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
-			</text>
-			<copy id="hypothesis"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-				<p>Seleccionar el tipo de prueba a realizar:</p> 
-				- Aproximación normal con corrección por continuidad (es lo más habitual para muestras grandes).<br/>
-				- Aproximación normal sin corrección por continuidad.<br/>
-				- Binomial exacto.
-			</text>
-			<copy id="type"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-			<p>Si se desea obtener un intervalo de confianza para estimar la proporción poblacional, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
-			<p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
-			</text>
-			<copy id="confint_frame"/>
-			<stretch/>
-		</page>
-	</wizard>
+  <code file="one_proportion_test.js"/>
+  <help file="one_proportion_test.rkh"/>
+  <logic>
+    <convert id="manualChecked" sources="manual.checked" mode="equals" standard="1"/>
+    <connect client="variable.enabled" governor="manualChecked.not"/>
+    <connect client="selector.enabled" governor="manualChecked.not"/>
+    <connect client="category.enabled" governor="manualChecked.not"/>
+    <connect client="freq.enabled" governor="manualChecked"/>
+    <connect client="n.enabled" governor="manualChecked"/>
+    <connect governor="variable.available" client="levels.variable"/>
+    <convert id="groupedMode" mode="equals" sources="grouped.state" standard="1"/>
+    <connect client="groups.visible" governor="groupedMode"/>
+    <connect client="grouped.enabled" governor="manualChecked.not"/>
+    <convert id="filterMode" mode="equals" sources="filter.state" standard="1"/>
+    <connect client="condition.visible" governor="filterMode"/>
+    <connect client="filter.enabled" governor="manualChecked.not"/>
+  </logic>
+  <dialog label="Test para una proporción de una población">
+    <tabbook>
+      <tab id="tabVariables" label="Variables">
+        <row id="rowVars">
+          <varselector id="selector" label="Seleccionar variable(s)"/>
+          <column>
+            <varslot id="variable" label="Variable" source="selector" required="true" size="small"/>
+            <row>
+              <embed id="levels" component="rkward::level_select"/>
+              <valueslot id="category" label="Proporción de" source="levels.selector" size="small"/>
+            </row>
+            <row>
+              <column>
+                <checkbox id="grouped" label="Test por grupos" value_unchecked="0" checked="false"/>
+                <varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" multi="true" required="true"/>
+              </column>
+              <column>
+                <include file="../common/filter.xml"/>
+              </column>
+            </row>
+            <frame id="manual" label="Entrada manual de frecuencias" checkable="true" checked="false" value="1" value_unchecked="0">
+              <input id="freq" label="Frecuencia muestral" size="small" required="true"/>
+              <input id="n" label="Tamaño muestral" size="small" required="true"/>
+            </frame>
+            <stretch/>
+          </column>
+        </row>
+      </tab>
+      <tab id="tabOptions" label="Opciones de contraste">
+        <column>
+          <input id="proportion" label="Valor de la proporción según la hipótesis nula" size="small" initial="0.5"/>
+          <radio id="hypothesis" label="Hipótesis alternativa">
+            <option value="two.sided" label="Bilateral (&#8800;)"/>
+            <option value="greater" label="Mayor (&gt;)"/>
+            <option value="less" label="Menor (&lt;)"/>
+          </radio>
+          <radio id="type" label="Tipo de contraste">
+            <option value="normal_correction" label="Aproximación normal con corrección de continuidad"/>
+            <option value="normal" label="Aproximación normal sin corrección de continuidad"/>
+            <option value="binomial" label="Binomial exacto"/>
+          </radio>
+          <frame id="frameConfInt" label="Intervalo de confianza para la proporción" checkable="true" checked="true" value_unckecked="0" value="1">
+            <spinbox id="confLevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
+          </frame>
+          <stretch/>
+        </column>
+      </tab>
+    </tabbook>
+  </dialog>
+  <wizard label="Test for the Proporción de one population">
+    <page>
+      <text>
+        <p>          This procedure performs the test for detecting a significant difference between the Proporción de one population and a given value, and estimating the proportion with a confidence interval.        </p>
+      </text>
+    </page>
+    <page>
+      <text>
+        <p>Select one variable and the category for the proportion to test.</p>
+        <p>If you want different tests for the categories of one or several factors, check the box          
+          <b>Test por grupos</b>          and select the factors to define the groups. If you select more than one factor you will get one test for every category combination of the factors.
+        </p>
+        <p>If you do not want to create the variable required and you know the frequency of the sample, check the box          
+          <b>Entrada manual de frecuencias</b>          and enter the frequency and size of the sample.
+        </p>
+      </text>
+      <copy id="rowVars"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>Enter the value of the population proportion in the null hypothesis.</p>
+      </text>
+      <copy id="proportion"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>Select the type of Hipótesis alternativa to test:</p>
+        <ul>
+          <li>Check Bilateral you have no assumption about what mean is greater.</li>
+          <li>Check greater if you assume that the mean of the first population is greater than the mean of the second population.</li>
+          <li>Check less if you assume that the mean of the first population is less than the mean of the second population.</li>
+        </ul>
+        <p>The one-sided hypothesis tends to increase the power of the test.</p>
+      </text>
+      <copy id="hypothesis"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>Select the type of test:</p>
+        <ul>
+          <li>Check normal approximation with continuity correction for big Tamaño muestrals and continuous variables.</li>
+          <li>Check normal approximation without continuity correction for big Tamaño muestrals and discrete variables.</li>
+          <li>Check exact binomial for small Tamaño muestrals.          </li>
+        </ul>
+      </text>
+      <copy id="type"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>If you wants a confidence interval to estimate the Proporción de the population check the box and enter the desired confidence level (a 95% of confidence correspond to a 5% of significance).</p>
+      </text>
+      <copy id="frameConfInt"/>
+      <stretch/>
+    </page>
+  </wizard>
 </document>

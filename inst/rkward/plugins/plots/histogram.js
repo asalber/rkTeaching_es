@@ -4,7 +4,7 @@ var variable, y, variablename, data, groups, groupsname, cells, fill, position, 
 
 function preprocess(){
 	// add requirements etc. here
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 	echo('require(plyr)\n');
 	echo('require(ggplot2)\n');
 }
@@ -123,7 +123,7 @@ function doPrintout (full) {
 	// Plot
 	echo('try ({\n');
 	// Histogram
-	echo('p <- ggplot(data=df, aes(x=Centro, y=' + y + ')' + getString("plotoptions.code.printout") + ') + geom_bar(aes(width=Amplitud' + fill + '), stat="identity"' + barcolor + bordercolor + position + ')' + ' + scale_x_continuous(breaks=breaks)' + xlab + ylab + facet + getString("plotoptions.code.calculate") + '\n');
+	echo('p <- ggplot(data=df, aes(x=Centro, y=' + y + ')' + getString("plotoptions.code.printout") + ') + geom_bar(aes(' + fill + '), stat="identity", orientation="x"' + barcolor + bordercolor + position + ')' + ' + scale_x_continuous(breaks=breaks)' + xlab + ylab + facet + getString("plotoptions.code.calculate") + '\n');
 	// Density
 	if (getBoolean("density")) {
 		echo('p <- p + geom_line(aes(x=' + variablename + ', y = ..density..), data=' + data + ', stat = "density")\n');

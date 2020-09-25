@@ -3,7 +3,7 @@
 var nsamples, size, dataframe;
 
 function preprocess(){
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 }
 
 

@@ -4,13 +4,13 @@
 var dni;
 
 function preprocess(){
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 	// add requirements etc. here
 }
 
 function calculate () {
 	dni = getValue("dni");
-	echo('data(hipertension, package="rk.Teaching")\n');
+	echo('data(hipertension, package="rkTeaching")\n');
 	echo('set.seed(' + dni + ')\n');
 	echo('hipertension$ESTRES <- NULL\n')
 	echo('hipertension$EDAD <- hipertension$EDAD + round(runif(length(hipertension$EDAD),-2,2))\n');

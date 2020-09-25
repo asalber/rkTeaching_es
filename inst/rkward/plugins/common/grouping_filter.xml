@@ -1,0 +1,5 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<column>
+  <include file="../common/grouping.xml"/>
+  <include file="../common/filter.xml"/>
+</column>

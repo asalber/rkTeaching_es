@@ -5,7 +5,7 @@ var data, variable, variablename, groups, groupsnames;
 
 function preprocess(){
 	// add requirements etc. here
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 }
 
 function calculate(){

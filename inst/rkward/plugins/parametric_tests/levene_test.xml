@@ -2,49 +2,69 @@
 
 <!DOCTYPE rkplugin>
 <document>
-	<code file="levene_test.js"/>
-	<help file="levene_test.rkh"/>
-	
-	<logic>
-		<connect client="filter_embed.variable" governor="variable.available" />
-	</logic>
+  <code file="levene_test.js"/>
+  <help file="levene_test.rkh"/>
 
-	<dialog label="Test de Levene para la comparación de varianzas">
-		<tabbook>
-			<tab id="tab_variables" label="Seleccionar variables">
-				<row id="row_vars">
-					<varselector id="selector" label="Seleccionar variables" />
-					<column>
-						<varslot id="variable" label="Comparar" source="selector" types="numeric" required="true" />
-						<varslot id="factor" label="Según" source="selector" types="factor" required="true" />
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-						<stretch />
-					</column>
-				</row>
-			</tab>
-			<tab id="tab_settings" label="Opciones de contraste">
-				<radio id="center" label="Centro">
-					<option value="median" label="Mediana" />
-					<option value="mean" label="Media" />
-				</radio>
-			</tab>
-		</tabbook>
-	</dialog>
-	
-	<wizard label="Test de Levene para la comparación de varianzas">
-		<page>
-			<text>
-			<p>Seleccionar la variable numérica a comparar.</p>
-			<p>Después, seleccionar el factor con los niveles a comparar.</p> 
-			</text>
-			<copy id="row_vars"/>
-		</page>
-		<page>
-			<text>
-				<p>Seleccionar si la variabilidad se mide con respecto a la mediana o a la media.</p>
-			</text>
-			<copy id="center"/>
-			<stretch/>
-		</page>
-	</wizard>
+  <logic>
+    <convert id="groupedMode" mode="equals" sources="grouped.state" standard="1"/>
+    <connect client="groups.visible" governor="groupedMode"/>
+  </logic>
+
+  <dialog label="Test de Levene para la comparación de varianzas de poblaciones independientes">
+    <tabbook>
+      <tab id="tabVariables" label="Variables">
+        <row id="rowVars">
+          <varselector id="selector" label="Seleccionar variable(s)"/>
+          <column>
+            <varslot id="variable" label="Comparar la varianza de" source="selector" types="numeric" required="true"/>
+            <varslot id="factor" label="Según" source="selector" types="factor" required="true"/>
+            <checkbox id="grouped" label="Test por grupos" value_unchecked="0" checked="false"/>
+            <varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" multi="true" required="true"/>
+            <include file="../common/filter.xml"/>
+            <stretch/>
+          </column>
+        </row>
+      </tab>
+      <tab id="tabOptions" label="Opciones de contraste">
+        <radio id="center" label="Variabilidad con respecto a la">
+          <option value="median" label="Mediana"/>
+          <option value="mean" label="Media"/>
+        </radio>
+        <stretch/>
+      </tab>
+    </tabbook>
+  </dialog>
+
+  <wizard label="Levene's test for comparing variances of independent populations">
+    <page>
+      <text>
+        <p>
+          This procedure performs the Levene's test for detecting significant differences among the variances of several independent populations.
+        </p>
+        <p>
+          The dependent variable must be numeric and the independent variable must be a factor.
+        </p>
+      </text>
+    </page>
+    <page>
+      <text>
+        <p>
+          Insert the numeric variable for which to compare the variances in the field
+          <b>Comparar</b>.
+        </p>
+        <p>
+          After, insert the factor that define the populations to compare in the field
+          <b>Según</b>.
+        </p>
+      </text>
+      <copy id="rowVars"/>
+    </page>
+    <page>
+      <text>
+        <p>Check the box corresponding to the central tendency measure with respect to which the variability is measured.</p>
+      </text>
+      <copy id="center"/>
+      <stretch/>
+    </page>
+  </wizard>
 </document>

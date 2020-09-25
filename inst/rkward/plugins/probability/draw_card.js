@@ -4,7 +4,7 @@ var deck, ncards, dataframe;
 
 function preprocess(){
 	echo('require(prob)\n');
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 }
 
 function calculate () {

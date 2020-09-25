@@ -1,4 +1,4 @@
-#' rk.Teaching
+#' rkTeaching
 #'
 #' Un plugin de RKWard para la enseñanza de Estadística
 #' 
@@ -112,7 +112,7 @@
 #'      \item Teorema central del límite
 #'  }
 #' 
-#' @name rk.Teaching
+#' @name rkTeaching
 #' @docType package
 #' @import  car, e1071, ez, ggplot2, Hmisc, plyr, R2HTML
 NULL

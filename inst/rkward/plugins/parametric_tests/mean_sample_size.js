@@ -4,7 +4,7 @@
 var sd, conflevel, error, errortype;
 
 function preprocess () {
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 }
 
 function calculate () {

@@ -4,13 +4,13 @@
 var dni;
 
 function preprocess(){
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 	// add requirements etc. here
 }
 
 function calculate () {
 	dni = getValue("dni");
-	echo('data(perdida.progenitores, package="rk.Teaching")\n');
+	echo('data(perdida.progenitores, package="rkTeaching")\n');
 	echo('set.seed(' + dni + ')\n');
 	echo('perdida.progenitores$Somatizacion <- perdida.progenitores$Somatizacion + round(runif(length(perdida.progenitores$Somatizacion),-2,2))\n');
 	echo('perdida.progenitores$Obsesion <- perdida.progenitores$Obsesion + round(runif(length(perdida.progenitores$Obsesion),-2,2))\n');

@@ -2,18 +2,18 @@
 <document>
 	<code file="plot_options.js" />
 	<help file="plot_options.rkh" />
-	
+
 	<logic>
 		<external id="default_main" default="" />
 		<external id="default_xlab" default="" />
 		<external id="default_ylab" default="" />
-		
+
 		<external id="allow_legend" default="false"/>
 		<connect client="tab_legend.visible" governor="allow_legend" />
-		
+
 		<external id="allow_grid" default="true" />
 		<connect client="tab_grid.visible" governor="allow_grid"/>
-		
+
 		<external id="allow_axes" default="true" />
 		<connect client="tab_axex.visible" governor="allow_axes"/>
 
@@ -51,21 +51,25 @@
 		<connect client="main_expression.enabled" governor="mainfilled" />
 
 		<connect client="xlog.visible" governor="allow_log"/>
-		<connect client="ylog.visible" governor="allow_log"/>			
- 	</logic>
-	
-	<dialog label="Opciones gráficas" >
+		<connect client="ylog.visible" governor="allow_log"/>
+	</logic>
+
+	<dialog label="Opciones gráficas">
 		<tabbook>
-			<tab id="tab_title" label="Título">
-				<row id="row_title">
-					<column>
-						<input id="main" label="Título" size="large" />
-						<checkbox id="main_expression" label="Expresión de R" checked="false"/>
-					</column>
+			<tab id="tabTitle" label="Títulos">
+				<column id="colTitles">
+					<frame>
+						<input id="title" label="Título principal"/>
+						<checkbox id="titleExpression" label="Expresión de R" checked="false"/>
+					</frame>
+					<frame>
+						<input id="subtitle" label="Subtítulo"/>
+						<checkbox id="subtitleExpression" label="Expresión de R" checked="false"/>
+					</frame>
 					<stretch/>
-				</row>
+				</column>
 			</tab>
-			<tab id="tab_axes" label="Ejes" >
+			<tab id="tab_axes" label="Ejes">
 				<row>
 					<column id="col_x_axe">
 						<frame id="x_axe" label="Eje X">
@@ -79,7 +83,7 @@
 									<input id="xmaxvalue" label="Máximo" />
 								</row>
 							</frame>
-							<dropdown id="x_lab_orientation" label="Orientación de las etiquetas" >
+							<dropdown id="x_lab_orientation" label="Orientación de las etiquetas">
 								<option value="" label="defecto" checked="true" />
 								<option value="0" label="Horizontal" />
 								<option value="90" label="Vertical" />
@@ -100,7 +104,7 @@
 									<input id="ymaxvalue" label="Máximo" />
 								</row>
 							</frame>
-							<dropdown id="y_lab_orientation" label="Orientación de las etiquetas" >
+							<dropdown id="y_lab_orientation" label="Orientación de las etiquetas">
 								<option value="" label="defecto" checked="true" />
 								<option value="0" label="Horizontal" />
 								<option value="90" label="Vertical" />
@@ -112,39 +116,47 @@
 				</row>
 				<checkbox id="flip_axis" label="Intercambiar ejes" checked="false"/>
 			</tab>
-			<tab id="tab_grid" label="Cuadrícula" >
-					<row id="row_grid">
+			<tab id="tab_grid" label="Cuadrícula">
+				<row>
+					<column id="col_grid_mayor">
 						<frame id="grid_major" label="Cuadrícula mayor">
 							<checkbox id="grid_horizontal_major" label="Horizontales" checked="true"/>
 							<checkbox id="grid_vertical_major" label="Verticales" checked="true"/>
 							<embed id="grid_major_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula mayor"/>
 						</frame>
+						<stretch/>
+					</column>
+					<column id="col_grid_minor">
 						<frame id="grid_minor" label="Cuadrícula menor">
 							<checkbox id="grid_horizontal_minor" label="Horizontales" checked="true"/>
 							<checkbox id="grid_vertical_minor" label="Verticales" checked="true"/>
 							<embed id="grid_minor_line_color" component="rkTeaching::color_chooser" label="Color de la línea de cuadrícula menor"/>
 						</frame>
-					</row>
-					<frame id="frame_grid_background_color" label="Color de fondo">
-						<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
-					</frame>			
-					<stretch/>
+						<stretch/>
+					</column>
+				</row>
+				<frame id="frame_grid_background_color" label="Color de fondo">
+					<embed id="grid_background_color" component="rkTeaching::color_chooser" label="Color de la cuadrícula"/>
+				</frame>
+				<stretch/>
 			</tab>
-			<tab id="tab_legend" label="Leyenda" >
-				<dropdown id="legend" label="Posición de la leyenda" >
-					<option value="" label="defecto" checked="true" />
-					<option value="none" label="ninguna" />
-					<option value="top" label="arriba" />
-					<option value="bottom" label="abajo" />
-					<option value="left" label="izquierda" />
-					<option value="right" label="derecha" />					
-				</dropdown>
+			<tab id="tab_legend" label="Leyenda">
+				<frame>
+					<dropdown id="legend" label="Posición de la leyenda">
+						<option value="" label="defecto" checked="true" />
+						<option value="none" label="ninguna" />
+						<option value="top" label="arriba" />
+						<option value="bottom" label="abajo" />
+						<option value="left" label="izquierda" />
+						<option value="right" label="derecha" />
+					</dropdown>
+				</frame>
 				<stretch/>
 			</tab>
 		</tabbook>
 	</dialog>
-	
-	<wizard label="Asistente para opciones gráficas" >
+
+	<wizard label="Asistente para opciones gráficas">
 		<page id="page_title">
 			<text>
 				Introduce el título del gráfico.

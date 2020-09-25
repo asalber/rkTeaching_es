@@ -53,7 +53,7 @@ function calculate() {
 	// Set means
 	means = '';
 	if (getBoolean("means")) {
-		means = ' + stat_summary(fun.y=mean, colour="red", geom="point", position=position_dodge(width=0.75))';
+		means = ' + stat_summary(fun=mean, colour="red", geom="point", position=position_dodge(width=0.75))';
 	}
 	// Set points
 	points = '';

@@ -2,7 +2,7 @@
 var source_dataframe, nrep, target_dataframe;
 
 function preprocess(){
-	echo('require(rk.Teaching)\n');
+	echo('require(rkTeaching)\n');
 }
 
 

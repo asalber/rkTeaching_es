@@ -1,0 +1,5 @@
+<!-- author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
+<column>
+  <checkbox id="grouped" label="Analysis by groups" value_unchecked="0" checked="false"/>
+  <varslot id="groups" label="Grouping variable(s):" types="factor" source="selector" multi="true" required="true"/>
+</column>

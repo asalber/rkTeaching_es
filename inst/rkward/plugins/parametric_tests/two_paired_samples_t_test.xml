@@ -1,75 +1,85 @@
 <!--author: Alfredo Sánchez Alberca (asalber@ceu.es) -->
-
 <!DOCTYPE rkplugin>
 <document>
-	<code file="two_paired_samples_t_test.js"/>
-	<help file="two_paired_samples_t_test.rkh"/>
-
-	<logic>
-		<connect client="filter_embed.variable" governor="x.available" />
-	</logic>
-
-	<dialog label="Test T para la comparación de medias de dos poblaciones pareadas">
-		<tabbook>
-			<tab id="tab_variables" label="Seleccionar variables">
-				<row id="row_vars">
-					<varselector id="selector" label="Seleccionar variables"/>
-					<column>
-						<varslot id="x" label="Comparar" source="selector" types="numeric" required="true" />
-						<varslot id="y" label="con" source="selector" types="numeric" required="true" />
-						<embed id="filter_embed" component="rkTeaching::filter_embed"/>
-						<stretch />
-					</column>
-				</row>
-			</tab>
-			<tab id="tab_settings" label="Opciones de contraste">
-				<row>
-					<column id="hypotesis_col">
-						<radio id="hypothesis" label="Hipótesis alternativa">
-							<option value="two.sided" label="Bilateral (&#8800;)" />
-							<option value="greater" label="Unilateral mayor (&gt;)" />
-							<option value="less" label="Unilateral menor (&lt;)" />
-						</radio>
-					</column>
-					<column>
-						<frame id="confint_frame" label="Intervalo de confianza" checkable="true" checked="true" value="1" >
-							<spinbox id="conflevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
-						</frame>
-					</column>
-				</row>
-			</tab>
-		</tabbook>
-	</dialog>
-	
-	<wizard label="Test T para la comparación de medias de dos poblaciones pareadas">
-		<page>
-			<text>
-			<p>Seleccionar las dos variables a comparar.</p> 
-			</text>
-			<copy id="row_vars"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-				<p>Seleccionar el tipo de hipótesis alternativa a contrastar y especificar qué media se presume que es mayor:</p>
-                - Seleccionar bilateral, si se presupone que las medias de ambas poblaciones son distintas pero no se sabe qué media es mayor.<br/>
-                - Seleccionar unilateral mayor si se presupone que la media de la primera población es mayor que la media de la segunda.<br/>
-                - Seleccionar unilateral menor si se presupone que la media de la primera población es menor que la media de la segunda.
-                <p>El orden de las categorías es el establecido en la definición de las variables.</p>
-				<p>La selección de una hipótesis alternativa unilateral suele aumentar la potencia del contraste.</p> 
-			</text>
-			<copy id="hypothesis"/>
-			<stretch/>
-		</page>
-		<page>
-			<text>
-			<p>Si se desea obtener un intervalo de confianza para estimar la diferencia de medias entre las dos poblaciones, 
-			seleccionar la opción correspondiente e indicar el nivel de confianza del intervalo (un 95% de confianza se corresponde con un 5% de significación).</p>
-            <p>A medida que se aumente el nivel de confianza del intervalo se perderá precisión en la estimación.</p>   
-			</text>
-			<copy id="confint_frame"/>
-			<stretch/>
-		</page>
-	</wizard>	
+  <code file="two_paired_samples_t_test.js"/>
+  <help file="two_paired_samples_t_test.rkh"/>
+  <logic>
+    <convert id="groupedMode" mode="equals" sources="grouped.state" standard="1"/>
+    <connect client="groups.visible" governor="groupedMode"/>
+    <convert id="filterMode" mode="equals" sources="filter.state" standard="1"/>
+    <connect client="condition.visible" governor="filterMode"/>
+  </logic>
+  <dialog label="Test T para la comparación de medias de dos poblaciones pareadas">
+    <tabbook>
+      <tab id="tabVariables" label="Variables">
+        <row id="rowVars">
+          <varselector id="selector" label="Seleccionar variables"/>
+          <column>
+            <varslot id="x" label="Comparar la media de la población" source="selector" types="numeric" required="true"/>
+            <varslot id="y" label="con la media de la población" source="selector" types="numeric" required="true"/>
+            <checkbox id="grouped" label="Test por grupos" value_unchecked="0" checked="false"/>
+            <varslot id="groups" label="Variable(s) de agrupación:" types="factor" source="selector" multi="true" required="true"/>
+            <include file="../common/filter.xml"/>
+            <stretch/>
+          </column>
+        </row>
+      </tab>
+      <tab id="tabOptions" label="Opciones de contraste">
+        <row>
+          <column>
+            <radio id="hypothesis" label="Hipótesis alternativa">
+              <option value="two.sided" label="Bilateral (&#8800;)"/>
+              <option value="greater" label="Mayor (&gt;)"/>
+              <option value="less" label="Menor (&lt;)"/>
+            </radio>
+            <frame id="frameConfInt" label="Intervalo de confianza para la media de la diferencia" checkable="true" checked="true" value="1">
+              <spinbox id="confLevel" label="Nivel de confianza" type="real" min="0" max="0.99" initial="0.95"/>
+            </frame>
+            <stretch/>
+          </column>
+        </row>
+      </tab>
+    </tabbook>
+  </dialog>
+  <wizard label="T-test for comparing the means of two paired populations">
+    <page>
+      <text>
+        <p>          This procedure performs the Student t-test for detecting a significant difference between the means of two paired populations and estimating the difference with a confidence interval.        </p>
+        <p>          The variables to compare must be numeric.        </p>
+      </text>
+    </page>
+    <page>
+      <text>
+        <p>Insert the two variables to compare in the fields           
+          <b>Comparar de mean of population</b> and           
+          <b>with the mean of population</b>.        
+        </p>
+        <p>If you want different tests for the categories of one or several factors, check the box                    
+          <b>Test por grupos</b>          and select the factors to define the groups. If you select more than one factor you will get one test for every category combination of the factors.        
+        </p>
+      </text>
+      <copy id="rowVars"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>Select the type of Hipótesis alternativa to test:</p>
+        <ul>
+          <li>Check Bilateral you have no assumption about what mean is greater.</li>
+          <li>Check greater if you assume that the mean of the first population is greater than the mean of the second population.</li>
+          <li>Check less if you assume that the mean of the first population is less than the mean of the second population.</li>
+        </ul>
+        <p>The one-sided hypothesis tends to increase the power of the test.</p>
+      </text>
+      <copy id="hypothesis"/>
+      <stretch/>
+    </page>
+    <page>
+      <text>
+        <p>If you wants a confidence interval to estimate the difference between the means of the populations check the box and enter the desired confidence level (a 95% of confidence correspond to a 5% of significance).</p>
+      </text>
+      <copy id="frameConfInt"/>
+      <stretch/>
+    </page>
+  </wizard>
 </document>
-
